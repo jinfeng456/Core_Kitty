@@ -1,0 +1,50 @@
+﻿
+using GK.Common;
+using GK.Common.dto;
+using GK.WMS.DAL;
+
+using GK.WMS.Entity;
+using HY.WCS.DAL;
+using HY.WCS.DAL.dto;
+using HY.WCS.Entity.dto;
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web;
+
+
+using System.Web.Http;
+using System.Web.Http.Cors;
+using Web.Authorize;
+
+namespace WebApi
+{
+    [FormAuthenticationFilter]
+
+    [RoutePrefix("Batch")]
+    public class BatchController : BaseApiController
+    {
+        IBatchServer authorityServer = WMSDalFactray.getDal<IBatchServer>();
+
+        [HttpPost, Route("FindPage")]
+        public BaseResult FindPage([FromBody]BatchDto dto)
+        {
+            Page<WhBatch> info = authorityServer.QueryBatchPage<WhBatch>(dto);
+            return BaseResult.Ok(info);
+        }
+
+        [HttpPost, Route("Save")]
+        public BaseResult Save([FromBody]WhBatch model)
+        {
+            if (model.id == 0)
+            {
+                return BaseResult.Ok(authorityServer.insert<WhBatch>(model));
+            }
+            else
+            {
+                return BaseResult.Ok(authorityServer.updateNotNull<WhBatch>(model));
+            }
+        }
+    }
+}

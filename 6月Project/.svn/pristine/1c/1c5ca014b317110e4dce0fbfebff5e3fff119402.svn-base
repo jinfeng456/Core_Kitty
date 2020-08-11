@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Hosting;
+using System.Web.Http;
+using System.Web.Http.Results;
+using System.Web.Security;
+using Web.Authorize;
+using WebApi.Controller.file;
+
+namespace WebApi
+{
+    [RoutePrefix("api/file")]
+    public class FileController : BaseApiController
+    {
+        [HttpGet, Route("download/{id}")]
+        public IHttpActionResult Get(String type,String id)
+        {
+            var path = HostingEnvironment.MapPath("/bin/Web.dll");
+            var f = new FileInfo(path);
+            if(!f.Exists) {
+                return new StatusCodeResult(HttpStatusCode.NotFound,this);
+            }
+            return new FileStreamResult(f.OpenRead(),"application/octet-stream","web.dl");
+        }
+
+
+           [HttpGet, Route("download2/{type}/{id}")]
+        public IHttpActionResult download2(String type,String id)
+        {
+            MemoryStream ms=new MemoryStream(System.Text.Encoding.Default.GetBytes("字符串"));
+            return new FileStreamResult(ms,"application/octet-stream","web.dl");
+        }
+
+ 
+        [HttpPost, Route("upload")]
+        public BaseResult Upload() {
+
+            string id = HttpContext.Current.Request["id"];
+            string name = HttpContext.Current.Request["name"];
+            HttpFileCollection files = HttpContext.Current.Request.Files;
+
+            foreach(string key in files.AllKeys) {
+                HttpPostedFile file = files[key];//file.ContentLength文件长度
+                if(string.IsNullOrEmpty(file.FileName) == false)
+                    file.SaveAs(HttpContext.Current.Server.MapPath("~/App_Data/") + file.FileName);
+            }
+
+            return new BaseResult("");
+        }
+
+    }
+}

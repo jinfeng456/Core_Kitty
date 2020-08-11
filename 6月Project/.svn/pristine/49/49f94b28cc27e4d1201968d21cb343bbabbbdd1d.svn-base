@@ -1,0 +1,253 @@
+﻿using GK.Common.dto;
+using GK.WMS.DAL;
+using GK.WMS.Entity;
+using GK.WMS.Entity.wms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Web.Http;
+
+namespace WebApi.Controller {
+    [RoutePrefix("api/pda")]
+    public class PdaController:BaseApiController {
+
+        IReceiptInServer receiptInServer = WMSDalFactray.getDal<IReceiptInServer>();
+        IReceiptOutServer receiptOutServer = WMSDalFactray.getDal<IReceiptOutServer>();
+        IReceiptPkServer receiptPkServer = WMSDalFactray.getDal<IReceiptPkServer>();
+        ISequenceIdServer sequenceIdServer = WMSDalFactray.getDal<ISequenceIdServer>();
+       ICoreStockServer coreStockServer = WMSDalFactray.getDal<ICoreStockServer>();
+        //采购入库界面显示
+        [HttpGet, Route("inDetail")]
+        public BaseResult inDetail() {
+            List<Pair> list = new List<Pair>();
+            List<WhReceiptInDetail> detailList = receiptInServer.getAllWorkingReceiptInDetail();
+
+            foreach (WhReceiptInDetail detail in detailList) {
+                list.Add(new Pair(detail.id + "",detail.wmsBanchNo + "-" + detail.FromCorpBatchNo));
+            }
+            return new BaseResult(list);
+
+        }
+        //原料分拣出库界面显示
+        [HttpPost, Route("outDetail")]
+        public BaseResult outDetail([FromBody]stockInfoDto dto)
+        {
+            List<Pair> list = new List<Pair>();
+            List<CoreStock> list1 = receiptOutServer.GetCoreStockId(dto.boxCode);
+            List<CoreStockDetail> detailList = receiptOutServer.getCoreStockDetials(list1[0].id);
+            foreach (CoreStockDetail detail in detailList)
+            {
+                list.Add(new Pair(detail.id + "", detail.itemCode + "-"+detail.wmsBanchNo + "-" + detail.countDb));
+            }
+            return new BaseResult(list);
+        }
+
+        //原料盘库界面显示
+        [HttpPost, Route("pkDetail")]
+        public BaseResult pkDetail([FromBody]stockInfoDto dto)
+        {
+            List<Pair> list = new List<Pair>();
+            List<WhReceiptPkDetail> detailList = receiptPkServer.getPkDetailsByBoxCode(dto.boxCode);
+           // List<CoreStockDetail> detailList = receiptOutServer.getCoreStockDetials(list1[0].id);
+            foreach (WhReceiptPkDetail detail in detailList)
+            {
+                list.Add(new Pair(detail.id + "", detail.boxCode + "-" + detail.barCode));
+            }
+            return new BaseResult(list);
+        }
+
+        //采购入库
+        [HttpPost, Route("saveStock")]
+        public BaseResult saveStock([FromBody]stockInfoDto dto) {
+
+          List<CoreStock> list=  coreStockServer.getCoreStockByCode(dto.boxCode);
+            if (list.Count > 0) {
+                return new BaseResult("条码已存在");
+             }
+             CoreStock cs=new CoreStock();
+            cs.id=sequenceIdServer.getId();
+            cs.boxCode=dto.boxCode;           
+            cs.changeTime=sequenceIdServer.GetTime();
+            cs.createTime=cs.changeTime;
+            cs.pkStatus=0;
+            cs.status=2;
+            cs.locked=0;
+            cs.statusTypes = 1;
+            cs.isFull = dto.isZhentuo;
+            WhReceiptInDetail inDetial= receiptInServer.getById<WhReceiptInDetail>(dto.detailId);
+         
+             CoreStockDetail csd=new CoreStockDetail();
+            csd.id=sequenceIdServer.getId();
+            csd.stockId =  cs.id;
+            csd.receiptlnId=dto.detailId;
+            csd.itemId = inDetial.itemId;
+            csd.inTime=cs.createTime;
+            csd.countDb=dto.countInput;
+            csd.wmsBanchNo = inDetial.wmsBanchNo;
+            csd.stockStatus=2;
+            csd.pkStatus=0;
+            csd.bussStatus = dto.isCouyan;
+             receiptInServer.insertNotNull(cs);
+             receiptInServer.insertNotNull(csd);
+            return new BaseResult("ok");
+
+        }
+        //产成品入库
+        [HttpPost, Route("saveStocks")]
+        public BaseResult saveStocks([FromBody]stockInfosDto dto)
+        {
+            List<CoreStock> list = coreStockServer.getCoreStockByCode(dto.boxCode);
+            CoreStock cs = new CoreStock();
+            CoreStockDetail csd = new CoreStockDetail();
+            if (list.Count < 1)
+            {
+                cs.id = sequenceIdServer.getId();
+                cs.boxCode = dto.boxCode;
+                cs.status = 1;
+                cs.createTime = DateTime.Now;
+                cs.changeTime = DateTime.Now;
+                cs.isFull = dto.isZhentuo;
+                cs.statusTypes = 1;
+                cs.locked = 0;
+                cs.pkStatus = 0;
+                long cid = cs.id;
+                receiptInServer.insertNotNull(cs);
+                string[] sArray = Regex.Split(dto.barCode, ",", RegexOptions.IgnoreCase);
+                for (int i = 0; i < sArray.Length - 1; i++)
+                {
+                    List<CoreStockDetail> cpList = receiptOutServer.getCoreStockDetialsId(sArray[i]);
+                    if (cpList.Count < 1)
+                    {
+                        csd.id = sequenceIdServer.getId();
+                        csd.stockId = cid;
+                        csd.countDb = 1;
+                        csd.itemId = 0;
+                        csd.receiptlOutId = 0;
+                        csd.pkStatus = 0;
+                        csd.stockStatus = 1;
+                        csd.barCode = sArray[i];
+                        receiptInServer.insertNotNull(csd);
+                    }
+                }
+            } 
+            else
+            {
+               string[] sArray = Regex.Split(dto.barCode, ",", RegexOptions.IgnoreCase);
+                for (int i = 0; i < sArray.Length - 1; i++)
+                {
+                    List<CoreStockDetail> cpList = receiptOutServer.getCoreStockDetialsId(sArray[i]);
+                    if (cpList.Count < 1)
+                    {
+                        csd.id = sequenceIdServer.getId();
+                        csd.stockId = list[0].id;
+                        csd.countDb = 1;
+                        csd.itemId = 0;
+                        csd.receiptlOutId = 0;
+                        csd.pkStatus = 0;
+                        csd.stockStatus = 1;
+                        csd.barCode = sArray[i];
+                        receiptInServer.insertNotNull(csd);
+                    }
+                }
+            }
+            return new BaseResult("ok");
+
+        }
+        //成品分拣
+        [HttpPost, Route("saveFjStocks")]
+        public BaseResult saveFjStocks([FromBody]stockInfosDto dto)
+        {
+
+            List<CoreStock> list = coreStockServer.getCoreStockByCode(dto.boxCode);
+            if (list.Count > 0)
+            {
+                CoreStock cs = new CoreStock();
+                CoreStockDetail csd = new CoreStockDetail();
+                string[] sArray = Regex.Split(dto.barCode, ",", RegexOptions.IgnoreCase);
+                for (int i = 0; i < sArray.Length - 1; i++)
+                {
+                    receiptOutServer.updateCoreStockDetails(sArray[i]);
+                }
+            }
+            else {
+                return new BaseResult("不存在该托盘!");
+            }
+            return new BaseResult("ok");
+
+        }
+        //原料分拣
+        [HttpPost, Route("saveYlStock")]
+        public BaseResult saveYlStock([FromBody]stockInfoDto dto)
+        {
+            receiptOutServer.updateCoreStockDetailsById(dto.detailId);
+            return BaseResult.Ok("成功");
+        }
+        //成品盘库
+        [HttpPost, Route("savePkStocks")]
+        public BaseResult savePkStocks([FromBody]stockInfosDto dto)
+        {
+
+            List<CoreStock> list = coreStockServer.getCoreStockByCode(dto.boxCode);
+            if (list.Count > 0)
+            {
+                WhReceiptPkDetail pkd = new WhReceiptPkDetail();
+                WhReceiptPk pk = new WhReceiptPk();
+                string[] sArray = Regex.Split(dto.barCode, ",", RegexOptions.IgnoreCase);
+                for (int i = 0; i < sArray.Length - 1; i++)
+                {
+                   List<WhReceiptPkDetail> Pklist=receiptPkServer.getPkDetailsByBarCode(sArray[i]);
+                    if (Pklist.Count > 0)
+                    {
+                        receiptPkServer.updatePkCountById(Pklist[i].id,1);
+                    }
+                    else {
+                      List<CoreStockDetail> SkList= receiptOutServer.getCoreStockDetialsId(sArray[i]);
+                        pk.id = sequenceIdServer.getId();
+                        pk.beginTime = DateTime.Now;
+                        pk.status = 0;
+                        pk.detailCount = 0;
+                        pkd.id= sequenceIdServer.getId();
+                        pkd.receptId = pk.id;
+                        pkd.createTime = DateTime.Now;
+                        pkd.stockDetailId = SkList[0].id;
+                        pkd.count = 1;
+                        pkd.barCode = sArray[i];
+                        pkd.status = 2;
+                        receiptPkServer.insertNotNull(pk);
+                        receiptPkServer.insertNotNull(pkd);
+                    }
+                }
+            }
+            else
+            {
+                return new BaseResult("不存在该托盘!");
+            }
+            return new BaseResult("ok");
+
+        }
+        //原料盘库
+        [HttpPost, Route("saveYpStock")]
+        public BaseResult saveYpStock([FromBody]stockInfoDto dto)
+        {
+            receiptPkServer.updatePkCountById(dto.detailId,dto.countInput);
+            return new BaseResult("ok");
+        }
+    }
+    public class stockInfoDto {
+        public long detailId;
+        public int countInput;
+        public string boxCode;
+        public int isCouyan;
+        public int isZhentuo;
+        public string barCode;
+    }
+    public class stockInfosDto
+    {       
+        public string boxCode;
+        public string barCode;
+        public int isZhentuo;
+    }
+}

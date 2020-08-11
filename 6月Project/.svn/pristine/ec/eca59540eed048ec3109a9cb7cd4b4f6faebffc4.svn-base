@@ -1,0 +1,288 @@
+﻿
+using Dapper;
+using GK.Common;
+using GK.Common.dto;
+using GK.Engine.WMS;
+using GK.Engine.WMS.wms;
+using GK.WMS.DAL;
+using GK.WMS.Entity;
+using GK.WMS.Entity.dto;
+using GK.WMS.Entity.wms;
+using System;
+using System.Collections.Generic;
+using System.Web.Http;
+using Web.Authorize;
+
+namespace WebApi
+{
+    [FormAuthenticationFilter]
+
+    [RoutePrefix("receiptOut")]
+    public class ReceiptOutController : BaseApiController
+    {
+        IReceiptOutServer receiptOutServer = WMSDalFactray.getDal<IReceiptOutServer>();
+        ISequenceIdServer sequenceIdServer = WMSDalFactray.getDal<ISequenceIdServer>();
+        IWhSoOutServer whSoOutServer = WMSDalFactray.getDal<IWhSoOutServer>();
+
+        [HttpPost, Route("FindPage")]
+        public BaseResult FindPage([FromBody]ReceiptDto dto)
+        {
+            Page<WhReceiptOut> info = receiptOutServer.QueryReceiptOutPage(dto);
+            return BaseResult.Ok(info);
+        }
+
+        [HttpPost, Route("FindDetailPage")]
+        public BaseResult FindDetailPage([FromBody]ReceiptDto dto)
+        {
+            Page<WhReceiptOutQuery> info = receiptOutServer.QueryReceiptOutDetailPage(dto);
+            return BaseResult.Ok(info);
+        }
+
+        [HttpPost, Route("batchDelete")]
+        public BaseResult batchDelete([FromBody]List<WhReceiptOut> list)
+        {
+            foreach (WhReceiptOut receiptOut in list)
+            {
+                receiptOutServer.delete<WhReceiptOut>(receiptOut.id);
+                receiptOutServer.DeleteDetailByReceptId(receiptOut.id);
+            }
+            return BaseResult.Ok("ok");
+        }
+
+        [HttpPost, Route("Save")]
+        public BaseResult Save([FromBody]WhReceiptOut receiptOut)
+        {
+            if (receiptOut.id == 0)
+            {
+                receiptOut.id = sequenceIdServer.getId();
+                receiptOut.beginTime = sequenceIdServer.GetTime();
+                receiptOut.status = 1;
+                return BaseResult.Ok(receiptOutServer.insertNotNull(receiptOut));
+            }
+            else
+            {
+                return BaseResult.Ok(receiptOutServer.update(receiptOut));
+            }
+        }
+        [HttpPost, Route("getDetials")]
+        public BaseResult getDetials([FromBody]WhReceiptOut dto)
+        {
+            List<WhReceiptOutDetail> info = receiptOutServer.getDetials(dto.id);
+            return BaseResult.Ok(info);
+        }
+
+        [HttpPost, Route("saveDetials")]
+        public BaseResult saveDetials([FromBody]ReceiptAddDto dto)
+        {
+            if (dto.id == 0)
+            {
+                return BaseResult.Error(500, "请先添加主表信息");
+            }
+            WhReceiptOut receiptOut = receiptOutServer.getById<WhReceiptOut>(dto.id);
+            string[] ids = dto.items.Split(',');
+            foreach (string id in ids)
+            {
+                WhReceiptOutDetail detail = new WhReceiptOutDetail();
+                detail.id = sequenceIdServer.getId();
+                detail.itemId = long.Parse(id);
+                detail.receiptId = dto.id;
+                detail.stn = receiptOut.stn;
+                detail.planCount = 0;
+                detail.srcSoNo = receiptOut.srcSoNo;
+                receiptOutServer.insert(detail);
+            }
+            return BaseResult.Ok("ok");
+        }
+
+        [HttpPost, Route("saveDetialsByBatch")]//批次出库
+        public BaseResult saveDetialsByBatch([FromBody]ReceiptAddDto dto)
+        {
+            if (dto.id == 0)
+            {
+                return BaseResult.Error(500, "请先添加主表信息");
+            }
+            WhReceiptOut receiptOut = receiptOutServer.getById<WhReceiptOut>(dto.id);
+            List<WhReceiptOutDetail> detailList = receiptOutServer.GetReceiptOutDetail(dto);
+            string[] ids = dto.items.Split(',');
+
+            //重复批次验证
+            foreach (var id in ids)
+            {
+                bool same = false;
+                foreach (var soDetail in detailList)
+                {
+                    if (soDetail.batchId == long.Parse(id.Split('|')[0]))
+                    {
+                        //return BaseResult.Error(500, "不能重复添加批次");
+                        same = true;
+                    }
+                }
+                if (!same)
+                {
+                    WhReceiptOutDetail detail = new WhReceiptOutDetail();
+                    detail.id = sequenceIdServer.getId();
+                    detail.itemId = long.Parse(id.Split('|')[1]);
+                    detail.receiptId = dto.id;
+                    detail.stn = receiptOut.stn;
+                    detail.planCount = 0;
+                    detail.batchId = long.Parse(id.Split('|')[0]);
+                    detail.srcSoNo = receiptOut.srcSoNo;
+                    detail.batchNo = id.Split('|')[2];
+                    receiptOutServer.insert(detail);
+                }
+            }
+            return BaseResult.Ok("ok");
+        }
+        //(销售出库,生产出库)这2个暂时分开,看实际情况是否可以合并
+        [HttpPost, Route("saveDetialByOrder")]//销售出库
+        public BaseResult saveDetialByOrder([FromBody]ReceiptAddDto dto)
+        {
+            if (dto.id == 0)
+            {
+                return BaseResult.Error(500, "请先添加主表信息");
+            }
+            WhReceiptOut receiptOut = receiptOutServer.getById<WhReceiptOut>(dto.id);
+            List<WhSoOutParam> list = whSoOutServer.GetWhSoOutList(dto.items);
+            List<WhReceiptOutDetail> detailList = receiptOutServer.GetReceiptOutDetail(dto);
+            //重复添加订单号
+            foreach (var soDetail in list)
+            {
+                bool same = false;
+                foreach (var receiptDetail in detailList)
+                {
+                    if (receiptDetail.soDetailId == soDetail.id)
+                    {
+                        same = true;
+                    }
+                }
+                if (!same)
+                {
+                    WhReceiptOutDetail detail = new WhReceiptOutDetail();
+                    detail.id = sequenceIdServer.getId();
+                    detail.itemId = soDetail.itemId;
+                    detail.soDetailId = soDetail.id;//订单明细主键
+                    detail.receiptId = dto.id; //出库单主表主键
+                    detail.stn = receiptOut.stn;
+                    detail.planCount = 0;
+                    detail.srcSoNo = receiptOut.srcSoNo;
+                    receiptOutServer.insert(detail);
+                }
+            }
+            string[] ids = dto.items.Split(',');//订单主键集合
+            //订单和仓库关系表的添加
+            foreach (var id in ids)
+            {
+                WhSoOutReceipt soOutReceipt = new WhSoOutReceipt();
+                soOutReceipt.id = sequenceIdServer.getId();
+                soOutReceipt.whReceiptId = dto.id;
+                soOutReceipt.soid = long.Parse(id);
+                receiptOutServer.insert(soOutReceipt);
+            }
+            return BaseResult.Ok("ok");
+        }
+        [HttpPost, Route("saveDetialByProduce")]//生产出库
+        public BaseResult saveDetialByProduce([FromBody]ReceiptAddDto dto)
+        {
+            if (dto.id == 0)
+            {
+                return BaseResult.Error(500, "请先添加主表信息");
+            }
+            WhReceiptOut receiptOut = receiptOutServer.getById<WhReceiptOut>(dto.id);
+            List<WhSoProduceParam> list = whSoOutServer.GetWhSoProduceList(dto.items);
+            List<WhReceiptOutDetail> detailList = receiptOutServer.GetReceiptOutDetail(dto);
+            //重复添加订单号
+            foreach (var soDetail in list)
+            {
+                bool same = false;
+                foreach (var receiptDetail in detailList)
+                {
+                    if (receiptDetail.soDetailId == soDetail.id)
+                    {
+                        same = true;
+                    }
+                }
+                if (!same)
+                {
+                    WhReceiptOutDetail detail = new WhReceiptOutDetail();
+                    detail.id = sequenceIdServer.getId();
+                    detail.itemId = soDetail.itemId;
+                    detail.soDetailId = soDetail.id;//订单明细主键
+                    detail.receiptId = dto.id; //出库单主表主键
+                    detail.stn = receiptOut.stn;
+                    detail.srcSoNo = receiptOut.srcSoNo;
+                    detail.planCount = 0;
+                    receiptOutServer.insert(detail);
+                }
+                string[] ids = dto.items.Split(',');//订单主键集合
+
+                foreach (var id in ids) //订单和仓库关系表的添加
+                {
+                    WhSoOutReceipt soOutReceipt = new WhSoOutReceipt();
+                    soOutReceipt.id = sequenceIdServer.getId();
+                    soOutReceipt.whReceiptId = dto.id;
+                    soOutReceipt.soid = long.Parse(id);
+                    receiptOutServer.insert(soOutReceipt);
+                }
+            }
+            return BaseResult.Ok("ok");
+        }
+
+        [HttpPost, Route("updateDetials")]
+        public BaseResult updateDetials([FromBody]WhReceiptOutDetail dto)
+        {
+            receiptOutServer.updateNotNull(dto);
+            return BaseResult.Ok("ok");
+        }
+
+
+        [HttpPost, Route("deleteDetial")]
+        public BaseResult deleteDetial([FromBody]string id)
+        {
+            receiptOutServer.delete<WhReceiptOutDetail>(long.Parse(id));
+            return BaseResult.Ok("ok");
+        }
+
+        //生成原料请检任务
+        [HttpPost, Route("checkoutGenerate")]
+        public BaseResult CheckOutGenerate([FromBody]WhReceiptOut whReceipt)
+        {
+            if (WMSTransactionFacade.doCheckOutEngine(whReceipt))
+            {
+                return BaseResult.Ok("生成成功");
+            }
+            else
+            {
+                return BaseResult.Error(500, "任务生成失败");
+            }
+        }
+
+        //生成任务(物料,销售,生产出库)
+        [HttpPost, Route("otherOutGenerate")]
+        public BaseResult OtherOutGenerate([FromBody]WhReceiptOut whReceipt)
+        {
+            if (WMSTransactionFacade.doOtherOutEngine(whReceipt))
+            {
+                return BaseResult.Ok("生成成功");
+            }
+            else
+            {
+                return BaseResult.Error(500, "任务生成失败");
+            }
+        }
+
+        //生成批次出库任务
+        [HttpPost, Route("batchOutGenerate")]
+        public BaseResult BatchOutGenerate([FromBody]WhReceiptOut whReceipt)
+        {
+            if (WMSTransactionFacade.doBatchOutEngine(whReceipt))
+            {
+                return BaseResult.Ok("生成成功");
+            }
+            else
+            {
+                return BaseResult.Error(500, "任务生成失败");
+            }
+        }
+
+    }
+}

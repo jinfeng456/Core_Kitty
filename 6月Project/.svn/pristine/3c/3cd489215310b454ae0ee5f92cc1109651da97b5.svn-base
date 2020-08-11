@@ -1,0 +1,114 @@
+<template>
+  <div class="page-container">
+    <!--工具栏-->
+    <el-dialog title="订单" width="50%" :visible.sync="itemDialogVisible"    :before-close="handleClose">
+	
+      <div class="toolbar" style="float:left;padding-top:10px;padding-left:15px;">
+          <el-form :inline="true"  :model="filters"  :size="size">
+          <el-form-item>
+            <el-input v-model.trim="filters.soNo"  placeholder="请输入订单号"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <kt-button icon="fa fa-search"
+                      :label="$t('action.search')"
+                      perms="material:item:view"
+                      type="primary"
+                      @click="findPage(null)" />
+          </el-form-item>
+        
+        </el-form>
+      </div>
+      <!--表格内容栏-->
+      <item-kt-table2 :height="350" :data="pageResult" :columns="filterColumns" @findPage="findPage" permsSelect="sys:user:delete"
+    @handleSelect="handleSelect"   > </item-kt-table2>
+
+      <div slot="footer" class="dialog-footer">
+			<el-button :size="size" @click.native="handleClose">{{$t('action.cancel')}}</el-button>
+		</div>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import PopupTreeInput from "@/components/PopupTreeInput"
+import ItemKtTable2 from "@/views/Core/ItemKtTable2"
+import KtButton from "@/views/Core/KtButton"
+
+import { format } from "@/utils/datetime"
+export default {
+  components: {
+    PopupTreeInput,
+    ItemKtTable2,
+    KtButton
+  },
+  props:{
+		  items:String,
+	    itemDialogVisible:{
+			type: Boolean
+		}
+	},
+  data () {
+    return {
+      size: 'small',
+      filters: {
+        soNo: '',
+        items:''
+      },
+      columns: [],
+      filterColumns: [],
+      pageRequest: { pageNum: 1, pageSize: 10 },
+      pageResult: {},
+      // 新增编辑界面数据
+      editLoading:false,
+      classTypes: [],
+    }
+  },
+ 
+  methods: {
+    //获取分页数据
+    findPage: function (data) {
+      if (data !== null) {
+        this.filters.pageNum = data.pageRequest.pageNum
+        this.filters.pageSize = data.pageRequest.pageSize
+        this.filters.items = this.items;
+      }
+      // console.log("888")
+      // console.log(this.items)
+      // console.log("888")
+      this.$api.whSoOut.findPage(this.filters).then((res) => {
+        this.pageResult = res.data
+      }).then(data != null ? data.callback : '')
+    },
+    // 批量选择
+    handleSelect: function (data) {
+        this.$emit('handleSelect', data)
+    },
+    //加载物料类别分类
+    findClassTypes: function () {
+      this.$api.classify.findPage().then((res) => {
+        this.classTypes = res.data.content
+       
+      })
+    },
+    handleClose:function(){
+  			this.$emit('itemHidden', {})
+    }
+  },
+  mounted () {
+
+      this.columns = [
+        //{ prop: "id", label: "id", minWidth: 100 },
+        { prop: "soNo", label: "订单号", minWidth: 100 },
+        { prop: "srcSoNo", label: "srcSoNo", minWidth: 100 },
+        // { prop: "soid", label: "soid", minWidth: 100 },
+        // { prop: "itemId", label: "itemId", minWidth: 100 },
+        // { prop: "count", label: "count", minWidth: 100 }
+      ]
+      this.filterColumns = JSON.parse(JSON.stringify(this.columns))
+      this.findClassTypes()
+  }
+}
+</script>
+
+<style scoped>
+</style>

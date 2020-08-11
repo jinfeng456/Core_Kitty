@@ -1,0 +1,129 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using CMFrameWork.Common;
+using GK.WCS.Common;
+using GK.WCS.Entity;
+
+namespace GK.WCS.Crane {
+    public abstract class CraneConnect: SiemensConnect
+    {
+
+        protected int CraneId;
+        public int ForkNos = 1;//货叉数量
+
+        public CraneConnect(int id,int ForkNos) {
+            this.CraneId = id;
+            this.ForkNos = ForkNos;
+        }
+
+        //急停
+        public bool EmergencyStop()
+        {
+            bool result= writeShort(40,0,1);
+            if (result == true)
+            {
+                LoggerCommon.fileAll(CraneId + "号堆垛机急停发送成功");
+            }
+            else if (result == false)
+            {
+                LoggerCommon.fileAll(CraneId + "号堆垛机急停发送失败");
+            }           
+            return result;
+        }
+        //解警
+        public void DisarmAlarm()
+        {
+            writeShort(540, 2, 1);
+            LoggerCommon.fileAll(CraneId + "号堆垛机解警发送成功");
+        }
+        //删除任务
+        public void DeleteTask()
+        {
+            writeShort(540, 4, 1);
+            LoggerCommon.fileAll(CraneId + "号堆垛机任务已删除");
+        }
+        public byte[] getData() {
+            return null;
+        }
+        public bool SendTask(TaskCrane task,int virtualStn ) {
+            bool blResult = sendCraneTask(task);
+            if (!blResult)
+            {
+                LoggerCommon.fileAll(CraneId + "号堆垛机任务发送失败");
+            }
+            return true;
+        }
+
+       
+        public bool sendCraneTask(TaskCrane task)
+        {
+            List<byte> list=new List<byte>();
+            list.AddRange(new byte[]
+            { 
+               BitConverter.GetBytes(task.taskType)[1],
+               BitConverter.GetBytes(task.taskType)[0]
+             });
+            //list.AddRange(new byte[]
+            //{
+            //   BitConverter.GetBytes(task.fromPlcShelf)[1],
+            //   BitConverter.GetBytes(task.fromPlcShelf)[0]
+            // });???
+            list.AddRange(new byte[]
+            {
+               BitConverter.GetBytes(task.fromPlcShelf)[1],
+               BitConverter.GetBytes(task.fromPlcShelf)[0]
+             });
+            list.AddRange(new byte[]
+            {
+               BitConverter.GetBytes(task.fromPlcRow)[1],
+               BitConverter.GetBytes(task.fromPlcRow)[0]
+             });
+            list.AddRange(new byte[]
+            {
+               BitConverter.GetBytes(task.fromPlcCol)[1],
+               BitConverter.GetBytes(task.fromPlcCol)[0]
+             });
+            list.AddRange(new byte[]
+            {
+               BitConverter.GetBytes(task.toPlcShelf)[1],
+               BitConverter.GetBytes(task.toPlcShelf)[0]
+             });
+            list.AddRange(new byte[]
+            {
+               BitConverter.GetBytes(task.toPlcRow)[1],
+               BitConverter.GetBytes(task.toPlcRow)[0]
+             });
+            list.AddRange(new byte[]
+           {
+               BitConverter.GetBytes(task.toPlcCol)[1],
+               BitConverter.GetBytes(task.toPlcCol)[0]
+            });
+                  list.AddRange(new byte[]
+           {
+               BitConverter.GetBytes(task.taskNo)[3],
+               BitConverter.GetBytes(task.taskNo)[2],
+               BitConverter.GetBytes(task.taskNo)[1],
+               BitConverter.GetBytes(task.taskNo)[0]
+            });
+      
+            writeByteArr(40,40,list.ToArray());
+            writeInt(40,60,1);
+            return true;
+        }
+
+
+
+
+      
+
+        public void reset() {
+            
+        }
+       
+
+
+
+    }
+}

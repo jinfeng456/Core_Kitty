@@ -1,0 +1,44 @@
+﻿using Dapper;
+using GK.Common.dto;
+using GK.DAL.inter;
+using GK.WMS.DAL.abs;
+using GK.WMS.Entity;
+using HY.WCS.DAL.dto;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace GK.WMS.DAL
+{
+    public abstract class AbsBatchServer : AbsWMSBaseServer, IBatchServer
+    {
+        public Page<Batch> QueryBatchPage<Batch>(BatchDto dto)
+        {
+            string sql = "select * from wh_batch where 1=1 ";
+            if (!string.IsNullOrEmpty(dto.batchNo))
+            {
+                dto.batchNo = "%" + dto.batchNo + "%";
+                sql += " AND batch_No like @batchNo ";
+            }
+            if (dto.businessStatus != 0)
+            {
+                sql += " AND business_Status = @businessStatus ";
+            }
+            if (dto.id != 0)
+            {
+                sql += " AND id = @id ";
+            }
+            if (dto.itemId != 0)
+            {
+                sql += " AND item_Id = @itemId ";
+            }
+            if (dto.itemType != 0)
+            {
+                sql += " AND item_Type = @itemType ";
+            }
+            return this.queryPage<Batch>(sql, "id", dto);
+        }
+    }
+}

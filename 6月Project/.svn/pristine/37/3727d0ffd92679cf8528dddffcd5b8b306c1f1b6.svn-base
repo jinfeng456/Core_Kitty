@@ -1,0 +1,141 @@
+﻿
+using GK.Common;
+using GK.Common.dto;
+using GK.WMS.DAL;
+using GK.WMS.Entity;
+using GK.WMS.Entity.dto;
+using GK.WMS.Entity.wms;
+using System.Collections.Generic;
+using System.Web.Http;
+using Web.Authorize;
+
+namespace WebApi
+{
+    [FormAuthenticationFilter]
+
+    [RoutePrefix("receiptIn")]
+    public class ReceiptInController : BaseApiController
+    {
+        IReceiptInServer receipt = WMSDalFactray.getDal<IReceiptInServer>();
+        ISequenceIdServer sequenceIdServer = WMSDalFactray.getDal<ISequenceIdServer>();
+        IItemServer iitemServer = WMSDalFactray.getDal<IItemServer>();
+        [HttpPost, Route("FindPage")]
+        public BaseResult FindPage([FromBody]ReceiptinDto dto)
+        {
+            Page<WhReceiptIn> info = receipt.QueryReceiptInPage(dto);
+            return BaseResult.Ok(info);
+        }
+
+        [HttpPost, Route("batchDelete")]
+        public BaseResult batchDelete([FromBody]List<WhReceiptIn> list)
+        {
+            foreach (WhReceiptIn receiptIn in list)
+            {
+                receipt.delete<WhReceiptIn>(receiptIn.id);
+            }
+
+            return BaseResult.Ok("ok");
+        }
+
+
+
+        [HttpPost, Route("Save")]
+        public BaseResult Save([FromBody]WhReceiptIn receiptIn)
+        {
+            if (receiptIn.id == 0)
+            {
+                receiptIn.id = sequenceIdServer.getId();
+                receiptIn.beginTime = sequenceIdServer.GetTime();
+                receiptIn.finshTime = sequenceIdServer.GetTime();
+                receiptIn.status = 1;
+                receiptIn.wmsBanchNo = sequenceIdServer.getId().ToString();
+                return BaseResult.Ok(receipt.insertNotNull(receiptIn));
+            }
+            else
+            {
+                return BaseResult.Ok(receipt.update(receiptIn));
+            }
+        }
+        [HttpPost, Route("getDetials")]
+        public BaseResult getDetials([FromBody]WhReceiptIn dto)
+        {
+            List<WhReceiptInDetail> info = receipt.getDetials(dto.id);
+            return BaseResult.Ok(info);
+        }
+
+        [HttpPost, Route("saveDetials")]
+        public BaseResult saveDetials([FromBody]ReceiptInAddDto dto)
+        {
+            WhReceiptIn receiptIn = receipt.getById<WhReceiptIn>(dto.id);
+            string[] ids = dto.items.Split(',');
+            foreach (string id in ids)
+            {
+                WhReceiptInDetail detail = new WhReceiptInDetail();
+                CoreItem coreitem = iitemServer.FindCoreItemById(long.Parse(id));
+                detail.id = sequenceIdServer.getId();
+                detail.itemId = long.Parse(id);
+                detail.receptId = receiptIn.id;
+                detail.stn = receiptIn.stn;
+                detail.planCount = 0;
+                detail.packageSpec = "";
+                detail.packUnit = "";
+                detail.wmsBanchNo = receiptIn.wmsBanchNo;
+                detail.activeCount = 0;
+                detail.finshCount = 0;
+                detail.itemName = coreitem.name;
+                detail.createTime = sequenceIdServer.GetTime();
+                detail.FromCorpName = receiptIn.FromCorpName;
+                detail.FromCorpBatchNo = receiptIn.FromCorpBatchNo;
+                receipt.insertNotNull(detail);
+            }
+            return BaseResult.Ok("ok");
+        }
+
+        [HttpPost, Route("saveDetialByOrder")]
+        public BaseResult saveDetialByOrder([FromBody]ReceiptAddDto dto)
+        {
+            WhReceiptIn receiptIn = receipt.getById<WhReceiptIn>(dto.id);
+            //List<WhSoOutParam> list = whSoOutServer.GetWhSoOutList(dto.items);
+            //foreach (var item in list)
+            //{
+            //    WhReceiptOutDetail detail = new WhReceiptOutDetail();
+            //    detail.id = sequenceIdServer.getId();
+            //    detail.itemId = item.itemId;
+            //    detail.soDetailId = item.id;
+            //    detail.receptId = dto.id;
+            //    detail.stn = receiptOut.stn;
+            //    detail.planCount = 0;
+            //    receiptOutServer.insert(detail);
+            //}
+            string[] ids = dto.items.Split(',');
+            //订单和仓库关系表的添加
+            //foreach (var id in ids)
+            //{
+            //    WhSoOutReceipt soOutReceipt = new WhSoOutReceipt();
+            //    soOutReceipt.id = sequenceIdServer.getId();
+            //    soOutReceipt.whReceiptId = dto.id;
+            //    soOutReceipt.soid = long.Parse(id);
+            //    receiptOutServer.insert(soOutReceipt);
+            //}
+
+
+            return BaseResult.Ok("ok");
+        }
+
+        [HttpPost, Route("updateDetials")]
+        public BaseResult updateDetials([FromBody]WhReceiptInDetail dto)
+        {
+            receipt.updateNotNull(dto);
+            return BaseResult.Ok("ok");
+        }
+
+
+        [HttpPost, Route("deleteDetial")]
+        public BaseResult deleteDetial([FromBody]string id)
+        {
+            receipt.delete<WhReceiptInDetail>(long.Parse(id));
+            return BaseResult.Ok("ok");
+        }
+
+    }
+}

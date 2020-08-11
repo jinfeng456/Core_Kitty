@@ -1,0 +1,96 @@
+﻿using Dapper;
+using GK.Common.dto;
+using GK.DAL.inter;
+using GK.WMS.DAL.abs;
+using GK.WMS.Entity;
+using GK.WMS.Entity.dto;
+using HY.WCS.DAL.dto;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace GK.WMS.DAL
+{
+    public abstract class AbsCoreStockServer : AbsWMSBaseServer, ICoreStockServer
+    {
+        public Page<CoreStock> QueryCoreStockPage<CoreStock>(CoreStockDto dto)
+        {
+            string sql = "select * from Core_stock where 1=1 ";
+            if (!string.IsNullOrEmpty(dto.boxCode))
+            {
+                dto.boxCode = "%" + dto.boxCode + "%";
+                sql += " AND box_Code like @boxCode ";
+            }
+            if (dto.areaId != 0)
+            {
+                sql += " AND area_Id = @areaId ";
+            }
+            if (dto.locId != 0)
+            {
+                sql += " AND loc_Id = @locId ";
+            }
+            return this.queryPage<CoreStock>(sql, "id", dto);
+        }
+
+        public List<CoreStockDetail> GetListByStockId(long stockId)
+        {
+            string sql = "select * from core_stock_detail where 1=1 and stock_Id=@stockId ";
+            return Connection.Query<CoreStockDetail>(sql, new { stockId = stockId }).ToList();
+        }
+
+        public Page<CoreStockParam> QueryCoreStockDetailPage<CoreStockParam>(CoreStockDto dto)
+        {
+            string sql = @"SELECT B.id AS stockDetailId,B.receiptl_Out_Id,B.wms_Banch_No,B.stock_Status,B.buss_Status,B.Count_Db,B.item_Id,B.item_Code,B.loction_Id,A.*  FROM dbo.Core_stock A
+                            LEFT OUTER JOIN dbo.core_stock_detail B
+                            ON A.id = B.stock_Id
+                            WHERE 1 =1 ";
+            if (!string.IsNullOrEmpty(dto.boxCode))
+            {
+                dto.boxCode = "%" + dto.boxCode + "%";
+                sql += " AND B.box_Code like @boxCode ";
+            }
+            if (dto.itemId != 0)
+            {
+                sql += " AND B.item_Id = @itemId ";
+            }
+            if (dto.batchId != 0)
+            {
+                sql += " AND B.batch_Id = @batchId ";
+            }
+            if (dto.receiptlOutId != 0)
+            {
+                sql += " AND B.receiptl_Out_Id = @receiptlOutId ";
+            }
+            else
+            {
+                sql += " AND B.receiptl_Out_Id = 0 ";
+            }
+            if (dto.stockStatus != 0)
+            {
+                sql += " AND B.stock_Status = @stockStatus ";
+            }
+            return this.queryPage<CoreStockParam>(sql, "id", dto);
+        }
+
+        public long UpdateRecepitOutId(ReceiptAddDto dto)
+        {
+            var strList = dto.items.Split(',');
+            for (int i = 0; i < strList.Length; i++)
+            {
+                string sql = @"UPDATE dbo.core_stock_detail SET receiptl_Out_Id =@receiptlOutId
+                            WHERE stock_Id=@stockId AND id =@id";
+                Connection.Execute(sql, new { receiptlOutId = dto.id, stockId = strList[i].Split('|')[0], id = strList[i].Split('|')[1] });
+            }
+            return 1;
+        }
+
+        public List<CoreStock> getCoreStockByCode(string code)
+        {
+            string sql = @"SELECT *  FROM dbo.Core_stock  WHERE 1 =1  AND box_Code = @boxCode ";
+
+            return Connection.Query<CoreStock>(sql, new { boxCode = code }).ToList();
+        }
+    }
+}

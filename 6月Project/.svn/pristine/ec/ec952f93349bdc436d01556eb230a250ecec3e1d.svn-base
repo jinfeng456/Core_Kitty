@@ -1,0 +1,358 @@
+<template>
+  <div class="container">
+	<!--工具栏-->
+	<div class="toolbar" style="float:left;padding-top:10px;padding-left:15px;">
+		<el-form :inline="true" :model="filters" :size="size">
+			<el-form-item>
+				<el-input v-model="filters.banchNo" placeholder="内部批号"></el-input>
+			</el-form-item>
+			<el-form-item>
+						<el-select v-model="filters.pkType"  style="width: 100%;" clearable placeholder="请选择盘库类型">
+							<el-option v-for="item in dicts.pkType" :key="item.value"
+								:label="item.label" :value="item.value" >
+							</el-option>
+						</el-select>
+			</el-form-item>
+			<el-form-item>
+						<el-select v-model="filters.itemId"
+							placeholder="请选择物料名称"
+							style="width: 100%;" clearable>
+							<el-option v-for="item in Items"
+									:key="item.id"
+									:label="item.name"
+									:value="item.id">
+							</el-option>
+				        </el-select>
+					</el-form-item>			
+			<el-form-item>
+				<kt-button :label="$t('action.search')" perms="core:whReceiptPk:view" type="primary" @click="findPage(null)"/>
+			</el-form-item>
+			<el-form-item>
+				<kt-button :label="$t('action.add')" perms="core:whReceiptPk:add" type="primary" @click="handleAdd" />
+			</el-form-item>
+			<!-- <el-form-item>
+				<kt-button :label="$t('action.generate')" perms="core:whReceiptPk:generate" type="primary" @click="handleAdd" />
+			</el-form-item> -->
+		</el-form>
+	</div>
+	<!--表格内容栏-->
+	<kt-table2 :myButtons="myButtons" :data="pageResult" :columns="columns"  permsDelete="core:receiptout:delete" :showGenerate="true" permsGenerate="core:whReceiptPk:generate" permsExport="core:whReceiptPk:export"
+		@findPage="findPage" @handleEdit="handleEdit" @handleExport="handleExport" @handleGenerate="handleGenerate" @handleDelete="handleDelete" :showPagination="true" :showBatchDelete="true" :pageRequest="this.pageRequest">
+	</kt-table2>
+
+	<!--新增编辑界面-->
+	<el-dialog :title="operation?'新增':'编辑'" width="70%" :visible.sync="editDialogVisible" :close-on-click-modal="false">	
+		<el-form :model="dataForm" label-width="80px" :rules="dataFormRules" ref="dataForm" :size="size">
+		<el-row :gutter="20">
+				<el-col :span="12">
+					<el-form-item label="盘点单号" prop="receiptNo" >
+					<el-input v-model="dataForm.receiptNo" auto-complete="off"></el-input>
+					</el-form-item>	
+				</el-col>
+				<el-col :span="12">
+					<el-form-item :label="$t('field.receipt.stn')"  prop="stn" >
+						<el-select v-model="dataForm.stn"  :placeholder="$t('action.select')" style="width: 100%;" clearable>
+							<el-option v-for="item in dicts.stnOut" :key="item.value"  :value="item.value"
+								:label="item.label">
+							</el-option>
+						</el-select>
+					</el-form-item>
+					
+				</el-col>
+				<el-col :span="12">
+					
+					<el-form-item label="盘点类型" prop="pkType"  >
+						<el-select v-model="dataForm.pkType"  style="width: 100%;" clearable>
+							<el-option v-for="item in dicts.pkType" :key="item.value"
+								:label="item.label" :value="item.value">
+							</el-option>
+						</el-select>
+					</el-form-item>
+				</el-col>
+				<!-- <el-col :span="12">
+					<el-form-item label="完成时间" prop="finshTime" >
+					<el-date-picker v-model="dataForm.finshTime" format="yyyy-MM-dd" value-format="yyyy-MM-dd" :style="{width: '100%'}" placeholder="请选择日期" clearable></el-date-picker>
+					</el-form-item>
+				</el-col>		 -->
+				<el-col :span="12">
+					
+					<el-form-item label="动盘开始" prop="beginTime" >
+					<el-date-picker v-model="dataForm.beginTime" format="yyyy-MM-dd" value-format="yyyy-MM-dd" :style="{width: '100%'}" placeholder="请选择日期" clearable></el-date-picker>
+					</el-form-item>
+				</el-col>
+			</el-row>
+			<el-row :gutter="20">
+							
+				<el-col :span="12">				
+					<el-form-item label="物料名称" prop="itemId" >
+						<el-select v-model="dataForm.itemId"
+							placeholder="请选择"
+							style="width: 100%;" clearable>
+							<el-option v-for="item in Items"
+									:key="item.id"
+									:label="item.name"
+									:value="item.id">
+							</el-option>
+				        </el-select>
+					</el-form-item>			
+				</el-col>
+				<el-col :span="12">
+					<el-form-item label="数量" prop="detailCount" > 
+					<el-input v-model.trim="dataForm.detailCount" auto-complete="off" ></el-input>
+					</el-form-item>
+				</el-col>
+				<el-col :span="12">
+					<el-form-item label="内部批号" prop="banchNo" >
+					<el-input v-model.trim="dataForm.banchNo" auto-complete="off" ></el-input>
+					</el-form-item>
+				</el-col>	
+				<!-- <el-col :span="12">
+					<el-form-item label="盘点开始" prop="pkBegin" >
+					<el-date-picker v-model="dataForm.pkBegin" format="yyyy-MM-dd" value-format="yyyy-MM-dd" :style="{width: '100%'}" placeholder="请选择日期" clearable></el-date-picker>
+					</el-form-item>
+				</el-col>	 -->
+			</el-row>		
+			
+		</el-form>
+		<div slot="footer" class="dialog-footer">
+			<el-button :size="size" @click.native="editDialogVisible = false">{{$t('action.cancel')}}</el-button>
+			<el-button :size="size" type="primary" @click.native="submitForm" :loading="editLoading">{{$t('action.submit')}}</el-button>
+		</div>
+	</el-dialog>
+  </div>
+</template>
+
+<script>
+import KtTable2 from "@/views/Core/KtTable2"
+import KtButton from "@/views/Core/KtButton"
+import { format } from "@/utils/datetime"
+import { baseUrl } from '@/utils/global'
+
+export default {
+	components:{
+			KtTable2,
+			KtButton
+	},
+	data() {
+		return {
+			size: 'small',
+			filters: {
+				label: ''
+			},
+			columns: [
+				//{prop:"id", label:"主键", minWidth:100},
+				{prop:"receiptNo", label:"盘库编号", minWidth:100},			
+				{prop:"status", label:"状态", minWidth:100,formatter:this.selectionFormat},
+				{prop:"stn", label:"站台", minWidth:100,formatter:this.selectionFormat},
+				{prop:"itemId", label:"物料名称", minWidth:100,formatter:this.selectionFormats},
+				{prop:"banchNo", label:"内部批号", minWidth:100},
+				{prop:"beginTime", label:"动盘开始时间", minWidth:140, formatter:this.dateFormat},
+				//{prop:"finshTime", label:"动盘完成时间", minWidth:140, formatter:this.dateFormat},
+				//{prop:"createrId", label:"", minWidth:100},				
+				{prop:"pkType", label:"盘库类型", minWidth:100,formatter:this.selectionFormat},
+				{prop:"detailCount", label:"盘库数量", minWidth:100},
+				{prop:"pkBegin", label:"盘库开始", minWidth:140, formatter:this.dateFormat},
+				//{prop:"pkEnd", label:"盘库结束", minWidth:140, formatter:this.dateFormat},
+				//{prop:"craneId", label:"", minWidth:100},
+			],
+			pageRequest: { pageNum: 1, pageSize: 8 },
+			pageResult: {},
+
+			operation: false, // true:新增, false:编辑
+			editDialogVisible: false, // 新增编辑界面是否显示
+			editLoading: false,
+			dicts:this.$store.state.dict.dicts,
+			// 新增编辑界面数据
+			dataForm: {
+				id: null,
+				beginTime: null,
+				status: null,
+				stn: null,
+				itemId: null,
+				finshTime: null,
+				createrId: null,
+				receiptNo: null,
+				pkType: null,
+				detailCount: null,
+				pkBegin: null,
+				pkEnd: null,
+				banchNo: null,
+				craneId: null
+			},
+			Items: [],			
+			myButtons:[{
+				name:"handleEdit",
+				perms:"core:whReceiptPk:edit",
+				label:"action.edit",
+				icon:"fa fa-edit"
+			},{
+				name:"handleDelete",
+				perms:"core:whReceiptPk:delete",
+				label:"action.delete",
+				type:"danger",
+				icon:"fa fa-trash"
+			}]
+		}
+	},
+	computed: {
+		dataFormRules() {
+			const dataFormRules= {
+				stn:[{ required: true, message: "请输入站台号", trigger: 'blur' }],
+				receiptNo:[{ required: true, message: "请输入盘点单号", trigger: 'blur' }]
+			};
+			    return dataFormRules;
+			}		
+	},	
+	methods: {
+		// 获取分页数据
+		findPage: function (data) {
+			if(data!==null){
+				this.filters.pageNum=data.pageRequest.pageNum		
+			}else{
+				this.filters.pageNum=1
+			}
+			this.filters.pageSize=this.pageRequest.pageSize
+			this.$api.whReceiptPk.findPage(this.filters).then((res) => {
+				this.pageResult = res.data				
+			}).then(data!=null?data.callback:'')
+		},
+		// 批量删除
+		handleDelete: function (data) {
+			this.$api.whReceiptPk.batchDelete(data.params).then(data!=null?data.callback:'')
+		},
+		// 导出文档
+		handleExport: function (params) {
+			this.saveFile(params);
+		},
+		saveFile : function(params) {
+			 let a = document.createElement('a')
+			 a.href =baseUrl+"/api/file/exportsPk/"+params.row.id+"/"+params.row.receiptNo
+			 a.click();
+		},
+		// 显示新增界面
+		handleAdd: function () {
+			this.editDialogVisible = true
+			this.operation = true
+			this.dataForm = {
+				id: null,
+				beginTime: null,
+				status: null,
+				stn: null,
+				itemId: null,
+				finshTime: null,
+				createrId: null,
+				receiptNo: null,
+				pkType: null,
+				detailCount: null,
+				pkBegin: null,
+				pkEnd: null,
+				banchNo: null,
+				craneId: null
+			}
+		},
+		//加载物料类别分类
+		findItems: function () {
+			this.$api.item.findAll().then((res) => {
+				this.Items = res.data			
+			})
+		},
+		// 显示编辑界面
+		handleGenerate: function (params) {
+			this.$confirm('确定生成任务吗？', '提示', {}).then(() => {
+						//let params = Object.assign({}, this.dataForm)
+						//console.log(params);
+						this.$api.whReceiptPk.Generate(params.row).then((res) => {
+							if(res.code == 200) {
+								this.$message({ message: '操作成功', type: 'success' })
+							} else {
+								this.$message({message: '操作失败, ' + res.msg, type: 'error'})
+							}							
+						})
+					})
+		},
+		handleEdit: function (params) {
+			this.editDialogVisible = true
+			this.operation = false
+			this.dataForm = Object.assign({}, params.row)
+		},
+		// 编辑
+		submitForm: function () {
+			this.$refs.dataForm.validate((valid) => {
+				if (valid) {
+					this.$confirm('确认提交吗？', '提示', {}).then(() => {
+						this.editLoading = true
+						let params = Object.assign({}, this.dataForm)
+						this.$api.whReceiptPk.save(params).then((res) => {
+							if(res.code == 200) {
+								this.$message({ message: '操作成功', type: 'success' })
+							} else {
+								this.$message({message: '操作失败, ' + res.msg, type: 'error'})
+							}
+							this.editLoading = false
+							this.$refs['dataForm'].resetFields()
+							this.editDialogVisible = false
+							this.findPage(null)
+						})
+					})
+				}
+			})
+		},
+		// 时间格式化
+      	dateFormat: function (row, column, cellValue, index){
+          	return format(row[column.property])
+      	},	
+		selectionFormats: function (row, column, cellValue, index) {
+				let key = ""
+				let propt = column.property;
+				let val = row[column.property];				
+				let dict = this.Items;
+				for (let i = 0; i < dict.length; i++) {
+					if (dict[i].id == val) {
+					return dict[i].name;
+					}
+				}
+				return row[column.property]
+			},  
+		selectionFormat: function (row, column, cellValue, index){
+			let key=""
+			let propt=column.property;
+			if(propt=="pkType"){
+				key="pkType"
+			}
+			else if(propt=="status"){
+				key="whStatus"
+			}
+			else if(propt=="stn")
+			{
+				key="stnOut"
+			}
+		    let val=row[column.property];
+			let dict = this.$store.state.dict.dicts[key];
+			if(dict==undefined){
+					return row[column.property]
+			}		
+			for(let i=0;i<dict.length;i++){
+				if(dict[i].value==val){
+					return dict[i].label;
+				}
+			}
+          	return row[column.property]
+      	}
+	},
+	mounted() {
+		this.findItems()
+	},
+   watch:{
+	
+    editDialogVisible(to,from){
+       if (this.$refs['dataForm'] !== undefined) {
+            this.$refs["dataForm"].resetFields();
+          }
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using GK.WCS.Common;
+using GK.WCS.Common.task;
+using GK.WCS.Carrier;
+using GK.WCS.Common.core.dto;
+using GK.WCS.Scan;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+
+namespace GK.WCS.Controller {
+    public abstract class CarrierAllocateJobTask : ZtTask {
+
+        protected CarrierConnect connect;
+        protected DateLogicReader dateLogicReader ;
+
+
+        protected ITaskCraneServer craneTaskDAL = ServerFactray.getServer<ITaskCraneServer>();
+        protected ITaskCarrierServer CarrierDAL = ServerFactray.getServer<ITaskCarrierServer>();
+
+        public CarrierAllocateJobTask() {
+            time = 600;
+        }
+        protected override bool init()
+        {
+            connect = (CarrierConnect)TaskPool.get<CarrierConnect>(1); 
+            return true;
+        }
+
+        protected void sendCrarrer(short codestate,TaskCarrier carrier,short begin) {
+           
+            connect.SendTask(codestate,carrier,begin);
+            connect.sendTaskHandshake(begin, 1);
+        }
+
+       
+    }
+}

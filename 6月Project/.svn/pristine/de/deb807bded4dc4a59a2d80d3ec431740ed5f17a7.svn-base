@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using GK.WCS.Common;
+using GK.WCS.Common.task;
+using GK.WCS.Crane;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+
+namespace GK.WCS.Crane {
+    //输送线
+    public abstract class CraneSynchroGk : CraneSynchro
+    {
+  
+        CraneConnect craneConnect = null;
+
+        private GkDYGCraneStatus craneStatus;
+        private GkDYGCraneStatus _hisStatus = null;
+        public CraneSynchroGk(int craneId) :base(craneId)
+        {
+          
+
+        }
+        protected override void onlyOneTime() {
+            craneConnect = (CraneConnect)TaskPool.get<CraneConnect>(CraneId);
+
+            time = 400;
+        }
+
+        public GkCraneStatusBase getCraneStatus() {
+            long delay = DateTime.Now.Ticks - craneStatus.getLastTime();
+            if (delay > 2000 * 10000) {
+                LoggerCommon.fileAll(CraneId + "垛机状态超时:" + delay);
+                return null;
+            } else {
+                return craneStatus;
+            }
+        }
+        public override void excute() {
+            byte[] array = craneConnect.getData();
+            GkDYGCraneStatus cs = new GkDYGCraneStatus();
+            cs.parseStatus(array);
+            cs.parseError(array.Skip(30).ToArray());
+            craneExcute(cs);
+            craneStatus = cs;
+            List<String> list =cs.getError();
+            if (list.Count > 0) {
+                cs.setFault();
+             }
+            _hisStatus = cs;
+        }
+        protected void craneExcute(GkDYGCraneStatus status) {
+            try {
+                if (_hisStatus == null) {
+                    update(status);
+                } else
+            if (_hisStatus.bLTaskNo != status.bLTaskNo) {
+                    update(status);
+                }
+            } catch (Exception e) {
+                Console.WriteLine(e);
+            }
+        }
+
+        void update(GkDYGCraneStatus status) {
+            ITaskCraneServer taskCraneServer = ServerFactray.getServer<ITaskCraneServer>();
+            int taskNo = status.bLTaskNo;
+            TaskCrane task = taskCraneServer.GetItem(taskNo);
+            if (task == null) {
+                return;
+            }
+            short upStatus = 3;
+
+            //状态已经更新过了，防止系统重启导致的多次更新。
+            if (taskCraneServer.IsTaskFinished(taskNo, upStatus)) {
+                LoggerCommon.fileAll(taskNo + "状态以完成:" + upStatus);
+                return;
+            }
+            var res = taskCraneServer.UpdateTaskStatus(taskNo, upStatus, 1);
+        }
+
+
+
+    }
+}

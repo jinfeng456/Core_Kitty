@@ -1,0 +1,23 @@
+﻿using GK.Common.trans;
+using GK.WMS.Common;
+using GK.WMS.DAL;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace GK.Engine.WMS{
+    public abstract class WmsBaseEngine : GkTransaction {
+        public static IDbConnection connection;
+        static WmsBaseEngine() {
+            connection = DBUtils.CreateNewWCSConnection(WMSDalFactray.prefixal);
+        }
+
+
+        override protected IDbConnection getConnection() {
+            return WmsBaseEngine.connection;
+        }
+    }
+
+}

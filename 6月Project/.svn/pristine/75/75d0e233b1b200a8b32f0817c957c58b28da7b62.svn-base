@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AF05A636-EF64-45C5-91D0-4AC980CF04DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GK.WCS.Carrier</RootNamespace>
+    <AssemblyName>GK.WCS.Carrier</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CMNetLib">
+      <HintPath>..\..\UsingDlls\CMNetLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.Common">
+      <HintPath>..\..\..\common\UsingDlls\GK.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.WCS.Common">
+      <HintPath>..\..\..\common\UsingDlls\GK.WCS.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.WCS.DALBase">
+      <HintPath>..\..\..\common\UsingDlls\GK.WCS.DALBase.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\UsingDlls\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CarrierDirection.cs" />
+    <Compile Include="dto\CarrierSignalStatus.cs" />
+    <Compile Include="dto\CarrierMachineState.cs" />
+    <Compile Include="dto\GkCarrierStatus.cs" />
+    <Compile Include="enumerate\CarrierErrCode.cs" />
+    <Compile Include="enumerate\CarrierPoint.cs" />
+    <Compile Include="enumerate\CarrierStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="enumerate\ExchangeStatus.cs" />
+    <Compile Include="task\zt\CarrierSynchro.cs" />
+    <Compile Include="task\zt\CarrierConnectReal.cs" />
+    <Compile Include="task\zt\CarrierConnect.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\GK.WCS.DAL\GK.WCS.DAL.csproj">
+      <Project>{4966a051-ff5e-4867-97f8-5b484eeec0b2}</Project>
+      <Name>GK.WCS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\GK.WCS.Entity\GK.WCS.Entity.csproj">
+      <Project>{7dbbc8f2-08a1-4965-8742-b453ac9da8f6}</Project>
+      <Name>GK.WCS.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+    </PropertyGroup>
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

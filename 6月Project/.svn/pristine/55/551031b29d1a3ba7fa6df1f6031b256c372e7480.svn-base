@@ -1,0 +1,510 @@
+<template>
+  <div class="page-container">
+    <!--新增编辑界面-->
+    <el-dialog :title="operation?'入库单新增':'入库单编辑'"
+               width="80%"
+               :visible.sync="dialogVisible"
+               :close-on-click-modal="false"
+               @opened="getDetials"
+               :before-close="handleClose">
+      <el-form :model="subDataForm"
+               label-width="200px"
+               :rules="dataFormRules"
+               ref="dataForm"
+               :size="size"
+               label-position="right">
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="ID"
+                          prop="id"
+                          v-if="false">
+              <el-input v-model="subDataForm.id"
+                        :disabled="true"
+                        auto-complete="off"></el-input>
+            </el-form-item>
+
+            <el-form-item :label="$t('field.receipt.receiptNo')"
+                          prop="receiptNo">
+              <el-input v-model="subDataForm.receiptNo"
+                        auto-complete="off"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.Purchase.Warehousein.inType')"
+                          prop="inType">
+              <el-select v-model="subDataForm.inType"
+                         :placeholder="$t('action.select')"
+                         style="width: 100%;">
+                <el-option v-for="item in dicts.inType"
+                           :key="item.value"
+                           :value="item.value"
+                           :label="item.label">
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.receipt.stn')"
+                          prop="stn">
+              <el-select v-model="subDataForm.stn"
+                         :placeholder="$t('action.select')"
+                         style="width: 100%;">
+                <el-option v-for="item in dicts.stnOut"
+                           :key="item.value"
+                           :value="item.value"
+                           :label="item.label">
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item :label="'供应商名称'"
+                          prop="fromCorpName">
+              <search-select :itemlist="this.gysTypes"
+                             style="width: 100%;"
+                             placeholder="输入框"
+                             :state="subDataForm.fromCorpName"
+                             @itemChange="itemclick">
+              </search-select>
+            </el-form-item>
+            <!-- <el-form-item :label="'供应商名称'"
+                          prop="fromCorpName">
+              <el-input v-model="subDataForm.fromCorpName"
+                        auto-complete="off"></el-input>
+            </el-form-item> -->
+          </el-col>
+        </el-row>
+        <!-- <el-col :span="12">
+            <el-form-item :label="'供应商批次号'"
+                          prop="fromCorpBatchNo">
+              <el-input v-model="subDataForm.fromCorpBatchNo"
+                        auto-complete="off"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item :label="'内部批号'"
+                          prop="wmsBanchNo">
+              <el-input v-model="subDataForm.wmsBanchNo"
+                        auto-complete="off"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row> -->
+      </el-form>
+      <div slot="footer"
+           class="dialog-footer">
+        <el-button :size="size"
+                   type="primary"
+                   @click.native="beginTask">{{'开始任务'}}</el-button>
+        <el-button :size="size"
+                   type="primary"
+                   @click.native="finshTask">{{'完成任务'}}</el-button>
+        <el-button :size="size"
+                   type="primary"
+                   @click.native="submitForm"
+                   :loading="editLoading">{{$t('action.submit')}}</el-button>
+        <el-button :size="size"
+                   @click.native="handleAddDetailEdit">增加明细 </el-button>
+        <el-button :size="size"
+                   @click.native="handleHiddenin">{{$t('action.cancel')}}</el-button>
+      </div>
+
+      <div>
+        <div class="app-container">
+          <el-table v-loading="listLoading"
+                    :data="list"
+                    border
+                    fit
+                    highlight-current-row
+                    style="width: 100%">
+            //供应商名称
+            <!-- <el-table-column :label="'供应商名称'"
+                             prop="fromCorpName"
+                             align="center"
+                             width="100px"
+                             fixed="right">
+              <template slot-scope="{row}">
+                <template v-if="row.edit">
+                  <el-input v-model="row.FromCorpName"
+                            class="edit-input"
+                            size="mini" />
+                </template>
+                <span style="cursor: pointer;"
+                      v-else>{{ row.fromCorpName }}</span>
+              </template>
+            </el-table-column> -->
+            //物料名称
+            <el-table-column class-name="status-col"
+                             :label="$t('field.itemName')"
+                             min-width="80px"
+                             prop="itemName"
+                             align="center"
+                             fixed="right"
+                             header-align="center"
+                             :formatter="itemFilter">
+            </el-table-column>
+            //wms批号
+            <el-table-column :label="'供应商批号'"
+                             prop="fromCorpBatchNo"
+                             align="center"
+                             width="100px"
+                             fixed="right">
+              <template slot-scope="{row}">
+                <template v-if="row.edit">
+                  <el-input v-model="row.FromCorpBatchNo"
+                            class="edit-input"
+                            size="mini" />
+                </template>
+                <span style="cursor: pointer;"
+                      v-else>{{ row.fromCorpBatchNo }}</span>
+              </template>
+            </el-table-column>
+            //内部批号
+            <el-table-column :label="'内部批号'"
+                             prop="wmsBanchNo"
+                             align="center"
+                             width="100px"
+                             fixed="right">
+              <template slot-scope="{row}">
+                <template v-if="row.edit">
+                  <el-input v-model="row.wmsBanchNo"
+                            class="edit-input"
+                            size="mini" />
+                </template>
+                <span style="cursor: pointer;"
+                      v-else>{{ row.wmsBanchNo }}</span>
+              </template>
+            </el-table-column>
+
+            //计划数量
+            <el-table-column width="100px"
+                             :label="$t('field.planCount')"
+                             align="center"
+                             fixed="right"
+                             header-align="center">
+              <template slot-scope="{row}">
+                <template v-if="row.edit">
+                  <el-input v-model="row.planCount"
+                            class="edit-input"
+                            size="mini" />
+                </template>
+                <span style="cursor: pointer;"
+                      v-else>{{ row.planCount }}</span>
+              </template>
+            </el-table-column>
+            //单位
+            <el-table-column width="100px"
+                             :label="'单位'"
+                             align="center"
+                             fixed="right"
+                             header-align="center">
+              <template slot-scope="{row}">
+                <template v-if="row.edit">
+                  <el-input v-model="row.packUnit"
+                            class="edit-input"
+                            size="mini" />
+                </template>
+                <span style="cursor: pointer;"
+                      v-else>{{ row.packUnit }}</span>
+              </template>
+            </el-table-column>
+            //规格
+            <el-table-column width="140px"
+                             :label="'规格'"
+                             align="center"
+                             fixed="right"
+                             header-align="center">
+              <template slot-scope="{row}">
+                <template v-if="row.edit">
+                  <el-input v-model="row.packageSpec"
+                            class="edit-input"
+                            size="mini" />
+                </template>
+                <span style="cursor: pointer;"
+                      v-else>{{ row.packageSpec }}</span>
+              </template>
+
+            </el-table-column>
+            <el-table-column align="center"
+                             :label="$t('action.edit')"
+                             width="120px"
+                             fixed="right">
+              <template slot-scope="{row}">
+                <el-button v-if="row.edit"
+                           type="success"
+                           size="small"
+                           @click="confirmEdit(row)"
+                           icon="el-icon-circle-check-outline"> {{$t('action.comfirm')}}
+                </el-button>
+                <el-button v-else
+                           type="primary"
+                           size="small"
+                           icon="el-icon-edit"
+                           @click="row.edit=!row.edit"> {{$t('action.edit')}}
+                </el-button>
+              </template>
+            </el-table-column>
+
+            <el-table-column :label="$t('action.operation')"
+                             width="105"
+                             fixed="right"
+                             header-align="center"
+                             align="center">
+              <template slot-scope="scope">
+
+                <kt-button icon="fa fa-trash"
+                           :label="$t('action.delete')"
+                           perms="sys:user:delete"
+                           :size="size"
+                           type="danger"
+                           @click="handleDelete(scope.$index, scope.row)" />
+              </template>
+            </el-table-column>
+
+          </el-table>
+        </div>
+      </div>
+
+    </el-dialog>
+
+    <item-select :itemDialogVisible="itemDialogVisible"
+                 @handleSelect="handleSelect"
+                 @itemHidden="itemHidden"
+                 :js=this.subDataForm.fromCorpName
+                 :key="componentKey">
+    </item-select>
+  </div>
+</template>
+
+<script>
+import KtTableList from "@/views/Core/KtTableList"
+import KtButton from "@/views/Core/KtButton"
+import { format } from "@/utils/datetime"
+import ItemSelect from "@/views/Material/ItemSelect"
+import SearchSelect from "@/views/Core/SearchSelect"
+export default {
+  name: 'EditReceiptIn',
+  components: {
+    KtTableList,
+    KtButton,
+    ItemSelect,
+    SearchSelect
+  },
+  filters: {
+
+  },
+  props: {
+    subDataForm: {
+      type: Object
+    },
+    dialogVisible: {
+      type: Boolean
+    },
+    operation: {
+      type: Boolean
+    }
+  },
+  data () {
+    return {
+      size: 'mini',
+      listLoading: false,
+      list: [],
+      pageResult: {},
+      editLoading: false,
+      pageRequest: { pageNum: 1, pageSize: 1000 },
+      itemDialogVisible: false,
+      dicts: this.$store.state.dict.dicts,
+      componentKey: 0,
+      gysTypes: []
+    }
+
+  },
+  computed: {
+    dataFormRules () {
+
+    }
+  },
+  methods: {
+
+    confirmEdit (row) {
+      //row.edit = false
+      //debugger;
+      this.$api.receiptIn.updateDetials({ id: row.id, FromCorpName: row.FromCorpName, FromCorpBatchNo: row.FromCorpBatchNo, wmsBanchNo: row.wmsBanchNo, planCount: row.planCount, packUnit: row.packUnit, packageSpec: row.packageSpec }).then((res) => {
+        this.getDetials();
+      })
+    },
+
+    // 获取分页数据
+    itemclick: function (data) {
+      this.subDataForm.fromCorpName = data.name
+
+
+    },
+    itemFilter: function (row, column, cellValue, index) {
+      let propt = column.property;
+      let val = row[column.property];
+      let dict = this.$store.state.dict.item
+      if (dict == undefined) {
+        return row[column.property]
+      }
+      for (let i = 0; i < dict.length; i++) {
+        if (dict[i].id == val) {
+          return dict[i].name;
+        }
+      }
+      return row[column.property]
+    },
+
+
+    handleDelete: function (index, row) {
+      this.$api.receiptIn.deleteDetial(row.id).then((res) => {
+        this.getDetials();
+      })
+
+
+    },
+    handleSelect: function (data) {
+      // debugger
+      this.$api.receiptIn.saveDetials({
+        receiptNo: this.subDataForm.receiptNo, id: this.subDataForm.id, items: data      }).then((res) => {
+        this.itemHidden();
+        this.getDetials();
+      })
+    },
+    handleClose: function (done) {
+      this.$emit('receiptHidden', {})
+      done();
+    },
+    itemHidden: function () {
+      this.itemDialogVisible = false;
+    },
+    // 获取分页数据
+    getDetials: function () {
+      if (this.subDataForm == undefined || this.subDataForm.id == undefined || this.subDataForm.id == 0) {
+        return;
+      }
+      this.listLoading = true
+      this.$api.receiptIn.getDetials(this.subDataForm).then((res) => {
+        const items = res.data
+        console.log(items);
+        this.list = items.map(v => {
+          this.$set(v, 'edit', false)
+          return v
+        })
+        this.listLoading = false
+      })
+    },
+    //开始任务
+    beginTask: function () {
+      if (this.subDataForm.id == 0) {
+        this.$message({ message: "请先新增并提交入库单", type: 'error' })
+      } else {
+        if (this.subDataForm.status == 2 || this.subDataForm.status == 3) {
+          this.$message({ message: "入库单非待执行状态无法开始任务", type: 'error' })
+        } else {
+          this.$api.receiptIn.begin(this.subDataForm).then((res) => {
+            this.subDataForm.status = 2;
+            if (res.code == 200) {
+              this.$message({ message: this.$t('action.operateSucess'), type: 'success' })
+              this.handleHiddenIn();
+              this.$refs['dataForm'].resetFields()
+            } else {
+              this.$message({ message: this.$t('action.operateFail') + res.msg, type: 'error' })
+            }
+          })
+        }
+      }
+    },
+    //完成任务
+    finshTask: function () {
+      console.log(this.subDataForm.status);
+      if (this.subDataForm.id == 0) {
+        this.$message({ message: "请先新增并提交入库单", type: 'error' })
+      } else {
+        if (this.subDataForm.status == 1 || this.subDataForm.status == 3) {
+          this.$message({ message: "入库单非执行中状态无法完成任务", type: 'error' })
+        } else {
+          this.$api.receiptIn.finsh(this.subDataForm).then((res) => {
+            this.subDataForm.status = 3;
+            if (res.code == 200) {
+              this.$message({ message: this.$t('action.operateSucess'), type: 'success' })
+              this.handleHiddenIn();
+              this.$refs['dataForm'].resetFields()
+            } else {
+              this.$message({ message: this.$t('action.operateFail') + res.msg, type: 'error' })
+            }
+          })
+        }
+      }
+    },
+    handleAddDetailEdit: function () {
+      this.componentKey += 1;
+      if (this.subDataForm.id == 0) {
+        this.$message({ message: "请先新增并提交入库单", type: 'error' })
+      } else {
+        if (this.subDataForm.status == 1) {
+          this.itemDialogVisible = true
+        }
+        else {
+          this.$message({ message: "入库单非待执行状态无法添加明细", type: 'error' })
+        }
+      }
+    },
+    handleHiddenin: function (params) {
+      this.$emit('receiptHidden', {})
+    },
+    selectionFormat: function (row, column, cellValue, index) {
+      let key = ""
+      let propt = column.property;
+      let val = row[column.property];
+      let dict = this.gysTypes;
+      for (let i = 0; i < dict.length; i++) {
+        if (dict[i].name == val) {
+          return dict[i].name;
+        }
+      }
+      return row[column.property]
+    },
+    findgysTypes: function () {
+      this.$api.corewhgro.findPage().then((res) => {
+        this.gysTypes = res.data.content
+      })
+    },
+    // 编辑
+    submitForm: function () {
+      if (this.subDataForm.status == 2 || this.subDataForm.status == 3) {
+        this.$message({ message: "入库单非待执行状态无法修改", type: 'error' })
+      } else {
+        this.$refs.dataForm.validate((valid) => {
+          if (valid) {
+            this.$confirm(this.$t('action.isConfirm'), this.$t('action.tips'), {}).then(() => {
+              this.subDataForm.status = 1;
+              this.editLoading = true
+              let params = Object.assign({}, this.subDataForm)
+              this.$api.receiptIn.saveReceiptIn(params).then((res) => {
+                this.editLoading = false
+                this.subDataForm.id = res.data;
+                if (res.code == 200) {
+                  this.$message({ message: this.$t('action.operateSucess'), type: 'success' })
+                  this.handleHiddenIn();
+                  this.$refs['dataForm'].resetFields()
+                } else {
+                  this.$message({ message: this.$t('action.operateFail') + res.msg, type: 'error' })
+                }
+              })
+            })
+          }
+        })
+        //this.dialogVisible1 = false;
+        // window.close();
+      }    }
+  },
+  created () {
+    this.findgysTypes()
+  }
+}
+</script>
+
+<style scoped>
+</style>

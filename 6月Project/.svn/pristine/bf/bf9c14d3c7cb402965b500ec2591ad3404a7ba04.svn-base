@@ -1,0 +1,104 @@
+﻿using GK.FMXT.DAL;
+using GK.FMXT.DAL.Entity;
+using GK.WMS.DAL;
+using GK.Xml.Msfx.upload;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Hosting;
+using System.Web.Http;
+using System.Web.Http.Results;
+using System.Web.Security;
+using System.Xml;
+using System.Xml.Linq;
+using Web.Authorize;
+using WebApi.Controller.file;
+
+namespace WebApi
+{
+    [RoutePrefix("api/file")]
+    public class FileController : BaseApiController
+    {
+        [HttpGet, Route("download/{id}")]
+        public IHttpActionResult Get(String type, String id)
+        {
+            var path = HostingEnvironment.MapPath("/bin/Web.dll");
+            var f = new FileInfo(path);
+            if (!f.Exists)
+            {
+                return new StatusCodeResult(HttpStatusCode.NotFound, this);
+            }
+            return new FileStreamResult(f.OpenRead(), "application/octet-stream", "web.dl");
+        }
+
+
+        [HttpPost, Route("exports")] ///{type}/{id}
+        public BaseResult exports(Export export)
+        {
+            //List<CoreCodeInfo> list = CodeInfoUtil.GetCodeList(authorityServer.GetByOutId(export.id));
+            MsfxDocument document = new MsfxDocument();
+            MsfxEvents Events = new MsfxEvents();
+            List<MsfxEvent> Eventlist = new List<MsfxEvent>();
+            MsfxEvent events = new MsfxEvent();
+            events.MainAction = "WareHouseOut";
+            events.Name = (MsfxEventType)export.outType;
+            MsfxDataField dataField = new MsfxDataField();
+            List<MsfxData> DataField = new List<MsfxData>();
+            //foreach (var item in list)
+            //{
+                MsfxData data = new MsfxData();
+                data.Code = "343443";  ///item.barCode
+                data.Actor = "";
+                data.ActDate = DateTime.Now.ToString();
+                data.CorpOrderID = export.receiptNo;
+                data.CorpProductID = "";
+                data.CorpBatchNo = "";
+                data.ProduceDate = "";
+                data.FromCorpID = "";
+                data.ToCorpID = "";
+                data.OwnerCorpID = "";
+                DataField.Add(data);
+            //}
+            dataField.DataField = DataField;
+            events.MsfxDataField = dataField;
+            Eventlist.Add(events);
+            Events.Events = Eventlist;
+            document.Events = Events;
+            StringBuilder builder = new StringBuilder();
+            string str = document.toXml(document, builder);
+            string xml = @"<?xml version=""1.0""?>" + str;
+            XDocument doc = XDocument.Parse(xml);
+            doc.Save(@"E:\" + events.Name + @"_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xml");
+
+            return BaseResult.Ok("ok");
+            //byte[] b = System.Text.Encoding.Default.GetBytes(builder.ToString());
+            //MemoryStream ms = new MemoryStream(b);
+            //return new FileStreamResult(ms, "application/octet-stream", "web.dl");
+        }
+
+        [HttpPost, Route("upload")]
+        public BaseResult Upload()
+        {
+
+            string id = HttpContext.Current.Request["id"];
+            string name = HttpContext.Current.Request["name"];
+            HttpFileCollection files = HttpContext.Current.Request.Files;
+
+            foreach (string key in files.AllKeys)
+            {
+                HttpPostedFile file = files[key];//file.ContentLength文件长度
+                if (string.IsNullOrEmpty(file.FileName) == false)
+                    file.SaveAs(HttpContext.Current.Server.MapPath("~/App_Data/") + file.FileName);
+            }
+
+            return new BaseResult("");
+        }
+
+    }
+}

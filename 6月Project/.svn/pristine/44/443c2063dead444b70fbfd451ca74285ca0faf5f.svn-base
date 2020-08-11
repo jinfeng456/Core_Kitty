@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using Dapper;
+using GK.Common.trans;
+
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+using GK.WCS.Entity.wcs;
+
+namespace GK.Engine.WCS
+{
+    public abstract class WcsBaseEngine : GkTransaction
+    {
+        public static IDbConnection connection;
+           static WcsBaseEngine(){
+            connection = DBUtils.CreateNewWCSConnection(ServerFactray.prefixal);
+          }
+
+
+        override protected IDbConnection getConnection() {
+            return WcsBaseEngine.connection;
+        }
+    }
+    
+}

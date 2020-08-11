@@ -1,0 +1,536 @@
+<template>
+  <div class="page-container">
+    <!--工具栏-->
+    <div class="toolbar"
+         style="float:left;padding-top:10px;padding-left:15px;">
+      <el-form :inline="true"
+               :model="filters"
+               :size="size">
+        <el-form-item>
+          <el-select v-model="filters.areaId"
+                     :placeholder="$t('field.Core.corewhloc.Please enter the areaName')"
+                     auto-complete="off"
+                     style="width: 100%;"
+                     clearable>
+            <el-option v-for="item in areaTypes"
+                       :key="item.Id"
+                       :label="item.areaName"
+                       :value="item.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-input v-model="filters.rowNumber"
+                    :placeholder="$t('field.Core.corewhloc.Please enter the rowNumber')"
+                    clearable></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input v-model="filters.colNumber"
+                    :placeholder="$t('field.Core.corewhloc.Please enter the colNumber')"
+                    clearable></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input v-model="filters.shelfId"
+                    placeholder="请输入货架号"
+                    auto-complete="off"
+                    clearable
+                    onkeyup="value=value.replace(/[^1-9]/g,'')">
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <kt-button icon="fa fa-search"
+                     :label="$t('action.search')"
+                     perms="corewh:corewhloc:view"
+                     type="primary"
+                     @click="findPage(null)" />
+        </el-form-item>
+        <!-- <el-form-item>
+          <kt-button icon="fa fa-search"
+                     :label="$t('action.batchedit')"
+                     perms="corewh:corewhloc:batchedit"
+                     type="primary"
+                     @click="batchedit" />
+        </el-form-item> -->
+      </el-form>
+    </div>
+    <div class="toolbar"
+         style="float:right;padding-top:10px;padding-right:15px;">
+      <el-form :inline="true"
+               :size="size">
+        <el-form-item>
+          <el-button-group>
+            <el-tooltip :content="$t('action.refresh')"
+                        placement="top">
+              <el-button icon="fa fa-refresh"
+                         @click="findPage(null)"></el-button>
+            </el-tooltip>
+            <el-tooltip :content="$t('action.column')"
+                        placement="top">
+              <el-button icon="fa fa-filter"
+                         @click="displayFilterColumnsDialog"></el-button>
+            </el-tooltip>
+          </el-button-group>
+        </el-form-item>
+      </el-form>
+      <!--表格显示列界面-->
+      <table-column-filter-dialog ref="tableColumnFilterDialog"
+                                  :columns="columns"
+                                  @handleFilterColumns="handleFilterColumns">
+      </table-column-filter-dialog>
+    </div>
+    <!--表格内容栏-->
+    <Ct-table :height="350"
+              permsEdit="corewh:corewh:edit"
+              permsBatchEdit="corewh:corewhloc:batchEdit"
+              :data="pageResult"
+              :columns="filterColumns"
+              @findPage="findPage"
+              @handleEdit="handleEdit"
+              @handleBatchEdit="handleBatchEdit">
+    </Ct-table>
+    <!--新增编辑界面-->
+    <el-dialog :title="operation?$t('action.add'):'库位 —— 编辑'"
+               width="80%"
+               :visible.sync="dialogVisible"
+               :close-on-click-modal="false">
+      <el-form :model="dataForm"
+               label-width="100px"
+               :rules="dataFormRules"
+               ref="dataForm"
+               :size="size"
+               label-position="right">
+        <el-form-item label="ID"
+                      prop="id"
+                      v-if="false">
+          <el-input v-model="dataForm.id"
+                    :disabled="true"
+                    auto-complete="off"></el-input>
+        </el-form-item>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.Core.corewhloc.craneName')"
+                          prop="craneId">
+              <el-input v-model="dataForm.craneId"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+            <el-form-item :label="$t('field.Core.corewhloc.ShelfId')"
+                          prop="shelfId">
+              <el-input v-model="dataForm.shelfId"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.Core.corewhloc.areaName')"
+                          prop="areaId">
+              <el-select v-model="dataForm.areaId"
+                         placeholder="请选择"
+                         auto-complete="off"
+                         style="width: 100%;">
+                <el-option v-for="item in areaTypes"
+                           :key="item.id"
+                           :label="item.areaName"
+                           :value="item.id">
+                </el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item :label="$t('field.Core.corewhloc.row')"
+                          prop="line">
+              <el-input v-model="dataForm.line"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.Core.corewhloc.col')"
+                          prop="col">
+              <el-input v-model="dataForm.col"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+            <el-form-item :label="$t('field.Core.corewhloc.type')"
+                          prop="type">
+              <el-input v-model="dataForm.type"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.Core.corewhloc.orderNo')"
+                          prop="orderNo">
+              <el-input v-model="dataForm.orderNo"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+            <el-form-item :label="$t('field.Core.corewhloc.activeStatus')"
+                          prop="activeStatus">
+              <el-select v-model="dataForm.activeStatus"
+                         placeholder="请选择"
+                         auto-complete="off"
+                         style="width: 100%;">
+                <el-option :value="$t('field.Core.corewhloc.none')">
+                </el-option>
+                <el-option :value="$t('field.Core.corewhloc.noin')">
+                </el-option>
+                <el-option :value="$t('field.Core.corewhloc.noout')">
+                </el-option>
+                <el-option :value="$t('field.Core.corewhloc.noinout')">
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.Core.corewhloc.deepIndex')"
+                          prop="deepIndex">
+              <el-input v-model="dataForm.deepIndex"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+            <el-form-item :label="$t('field.Core.corewhloc.width')"
+                          prop="width">
+              <el-input v-model="dataForm.width"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.Core.corewhloc.high')"
+                          prop="high">
+              <el-input v-model="dataForm.high"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+            <el-form-item :label="$t('field.Core.corewhloc.deep')"
+                          prop="deep">
+              <el-input v-model="dataForm.deep"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.Core.corewhloc.maxstock')"
+                          prop="maxstock">
+              <el-input v-model="dataForm.maxstock"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+            <el-form-item :label="$t('field.Core.corewhloc.stockCount')"
+                          prop="stockCount">
+              <el-input v-model="dataForm.stockCount"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item :label="$t('field.Core.corewhloc.movegroup')"
+                          prop="moveGroup">
+              <el-input v-model="dataForm.moveGroup"
+                        auto-complete="off"
+                        disabled="false"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <div slot="footer"
+           class="dialog-footer">
+        <el-button :size="size"
+                   @click.native="dialogVisible = false">{{$t('action.cancel')}}</el-button>
+        <el-button :size="size"
+                   type="primary"
+                   @click.native="submitForm"
+                   :loading="editLoading">{{$t('action.submit')}}</el-button>
+      </div>
+    </el-dialog>
+    <!--批量编辑界面-->
+    <el-dialog :title="operation?'库位 —— 批量编辑':$t('action.edit')"
+               width="80%"
+               :visible.sync="dialogVisibles"
+               :close-on-click-modal="false">
+      <el-form :model="dataForm"
+               label-width="100px"
+               :rules="dataFormRules"
+               ref="dataForm"
+               :size="size"
+               label-position="right">
+        <el-form-item label="ID"
+                      prop="id"
+                      v-if="false">
+          <el-input v-model="dataForm.id"
+                    :disabled="true"
+                    auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item :label="$t('field.Core.corewhloc.areaName')"
+                      prop="areaId">
+          <el-select v-model="dataForm.areaId"
+                     placeholder="请选择"
+                     auto-complete="off"
+                     style="width: 100%;">
+            <el-option v-for="item in areaTypes"
+                       :key="item.id"
+                       :label="item.areaName"
+                       :value="item.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <div slot="footer"
+           class="dialog-footer">
+        <el-button :size="size"
+                   @click.native="dialogVisibles = false">{{$t('action.cancel')}}</el-button>
+        <el-button :size="size"
+                   type="primary"
+                   @click.native="submitForms"
+                   :loading="editLoading">{{$t('action.submit')}}</el-button>
+      </div>
+    </el-dialog>
+  </div>
+</template>
+<script>
+import PopupTreeInput from "@/components/PopupTreeInput"
+import CtTable from "@/views/Core/CtTable"
+import KtButton from "@/views/Core/KtButton"
+import TableColumnFilterDialog from "@/views/Core/TableColumnFilterDialog"
+import { format } from "@/utils/datetime"
+export default {
+  components: {
+    PopupTreeInput,
+    KtButton,
+    CtTable,
+    TableColumnFilterDialog
+  },
+  data () {
+    return {
+      size: 'small',
+      filters: {
+        name: ''
+      },
+      demo: [],
+      dicts: [],
+      columns: [],
+      filterColumns: [],
+      pageRequest: { pageNum: 1, pageSize: 10 },
+      pageResult: {},
+      operation: false, // true:新增, false:编辑
+      dialogVisible: false, // 新增编辑界面是否显示
+      dialogVisibles: false,//批量编辑界面是否显示
+      editLoading: false,
+      // 新增编辑界面数据
+      dataForm: {
+        id: 0,
+        craneId: '',
+        shelfId: '',
+        areaId: '',
+        line: '',
+        col: '',
+        type: '',
+        orderNo: '',
+        activeStatus: '',
+        deepIndex: '',
+        width: '',
+        high: '',
+        deep: '',
+        maxstock: '',
+        stockCount: '',
+        moveGroup: '',
+      },
+      areaTypes: []
+    }
+  },
+  computed: {
+    dataFormRules () {
+      const dataFormRules = {        name: [{ required: true, message: this.getKey("user.userInput"), trigger: 'blur' }]
+      };
+      return dataFormRules;
+    }
+  },
+  methods: {
+    // 获取分页数据
+    findPage: function (data) {
+      if (data !== null) {
+        this.filters.pageNum = data.pageRequest.pageNum
+        this.filters.pageSize = data.pageRequest.pageSize
+      }
+      this.$api.corewhloc.findPage(this.filters).then((res) => {
+        this.pageResult = res.data
+        //this.findUserRoles()
+      }).then(data != null ? data.callback : '')
+    },
+    // 批量删除
+    handleDelete: function (data) {
+      this.$api.corewhloc.batchDelete(data.params).then(data != null ? data.callback : '')
+    },
+    // 显示新增界面
+    handleAdd: function () {
+      this.dialogVisible = true
+      this.operation = true
+      this.dataForm = {
+        id: 0,
+        craneId: '',
+        shelfId: '',
+        areaId: '',
+        line: '',
+        col: '',
+        type: '',
+        orderNo: '',
+        activeStatus: '',
+        deepIndex: '',
+        width: '',
+        high: '',
+        deep: '',
+        maxstock: '',
+        stockCount: '',
+        moveGroup: '',
+        // Types: ['1', '2']
+      }
+      areaTypes: []
+    },
+    // 显示编辑界面
+    handleEdit: function (params) {
+      this.dialogVisible = true
+      this.operation = false
+      this.dataForm = Object.assign({}, params.row)
+    },
+    //显示批量编辑界面
+    handleBatchEdit: function (data) {
+      this.dialogVisibles = true
+      this.operation = true
+      console.log(data);
+      this.demo = data;
+    },
+    // 编辑
+    submitForm: function () {
+      this.$refs.dataForm.validate((valid) => {
+        if (valid) {
+          this.$confirm(this.getKey('action.isConfirm'), this.getKey('action.tips'), {}).then(() => {
+            this.editLoading = true
+            let params = Object.assign({}, this.dataForm)
+            this.$api.corewhloc.save(params).then((res) => {
+              this.editLoading = false
+              if (res.code == 200) {
+                this.$message({ message: this.getKey('action.operateSucess'), type: 'success' })
+                this.dialogVisible = false
+                this.$refs['dataForm'].resetFields()
+              } else {
+                this.$message({ message: this.getKey('action.operateFail') + res.msg, type: 'error' })
+              }
+              this.findPage(null)
+            })
+          })
+        }
+      })
+    },
+    //批量编辑
+    submitForms: function () {
+      //let para = this.handleBatchEdit(data).data
+      let ppa = [];
+      for (var i = 0; i < this.demo.params.length; i++) {
+        //alert(this.demo.params[i].id)
+        ppa.push(this.demo.params[i].id)
+      }
+      // let params = Object.assign({}, this.dataForm).areaId
+      // console.log(params);
+      this.$refs.dataForm.validate((valid) => {
+        if (valid) {
+          this.$confirm(this.getKey('action.isConfirm'), this.getKey('action.tips'), {}).then(() => {
+            this.editLoading = true
+            let params = Object.assign({}, this.dataForm).areaId
+            this.$api.corewhloc.batchedit(ppa, params).then((res) => {
+              this.editLoading = false
+              if (res.code == 200) {
+                this.$message({ message: this.getKey('action.operateSucess'), type: 'success' })
+                this.dialogVisibles = false
+                this.$refs['dataForm'].resetFields()
+              } else {
+                this.$message({ message: this.getKey('action.operateFail') + res.msg, type: 'error' })
+              }
+              this.findPage(null)
+            })
+          })
+        }
+      })
+    },
+    // 获取部门列表
+    findDeptTree: function () {
+      this.$api.dept.findDeptTree().then((res) => {
+        this.deptData = res.data
+      })
+    },
+    // 菜单树选中
+    deptTreeCurrentChangeHandle (data, node) {
+      this.dataForm.deptId = data.id
+      this.dataForm.deptName = data.name
+    },
+
+    findAreaTypes: function () {
+      this.$api.corewharea.findPage().then((res) => {
+        this.areaTypes = res.data.content
+      })
+    },
+    // 时间格式化
+    dateFormat: function (row, column, cellValue, index) {
+      return format(row[column.property])
+    },
+    // 处理表格列过滤显示
+    displayFilterColumnsDialog: function () {
+      this.$refs.tableColumnFilterDialog.setDialogVisible(true)
+    },
+    // 处理表格列过滤显示
+    handleFilterColumns: function (data) {
+      this.filterColumns = data.filterColumns
+      this.$refs.tableColumnFilterDialog.setDialogVisible(false)
+    },
+    getKey: function (arg) {
+      return this.$t(arg)
+    },
+
+    // 处理表格列过滤显示
+    initColumns: function () {
+      this.columns = [
+        //{ prop: "id", label: "ID", minWidth: 50 },
+        { prop: "craneId", label: "field.Core.corewhloc.craneName", minWidth: 120 },
+        { prop: "shelfId", label: "field.Core.corewhloc.ShelfId", minWidth: 100 },
+        { prop: "areaId", label: "field.Core.corewhloc.areaName", minWidth: 120, formatter: this.selectionFormat },
+        { prop: "rowNumber", label: "field.Core.corewhloc.row", minWidth: 60 },
+        { prop: "colNumber", label: "field.Core.corewhloc.col", minWidth: 60 },
+        { prop: "type", label: "field.Core.corewhloc.type", minWidth: 100 },
+        { prop: "orderNo", label: "field.Core.corewhloc.orderNo", minWidth: 100 },
+        { prop: "activeStatus", label: "field.Core.corewhloc.activeStatus", minWidth: 100 },
+        // { prop: "deepIndex", label: "field.Core.corewhloc.deepIndex", minWidth: 120 },
+        //{ prop: "width", label: "field.Core.corewhloc.width", minWidth: 60 },
+        //{ prop: "high", label: "field.Core.corewhloc.high", minWidth: 60 },
+        //{ prop: "deep", label: "field.Core.corewhloc.deep", minWidth: 70 },
+        //{ prop: "maxstock", label: "field.Core.corewhloc.maxstock", minWidth: 100 },
+        //{ prop: "stockCount", label: "field.Core.corewhloc.stockCount", minWidth: 70 },
+        //{ prop: "moveGroup", label: "field.Core.corewhloc.movegroup", minWidth: 60 },
+      ]
+      this.filterColumns = this.columns;
+    },
+    selectionFormat: function (row, column, cellValue, index) {
+      let key = ""
+      let propt = column.property;
+      let val = row[column.property];
+      let dict = this.areaTypes;
+      for (let i = 0; i < dict.length; i++) {
+        if (dict[i].id == val) {
+          return dict[i].areaName;
+        }
+      }
+      return row[column.property]
+    },
+  },
+  created () {
+    //this.findDeptTree()
+    this.initColumns()
+    this.findAreaTypes();
+  }
+}
+</script>
+<style scoped>
+</style>

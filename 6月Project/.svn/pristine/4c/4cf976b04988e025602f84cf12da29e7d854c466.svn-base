@@ -1,0 +1,358 @@
+<template>
+  <div class="page-container">
+    <!--工具栏-->
+    <div class="toolbar"
+         style="float:left;padding-top:10px;padding-left:15px;">
+      <el-form :inline="true"
+               :model="filters"
+               :size="size">
+        <el-form-item>
+          <el-input v-model="filters.name"
+                    :placeholder="$t('item.please enter')"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-select v-model="filters.classifyId"
+                     placeholder="请选择物料类别"
+                     style="width: 100%;"
+                     clearable>
+            <el-option v-for="item in classTypes"
+                       :key="item.id"
+                       :label="item.name"
+                       :value="item.id">
+            </el-option>
+
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <kt-button icon="fa fa-search"
+                     :label="$t('action.search')"
+                     perms="material:item:view"
+                     type="primary"
+                     @click="findPage(null)" />
+        </el-form-item>
+        <el-form-item>
+          <kt-button icon="fa fa-plus"
+                     :label="$t('action.add')"
+                     perms="material:item:add"
+                     type="primary"
+                     @click="handleAdd" />
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="toolbar"
+         style="float:right;padding-top:10px;padding-right:15px;">
+      <el-form :inline="true"
+               :size="size">
+        <el-form-item>
+          <el-button-group>
+            <el-tooltip :content="$t('action.refresh')"
+                        placement="top">
+              <el-button icon="fa fa-refresh"
+                         @click="findPage(null)"></el-button>
+            </el-tooltip>
+            <el-tooltip :content="$t('action.column')"
+                        placement="top">
+              <el-button icon="fa fa-filter"
+                         @click="displayFilterColumnsDialog"></el-button>
+            </el-tooltip>
+            <!-- <el-tooltip content="导出" placement="top">
+					<el-button icon="fa fa-file-excel-o"></el-button>
+				</el-tooltip> -->
+          </el-button-group>
+        </el-form-item>
+      </el-form>
+      <!--表格显示列界面-->
+      <table-column-filter-dialog ref="tableColumnFilterDialog"
+                                  :columns="columns"
+                                  @handleFilterColumns="handleFilterColumns">
+      </table-column-filter-dialog>
+    </div>
+    <!--表格内容栏-->
+    <mt-table :height="350"
+              permsRestore="material:item:restore"
+              permsDisable="material:item:Disable"
+              permsDelete="material:item:delete"
+              :data="pageResult"
+              :columns="filterColumns"
+              @findPage="findPage"
+              @handleRestore="handleRestore"
+              @handleDisable="handleDisable"
+              @handleDelete="handleDelete">
+    </mt-table>
+    <!--新增编辑界面-->
+    <el-dialog :title="operation?'物料 —— 新增':'物料 —— 编辑'"
+               width="40%"
+               :visible.sync="dialogVisible"
+               :close-on-click-modal="false">
+      <el-form :model="dataForm"
+               label-width="90px"
+               :rules="dataFormRules"
+               ref="dataForm"
+               :size="size"
+               label-position="right">
+        <el-form-item label="ID"
+                      prop="id"
+                      v-if="false">
+          <el-input v-model="dataForm.id"
+                    :disabled="true"
+                    auto-complete="off"></el-input>
+        </el-form-item>
+        <!-- <el-form-item :label="$t('item.classifyId')"
+                      prop="classifyId">
+          <el-input v-model="dataForm.classifyId"
+                    auto-complete="off"></el-input>
+        </el-form-item> -->
+        <el-form-item :label="$t('item.classifyId')"
+                      prop="classifyId">
+          <el-select v-model="dataForm.classifyId"
+                     placeholder="请选择"
+                     style="width: 100%;">
+            <el-option v-for="item in classTypes"
+                       :key="item.id"
+                       :label="item.name"
+                       :value="item.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item :label="$t('item.code')"
+                      prop="code">
+          <el-input v-model="dataForm.code"
+                    auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item :label="$t('item.name')"
+                      prop="name">
+          <el-input v-model="dataForm.name"
+                    auto-complete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer"
+           class="dialog-footer">
+        <el-button :size="size"
+                   @click.native="dialogVisible = false">{{$t('action.cancel')}}</el-button>
+        <el-button :size="size"
+                   type="primary"
+                   @click.native="submitForm">{{$t('action.submit')}}</el-button>
+      </div>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import PopupTreeInput from "@/components/PopupTreeInput"
+import MtTable from "@/views/Core/MtTable"
+import KtButton from "@/views/Core/KtButton"
+import TableColumnFilterDialog from "@/views/Core/TableColumnFilterDialog"
+import { format } from "@/utils/datetime"
+export default {
+  components: {
+    PopupTreeInput,
+    MtTable,
+    KtButton,
+    TableColumnFilterDialog
+  },
+  data () {
+    return {
+      size: 'small',
+      filters: {
+        name: ''
+      },
+      columns: [],
+      dicts: [],
+      filterColumns: [],
+      pageRequest: { pageNum: 1, pageSize: 10 },
+      pageResult: {},
+
+      operation: false, // true:新增, false:编辑
+      dialogVisible: false, // 新增编辑界面是否显示
+      editLoading: false,
+
+      // 新增编辑界面数据
+      dataForm: {
+        id: 0,
+        //classifyId: ,
+        code: '',
+        name: '',
+        active: 0
+      },
+      classTypes: []
+    }
+  },
+  computed: {
+    dataFormRules () {
+      const dataFormRules = {        name: [{ required: true, message: this.getKey("user.userInput"), trigger: 'blur' }]
+      };
+      return dataFormRules;
+    }
+  },
+  methods: {
+    //获取分页数据
+    findPage: function (data) {
+      if (data !== null) {
+        this.filters.pageNum = data.pageRequest.pageNum
+        this.filters.pageSize = data.pageRequest.pageSize
+      }
+      this.$api.item.findPage(this.filters).then((res) => {
+        this.pageResult = res.data
+      }).then(data != null ? data.callback : '')
+
+    },
+    // 加载用户角色信息
+    findUserRoles: function () {
+      this.$api.role.findAll().then((res) => {
+        // 加载角色集合
+        this.roles = res.data
+      })
+    },
+    // 批量删除
+    handleDelete: function (data) {
+      this.$api.item.batchDelete(data.params).then(data != null ? data.callback : '')
+    },
+    // 显示新增界面
+    handleAdd: function () {
+      this.dialogVisible = true
+      this.operation = true
+      this.dataForm = {
+        id: 0,
+        classifyId: undefined,
+        code: '',
+        name: '',
+        active: 0
+      }
+    },
+    //新增
+    submitForm: function () {
+      this.$refs.dataForm.validate((valid) => {
+        if (valid) {
+          this.$confirm(this.getKey('action.isConfirm'), this.getKey('action.tips'), {}).then(() => {
+            this.editLoading = true
+            let params = Object.assign({}, this.dataForm)
+            this.$api.item.save(params).then((res) => {
+              //this.editLoading = false
+              if (res.code == 200) {
+                this.$message({ message: this.getKey('action.operateSucess'), type: 'success' })
+                this.dialogVisible = false
+                this.$refs['dataForm'].resetFields()
+              } else {
+                this.$message({ message: this.getKey('action.operateFail') + res.msg, type: 'error' })
+              }
+              this.findPage(null)
+            })
+          })
+        }
+      })
+    },
+    //`恢复
+    handleRestore: function (params) {
+      this.dataForm = Object.assign({}, params.row)
+      // console.log("************");
+      // console.log(this.dataForm.classifyName);
+      // console.log("************");
+      if (this.dataForm.active == "normal") {
+        this.$confirm('你选中的物料已经是正常状态了', '提示', {
+          type: 'warning'
+        })
+      } else {
+        this.dataForm.active = 0;
+        console.log("##############");
+        console.log(this.dataForm);
+        console.log("##############");
+        this.$api.item.restore(this.dataForm).then((res) => {
+          if (res.code == 200) {
+            this.$message({ message: this.getKey('action.operateSucess'), type: 'success' })
+            this.dialogVisible = false
+            //this.$refs['dataForm'].resetFields()
+          } else {
+            this.$message({ message: this.getKey('action.operateFail') + res.msg, type: 'error' })
+          }
+          this.findPage(null)
+        })
+      }
+    },
+    handleDisable: function (params) {
+      this.dataForm = Object.assign({}, params.row)
+      console.log("************");
+      console.log(this.dataForm.name);
+      console.log("************");
+      if (this.dataForm.active == "disable") {
+        this.$confirm('你选中的物料已经是禁用状态了', '提示', {
+          type: 'warning'
+        })
+      } else {
+        this.dataForm.active = 1;
+        console.log("##############");
+        console.log(this.dataForm);
+        console.log("##############");
+        this.$api.item.disable(this.dataForm).then((res) => {
+          if (res.code == 200) {
+            this.$message({ message: this.getKey('action.operateSucess'), type: 'success' })
+            this.dialogVisible = false
+            //this.$refs['dataForm'].resetFields()
+          } else {
+            this.$message({ message: this.getKey('action.operateFail') + res.msg, type: 'error' })
+          }
+          this.findPage(null)
+        })
+      }
+    },
+    // 菜单树选中
+    deptTreeCurrentChangeHandle (data, node) {
+      this.dataForm.deptId = data.id
+      this.dataForm.deptName = data.name
+    },
+    // 时间格式化
+    dateFormat: function (row, column, cellValue, index) {
+      return format(row[column.property])
+    },
+    //加载物料类别分类
+    findClassTypes: function () {
+      this.$api.classify.findPage().then((res) => {
+        this.classTypes = res.data.content
+      })
+    },
+    // 处理表格列过滤显示
+    displayFilterColumnsDialog: function () {
+      this.$refs.tableColumnFilterDialog.setDialogVisible(true)
+    },
+    // 处理表格列过滤显示
+    handleFilterColumns: function (data) {
+      this.filterColumns = data.filterColumns
+      this.$refs.tableColumnFilterDialog.setDialogVisible(false)
+    },
+    getKey: function (arg) {
+      return this.$t(arg)
+    },
+    // 处理表格列过滤显示
+    initColumns: function () {
+      this.columns = [
+        //{ prop: "id", label: "ID", minWidth: 50 },
+
+        { prop: "name", label: "item.name", minWidth: 100 },
+        { prop: "classifyId", label: "item.classifyId", minWidth: 100, formatter: this.selectionFormat },
+        { prop: "code", label: "item.code", minWidth: 100 },
+        { prop: "active", label: "item.active", minWidth: 80 }
+      ]
+      this.filterColumns = this.columns;
+    },
+    selectionFormat: function (row, column, cellValue, index) {
+      let key = ""
+      let propt = column.property;
+      let val = row[column.property];
+      let dict = this.classTypes;
+      for (let i = 0; i < dict.length; i++) {
+        if (dict[i].id == val) {
+          return dict[i].name;
+        }
+      }
+      return row[column.property]
+    },
+  },
+  created () {
+    //this.findDeptTree()
+    this.initColumns()
+    this.findClassTypes()
+  }
+}
+</script>
+
+<style scoped>
+</style>

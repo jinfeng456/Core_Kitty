@@ -1,0 +1,91 @@
+﻿
+using GK.Common;
+using GK.Common.dto;
+using GK.WMS.DAL;
+
+using GK.WMS.Entity;
+using HY.WCS.DAL;
+using HY.WCS.DAL.dto;
+using HY.WCS.Entity.dto;
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web;
+
+
+using System.Web.Http;
+using System.Web.Http.Cors;
+using Web.Authorize;
+using WebApi.util;
+
+namespace WebApi
+{
+    [FormAuthenticationFilter]
+
+    [RoutePrefix("user")]
+    public class UsersController : BaseApiController
+    {
+        ISysAuthorityServer authorityServer = WMSDalFactray.getDal<ISysAuthorityServer>();
+
+        [HttpGet, Route("info")]
+        public BaseResult info()
+        {
+            String data = " 0";
+            return new BaseResult("admin");
+        }
+
+        [HttpPost, Route("FindPage")]
+        public BaseResult FindPage([FromBody]UserDto dto)
+        {
+            Page<SysUserQuery> info = authorityServer.QueryUserPage<SysUserQuery>(dto);       
+            return  BaseResult.Ok(info);
+        }
+
+        [HttpPost, Route("Save")]
+        public BaseResult Save([FromBody]SysUser user)
+        {
+            if (user.id == 0)
+            {
+                return  BaseResult.Ok(authorityServer.AddUser(user));
+            }
+            else
+            {
+                if (user.name == "admin")
+                {
+                    return  BaseResult.Error(500, "超级管理员不允许修改!");
+                }
+                return  BaseResult.Ok(authorityServer.UpdateUser(user));
+            }
+        }
+
+        [HttpPost, Route("Delete")]
+        public BaseResult Delete([FromBody]List<SysUser> userList)
+        {
+            foreach (var user in userList)
+            {
+                SysUser sysUser = authorityServer.FindUserById(user.id);
+                if (sysUser != null && sysUser.name.Equals("admin"))
+                {
+                    return  BaseResult.Error(500, "超级管理员不允许删除!");
+                }
+            }
+            return  BaseResult.Ok(authorityServer.DeleteUser(userList));
+        }
+
+        [HttpGet, Route("FindPermissions/{name?}")]
+        public BaseResult FindPermissions(string name)
+        {
+            List<string> perms = new List<string>();
+            List<SysMenu> sysMenus = authorityServer.FindByUser(name);
+            foreach (var sysMenu in sysMenus)
+            {
+                if (!string.IsNullOrEmpty(sysMenu.perms))
+                {
+                    perms.Add(sysMenu.perms);
+                }
+            }
+            return  BaseResult.Ok(perms);
+        }
+    }
+}

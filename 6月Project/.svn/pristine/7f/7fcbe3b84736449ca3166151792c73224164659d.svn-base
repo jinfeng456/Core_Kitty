@@ -1,0 +1,177 @@
+<template>
+  <div class="page-container">
+    <!--工具栏-->
+    <el-dialog title="批次" width="50%" :visible.sync="itemDialogVisible"    :before-close="handleClose">
+	
+      <div class="toolbar" style="float:left;padding-top:10px;padding-left:15px;">
+          <el-form :inline="true"  :model="filters"  :size="size">
+          <el-form-item>
+            <el-input v-model.trim="filters.batchNo"  placeholder="请输入内部批号"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <kt-button icon="fa fa-search"
+                      :label="$t('action.search')"
+                      perms="material:item:view"
+                      type="primary"
+                      @click="findPage(null)" />
+          </el-form-item>
+        
+        </el-form>
+      </div>
+      <!--表格内容栏-->
+      <batch-kt-table :height="350" :data="pageResult" :columns="filterColumns" @findPage="findPage" permsSelect="sys:user:delete"
+    @handleSelect="handleSelect"   > </batch-kt-table>
+
+      <div slot="footer" class="dialog-footer">
+			<el-button :size="size" @click.native="handleClose">{{$t('action.cancel')}}</el-button>
+		</div>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import PopupTreeInput from "@/components/PopupTreeInput"
+import BatchKtTable from "./BatchKtTable"
+import KtButton from "@/views/Core/KtButton"
+
+
+import { format } from "@/utils/datetime"
+export default {
+  components: {
+    PopupTreeInput,
+    BatchKtTable,
+    KtButton
+  },
+  props:{
+		//   multipleTable: {
+    //   type: Array,
+    //   default: []
+    // },
+	    itemDialogVisible:{
+			type: Boolean
+    },
+      type:{
+        type: Number
+      }
+	},
+  data () {
+    return {
+      size: 'small',
+      filters: {
+        batchNo: '',
+        businessStatus:1,
+        itemId:'',
+        id:'',
+        type:''
+      },
+      columns: [],
+      Items: [],	
+      filterColumns: [],
+      pageRequest: { pageNum: 1, pageSize: 10 },
+      pageResult: {},
+      // 新增编辑界面数据
+      editLoading:false,
+      dataForm: {
+        id: 0,
+        //classifyId: ,
+        code: '',
+        name: '',
+        active: 0
+      },
+      classTypes: []
+    }
+  },
+ 
+  methods: {
+    //获取分页数据
+    findPage: function (data) {
+      if (data !== null) {
+        this.filters.pageNum = data.pageRequest.pageNum
+        this.filters.pageSize = data.pageRequest.pageSize
+        this.filters.businessStatus = 1 //1.未抽检
+      //   for (var i = 0; i < this.multipleTable.length; i++) {
+      //   this.filters.id =this.multipleTable[i].batchId
+      //   this.filters.itemId =this.multipleTable[i].itemId      
+      //    }
+        this.filters.type=this.type  //1原料,2成品
+      }
+      this.$api.batch.findPage(this.filters).then((res) => {
+        this.pageResult = res.data
+        //this.findClassTypes()
+      }).then(data != null ? data.callback : '')
+
+    },
+    // 批量选中
+    handleSelect: function (data) {
+        this.$emit('handleSelect', data)
+    },
+    //加载物料类别分类
+    findClassTypes: function () {
+      this.$api.classify.findPage().then((res) => {
+        this.classTypes = res.data.content
+       
+      })
+    },
+    //加载物料
+		findItems: function () {
+			this.$api.item.findAll().then((res) => {
+				this.Items = res.data			
+			})
+		},
+    handleClose:function(){
+        this.$emit('itemHidden', {})
+        done();
+    },	
+    selectionFormats: function (row, column, cellValue, index) {
+				let key = ""
+				let propt = column.property;
+				let val = row[column.property];				
+				let dict = this.Items;
+				for (let i = 0; i < dict.length; i++) {
+					if (dict[i].id == val) {
+					return dict[i].name;
+					}
+				}
+				return row[column.property]
+			},  
+		selectionFormat: function (row, column, cellValue, index){
+				let key=""
+				let propt=column.property;
+				if(propt=="businessStatus"){
+					key="batchStatus"
+				}else if(propt=="frozen"){
+					key="isLocked"
+				}			
+				let val=row[column.property];
+				let dict = this.$store.state.dict.dicts[key];
+				if(dict==undefined){
+						return row[column.property]
+				}
+				for(let i=0;i<dict.length;i++){
+					if(dict[i].value==val){
+						return dict[i].label;
+					}
+				}
+	          	return row[column.property]
+	     }
+  },
+  mounted () {
+      this.findItems()
+      this.columns = [
+       //{prop:"id", label:"编号", minWidth:100},
+				//{prop:"itemId", label:"物料类别", minWidth:100},
+				{prop:"itemId", label:"物料名称", minWidth:100,formatter:this.selectionFormats},
+				{prop:"count", label:"数量", minWidth:100},
+				{prop:"batchNo", label:"内部批号", minWidth:100},
+				{prop:"businessStatus", label:"检验状态", minWidth:100,formatter:this.selectionFormat},
+				{prop:"businessExp", label:"有效期", minWidth:100, formatter:this.dateFormat},
+				{prop:"retestDate", label:"复检期", minWidth:100, formatter:this.dateFormat},
+				//{prop:"frozen", label:"是否冻结", minWidth:100,formatter:this.selectionFormat},
+      ]
+      this.filterColumns = this.columns;
+  }
+}
+</script>
+
+<style scoped>
+</style>

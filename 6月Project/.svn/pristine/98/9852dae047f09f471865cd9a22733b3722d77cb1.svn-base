@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C4FCD1F-DD7C-4BF0-95BC-D699B5C53A49}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GK.WCS.Open</RootNamespace>
+    <AssemblyName>GK.WCS.Open</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CMFrameWork">
+      <HintPath>..\..\UsingDlls\CMFrameWork.dll</HintPath>
+    </Reference>
+    <Reference Include="CMNetLib, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\UsingDlls\CMNetLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.Common">
+      <HintPath>..\..\..\common\UsingDlls\GK.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.WCS.Common">
+      <HintPath>..\..\..\common\UsingDlls\GK.WCS.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.WCS.Crane">
+      <HintPath>..\..\..\common\UsingDlls\GK.WCS.Crane.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.WCS.DALBase">
+      <HintPath>..\..\..\common\UsingDlls\GK.WCS.DALBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\common\UsingDlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="http\HttpProcess.cs" />
+    <Compile Include="http\HttpServer.cs" />
+    <Compile Include="http\ResJosnData.cs" />
+    <Compile Include="http\server\DapingServer.cs" />
+    <Compile Include="http\server\DeviceInOrNotServer.cs" />
+    <Compile Include="http\server\MechineStatusServer.cs" />
+    <Compile Include="http\server\TaskServer.cs" />
+    <Compile Include="http\server\CraneServer.cs" />
+    <Compile Include="http\server\CarrierServer.cs" />
+    <Compile Include="http\server\WMSServer.cs" />
+    <Compile Include="http\server\SysServer.cs" />
+    <Compile Include="http\server\RGVServer.cs" />
+    <Compile Include="http\server\BaseServer.cs" />
+    <Compile Include="http\Utils.cs" />
+    <Compile Include="OpenFactray.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="http\dto\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\GK.Engine.WCS\GK.Engine.WCS.csproj">
+      <Project>{60a2ff46-24ff-45e8-9851-3328c5c09531}</Project>
+      <Name>GK.Engine.WCS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\GK.Engine.WMS\GK.Engine.WMS.csproj">
+      <Project>{7f1690a5-faac-45b4-aa06-172ee4582527}</Project>
+      <Name>GK.Engine.WMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\GK.WCS.DAL\GK.WCS.DAL.csproj">
+      <Project>{4966a051-ff5e-4867-97f8-5b484eeec0b2}</Project>
+      <Name>GK.WCS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\GK.WCS.Entity\GK.WCS.Entity.csproj">
+      <Project>{7dbbc8f2-08a1-4965-8742-b453ac9da8f6}</Project>
+      <Name>GK.WCS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GK.WCS.Carrier\GK.WCS.Carrier.csproj">
+      <Project>{af05a636-ef64-45c5-91d0-4ac980cf04df}</Project>
+      <Name>GK.WCS.Carrier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GK.WCS.mechineHand\GK.WCS.MechineHand.csproj">
+      <Project>{81a26b45-1fc2-4813-8202-91269372794a}</Project>
+      <Name>GK.WCS.MechineHand</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GK.WCS.Scan\GK.WCS.Scan.csproj">
+      <Project>{a601a5e5-ed91-4f4e-b4e8-3cd7b343cde3}</Project>
+      <Name>GK.WCS.Scan</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

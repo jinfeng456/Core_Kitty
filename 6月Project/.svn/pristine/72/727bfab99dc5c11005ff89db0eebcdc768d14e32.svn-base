@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+using GK.WCS.Common;
+using GK.Engine.WMS;
+
+namespace GK.WCS.Controller {
+    public class Wcs2WmsTask:ZtTask {
+        public Wcs2WmsTask() {
+            time = 2000;
+        }
+      
+
+
+        ITaskCompleteServer completeDAL = ServerFactray.getServer<ITaskCompleteServer>();
+        protected override bool init() {
+            return true;
+        }
+        public override void excute() {
+            List<TaskComplete> list =  completeDAL.getfinshTasksforUpload();
+
+            foreach(TaskComplete task in list) {
+                SyncWcsReultEngine swre = new SyncWcsReultEngine();
+                if(swre.doWork()) {//同步成功
+                    LoggerCommon.fileAll(task.wmsTaskId + "wms 同步" );
+                    completeDAL.finshSyncById(task.id);
+                }
+            }
+
+        }
+    }
+}

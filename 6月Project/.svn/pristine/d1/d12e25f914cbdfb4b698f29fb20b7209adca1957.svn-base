@@ -1,0 +1,182 @@
+﻿using System;
+using GK.WCS.Common.task;
+using GK.WCS.Carrier;
+using GK.WCS.Scan;
+using GK.WCS.Common.core.dto;
+using GK.WCS.Common;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+using GK.WCS.Carrier.dto;
+using log4net.Repository.Hierarchy;
+using System.Collections.Generic;
+using GK.Engine.WMS.wms;
+using System.Threading.Tasks;
+using GK.WMS.Entity;
+using GK.WMS.DAL;
+using GK.WCS.Carrier.enumerate;
+using static GK.WCS.Carrier.enumerate.CarrierPoint;
+
+namespace GK.WCS.Controller {
+    public class CarrierAllocateJobTask4 : CarrierAllocateJobTask {
+
+        ITaskCarrierServer taskCarrierServer = ServerFactray.getServer<ITaskCarrierServer>();
+        ITaskCraneServer taskCraneServer = ServerFactray.getServer<ITaskCraneServer>();
+        ITaskCompleteServer taskCompleteServer = ServerFactray.getServer<ITaskCompleteServer>();
+        ITaskServer taskServer = WMSDalFactray.getDal<ITaskServer>();
+        GK.WCS.DAL.ISequenceIdServer sequenceIdServer = ServerFactray.getServer<GK.WCS.DAL.ISequenceIdServer>();
+
+        CarrierSynchro carrierSynchro;
+        Wms2WcsTask wms2WcsTask;
+        List<int> inPoint = new List<int>();
+        List<int> outPoint = new List<int>();
+        public CarrierAllocateJobTask4(int CarrierId) :base(CarrierId)
+        {
+            CarrierId = 4;
+        }
+        protected override void onlyOneTime() {          
+            carrierSynchro = (CarrierSynchro)TaskPool.get<CarrierSynchro>(CarrierId);
+            wms2WcsTask = (Wms2WcsTask)TaskPool.get<Wms2WcsTask>();
+        }
+        public override void excute() {
+            inPointAssign();
+            OutPointAssign();
+            DownLoadTask(inPoint);
+            int dir = connect.GetTwoFDir(4);
+            if (dir == 1)
+            {
+                inPointApply(inPoint);
+            }
+            else
+            {
+                outPointApply(outPoint);
+            }             
+        }
+
+        public void DownLoadTask(List<int> inPoint)
+        {
+            foreach (int point in inPoint)
+            {
+                CarrierSignalStatus carrierSignal = carrierSynchro.getSignalStatus(point);
+                if (carrierSignal.code != 0)
+                {
+                    List<TaskComplete> taskComplete = taskCompleteServer.GetTaskCompleteByCode(carrierSignal.code.ToString());
+                    if (taskComplete.Count <= 0)
+                    {
+                        bool result = WMSTransactionFacade.doStockInEngine(carrierSignal.code.ToString());
+                        if (result)
+                        {
+                            InsertIntoTaskComplete();
+                            List<TaskComplete> completeList = taskCompleteServer.getTasks(1);
+                            foreach (TaskComplete task in completeList)
+                            {
+                                wms2WcsTask.sync(task);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        private void InsertIntoTaskComplete()
+        {
+            //获取Core_task中状态为2的入库任务
+            List<CoreTask> list = taskServer.GetInTask();
+            foreach (CoreTask task in list)
+            {
+                //CoreTask，CoreTaskParam 保存 到Task_complete，Task_complete_param
+                //判断Task_complete是否含有此数据
+                TaskComplete complete = taskCompleteServer.getTaskCompleteByWmsTaskId(task.id);
+                if (complete == null)
+                {
+                    complete = new TaskComplete();
+                    complete.id = sequenceIdServer.getId();
+                    complete.wmsTaskId = task.id;
+                    complete.boxCode = task.boxCode;
+                    complete.taskType = task.taskType;
+                    complete.des = task.des;
+                    complete.src = task.src;
+                    complete.status = 1;
+                    complete.Priority = task.Priority;
+                    complete.info = task.info;
+                    complete.relyTaskId = task.relyTaskId;
+                    complete.createTime = DateTime.Now;
+                    taskCompleteServer.insertNotNull(complete);
+                }
+            }
+        }
+
+        public void inPointApply(List<int> inPoint)
+        {
+            CarrierSignalStatus carrierSignal;
+            Dictionary<int, PlcCarrierPoint> carrierPoint = CarrierPoint.carrierPoint;
+            foreach (int point in inPoint)
+            {
+                bool result = CheckStatus(point, out carrierSignal);
+                if (result)
+                {
+                    if (carrierSignal.arriveApply == 1)
+                    {
+                        TaskCarrier taskCarrier = taskCarrierServer.getByCode(carrierSignal.code.ToString());
+                        sendCrarrer(1, taskCarrier, (short)carrierPoint[point].WOffset, (short)carrierPoint[point].ROffset);
+                    }
+                }
+            }
+        }
+
+        public void outPointApply(List<int> outPoint)
+        {
+            CarrierSignalStatus carrierSignal;
+            Dictionary<int, PlcCarrierPoint> carrierPoint = CarrierPoint.carrierPoint;
+            foreach (int point in outPoint)
+            {
+                bool result = CheckStatus(point, out carrierSignal);
+                if (result)
+                {
+                    if (carrierSignal.arriveApply == 1)
+                    {
+                        TaskCarrier taskCarrier = taskCarrierServer.getCarrierTask(carrierPoint[point].pathNo);
+                        sendCrarrer(1, taskCarrier, (short)carrierPoint[point].WOffset, (short)carrierPoint[point].ROffset);
+                    }
+                }
+            }
+        }
+
+        private bool CheckStatus(int point, out CarrierSignalStatus carrierSignal)
+        {
+            carrierSignal = carrierSynchro.getSignalStatus(point);
+            if (carrierSignal.plcMode != 4)
+            {
+                LoggerCommon.fileAll("PLC不是自动状态！");
+                return false;
+            }
+            if (carrierSignal.plcState != 1)
+            {
+                LoggerCommon.fileAll("PLC没有启动完成！");
+                return false;
+            }
+            return true;
+        }
+        public void inPointAssign()
+        {
+            inPoint.Add(223);
+        }
+        public void OutPointAssign()
+        {
+            outPoint.Add(248);
+            outPoint.Add(249);
+            outPoint.Add(250);
+            outPoint.Add(251);
+            outPoint.Add(252);
+            outPoint.Add(253);
+            outPoint.Add(254);
+            outPoint.Add(255);
+            outPoint.Add(256);
+            outPoint.Add(257);
+            outPoint.Add(258);
+        }
+       
+
+    }
+} 

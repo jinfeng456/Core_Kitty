@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BBCCD60C-67B3-43B2-9B67-411E57E7AB05}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HY.WCS.Client</RootNamespace>
+    <AssemblyName>HY.WCS.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>GK.WCS.Client.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CMFrameWork">
+      <HintPath>..\UsingDlls\CMFrameWork.dll</HintPath>
+    </Reference>
+    <Reference Include="CMNetLib">
+      <HintPath>..\UsingDlls\CMNetLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyModbus, Version=5.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyModbusTCP.5.5.0\lib\EasyModbus.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.Common">
+      <HintPath>..\..\common\UsingDlls\GK.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.Mongo">
+      <HintPath>..\..\common\UsingDlls\GK.Mongo.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.WCS.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\common\UsingDlls\GK.WCS.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.WCS.Crane">
+      <HintPath>..\..\common\UsingDlls\GK.WCS.Crane.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.WCS.DALBase">
+      <HintPath>..\..\common\UsingDlls\GK.WCS.DALBase.dll</HintPath>
+    </Reference>
+    <Reference Include="GK.WCS.Entity">
+      <HintPath>..\..\common\UsingDlls\GK.WCS.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\UsingDlls\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\common\UsingDlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TX.Framework">
+      <HintPath>..\UsingDlls\TX.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="TX.UI">
+      <HintPath>..\UsingDlls\TX.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Control\BaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\crane\CraneAuto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\crane\CraneAuto.designer.cs">
+      <DependentUpon>CraneAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\crane\CranePointSign.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\crane\CranePointSign.designer.cs">
+      <DependentUpon>CranePointSign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Legend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Legend.designer.cs">
+      <DependentUpon>Legend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\RollerBelt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\RollerBelt.designer.cs">
+      <DependentUpon>RollerBelt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\crane\SingleTaskInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\crane\SingleTaskInfo.designer.cs">
+      <DependentUpon>SingleTaskInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Carrier2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Carrier2.Designer.cs">
+      <DependentUpon>Carrier2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\CarrierBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Device\FrmCrane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Device\FrmCrane.Designer.cs">
+      <DependentUpon>FrmCrane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Device\FrmCraneCtrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Device\FrmCraneCtrl.designer.cs">
+      <DependentUpon>FrmCraneCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Device\StatTaskFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Device\StatTaskFrm.Designer.cs">
+      <DependentUpon>StatTaskFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Device\LogFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Device\LogFrm.Designer.cs">
+      <DependentUpon>LogFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Device\TaskViewFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Device\TaskViewFrm.Designer.cs">
+      <DependentUpon>TaskViewFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmMain.designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\LoginFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\LoginFrm.designer.cs">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Station\ClientUtil.cs" />
+    <Compile Include="Station\HttpCarrierUtil.cs" />
+    <Compile Include="Station\HttpDeviceInOrNotUtil.cs" />
+    <Compile Include="Station\HttpMechineStatusUtil.cs" />
+    <Compile Include="Station\HttpTaskUtil.cs" />
+    <Compile Include="Station\HttpSysUtil.cs" />
+    <Compile Include="Station\HttpCraneUtil.cs" />
+    <Compile Include="Station\HttpUtil.cs" />
+    <Compile Include="Station\MessageUtil.cs" />
+    <Compile Include="Station\Pare.cs" />
+    <Compile Include="Station\TaskUtil.cs" />
+    <EmbeddedResource Include="Control\crane\CraneAuto.resx">
+      <DependentUpon>CraneAuto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\crane\CranePointSign.resx">
+      <DependentUpon>CranePointSign.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\Legend.resx">
+      <DependentUpon>Legend.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\RollerBelt.resx">
+      <DependentUpon>RollerBelt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\crane\SingleTaskInfo.resx">
+      <DependentUpon>SingleTaskInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Carrier2.resx">
+      <DependentUpon>Carrier2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\CarrierBase.resx">
+      <DependentUpon>CarrierBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Device\FrmCrane.resx">
+      <DependentUpon>FrmCrane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Device\FrmCraneCtrl.resx">
+      <DependentUpon>FrmCraneCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Device\StatTaskFrm.resx">
+      <DependentUpon>StatTaskFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Device\LogFrm.resx">
+      <DependentUpon>LogFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Device\TaskViewFrm.resx">
+      <DependentUpon>TaskViewFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="log4net.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\HY.WCS.CarrierRead.MachineState.datasource" />
+    <None Include="Properties\DataSources\HY.WCS.CarrierRead.SignalState.datasource" />
+    <None Include="Properties\DataSources\HY.WCS.Common.ShowCache.datasource" />
+    <None Include="Properties\DataSources\HY.WCS.Common.SpecialTarget.datasource" />
+    <None Include="Properties\DataSources\HY.WCS.Entity.StorageLocation.datasource" />
+    <None Include="Properties\DataSources\HY.WCS.Entity.TaskCarrier.datasource" />
+    <None Include="Properties\DataSources\HY.WCS.ModBusOp.MachineState.datasource" />
+    <None Include="Properties\DataSources\HY.WCS.ModBusOp.SignalState.datasource" />
+    <None Include="Properties\DataSources\HY.WCS.OPC.OPCStatus.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1591755498%281%29.png" />
+    <Content Include="Resources\下拉框.png" />
+    <Content Include="Resources\任务信息内容.png" />
+    <Content Include="Resources\任务管理系统.png" />
+    <Content Include="Resources\信息框.png" />
+    <Content Include="Resources\全部急停.png" />
+    <Content Include="Resources\初始化.png" />
+    <Content Include="Resources\图层129.png" />
+    <Content Include="Resources\图层138.png" />
+    <Content Include="Resources\图层158拷贝3.png" />
+    <Content Include="Resources\图层158拷贝4.png" />
+    <Content Include="Resources\多边形3.png" />
+    <Content Include="Resources\多边形4.png" />
+    <Content Include="Resources\多边形5.png" />
+    <Content Include="Resources\形状3.png" />
+    <Content Include="Resources\形状3拷贝.png" />
+    <Content Include="Resources\急停按钮.png" />
+    <Content Include="Resources\手动模式框.png" />
+    <Content Include="Resources\未点击.png" />
+    <Content Include="Resources\点击按钮.png" />
+    <Content Include="Resources\点击按钮拷贝9.png" />
+    <Content Include="Resources\背景图.png" />
+    <Content Include="Resources\装饰多边形.png" />
+    <None Include="Resources\blue_velvet_051.png" />
+    <None Include="Resources\blue_velvet_053.png" />
+    <Content Include="Properties\Resources\blue_velvet_051.png" />
+    <Content Include="Properties\Resources\blue_velvet_053.png" />
+    <Content Include="Properties\Resources\logo.ico" />
+    <Content Include="Properties\Resources\Warning.png" />
+    <Content Include="Resources\%29.png" />
+    <Content Include="Resources\logo.ico" />
+    <None Include="Resources\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\common\GK.WCS.DAL\GK.WCS.DAL.csproj">
+      <Project>{4966a051-ff5e-4867-97f8-5b484eeec0b2}</Project>
+      <Name>GK.WCS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\GK.WCS.Carrier\GK.WCS.Carrier.csproj">
+      <Project>{af05a636-ef64-45c5-91d0-4ac980cf04df}</Project>
+      <Name>GK.WCS.Carrier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Device\GK.WCS.Open\GK.WCS.Open.csproj">
+      <Project>{8c4fcd1f-dd7c-4bf0-95bc-d699b5c53a49}</Project>
+      <Name>GK.WCS.Open</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

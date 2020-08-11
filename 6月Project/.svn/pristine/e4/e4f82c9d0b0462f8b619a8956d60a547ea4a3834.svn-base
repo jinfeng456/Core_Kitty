@@ -1,0 +1,103 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using GK.WCS.DAL;
+using GK.WCS.Common;
+using GK.WMS.Entity;
+using GK.WMS.DAL;
+using GK.WCS.Entity;
+using GK.Engine.WCS;
+
+namespace GK.WCS.Controller {
+
+    public class Wms2WcsTask:ZtTask {
+        private static object lock_obj = new object();
+        public Wms2WcsTask() {
+            time = 500;
+        }
+
+        GK.WCS.DAL.ISequenceIdServer sequenceIdServer = ServerFactray.getServer<GK.WCS.DAL.ISequenceIdServer>();
+        ITaskServer taskServer;
+        ITaskCompleteServer completeServer = null;
+
+        protected override bool init() {
+       
+            taskServer = WMSDalFactray.getDal<ITaskServer>();
+            completeServer = ServerFactray.getServer<ITaskCompleteServer>();
+            return true;
+        }
+        public override void excute() {
+            wmsToWcsData();
+            List<TaskComplete> completeList = completeServer.getTasks(1);
+            foreach (TaskComplete task in completeList) {
+                sync(task);
+            }
+        }
+
+        public void wmsToWcsData()
+        {
+            //获取Core_task中状态为2的任务
+            List<CoreTask> list = taskServer.getAllUnSyncTask();
+            foreach (CoreTask task in list)
+            {
+                //CoreTask，CoreTaskParam 保存 到Task_complete，Task_complete_param
+                //判断Task_complete是否含有此数据
+                TaskComplete complete = completeServer.getTaskCompleteByWmsTaskId(task.id);
+                if (complete == null)
+                {
+                    complete = new TaskComplete();
+                    complete.id = sequenceIdServer.getId();
+                    complete.status = 1;
+                    complete.wmsTaskId = task.id;
+                    complete.taskType = task.taskType;
+                    complete.src = task.src;
+                    complete.boxCode = task.boxCode;
+                    complete.Priority = task.Priority;
+                    complete.info = task.info;
+                    complete.relyTaskId = task.relyTaskId;
+                    complete.des = task.des;
+                    complete.createTime = DateTime.Now;
+                    completeServer.insertNotNull(complete);
+                }
+
+                List<CoreTaskParam> paramlist = taskServer.getTaskParam(task.id);
+                foreach (CoreTaskParam param in paramlist)
+                {
+
+                    TaskCompleteParam para = completeServer.getTaskCompleteParamByDetailId(param.id);
+                    if (para != null)
+                    {
+                        continue;
+                    }
+                    para = new TaskCompleteParam();
+                    para.id = sequenceIdServer.getId();
+                    para.status = 1;
+                    para.completeId = param.wmsTaskId;
+                    para.detailId = param.id;
+                    para.des = param.des;
+                    para.pos = param.pos;
+                    completeServer.insertNotNull(para);
+
+
+                }
+
+            }
+
+        }
+        public void sync(TaskComplete task) {   
+            lock (lock_obj) {
+                bool check = false;
+                if(task.taskType == 1) {
+                   check= WMSTransactionFacade.doStockInEngine(task);
+                } else if(task.taskType == 2) {
+                    check = WMSTransactionFacade.docreateOutEngine(task);
+                } else if(task.taskType == 3) {
+                   check= WMSTransactionFacade.doCreateMoveEngine(task);
+                    taskServer.updateTaskStatus(task.id,3);                   
+                } 
+            }
+        }
+
+    }
+}

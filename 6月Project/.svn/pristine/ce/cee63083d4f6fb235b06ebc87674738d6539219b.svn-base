@@ -1,0 +1,40 @@
+﻿using GK.Common.dto;
+using GK.DAL.inter;
+using GK.WMS.Entity;
+using GK.WMS.Entity.dto;
+using GK.WMS.Entity.wms;
+using HY.WCS.DAL.dto;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace GK.WMS.DAL
+{
+    public interface IReceiptInServer : IBaseServer
+    {
+       #region 采购订单入库单
+        //采购入库订单分页
+        Page<WhSoIn> QueryOrderPage(WhSoInDto dto);
+        //采购入库订单转为入库单
+        long AddReceiptIn(WhReceiptIn whReceiptIn, WhSoIn warehouseIn);
+        //采购入库订单明细
+        List<WhSoInDetail> GetOrderDetailId(WhSoIn warehouseIn);
+        //子Id
+        List<WhSoInDetail> GetPkNo(string src_so_bill_detail);
+        //主ID
+        List<WhSoInDetail> GetBillNo(string src_so_bill);
+        List<WhReceiptInDetail> getAllWorkingReceiptInDetail() ;
+    
+
+        #endregion
+
+       #region 入库单
+        //采购入库订单分页
+        Page<WhReceiptIn> QueryReceiptInPage(ReceiptinDto dto);
+        //获取入库单明细
+        List<WhReceiptInDetail> getDetials(long receiptInId);
+        #endregion
+    }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>库位分布图</title>
+    <style>
+    *{margin:0;padding:0;}
+    body{text-align:center;background-color:#000;}
+     #info{
+    	position:fixed;
+    	left:10px;
+    	top:10px;
+    	text-align:left;
+    	padding:10px;
+    	background-color:#00eeee;
+    	width:200px;
+    	height:150px;
+    	}
+    </style>
+</head>
+<script src='base.js' lang="utf-8"></script>
+
+<body><div id="info" ></div>
+    <canvas id="canvas" width="700" height="500" style="background:#000;"></canvas>
+
+    <script>
+    resList=[];
+    globalX=0;
+    globalY=0; 
+  var backPic = new Image();  
+    backPic.src = "png/back.png";  
+
+    function myDraw(context){
+     context.drawImage(backPic,0,0,canvas.width, canvas.height)
+  	    context.strokeStyle= 'rgba(0,0,0,0.1)'
+  		  context.font=" 15px 宋体";
+  		  storeRoom.draw();
+  			showTuli(context)
+    		if(resList&&resList.length>0){
+        	for(var i=0;i<resList.length;i++){
+        		var d = resList[i];
+        		addStockProduct(context,storeRoom,d.l,d.s)  
+        	}
+        }
+    } 
+        
+    window.onload = function(){
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        canvas.height= window.screen.height 
+        canvas.width= window.screen.width 
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle="#1ff";
+        context.fillRect(0,0,canvas.width,canvas.height);
+        context.translate(0.5,0.5);
+				
+				storeRoom = new  StoreRoom(context,14+globalX,5+globalY,{shelfs:8,beginShelf:0,rows:11});
+				canvas.onmousemove = function (e) {
+						var location = getLocation(e.clientX, e.clientY);
+						selectId =storeRoom.getId(location.x,location.y);
+				};
+       
+    
+        
+        //动画循环
+	        (function drawFrame(){
+	            window.requestAnimationFrame(drawFrame);
+	            context.clearRect(0, 0, canvas.width, canvas.height);
+	            context.fillStyle="#1ff";
+	            context.fillRect(0,0,canvas.width,canvas.height);
+	            myDraw(context);
+	        }());
+        	myReflash("/api/dp/d/1",function(val){
+	        	resList = val.data;
+			    }) 
+		}
+    </script>
+</body>
+
+<script src='Fullscreen.js' lang="utf-8"></script>
+<script src='component.js' lang="utf-8"></script>
+<script src='ajaxWms.js' lang="utf-8"></script>
+<script src='other.js' lang="utf-8"></script>
+<script src='message.js' lang="utf-8"></script>
+</html>
+
+

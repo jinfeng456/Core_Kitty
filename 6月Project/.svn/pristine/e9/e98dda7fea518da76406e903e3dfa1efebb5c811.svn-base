@@ -1,0 +1,215 @@
+﻿using System;
+using System.Collections.Generic;
+using GK.WCS.Carrier.dto;
+using GK.WCS.Carrier.enumerate;
+using GK.WCS.Common;
+using GK.WCS.Common.core.dto;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+using static GK.WCS.Carrier.enumerate.CarrierPoint;
+
+namespace GK.WCS.Carrier {
+    public abstract class CarrierSynchro : ZtTask {
+        protected CarrierConnect connect;
+        protected int plcId;
+        Dictionary<int, CarrierSignalStatus> _hisCarrierMessage;
+        Dictionary<int, CarrierSignalStatus> curCarrierMessage;
+        List<int> hisTask;
+        List<int> curTask;
+        ITaskCarrierServer taskCarrierServer = ServerFactray.getServer<ITaskCarrierServer>();
+        ITaskCraneServer taskCraneServer = ServerFactray.getServer<ITaskCraneServer>();
+        CarrierMachineState MachineState=new CarrierMachineState();
+        long lastTime = 0;
+        public CarrierSynchro(int plcId)
+        {
+            this.plcId = plcId;
+            time = 300;
+        }
+        public  CarrierSignalStatus getSignalStatus(int id) {
+            long des = DateTime.Now.Ticks - lastTime;
+            if (des > 10000 * 1000) {
+                LoggerCommon.fileAll("传输线信号超时" + des);
+                return null;
+            }
+            return curCarrierMessage[id];
+        }
+        public Dictionary<int, CarrierSignalStatus> getAllPointSignal()
+        {
+            long des = DateTime.Now.Ticks - lastTime;
+            if (des > 10000 * 1000)
+            {
+                LoggerCommon.fileAll("传输线信号超时" + des);
+                return null;
+            }
+            return curCarrierMessage;
+        }
+        abstract public int signCount();
+
+        public override void excute() {
+            Dictionary<int, CarrierSignalStatus> curCarrierMessagetemp = readerSign();
+            syncSign(curCarrierMessagetemp);
+            curCarrierMessage = curCarrierMessagetemp;
+            _hisCarrierMessage = curCarrierMessagetemp;
+            lastTime = DateTime.Now.Ticks;
+        }
+
+        Dictionary<int, CarrierSignalStatus> readerSign() {
+            byte[] rsTaskNo = connect.getData(52, 0, 1176);
+            byte[] rsSign = connect.getData(54, 0, 588);
+            if (rsTaskNo == null || rsSign == null) {
+                return null;
+            }
+            Dictionary<int, CarrierSignalStatus> carrierMessage = CarrierStatusDB(rsTaskNo, rsSign);
+            keyPointAssign(carrierMessage);
+            return carrierMessage;
+        }
+        List<int> GetTasks(Dictionary<int, CarrierSignalStatus> curCarrierMessage) {
+               List<int> curTaskTmp = new List<int>();
+                 foreach (KeyValuePair<int, CarrierSignalStatus> kvp in curCarrierMessage)//键值对一起遍历
+                    {
+                       int taskNo = kvp.Value.taskNo;
+                        if (taskNo != 0)
+                        {
+                            if (!curTaskTmp.Contains(taskNo))
+                            {
+                                curTaskTmp.Add(taskNo);
+                            }
+                        }
+                    }
+                 return curTaskTmp;
+            }
+
+
+        void syncSign(Dictionary<int, CarrierSignalStatus> curCarrierMessage)
+        {
+            curTask = GetTasks(curCarrierMessage);
+            foreach(int curTk in curTask)
+            {
+                if (hisTask.Count == 0||!hisTask.Contains(curTk))
+                {
+                    TaskCarrier taskCarrier = taskCarrierServer.getCarrarTasksByTaskNo(curTk);
+                    if (taskCarrier != null)
+                    {
+                        if (taskCarrier.status == 1)
+                        {
+                            taskCarrierServer.UpdateTaskCarrierStatus(curTk, 2);
+                        }
+                    }
+                    else
+                    {
+                        LoggerCommon.fileAll("任务号为 " + curTk + " 的任务不存在！ ");
+                    }
+                }
+            }
+            hisTask=curTask;
+            finshTask(curCarrierMessage);
+        }
+        public Dictionary<int, CarrierSignalStatus> CarrierStatusDB(byte[] rsTaskNo, byte[] rsSign)
+        {
+            Dictionary<int, CarrierSignalStatus> carrierMessage = new Dictionary<int, CarrierSignalStatus>();
+            if (rsTaskNo !=null && rsSign!=null)
+            {
+                int number = rsSign.Length / 2;
+                if (rsTaskNo.Length / 4 != number)
+                {
+                    throw new Exception("长度异常");
+                }
+                for (int i = 1; i < 295; i++)
+                {
+                    int sign = Tools.ushort16(rsSign, (i - 1) * 2);
+                    int taskNo = Tools.int32(rsTaskNo, (i - 1) * 4);
+                    carrierMessage.Add(i, new CarrierSignalStatus(i, taskNo, sign));
+                }
+            }
+            return carrierMessage;
+        }
+        public void keyPointAssign(Dictionary<int, CarrierSignalStatus> carrierMessage)
+        {
+            if (carrierMessage == null)
+            {
+                return;
+            }
+            Dictionary<int, PlcCarrierPoint> plcCarrierPoint = CarrierPoint.carrierPoint;
+            byte[] carrierState = connect.getCarrierStatus();
+            foreach (KeyValuePair<int, PlcCarrierPoint> item in plcCarrierPoint)
+            {
+                CarrierMachineState ms = syncMachineState(carrierState, item.Value.ROffset);//所有关键点
+                carrierMessage[item.Key].arriveApply = ms.arriveApply;
+                carrierMessage[item.Key].arrived = ms.arrived;
+                carrierMessage[item.Key].free = ms.free;
+                carrierMessage[item.Key].code = ms.CodeMess;
+                carrierMessage[item.Key].weight = ms.weight;
+                carrierMessage[item.Key].inWHType = ms.inWHType;
+                carrierMessage[item.Key].inTask = ms.inTask;
+                carrierMessage[item.Key].plcMode = ms.plcMode;
+                carrierMessage[item.Key].plcState = ms.plcState;
+            }
+        }
+        public CarrierMachineState syncMachineState(byte[] b,int begin)
+        {           
+            MachineState.parseStatus(b,begin);
+            return MachineState;
+        }
+        public void finshTask(Dictionary<int, CarrierSignalStatus> curCarrierMessage)
+        {
+            if (curCarrierMessage==null)
+            {
+                return;
+            }
+            Dictionary<int,PlcCarrierPoint> keyPoint = CarrierPoint.carrierPoint;
+            foreach (var it in keyPoint)
+            {               
+                CarrierSignalStatus carrierSignal = curCarrierMessage[it.Value.pathNo];
+                if (carrierSignal.arrived == 1)
+                {
+                    int  taskNO = carrierSignal.taskNo;
+                    TaskCarrier taskCarrier = taskCarrierServer.getCarrarTasksByTaskNo(taskNO);
+                    if (taskCarrier != null&& taskCarrier.endPath== it.Value.pathNo)
+                    {
+                        if (taskCarrier.itemType == 2)
+                        {
+                            taskCarrierServer.UpdateTaskCarrierStatus(taskCarrier.taskNo, 9);
+                            connect.clearCarrierTask(it.Value.WOffset);
+                        }
+                        else if(taskCarrier.itemType == 1)
+                        {
+                            taskCarrierServer.UpdateTaskCarrierStatus(taskCarrier.taskNo, 9);
+                            TaskCrane taskCrane= taskCraneServer.getTaskCraneByTaskNo(taskCarrier.taskNo);
+                            if (taskCrane.status != 1)
+                            {
+                                connect.clearCarrierTask(it.Value.WOffset);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        LoggerCommon.fileAll("托盘号为 " + taskNO + "的入库任务不存在！ ");
+                    }
+                }
+            }
+        }
+        public abstract ushort getDataLength();
+        //key path .value plc offset
+         
+        public abstract List<PlcPoint> getKeyPoint();
+
+        public abstract List<int> getDb51PointList();
+
+
+
+
+    }
+
+    public class PlcPoint{
+
+        public int  pathNo;
+        public int  statusOffset;
+
+       public PlcPoint(int pathNo,int statusOffset)
+        {
+           
+            this.pathNo = pathNo;
+            this.statusOffset = statusOffset;               
+        }
+    }
+}

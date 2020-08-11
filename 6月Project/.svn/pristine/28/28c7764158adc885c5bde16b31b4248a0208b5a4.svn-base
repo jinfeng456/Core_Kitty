@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+	
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+		    
+		    <h1 class="mui-title">东阳光库房管理系统手持终端</h1>
+		</header>
+		<div class="mui-content">
+		        <ul class="mui-table-view mui-grid-view mui-grid-9">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="gk/cgrk.html">
+		                    <span class="mui-icon mui-icon-home"></span>
+		                    <div class="mui-media-body">采购入库</div>
+						</a>
+					</li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="gk/cprk.html">
+		                    <span class="mui-icon mui-icon-plus"></span>
+		                    <div class="mui-media-body">产成品入库</div>
+						</a>
+					</li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="gk/cpfjrk.html">
+		                    <span class="mui-icon mui-icon-eye"></span>
+		                    <div class="mui-media-body">成品分拣</div>
+						</a>
+					</li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+		        	<a href="gk/ylfjrk.html">
+		                <span class="mui-icon mui-icon-paperplane"></span>
+		                <div class="mui-media-body">原料分拣</div>
+		        	</a>
+		        </li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<a href="gk/cppk.html">
+		                    <span class="mui-icon mui-icon-search"></span>
+		                    <div class="mui-media-body">成品盘库</div>
+						</a>
+					</li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+		            	<a href="gk/ylpk.html">
+		                    <span class="mui-icon mui-icon-paperclip"></span>
+		                    <div class="mui-media-body">原料盘库</div>
+		            	</a>
+		            </li>
+							
+									
+		        </ul> 
+		</div>
+	</body>
+	<script src="js/mui.js"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+	</script>
+</html>

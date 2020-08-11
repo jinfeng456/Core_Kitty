@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Crane.enumerate {
+    public enum StatusKey : int {
+        CRANE自动,//M10.0
+        CRANE手动,//M10.1
+        CRANE异常,//M10.2
+        CRANE各站均无作业,//M10.3
+        CRANE复归可,//M10.4
+        CRANE复归完成,//M10.5
+        CRANE复归中,//M10.6
+        CRANE连线中,//M10.7
+
+        CRANE自动灯,//M11.0
+        CRANE异常灯,//M11.1
+        CRANE运转灯,//M11.2
+        预留1,//M11.3
+        CRANE左突出,//M11.4
+        CRANE右突出,//M11.5
+        CRANE超宽,//M11.6
+        CRANE超高,//M11.7
+
+        CRANE前进,//M12.0
+        CRANE后退,//M12.1
+        CRANE走行定位,//M12.2
+        CRANE前极限,//M12.3
+        CRANE前减速,//M12.4
+        CRANE后极限,//M12.5
+        CRANE后减速,//M12.6
+        预留2,//M12.7
+        CRANE上升,//M13.0
+        CRANE下降,//M13.1
+        CRANE升降定位,//M13.2
+        CRANE升降高定位,//M13.3
+        CRANE升降低定位,//M13.4
+        CRANE上极限,//M13.5
+        CRANE下极限,//M13.6
+        预留3,//M13.7
+        CRANE左叉取,//M14.0
+        CRANE右叉取,//M14.1
+        CRANE叉臂中央,//M14.2
+        CRANE左端点_单伸,//M14.3
+        CRANE右端点_单伸,//M14.4
+        CRANE左端点_双伸,//M14.5
+        CRANE右端点_双伸,//M14.6
+        CRANE在席,//M14.7
+        CRANE单伸左有物,//M15.0
+        CRANE单伸右有物,//M15.1
+        CRANE双伸左有物,//M15.2
+        CRANE双伸右有物,//M15.3
+
+
+    }
+}

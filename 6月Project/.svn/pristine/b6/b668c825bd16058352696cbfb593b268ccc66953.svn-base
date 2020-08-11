@@ -1,0 +1,65 @@
+﻿using GK.Engine.WCS.wcs;
+using GK.WCS.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.Engine.WCS {
+    public class WCSTransactionFacade {
+
+        static WcsCreateInEngine wcsCreateInEngine=new WcsCreateInEngine();
+        static WcsCreateMoveEngine wcsCreateMoveEngine=new WcsCreateMoveEngine();
+        static WcsCreateOutEngine wcsCreateOutEngine=new WcsCreateOutEngine();
+        static WcsDeleteCraneAndCarrierTask wcsDeleteCraneAndCarrierTask = new WcsDeleteCraneAndCarrierTask();
+
+        public static bool doStockInEngine(TaskComplete task) {
+                lock (wcsCreateInEngine) {
+                    wcsCreateInEngine.completeId=task.id;
+                    wcsCreateInEngine.wmstaskId=task.wmsTaskId;
+                    wcsCreateInEngine.srcId=task.src;
+                    wcsCreateInEngine.desId=task.des;
+                    wcsCreateInEngine.boxCode=task.boxCode;
+                    wcsCreateInEngine.itemType=task.taskType;  
+                    return wcsCreateInEngine.doWork();
+                }       
+        }
+
+         public static bool doCreateMoveEngine(TaskComplete task) {
+                lock (wcsCreateMoveEngine) {
+                    wcsCreateMoveEngine.completeId=task.id;
+                    wcsCreateMoveEngine.wmstaskId=task.wmsTaskId;
+                    wcsCreateMoveEngine.srcId=task.src;
+                    wcsCreateMoveEngine.desId=task.des;
+                    wcsCreateMoveEngine.boxCode=task.boxCode;
+                    wcsCreateMoveEngine.itemType=task.taskType;
+                    wcsCreateMoveEngine.relyTaskId=task.relyTaskId;           
+                    return wcsCreateMoveEngine.doWork();
+                }        
+        }
+
+         public static bool docreateOutEngine(TaskComplete task) {
+                lock (wcsCreateOutEngine) {
+                    wcsCreateOutEngine.completeId = task.id;
+                    wcsCreateOutEngine.wmstaskId = task.wmsTaskId;
+                    wcsCreateOutEngine.srcId = task.src;
+                    wcsCreateOutEngine.desId = task.des;
+                    wcsCreateOutEngine.boxCode = task.boxCode;
+                    wcsCreateOutEngine.itemType = task.taskType;
+                    wcsCreateOutEngine.relyTaskId = task.relyTaskId;
+                    return wcsCreateOutEngine.doWork();
+                }
+        
+        }
+
+        public static bool doDeleteCraneAndCarrierTask(long completeId)
+        {
+            lock (wcsDeleteCraneAndCarrierTask)
+            {
+                wcsDeleteCraneAndCarrierTask.completeId = completeId;
+                return wcsDeleteCraneAndCarrierTask.doWork();
+            }
+
+        }
+    }
+}

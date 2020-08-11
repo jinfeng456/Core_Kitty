@@ -1,0 +1,123 @@
+﻿using GK.Common.dto;
+using GK.DAL.inter;
+using GK.WMS.DAL.abs;
+using GK.WMS.Entity;
+using HY.WCS.DAL.dto;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using Dapper;
+using static Dapper.SqlMapper;
+using GK.WMS.Entity.dto;
+using GK.WMS.Entity.wms;
+
+namespace GK.WMS.DAL
+{
+    public class AbsReceiptOutServer : AbsWMSBaseServer, IReceiptOutServer
+    {
+        //查询所有信息
+        public List<CoreStockDetail> getCoreStockDetials(long id)
+        {
+            String sql = "select * from core_stock_detail where stock_Id=@id and stock_Status=3";
+            return Connection.Query<CoreStockDetail>(sql, new { id }).ToList();
+        }
+
+        public List<WhReceiptOutDetail> getDetials(long receiptOutId)
+        {
+            String sql = "select * from Wh_Receipt_Out_Detail  where recept_id=@receiptOutId";
+            return Connection.Query<WhReceiptOutDetail>(sql, new { receiptOutId }).ToList();
+        }
+
+        public Page<WhReceiptOut> QueryReceiptOutPage(ReceiptDto dto)
+        {
+            string sql = " select * from Wh_Receipt_out  where 1=1 ";
+
+            if (!String.IsNullOrEmpty(dto.batchNo))
+            {
+                dto.batchNo = "%" + dto.batchNo + "%";
+                sql += "and batch_No like  @batchNo ";
+            }
+            if (!String.IsNullOrEmpty(dto.srcSoNo))
+            {
+                dto.srcSoNo = "%" + dto.srcSoNo + "%";
+                sql += "and src_So_No like @srcSoNo ";
+            }
+            if (dto.outType != 0)
+            {
+                sql += "and out_Type=@outType ";
+            }
+            if (dto.outTypeClass != 0)
+            {
+                sql += "and out_Type_Class=@outTypeClass ";
+            }
+            string orderBy = "begin_Time  desc";
+            return this.queryPage<WhReceiptOut>(sql, orderBy, dto);
+        }
+        public Page<WhReceiptOutDetail> QueryReceiptOutDetailPage(ReceiptDto dto)
+        {
+            string sql = " select * from Wh_Receipt_out_detail  where 1=1 ";
+
+            if (!String.IsNullOrEmpty(dto.itemId))
+            {
+                sql += "and item_Id=@itemId ";
+            }
+            if (!String.IsNullOrEmpty(dto.batchNo))
+            {
+                dto.batchNo = "%" + dto.batchNo + "%";
+                sql += "and batch_No like @batchNo ";
+            }
+            if (!String.IsNullOrEmpty(dto.srcSoNo))
+            {
+                dto.srcSoNo = "%" + dto.srcSoNo + "%";
+                sql += "and src_So_No like @srcSoNo ";
+            }
+            string orderBy = "id  desc";
+            return this.queryPage<WhReceiptOutDetail>(sql, orderBy, dto);
+        }
+        public List<CoreStock> GetCoreStockId(string boxCode)
+        {
+            String sql = "select * from core_stock where box_Code=@boxCode";
+            return Connection.Query<CoreStock>(sql, new { boxCode }).ToList();
+        }
+
+
+        public bool updateCoreStockDetails(string barCode)
+        {
+            string sql = @"update core_stock_detail set stock_Status=0 where bar_Code=@barCode and stock_Status=3";
+            Connection.Execute(sql, new { barCode = barCode });
+            return true;
+        }
+
+        public bool updateCoreStockDetailsById(long id)
+        {
+            string sql = @"update core_stock_detail set stock_Status=0 where id=@id";
+            Connection.Execute(sql, new { id = id });
+            return true;
+        }
+
+        //根据成品码获取明细
+        public List<CoreStockDetail> getCoreStockDetialsId(string barCode)
+        {
+            String sql = "select * from core_stock_detail where bar_Code=@barCode";
+            return Connection.Query<CoreStockDetail>(sql, new { barCode }).ToList();
+        }
+
+        public List<WhReceiptOutDetail> GetReceiptOutDetail(ReceiptAddDto dto)
+        {
+            string sql = "select * from Wh_Receipt_out_detail where 1=1 ";
+            if (dto.id != 0)
+            {
+                sql += " and recept_id=@receptId ";
+            }
+            return Connection.Query<WhReceiptOutDetail>(sql, new { receptId = dto.id }).ToList();
+        }
+
+        public void DeleteDetailByReceptId(long receptId)
+        {
+            string sql = @"DELETE FROM Wh_Receipt_out_detail where recept_id=@receptId";
+            Connection.Execute(sql, new { receptId = receptId });
+        }
+    }
+}

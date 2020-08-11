@@ -1,0 +1,99 @@
+﻿  carrierTaskRun=(function  (){
+  	         speed=1
+				   	 var taskRunStatus={};
+				   	 
+				   	  function getAnchor(taskNo){
+				   	 	   var taskObj=taskRunStatus[taskNo];
+				   	 	   ++taskObj.time;
+				   	 	   var begin={}
+				   	 	   var end={}
+				   	 	   
+				   	 		 for(var i=0;i<carrierList.length;i++){
+							     	 var carrier=		carrierList[i]
+					     			 if(carrier.id==taskObj.begin){
+					     			 	 var begin = carrier
+					     			 }else if(carrier.id==taskObj.end){
+					     			 	 var end = carrier
+					     			 }
+					     			 if(begin.id&&end.id){
+					     			 		break;
+					     			 }
+					       }
+					      beginAnchor =  begin.getAnchor();
+					      endAnchor = end.getAnchor();
+					      if(Math.abs(beginAnchor.x-endAnchor.x) >Math.abs(beginAnchor.y-endAnchor.y)){//水平行走
+					      	var symbol=1
+					      	if(beginAnchor.x>endAnchor.x){
+					      		symbol=-1
+					        }
+					        var dis = speed*taskObj.time
+					        if(Math.abs(beginAnchor.x-endAnchor.x)<dis){
+					        	taskObj.time=0;
+					        	}
+					        var x=beginAnchor.x+dis*symbol;
+					      	return {x:x,y:beginAnchor.y}
+					      }else {
+						      	var symbol=1
+						      	if(beginAnchor.y>endAnchor.y){
+						      		 symbol=-1
+						        }
+						        var dis=speed*taskObj.time
+						        var y=beginAnchor.y+ dis*symbol;
+						        
+						        
+						        if(  Math.abs(beginAnchor.y-endAnchor.y)<dis){
+					        	taskObj.time=0;
+					        	}
+						      
+						        
+					      		return {x:beginAnchor.x,y:y}
+					      }
+				   	 	
+				   	 }
+  return  new  function(){
+			    	
+				   	 this.updateTask=function(taskNo,begin,end){
+					   	 if(!taskRunStatus.hasOwnProperty(taskNo)){
+					   	 			taskRunStatus[taskNo]={}
+					   	 }
+					   	 
+					   	 if(taskRunStatus[taskNo].begin!=begin||taskRunStatus[taskNo].end!=end){
+						   	 		taskRunStatus[taskNo].begin=begin;
+						   	 		taskRunStatus[taskNo].end=end;
+						   	 		taskRunStatus[taskNo].time=0;
+					   	 }
+					   	 taskRunStatus[taskNo].perClear=0;
+				   	 }
+				 	 this.perClear=function(){
+				   	for(var taskNo in taskRunStatus){
+				   		taskRunStatus[taskNo].perClear=1;
+				   	}
+				 	 }
+				   	 
+				   	 
+				   	 this.myClear=function(){
+						   	for(var key in taskRunStatus){
+						   			if(taskRunStatus[key].perClear==1){
+						   					delete taskRunStatus[key]
+						   			}
+						   	}
+				   	 }
+				   	 
+				   	 this.getAllAnthor=function(){
+				   	 	var array=[];
+				   	 	for(var taskNo in taskRunStatus){
+					   	 		var dat=getAnchor(taskNo);
+					   	 		array.push(dat)
+				   	 	}
+				   	 	return array;
+				   	 }
+				   	 
+				   	
+	   	 }
+	   	 
+   	}())
+   
+   
+   
+   
+   

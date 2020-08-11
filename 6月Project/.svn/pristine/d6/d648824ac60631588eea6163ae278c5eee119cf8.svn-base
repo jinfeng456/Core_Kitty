@@ -1,0 +1,29 @@
+﻿
+
+using GK.WCS.Common;
+//using GK.Common.Engine;
+
+namespace GK.WCS.Controller {
+    public  class CranePriority:ZtTask {
+    
+
+        public CranePriority() {
+            time = 100;
+           
+        
+        }
+
+        public override void excute()
+        {
+
+            LoggerCommon.consol("i am sgj");
+          
+           // connect.ProcessPLCData();
+            //WcsCreateInEngine wcie = new WcsCreateInEngine();
+            //wcie.doWork(DBUtils.CreateWCSConnection(ServerFactray.prefixal));
+
+
+        }
+      
+    }
+}

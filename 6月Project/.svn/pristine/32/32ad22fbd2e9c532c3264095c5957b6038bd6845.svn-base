@@ -1,0 +1,77 @@
+﻿using GK.WMS.Entity.wms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.Engine.WMS.wms
+{
+    public class WMSTransactionFacade
+    {
+        public static object  lockObj =new object();
+
+        static InEngine inEngine = new InEngine();
+        static SyncWcsReultEngine syncWcsReultEngine = new SyncWcsReultEngine();
+
+        static CheckOutEngine checkOutEngine = new CheckOutEngine();
+        static BatchOutEngine batchOutEngine = new BatchOutEngine();
+        static OtherOutEngine otherOutEngine = new OtherOutEngine();
+        static StockPkEngine pkEngine = new StockPkEngine();
+
+        public static bool doStockInEngine(string boxCode)
+        {
+            lock (lockObj)
+            {
+                inEngine.boxCode = boxCode;
+                inEngine.doWork();
+                return true;
+            }
+        }
+        public static bool syncWcsReult(long taskId, int status)
+        {
+
+            lock (lockObj)
+            {
+                syncWcsReultEngine.taskId = taskId;
+                syncWcsReultEngine.taskStatus = status;
+                return syncWcsReultEngine.doWork();
+            }
+
+        }
+
+        public static bool doPkEngine(WhReceiptPk whReceiptPk)
+        {
+            pkEngine.whReceiptPk = whReceiptPk;
+            lock (lockObj)
+            {
+                return pkEngine.doWork();
+            }
+        }
+        public static bool doBatchOutEngine(WhReceiptOut whReceipt)
+        {
+            batchOutEngine.whReceipt = whReceipt;
+            lock (lockObj)
+            {
+                return batchOutEngine.doWork();
+            }
+        }
+
+        public static bool doCheckOutEngine(WhReceiptOut whReceipt)
+        {
+            checkOutEngine.whReceipt = whReceipt;
+            lock (lockObj)
+            {
+                return checkOutEngine.doWork();
+            }
+        }
+
+        public static bool doOtherOutEngine(WhReceiptOut whReceipt)
+        {
+            otherOutEngine.whReceipt = whReceipt;
+            lock (lockObj)
+            {
+                return otherOutEngine.doWork();
+            }
+        }
+    }
+}

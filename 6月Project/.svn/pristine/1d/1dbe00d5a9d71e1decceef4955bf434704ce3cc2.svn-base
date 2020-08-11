@@ -1,0 +1,37 @@
+﻿using System;
+using GK.WCS.Common;
+using GK.WCS.Common.task;
+using GK.WCS.Crane;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+
+namespace GK.WCS.Crane {
+    //输送线
+    public abstract class CraneSynchro : ZtTask {
+        protected int craneId;
+     
+        public CraneSynchro(int craneId) {
+            this.craneId = craneId;
+
+        }
+        protected GkCraneStatusBase craneStatus;
+
+        public GkCraneStatusBase getCraneStatus()
+        {
+            if (craneStatus == null) {
+                return null;
+            }
+            long delay = DateTime.Now.Ticks - craneStatus.getLastTime();
+            if (delay > 2000 * 10000)
+            {
+                LoggerCommon.fileAll(craneId + "垛机状态超时:" + delay);
+                return null;
+            }
+            else
+            {
+                return craneStatus;
+            }
+        }
+
+    }
+}

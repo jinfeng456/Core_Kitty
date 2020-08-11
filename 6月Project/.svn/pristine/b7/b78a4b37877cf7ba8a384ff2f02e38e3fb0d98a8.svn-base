@@ -1,0 +1,63 @@
+﻿using GK.WMS.Entity.wms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.Engine.WMS.wms {
+    public class WMSTransactionFacade {
+
+        
+        static InEngine inEngine=new InEngine();
+        static SyncWcsReultEngine syncWcsReultEngine =new SyncWcsReultEngine();
+
+        static CheckOutEngine checkOutEngine = new CheckOutEngine();
+        static BatchOutEngine batchOutEngine = new BatchOutEngine();
+        static OtherOutEngine otherOutEngine = new OtherOutEngine();
+
+        public static bool doStockInEngine(string boxCode) {
+            lock (inEngine) {
+                inEngine.boxCode=boxCode;
+                inEngine.doWork();
+                return true;
+            }
+        }
+         public static bool syncWcsReult(long taskId,int status)
+        {
+
+             lock (syncWcsReultEngine) {
+                syncWcsReultEngine.taskId = taskId;
+                syncWcsReultEngine.taskStatus= status;
+                return syncWcsReultEngine.doWork();
+             }
+            
+        }
+
+        public static bool doBatchOutEngine(WhReceiptOut whReceipt)
+        {
+            batchOutEngine.whReceipt = whReceipt;
+            lock (batchOutEngine)
+            {
+                return batchOutEngine.doWork();
+            }
+        }
+
+        public static bool doCheckOutEngine(WhReceiptOut whReceipt)
+        {
+            checkOutEngine.whReceipt = whReceipt;
+            lock (checkOutEngine)
+            {
+                return checkOutEngine.doWork();
+            }
+        }
+
+        public static bool doOtherOutEngine(WhReceiptOut whReceipt)
+        {
+            otherOutEngine.whReceipt = whReceipt;
+            lock (otherOutEngine)
+            {
+                return otherOutEngine.doWork();
+            }
+        }
+    }
+}

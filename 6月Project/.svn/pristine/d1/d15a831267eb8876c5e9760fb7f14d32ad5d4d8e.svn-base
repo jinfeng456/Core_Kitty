@@ -1,0 +1,25 @@
+﻿
+using System.Collections.Generic;
+using System.Text;
+using GK.WCS.Common;
+using GK.WCS.Common.task;
+
+namespace GK.WCS.Carrier {
+    
+    public class CarrierConnect1 : CarrierConnect {
+        public CarrierConnect1():base(1) {
+        }
+        public override ushort getSendAddr() {
+            return 5;
+        }
+        
+        public override ushort getResetCarrierAddr() {
+            return 11;
+        }
+        public override ushort getClearTaskAddr() {
+            return 12;
+        }
+    }
+ 
+    
+}
