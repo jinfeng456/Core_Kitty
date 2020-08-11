@@ -1,0 +1,146 @@
+{
+ 
+    "el":{"messagebox":{"confirm":"confirm","cancel":"confirm"}},
+
+  "common": {
+    "home": "Home",
+    "login": "Login",
+    "logout": "Logout",
+    "doc": "Document",
+    "blog": "Blog",
+    "projectRepo": "Project",
+    "myMsg": "My Message",
+    "config": "Config",
+   
+    "restore": "Restore",
+    "backupRestore": "Backup Restore",
+    "versionName": "Version",
+    "exit": "Exit",
+    "catalog": "Catalog",
+    "menu": "Menu",
+    "button": "Button",
+    "parentMenu": "TopMenu"
+  },
+  "action": {
+    "operation": "Operation",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "batchDelete": "Batch Delete",
+    "search": "Search",
+    "loading": "loading",
+    "submit": "Submit",
+    "comfirm": "Comfirm",
+    "cancel": "Cancel",
+    "reset": "Reset",
+    "tips": "Tips",
+    "isConfirm": "Confirm to submit？",
+    "yes": "Yes",
+    "no": "No",
+    "refresh": "Refresh",
+    "column": "Column",
+    "select": "Please Select",
+    "operateSucess": "Success",
+    "operateFail": "Fail，",
+    "operateFail1": "Fail",
+    "selectALL": "ALL",
+    "isDelete": "Confirm to delete？",
+    "deleteSuccess": "DeleteSuccess",
+    "showDetail": "ShowDetail",
+    "desc": "Desc",
+    "out":"Out",
+    "audit":"Audit",
+    "generate":"Generate"
+    
+  },
+  "public": {
+    "createTime": "CreateTime",
+    "createName": "CreateName",
+    "updateTime": "UpdateTime",
+    "updateName": "UpdateName"
+  },
+  "sys": {
+    "sysMng": "System Manage",
+    "userMng": "User Manage",
+    "deptMng": "Dept Manage",
+    "roleMng": "Role Manage",
+    "menuMng": "Menu Manage",
+    "logMng": "Log Manage",
+    "sysMonitor": "System Monitor"
+  },
+  "user": {
+    "name": "UserName",
+    "passwords": "Password",
+    "roleNames": "Role",
+    "email": "Email",
+    "mobile": "Mobile",
+    "userstatus": "Status",
+    "userInput": "Enter User Name",
+    "code":"Code",
+    "auditPassword":"AuditPassword",
+    "userOriginalPassword":"userOriginalPassword",
+    "newPassWord":"newPassword",
+    "confirmPassWord":"confirmPassword",
+    "checkOldPassWord":"checkOldPassword",
+    "userPassWord":"userPassword",
+    "acceptancePassword":"acceptancePassword"
+
+  },
+  "role": {
+    "name": "Role",
+    "remark": "Remark",
+    "rolePermission": "RolePermission",
+    "roleNameInput": "Enter Role Name"
+  },
+  "menu": {
+    "name": "Name",
+    "icon": "Icon",
+    "type": "Type",
+    "lastMenu": "LastMenu",
+    "menuUrl": "MenuUrl",
+    "authorizationMark": "Authorization",
+    "sort": "Sort",
+    "menuType": "MenuType",
+    "menuRoute": "MenuRoute"
+  },
+  "dict": {
+    "name": "Name",
+    "dictValue": "Value",
+    "dictType": "Type",
+    "description": "Description ",
+    "remark": "Remark",
+    "sort": "Sort",
+    "dictNameInput": "Enter Dict Name",
+    "dictClassInput": "Enter DictClass Name"
+  },
+  "log": {
+    "userName": "userName",
+    "method": "method",
+    "parameter": "parameter",
+    "time consuming": "time consuming",
+    "founder": "founder",
+    "creation time": "creation time",
+    "please enter": "please enter"
+  },
+  "item": {
+    "please enter": "please enter",
+    "please code": "please code",
+    "classifyId": "classifyId",
+    "code": "code",
+    "name": "name",
+    "restore": "restore",
+    "Whether to disable": "Whether to disable",
+    "Disable": "Disable",
+    "active": "active",
+    "yes": "yes",
+    "no": "no"
+  },
+  "classify": {
+    "please enter": "please enter",
+    "name": "name",
+    "info": "info",
+    "stockWidth": "stockWidth",
+    "stockHigh": "stockHigh",
+    "stockDeep": "stockDeep"
+  }
+}

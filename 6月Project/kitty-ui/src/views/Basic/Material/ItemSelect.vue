@@ -1,0 +1,230 @@
+<template>
+  <div class="page-container">
+    <!--工具栏-->
+    <el-dialog title="物料"
+               width="50%"
+               :visible.sync="itemDialogVisible"
+               :before-close="handleClose">
+      <div class="toolbar"
+           style="float:left;padding-top:10px;padding-left:15px;">
+        <el-form :inline="true"
+                 :model="filters"
+                 :size="size">
+          <el-form-item>
+            <el-input v-model="filters.name"
+                      :placeholder="$t('item.please enter')"></el-input>
+          </el-form-item>
+          <el-form-item>
+              <el-select v-model="filters.classifyId"
+                     placeholder="请选择物料类别"
+                     style="width: 100%;"
+                     clearable>
+                <el-option v-for="item in classTypes"
+                       :key="item.id"
+                       :label="item.name+item.areaId"
+                       :value="item.id">
+                </el-option>
+              </el-select>
+          </el-form-item>
+
+          <el-form-item>
+            <el-select v-model="filters.coreItemType"
+                     placeholder="请选择物料类型"
+                     style="width: 100%;"
+                     clearable>
+              <el-option v-for="item in dicts.coreItemType"
+                       :key="item.value"
+                       :label="item.label"
+                       :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+
+        </el-form>
+      </div>
+
+      <div class="toolbar"
+            style="float:left;padding-top:0px;padding-left:15px;">
+        <el-form :inline="true"
+               :model="filters"
+               :size="size">
+          <el-form-item>
+            <el-input v-model="filters.code"
+                    placeholder="请输入物料编码"></el-input>
+          </el-form-item>
+
+          <el-form-item>
+            <el-input v-model="filters.modelSpecs"
+                      placeholder="请输入规格型号"></el-input>
+          </el-form-item>
+
+          <el-form-item>
+            <el-input v-model="filters.packageSpecs"
+                      placeholder="请输入包装规格"></el-input>
+          </el-form-item>
+
+          <kt-button icon="fa fa-search"
+                      :label="$t('action.search')"
+                      perms="material:item:view"
+                      type="primary"
+                      @click="findPage(null)" />
+      </el-form>
+      </div>
+
+      <!--表格内容栏-->
+      <item-kt-table :height="350"
+                     :data="pageResult"
+                     :columns="columns"
+                     @findPage="findPage"
+                     permsSelect="sys:user:delete"
+                     @handleSelect="handleSelect">
+      </item-kt-table>
+
+      <div slot="footer"
+           class="dialog-footer">
+        <el-button :size="size"
+                   @click.native="handleClose">{{$t('action.cancel')}}</el-button>
+      </div>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import PopupTreeInput from "@/components/PopupTreeInput"
+import ItemKtTable from "@/views/Core/ItemKtTable"
+import KtButton from "@/views/Core/KtButton"
+
+import { format } from "@/utils/datetime"
+export default {
+  components: {
+    PopupTreeInput,
+    ItemKtTable,
+    KtButton
+  },
+  props: {
+    fromCorpId: {  // 供应商主键
+      type: Number
+    },
+    itemDialogVisible: {
+      type: Boolean
+    }
+  },
+  data () {
+    return {
+      size: 'small',
+      filters: {
+        name: ''
+      },
+      columns: [],
+      filterColumns: [],
+      pageRequest: { pageNum: 1, pageSize: 10 },
+      pageResult: {},
+      dicts:this.$store.state.dict.dicts,
+      // 新增编辑界面数据
+      editLoading: false,
+      dataForm: {
+        id: 0,
+        //classifyId: ,
+        code: '',
+        name: '',
+        active: 0
+      },
+      classTypes: []
+    }
+  },
+
+  methods: {
+    //获取分页数据
+    findPage: function (data) {
+      this.filters.supplierId = this.fromCorpId
+      if (data !== null) {
+        this.filters.pageNum = data.pageRequest.pageNum
+        this.filters.pageSize = data.pageRequest.pageSize
+      }
+      //入库单物料选择
+      debugger
+      if(this.fromCorpId!=null){
+          this.$api.receiptIn.findItemPage(this.filters).then((res) => {
+          this.pageResult = res.data
+          this.findClassTypes()
+        }).then(data != null ? data.callback : '')
+      }
+      else{
+      //出库单物料选择
+          this.$api.item.findPage(this.filters).then((res) => {
+          this.pageResult = res.data
+          this.findClassTypes()
+        }).then(data != null ? data.callback : '')
+      }
+
+
+    },
+
+      selectionFormats: function (row, column, cellValue, index){
+			let key=""
+			let propt=column.property;
+			if(propt=="coreItemType"){
+				key="coreItemType"
+			}
+		    let val=row[column.property];
+			let dict =this.$store.state.dict.dicts[key];
+			if(dict==undefined){
+					return row[column.property]
+			}
+			for(let i=0;i<dict.length;i++){
+				if(dict[i].value==val){
+					return dict[i].label;
+				}
+			}
+      return row[column.property]
+     },
+    selectionFormat: function (row, column, cellValue, index) {
+      let key = ""
+      let propt = column.property;
+      let val = row[column.property];
+      let dict = this.classTypes;
+      for (let i = 0; i < dict.length; i++) {
+        if (dict[i].id == val) {
+          return dict[i].name;
+        }
+      }
+      return val
+    },
+    // 批量删除
+    handleSelect: function (data) {
+      this.$emit('handleSelect', data)
+    },
+    //加载物料类别分类
+    findClassTypes: function () {
+      this.$api.classify.findPage().then((res) => {
+        this.classTypes = res.data.content
+
+      })
+    },
+    handleClose: function () {
+      this.$emit('itemHidden', {})
+    },
+
+    created () {
+    this.findClassTypes()
+    }
+  },
+  mounted () {
+
+    this.columns = [
+      { prop: "name", label: "item.name", minWidth: 100 },
+      { prop: "code", label: "item.code", minWidth: 100 },
+      { prop: "modelSpecs", label: "规格型号", minWidth: 100 },
+      { prop: "coreItemType", label: "物料类型", minWidth: 100, formatter:this.selectionFormats },
+      { prop: "classifyId", label: "item.classifyId", minWidth: 100, formatter: this.selectionFormat },
+      { prop: "packageSpecs", label: "包装规格", minWidth: 100 }
+    ]
+    //this.filterColumns = JSON.parse(JSON.stringify(this.columns));
+  }
+
+}
+
+</script>
+
+<style scoped>
+</style>

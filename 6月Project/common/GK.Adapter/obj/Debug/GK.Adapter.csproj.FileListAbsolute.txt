@@ -1,0 +1,9 @@
+G:\SVN项目\6月Project\common\GK.Adapter\bin\Debug\GK.Ws.Mes.dll.config
+G:\SVN项目\6月Project\common\GK.Adapter\bin\Debug\GK.Ws.Mes.dll
+G:\SVN项目\6月Project\common\GK.Adapter\bin\Debug\GK.Ws.Mes.pdb
+G:\SVN项目\6月Project\common\GK.Adapter\bin\Debug\Newtonsoft.Json.dll
+G:\SVN项目\6月Project\common\GK.Adapter\obj\Debug\GK.Adapter.csprojAssemblyReference.cache
+G:\SVN项目\6月Project\common\GK.Adapter\obj\Debug\GK.Adapter.csproj.CoreCompileInputs.cache
+G:\SVN项目\6月Project\common\GK.Adapter\obj\Debug\GK.Adapter.csproj.CopyComplete
+G:\SVN项目\6月Project\common\GK.Adapter\obj\Debug\GK.Ws.Mes.dll
+G:\SVN项目\6月Project\common\GK.Adapter\obj\Debug\GK.Ws.Mes.pdb

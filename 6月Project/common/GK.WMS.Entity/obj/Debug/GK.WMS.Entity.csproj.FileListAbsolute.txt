@@ -1,0 +1,10 @@
+G:\SVN项目\6月Project\common\GK.WMS.Entity\bin\Debug\GK.WMS.Entity.dll
+G:\SVN项目\6月Project\common\GK.WMS.Entity\bin\Debug\GK.WMS.Entity.pdb
+G:\SVN项目\6月Project\common\GK.WMS.Entity\bin\Debug\GK.Common.dll
+G:\SVN项目\6月Project\common\GK.WMS.Entity\bin\Debug\MongoDB.Bson.dll
+G:\SVN项目\6月Project\common\GK.WMS.Entity\obj\Debug\GK.WMS.Entity.csprojAssemblyReference.cache
+G:\SVN项目\6月Project\common\GK.WMS.Entity\obj\Debug\GK.WMS.Entity.csproj.CoreCompileInputs.cache
+G:\SVN项目\6月Project\common\GK.WMS.Entity\obj\Debug\GK.WMS.Entity.csproj.CopyComplete
+G:\SVN项目\6月Project\common\GK.WMS.Entity\obj\Debug\GK.WMS.Entity.dll
+G:\SVN项目\6月Project\common\GK.WMS.Entity\obj\Debug\GK.WMS.Entity.pdb
+G:\SVN项目\6月Project\common\GK.WMS.Entity\bin\Debug\Oracle.DataAccess.dll

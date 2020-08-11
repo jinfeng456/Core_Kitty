@@ -1,0 +1,15 @@
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\GK.FMXT.DAL.dll
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\GK.FMXT.DAL.pdb
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\GK.Common.dll
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\GK.Mongo.dll
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\GK.WMS.Entity.dll
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\MongoDB.Bson.dll
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\MongoDB.Driver.dll
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\Newtonsoft.Json.dll
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\Oracle.DataAccess.dll
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\bin\Debug\GK.WMS.Entity.pdb
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\obj\Debug\GK.Fmxt.DAL.csprojAssemblyReference.cache
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\obj\Debug\GK.Fmxt.DAL.csproj.CoreCompileInputs.cache
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\obj\Debug\GK.Fmxt.DAL.csproj.CopyComplete
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\obj\Debug\GK.FMXT.DAL.dll
+G:\SVN项目\6月Project\common\GK.FMXT.DAL\obj\Debug\GK.FMXT.DAL.pdb

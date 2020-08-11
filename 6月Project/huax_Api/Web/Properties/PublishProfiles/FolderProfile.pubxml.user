@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>http://localhost:9055/webService</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/CMFrameWork.dll">
+      <publishTime>11/20/2018 16:12:56</publishTime>
+    </File>
+    <File Include="bin/CMNetLib.dll">
+      <publishTime>04/08/2019 09:31:32</publishTime>
+    </File>
+    <File Include="bin/GK.Common.dll">
+      <publishTime>06/11/2020 17:03:38</publishTime>
+    </File>
+    <File Include="bin/GK.Common.dll.config">
+      <publishTime>05/18/2020 13:05:40</publishTime>
+    </File>
+    <File Include="bin/GK.Common.pdb">
+      <publishTime>06/05/2020 16:04:19</publishTime>
+    </File>
+    <File Include="bin/GK.Engine.WMS.dll">
+      <publishTime>06/18/2020 09:32:17</publishTime>
+    </File>
+    <File Include="bin/GK.Engine.WMS.dll.config">
+      <publishTime>05/18/2020 13:05:34</publishTime>
+    </File>
+    <File Include="bin/GK.Engine.WMS.pdb">
+      <publishTime>06/18/2020 09:32:17</publishTime>
+    </File>
+    <File Include="bin/GK.FMXT.DAL.dll">
+      <publishTime>06/18/2020 09:32:17</publishTime>
+    </File>
+    <File Include="bin/GK.FMXT.DAL.pdb">
+      <publishTime>06/18/2020 09:32:17</publishTime>
+    </File>
+    <File Include="bin/GK.Mongo.dll">
+      <publishTime>06/18/2020 09:28:44</publishTime>
+    </File>
+    <File Include="bin/GK.Mongo.dll.config">
+      <publishTime>05/18/2020 13:05:37</publishTime>
+    </File>
+    <File Include="bin/GK.Mongo.pdb">
+      <publishTime>05/29/2020 11:55:06</publishTime>
+    </File>
+    <File Include="bin/GK.WMS.DAL.dll">
+      <publishTime>06/18/2020 09:32:17</publishTime>
+    </File>
+    <File Include="bin/GK.WMS.DAL.pdb">
+      <publishTime>06/18/2020 09:32:17</publishTime>
+    </File>
+    <File Include="bin/GK.WMS.Entity.dll">
+      <publishTime>06/18/2020 09:32:16</publishTime>
+    </File>
+    <File Include="bin/GK.WMS.Entity.pdb">
+      <publishTime>06/18/2020 09:32:16</publishTime>
+    </File>
+    <File Include="bin/GK.Ws.Mes.dll">
+      <publishTime>06/18/2020 09:32:16</publishTime>
+    </File>
+    <File Include="bin/GK.Ws.Mes.dll.config">
+      <publishTime>05/27/2020 10:20:08</publishTime>
+    </File>
+    <File Include="bin/GK.Ws.Mes.pdb">
+      <publishTime>06/18/2020 09:32:16</publishTime>
+    </File>
+    <File Include="bin/HY.Mongon.DAL.dll">
+      <publishTime>03/10/2020 15:52:43</publishTime>
+    </File>
+    <File Include="bin/HY.Mongon.DAL.dll.config">
+      <publishTime>03/04/2020 14:23:07</publishTime>
+    </File>
+    <File Include="bin/HY.Mongon.DAL.pdb">
+      <publishTime>03/10/2020 15:52:43</publishTime>
+    </File>
+    <File Include="bin/HY.WCS.DAL.dll">
+      <publishTime>03/10/2020 16:12:45</publishTime>
+    </File>
+    <File Include="bin/HY.WCS.DAL.dll.config">
+      <publishTime>03/02/2020 12:38:42</publishTime>
+    </File>
+    <File Include="bin/HY.WCS.DAL.pdb">
+      <publishTime>03/10/2020 16:12:45</publishTime>
+    </File>
+    <File Include="bin/HY.WCS.Entity.dll">
+      <publishTime>03/10/2020 14:17:42</publishTime>
+    </File>
+    <File Include="bin/HY.WCS.Entity.dll.config">
+      <publishTime>03/02/2020 12:38:42</publishTime>
+    </File>
+    <File Include="bin/HY.WCS.Entity.pdb">
+      <publishTime>03/10/2020 14:17:42</publishTime>
+    </File>
+    <File Include="bin/HY.WMS.Model.dll">
+      <publishTime>03/10/2020 14:17:43</publishTime>
+    </File>
+    <File Include="bin/HY.WMS.Model.dll.config">
+      <publishTime>03/05/2020 15:56:44</publishTime>
+    </File>
+    <File Include="bin/HY.WMS.Model.pdb">
+      <publishTime>03/10/2020 14:17:43</publishTime>
+    </File>
+    <File Include="bin/HY.Ws.Mes.dll">
+      <publishTime>03/10/2020 15:52:43</publishTime>
+    </File>
+    <File Include="bin/HY.Ws.Mes.dll.config">
+      <publishTime>03/04/2020 14:49:51</publishTime>
+    </File>
+    <File Include="bin/HY.Ws.Mes.pdb">
+      <publishTime>03/10/2020 15:52:43</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.Core.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.SystemWeb.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/MongoDB.Bson.dll">
+      <publishTime>05/18/2020 13:05:39</publishTime>
+    </File>
+    <File Include="bin/MongoDB.Driver.dll">
+      <publishTime>05/18/2020 13:05:39</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>05/18/2020 13:05:39</publishTime>
+    </File>
+    <File Include="bin/Oracle.DataAccess.dll">
+      <publishTime>05/18/2020 13:05:39</publishTime>
+    </File>
+    <File Include="bin/Quartz.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/Quartz.pdb">
+      <publishTime>11/15/2019 16:36:04</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="bin/Web.dll">
+      <publishTime>06/18/2020 09:32:18</publishTime>
+    </File>
+    <File Include="bin/Web.pdb">
+      <publishTime>06/18/2020 09:32:18</publishTime>
+    </File>
+    <File Include="bin/WebApi.dll">
+      <publishTime>06/18/2020 09:32:18</publishTime>
+    </File>
+    <File Include="bin/WebApi.dll.config">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/WebApi.pdb">
+      <publishTime>06/18/2020 09:32:18</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="bin/YabaoSoft.Common.dll">
+      <publishTime>11/27/2019 13:29:10</publishTime>
+    </File>
+    <File Include="bin/YabaoSoft.Common.pdb">
+      <publishTime>11/27/2019 13:29:10</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>11/15/2019 16:36:02</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>11/15/2019 16:36:02</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>03/29/2010 17:36:52</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.ArrayOfString.datasource">
+      <publishTime>01/14/2020 14:41:56</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.dingdan.datasource">
+      <publishTime>01/14/2020 14:41:56</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.fahuohouResponse.datasource">
+      <publishTime>01/14/2020 14:41:57</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.getdingdanshujuResponse.datasource">
+      <publishTime>01/14/2020 14:41:57</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.getguangxianhaoResponse.datasource">
+      <publishTime>01/14/2020 14:41:57</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.getxianghaoResponse.datasource">
+      <publishTime>01/14/2020 14:41:57</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.ISchuhuoResponse.datasource">
+      <publishTime>01/14/2020 14:41:57</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.ISlingliaoResponse.datasource">
+      <publishTime>01/14/2020 14:41:57</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.ISrkResponse.datasource">
+      <publishTime>01/14/2020 14:41:57</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.kucunhouResponse.datasource">
+      <publishTime>01/14/2020 14:41:56</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.kucunqianResponse.datasource">
+      <publishTime>01/14/2020 14:41:56</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.lingliaohouResponse.datasource">
+      <publishTime>01/14/2020 14:41:57</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.Location.datasource">
+      <publishTime>01/14/2020 14:41:56</publishTime>
+    </File>
+    <File Include="Connected Services/huaxMes/Web.huaxMes.yingrkshujResponse.datasource">
+      <publishTime>01/14/2020 14:41:57</publishTime>
+    </File>
+    <File Include="DLL/Antlr3.Runtime.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/log4net.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/Microsoft.AspNet.SignalR.Core.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/Microsoft.AspNet.SignalR.SystemWeb.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/Newtonsoft.Json.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Net.Http.Formatting.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Web.Helpers.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Web.Http.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Web.Http.WebHost.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Web.Mvc.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Web.Optimization.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Web.Razor.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Web.WebPages.Deployment.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Web.WebPages.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/System.Web.WebPages.Razor.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="DLL/WebGrease.dll">
+      <publishTime>03/26/2019 11:43:58</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/10/2020 17:45:45</publishTime>
+    </File>
+    <File Include="HtmlPage1.html">
+      <publishTime>12/25/2019 09:08:25</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/18/2020 10:24:46</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

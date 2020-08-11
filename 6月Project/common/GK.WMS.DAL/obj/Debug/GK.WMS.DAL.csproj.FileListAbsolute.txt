@@ -1,0 +1,15 @@
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\GK.WMS.DAL.dll
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\GK.WMS.DAL.pdb
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\GK.Common.dll
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\GK.WMS.Entity.dll
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\Oracle.DataAccess.dll
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\System.Net.Http.dll
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\MongoDB.Bson.dll
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\GK.WMS.Entity.pdb
+G:\SVN项目\6月Project\common\GK.WMS.DAL\obj\Debug\GK.WMS.DAL.csprojAssemblyReference.cache
+G:\SVN项目\6月Project\common\GK.WMS.DAL\obj\Debug\GK.WMS.DAL.csproj.CoreCompileInputs.cache
+G:\SVN项目\6月Project\common\GK.WMS.DAL\obj\Debug\GK.WMS.DAL.csproj.CopyComplete
+G:\SVN项目\6月Project\common\GK.WMS.DAL\obj\Debug\GK.WMS.DAL.dll
+G:\SVN项目\6月Project\common\GK.WMS.DAL\obj\Debug\GK.WMS.DAL.pdb
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\GK.WCS.DALBase.dll
+G:\SVN项目\6月Project\common\GK.WMS.DAL\bin\Debug\GK.WCS.Entity.dll
