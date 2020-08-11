@@ -1,0 +1,12 @@
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.exe
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.deps.json
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.runtimeconfig.json
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.runtimeconfig.dev.json
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.csproj.CoreCompileInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.AssemblyInfoInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.AssemblyInfo.cs
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.genruntimeconfig.cache

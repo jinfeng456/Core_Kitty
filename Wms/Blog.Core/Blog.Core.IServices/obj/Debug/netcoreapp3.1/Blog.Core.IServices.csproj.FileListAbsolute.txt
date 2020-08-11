@@ -1,0 +1,15 @@
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.IServices.deps.json
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.IServices.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.IServices.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Common.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Model.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csprojAssemblyReference.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csproj.CoreCompileInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.AssemblyInfoInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.AssemblyInfo.cs
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csproj.CopyComplete
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.pdb

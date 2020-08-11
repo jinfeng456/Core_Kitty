@@ -1,0 +1,8 @@
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Common\bin\Debug\netcoreapp3.1\Blog.Core.Common.deps.json
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Common\bin\Debug\netcoreapp3.1\Blog.Core.Common.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Common\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.csproj.CoreCompileInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.AssemblyInfoInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.AssemblyInfo.cs
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.pdb

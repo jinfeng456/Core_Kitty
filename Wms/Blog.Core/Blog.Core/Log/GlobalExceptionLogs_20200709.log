@@ -1,0 +1,5 @@
+2020-07-09 22:03:30,246| ERROR 
+Error occured seeding the Database.
+One or more errors occurred. (English Message : Connection open error . Format of the initialization string does not conform to specification starting at index 0.
+Chinese Message :  连接数据库过程中发生错误，检查服务器是否正常连接字符串是否正确，实在找不到原因请先Google错误信息：Format of the initialization string does not conform to specification starting at index 0..)
+--------------------------------

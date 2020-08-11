@@ -1,0 +1,299 @@
+2020-07-21 21:59:55,852| ERROR 
+必须声明标量变量 "@name"。
+【自定义错误】：必须声明标量变量 "@name"。 
+【异常类型】：SqlException 
+【异常信息】：必须声明标量变量 "@name"。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 106
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 98
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 34
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:01:08,344| ERROR 
+必须声明标量变量 "@name"。
+【自定义错误】：必须声明标量变量 "@name"。 
+【异常类型】：SqlException 
+【异常信息】：必须声明标量变量 "@name"。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 106
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 98
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 34
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:02:25,232| ERROR 
+必须声明标量变量 "@name"。
+【自定义错误】：必须声明标量变量 "@name"。 
+【异常类型】：SqlException 
+【异常信息】：必须声明标量变量 "@name"。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 106
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 98
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 34
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:03:20,907| ERROR 
+必须声明标量变量 "@name"。
+【自定义错误】：必须声明标量变量 "@name"。 
+【异常类型】：SqlException 
+【异常信息】：必须声明标量变量 "@name"。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 106
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 98
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 34
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:12:30,977| ERROR 
+必须声明标量变量 "@name"。
+【自定义错误】：必须声明标量变量 "@name"。 
+【异常类型】：SqlException 
+【异常信息】：必须声明标量变量 "@name"。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 106
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 98
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 34
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:12:58,319| ERROR 
+必须声明标量变量 "@name"。
+【自定义错误】：必须声明标量变量 "@name"。 
+【异常类型】：SqlException 
+【异常信息】：必须声明标量变量 "@name"。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 106
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 98
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 34
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:21:50,537| ERROR 
+必须声明标量变量 "@name"。
+【自定义错误】：必须声明标量变量 "@name"。 
+【异常类型】：SqlException 
+【异常信息】：必须声明标量变量 "@name"。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 106
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 98
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 34
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:21:58,061| ERROR 
+必须声明标量变量 "@name"。
+【自定义错误】：必须声明标量变量 "@name"。 
+【异常类型】：SqlException 
+【异常信息】：必须声明标量变量 "@name"。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 106
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 98
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 34
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:24:32,606| ERROR 
+必须声明标量变量 "@name"。
+【自定义错误】：必须声明标量变量 "@name"。 
+【异常类型】：SqlException 
+【异常信息】：必须声明标量变量 "@name"。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 106
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 98
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 34
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:26:37,799| ERROR 
+对象名 'sys_menu' 无效。
+【自定义错误】：对象名 'sys_menu' 无效。 
+【异常类型】：SqlException 
+【异常信息】：对象名 'sys_menu' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 108
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 100
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 36
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:27:13,276| ERROR 
+对象名 'sys_menu' 无效。
+【自定义错误】：对象名 'sys_menu' 无效。 
+【异常类型】：SqlException 
+【异常信息】：对象名 'sys_menu' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 108
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 100
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 36
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:29:54,642| ERROR 
+对象名 'sys_menu' 无效。
+【自定义错误】：对象名 'sys_menu' 无效。 
+【异常类型】：SqlException 
+【异常信息】：对象名 'sys_menu' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 108
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 100
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 36
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-07-21 22:31:56,812| ERROR 
+列名 'user_ids' 无效。
+【自定义错误】：列名 'user_ids' 无效。 
+【异常类型】：SqlException 
+【异常信息】：列名 'user_ids' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T,T2,T3,T4,T5,T6,T7](String sql, Object parameters)
+   at SqlSugar.AdoProvider.SqlQueryAsync[T](String sql, SugarParameter[] parameters)
+   at Blog.Core.Repository.Base.BaseRepository`1.QuerySql(String strSql, SugarParameter[] parameters) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 354
+   at Blog.Core.Services.SysMenuServices.FindByUserName(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 108
+   at Blog.Core.Services.SysMenuServices.FindByUser(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 100
+   at Blog.Core.Services.SysMenuServices.FindTree(String userName, Int32 menuType) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Services\SysMenuServices.cs:line 36
+   at Blog.Core.Controllers.SysMenuController.FindNavTree(String userName) in G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\Controllers\Sys\SysMenuController.cs:line 95
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------

@@ -1,0 +1,8 @@
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.FrameWork\bin\Debug\netcoreapp3.1\Blog.Core.FrameWork.deps.json
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.FrameWork\bin\Debug\netcoreapp3.1\Blog.Core.FrameWork.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.FrameWork\bin\Debug\netcoreapp3.1\Blog.Core.FrameWork.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.csproj.CoreCompileInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.AssemblyInfoInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.AssemblyInfo.cs
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.pdb

@@ -1,0 +1,15 @@
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.deps.json
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Common.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Model.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csprojAssemblyReference.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csproj.CoreCompileInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.AssemblyInfoInputs.cache
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.AssemblyInfo.cs
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csproj.CopyComplete
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.dll
+G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb
