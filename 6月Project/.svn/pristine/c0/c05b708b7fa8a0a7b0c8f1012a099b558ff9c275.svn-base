@@ -1,0 +1,52 @@
+﻿
+using GK.WCS.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Crane.dto {
+    public class FullTask {
+        public long completeId;
+        public int type;//1 入库，2 出库，3 移库，4 摆渡
+        public int forkNo;//允许分配的货叉号，1 表示1号货叉 2 表示2号货叉 0 表示不固定
+        public TaskCrane pick;
+        public TaskCrane put;
+
+        public bool add(TaskCrane tc) {
+            if(completeId == 0) {
+                completeId = tc.completeId;
+            }
+
+            if(completeId == tc.completeId) {
+
+                if(tc.MotionType == 1) {
+                    pick = tc;
+                 
+                } else {
+                    put = tc;
+                }
+                type = tc.type;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        public int getPickTime(int x,int y) {
+            return time(x,y,pick);
+        }
+
+        public int getPutTime(int x,int y) {
+
+            return time(x,y,put);
+        }
+
+        int time(int x,int y,TaskCrane tc) {
+            int desX = Math.Abs(x - tc.locX);
+            int desY = Math.Abs(y - tc.locY) * 3;//水平速度是垂直的3被
+            return desX+desY;
+        }
+    }
+}

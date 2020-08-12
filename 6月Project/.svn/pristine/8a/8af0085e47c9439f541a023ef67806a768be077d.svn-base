@@ -1,0 +1,85 @@
+﻿using System;
+using System.Web;
+using System.Web.Http;
+
+using Web.Authorize;
+
+using System.Collections.Generic;
+using GK.Common.dto;
+using GK.Mongon.entity;
+using GK.Mongon.DAL;
+using GK.Mongon;
+
+namespace WebApi
+{
+    [FormAuthenticationFilter]
+    [RoutePrefix("api/logger")]
+    public class LoggerController: BaseApiController
+    {
+ 
+
+        [HttpGet, Route("wmsPage")]
+        public BaseResult wmsPage()
+        {
+            string begin = HttpContext.Current.Request["page"];
+            string limit = HttpContext.Current.Request["limit"];
+            string p = HttpContext.Current.Request["p"];
+            string url = HttpContext.Current.Request["urlPath"];
+            string res = HttpContext.Current.Request["res"];
+
+
+           
+            Page<LoggerDto> page = WmslogUtil.page(int.Parse(begin), int.Parse(limit), p,url,res);
+            return new BaseResult(page);
+        }
+
+        [HttpGet, Route("wcsPage")]
+        public BaseResult wcsPage() {
+            string begin = HttpContext.Current.Request["page"];
+            string limit = HttpContext.Current.Request["limit"];
+       
+            string info = HttpContext.Current.Request["info"];
+            string start = HttpContext.Current.Request["start"];
+            string end = HttpContext.Current.Request["end"];
+
+            if(String.IsNullOrEmpty(start) || String.IsNullOrEmpty(end)) {
+                  return new BaseResult("");
+            }
+
+            List<WcsLog> page = WcslogUtil.page(start,end,info);
+            return new BaseResult(page);
+        }
+
+        [HttpGet, Route("webserverPage")]
+        public BaseResult webserverPage() {
+            string begin = HttpContext.Current.Request["page"];
+            string limit = HttpContext.Current.Request["limit"];
+            string p = HttpContext.Current.Request["p"];
+            string url = HttpContext.Current.Request["url"];
+            string res = HttpContext.Current.Request["res"];
+
+
+            Page<LoggerDto> page = WebserverUtil.page(int.Parse(begin),int.Parse(limit),p,url,res);
+            return new BaseResult(page);
+        }
+
+
+
+        [HttpGet, Route("webserverShow/{id}")]
+        public BaseResult webserverShow(String id) {
+            LoggerDto logger = WebserverUtil.show(id);
+            return new BaseResult(logger);
+        }
+
+
+        [HttpGet, Route("wmsShow/{id}")]
+        public BaseResult wmsShow(String id) {
+            LoggerDto logger = WmslogUtil.show(id);
+            return new BaseResult(logger);
+        }
+
+
+
+
+    }
+}

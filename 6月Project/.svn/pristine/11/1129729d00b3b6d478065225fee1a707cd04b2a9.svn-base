@@ -1,0 +1,65 @@
+import request from '@/utils/request'
+
+export function login(data) {
+  return request({
+    url: '/api/login/'+data.username,
+    method: 'post',
+    data
+  })
+}
+
+// export function login(data) {
+//   return request({
+//     url: '/api/login',
+//     method: 'post',
+//     baseURL:'http://localhost:4830',
+//     data
+//   })
+// }
+
+export function getInfo(token) {
+  return request({
+    url: '/api/users/info',
+    method: 'get',
+    params: { token }
+  })
+}
+
+export function logout() {
+  return request({
+    url: '/vue-element-admin/user/logout',
+    method: 'post'
+  })
+}
+
+export function getUser(listQuery) {
+  return request({
+    url: '/api/users/GetUserlist/',
+    method: 'get',
+    params: { listQuery }
+  })
+}
+
+export function CreateUser(data) {
+  return request({
+    url: '/api/users/AddUser',
+    method: 'post',
+    data
+  })
+}
+
+export function UpdateUser(data) {
+  return request({
+    url: '/api/users/UpdateUser',
+    method: 'put',
+    data
+  })
+}
+
+
+export function deleteUser(id) {
+  return request({
+    url: `/api/users/DeleteUser/id=${id}`,
+    method: 'delete'
+  })
+}

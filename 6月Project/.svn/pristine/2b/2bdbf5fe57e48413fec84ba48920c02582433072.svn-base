@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using CMNetLib.ModBus.IO;
+using CMNetLib.ModBus;
+
+using System.Linq;
+using GK.WCS.Common.dll;
+
+namespace GK.WCS.Common {
+    public class RegistersModbusTcpConnect:ModbusTcpConnect {
+        
+
+  
+        public byte[] getData(ushort start,ushort len) {
+            if(noConn()) {
+                throw new Exception(className + "链接异常:" + ip);
+            }
+            lock(className) {
+                byte[] b = ReadHoldingRegisters(start,len);
+                if(b == null) {
+                    throw new Exception("ModeBus Error,ErrCode:" + ip + ":" + port + "读取异常" );
+                }
+                b = b.Skip(9).ToArray<byte>();
+
+               
+                if(b.Length != len * 2) {
+                    this.forceDisConnection();
+                    throw new Exception("ModeBus Error,ErrCode:" + ip + ":" + port + "读取长度异常" + b.Length );
+                }
+                return b;
+            }
+        }
+        public byte[] getData(ushort len) {
+            if(noConn()) {
+                throw new Exception(className + "链接异常:" + ip);
+            }
+            lock(className) {
+                ErrCode code = ErrCode.NO_ERROR;
+                byte[] b = ReadHoldingRegisters(0,len);
+
+                if(code != ErrCode.NO_ERROR) {
+                    throw new Exception(ip + ":" + port + "读取异常,该连接异常将导致cpu资源被大量消耗");
+
+                }
+                return b;
+            }
+        }
+
+        public void write(ushort start_address,ushort[] uTask,String info) {
+            if(noConn()) {
+                throw new Exception(className + "链接异常:" + ip);
+            }
+            info += ip + "的" + start_address + "write" ;
+            foreach(ushort d in uTask) {
+                info += d+",";
+            }
+           
+            LoggerCommon.fileAll(info);
+            ErrCode Err = ErrCode.NO_ERROR;
+            lock(className) {
+                WriteMultipleRegisters(start_address,uTask.ToArray());
+            }
+            if(Err != ErrCode.NO_ERROR) {
+                throw new Exception(className + "传输异常:" + Err.ToString()+ info);
+            }
+        }
+        public void write(ushort start_address,ushort uTask,String info) {
+            if(noConn()) {
+                throw new Exception(className + "链接异常:" + ip);
+            }
+            info += ip + "的" + start_address + "write" + uTask;
+            LoggerCommon.fileAll(info);
+            ErrCode Err = ErrCode.NO_ERROR;
+            lock(className) {
+                WriteSingleRegisters(start_address,uTask);
+            }
+            if(Err != ErrCode.NO_ERROR) {
+                throw new Exception(info + "传输异常:" + Err.ToString());
+            }
+        }
+
+        public short readHolding(ushort address) {
+            if(noConn()) {
+                throw new Exception(className + "链接异常:" + ip);
+            }
+          
+            lock(className) {
+                byte[] rs = ReadHoldingRegisters(address,1);
+                
+                rs = rs.Skip(9).ToArray();
+                short st = BitConverter.ToInt16(new byte[] { rs[1],rs[0] },0);
+                return st;
+
+            }
+
+        }
+      
+    }
+}

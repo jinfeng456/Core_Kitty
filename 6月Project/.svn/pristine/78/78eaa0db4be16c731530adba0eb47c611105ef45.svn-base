@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Common.core.task.exchange {
+    public abstract class ExchangeEquipment {
+
+
+        public abstract ExchangeStatus getStatus();
+        public virtual void doIn() {
+            
+        }
+        public virtual void doOut() {
+           
+        }
+
+        public virtual void finishIn() {
+
+        }
+        public virtual void finishOut() {
+
+        }
+
+    }
+}

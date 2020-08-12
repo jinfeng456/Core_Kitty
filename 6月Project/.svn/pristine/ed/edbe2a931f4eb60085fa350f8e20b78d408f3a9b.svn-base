@@ -1,0 +1,26 @@
+﻿using System;
+
+namespace GK.Mongon.entity
+{
+    [Serializable]
+    public class MongonLog {
+        public MongonLog(String info) {
+            this.info = info;
+            time = DateTime.Now;
+            ticks = time.Ticks;
+        }
+
+        public String info//plc name
+        {
+            get; set;
+        }
+        public DateTime time//plc name
+        {
+            get; set;
+        }
+        public long ticks//plc name
+        {
+            get; set;
+        }
+    }
+}

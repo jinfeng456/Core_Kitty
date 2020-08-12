@@ -1,0 +1,60 @@
+﻿
+using GK.WCS.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+
+namespace GK.WCS.Crane.dto {
+    public class TaskOrder {
+
+        public TaskOrder(int t,FullTask ft,TaskCrane tc,int forkNo) {
+            this.t = t;
+            time = t;
+            this.ft = ft;
+            this.tc1 = tc;
+            this.forkNo = forkNo;
+        }
+        private int t = 0;
+        public long time=0;
+        public TaskOrder order;
+        public TaskCrane tc1;
+        public FullTask ft;
+        public int forkNo = 0;
+        public void  add(TaskOrder order) {
+            if(this.order != null) {
+                throw new Exception("已经有子任务");
+            }
+             time += order.time;
+            this.order = order;
+        }
+
+
+        public TaskCrane getTask() {
+            return tc1;
+        }
+      public  List<TaskOrder> toList() {
+
+            List<TaskOrder> list = new List<TaskOrder>();
+            list.Add(this);
+            while(order != null) {
+                list.Add(order);
+                order = order.order;
+            }
+            return list;
+        }
+
+
+        public List<TaskCrane> toCraneList() {
+
+            List<TaskCrane> list = new List<TaskCrane>();
+            list.Add(this.tc1);
+            while(order != null) {
+                list.Add(order.tc1);
+                order = order.order;
+            }
+            return list;
+        }
+    }
+}

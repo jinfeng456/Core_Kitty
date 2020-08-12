@@ -1,0 +1,1394 @@
+﻿namespace GK.WCS.Client.Frm
+{
+    partial class Carrier1
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing) {
+            this.timer1.Enabled = false;
+            if(disposing && (components != null)) {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.legend2 = new GK.WCS.Client.Control.Legend();
+            this.legend1 = new GK.WCS.Client.Control.Legend();
+            this.bt191 = new System.Windows.Forms.Button();
+            this.bt182 = new System.Windows.Forms.Button();
+            this.bt181 = new System.Windows.Forms.Button();
+            this.bt192 = new System.Windows.Forms.Button();
+            this.bt211 = new System.Windows.Forms.Button();
+            this.bt202 = new System.Windows.Forms.Button();
+            this.bt201 = new System.Windows.Forms.Button();
+            this.bt212 = new System.Windows.Forms.Button();
+            this.bt231 = new System.Windows.Forms.Button();
+            this.bt222 = new System.Windows.Forms.Button();
+            this.bt221 = new System.Windows.Forms.Button();
+            this.bt232 = new System.Windows.Forms.Button();
+            this.bt251 = new System.Windows.Forms.Button();
+            this.bt242 = new System.Windows.Forms.Button();
+            this.bt241 = new System.Windows.Forms.Button();
+            this.bt252 = new System.Windows.Forms.Button();
+            this.bt271 = new System.Windows.Forms.Button();
+            this.bt262 = new System.Windows.Forms.Button();
+            this.bt261 = new System.Windows.Forms.Button();
+            this.bt272 = new System.Windows.Forms.Button();
+            this.lin21 = new GK.WCS.Client.Control.Belt();
+            this.lin23 = new GK.WCS.Client.Control.Belt();
+            this.lin25 = new GK.WCS.Client.Control.Belt();
+            this.lin27 = new GK.WCS.Client.Control.Belt();
+            this.lin29 = new GK.WCS.Client.Control.Belt();
+            this.bt171 = new System.Windows.Forms.Button();
+            this.lin17 = new GK.WCS.Client.Control.Belt();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.bt101 = new System.Windows.Forms.Button();
+            this.bt111 = new System.Windows.Forms.Button();
+            this.bt291 = new System.Windows.Forms.Button();
+            this.bt131 = new System.Windows.Forms.Button();
+            this.bt282 = new System.Windows.Forms.Button();
+            this.bt91 = new System.Windows.Forms.Button();
+            this.bt81 = new System.Windows.Forms.Button();
+            this.bt52 = new System.Windows.Forms.Button();
+            this.bt31 = new System.Windows.Forms.Button();
+            this.bt22 = new System.Windows.Forms.Button();
+            this.bt62 = new System.Windows.Forms.Button();
+            this.bt11 = new System.Windows.Forms.Button();
+            this.bt42 = new System.Windows.Forms.Button();
+            this.bt281 = new System.Windows.Forms.Button();
+            this.bt151 = new System.Windows.Forms.Button();
+            this.lin20 = new GK.WCS.Client.Control.Belt();
+            this.lin22 = new GK.WCS.Client.Control.Belt();
+            this.lin24 = new GK.WCS.Client.Control.Belt();
+            this.button1 = new System.Windows.Forms.Button();
+            this.bt141 = new System.Windows.Forms.Button();
+            this.bt51 = new System.Windows.Forms.Button();
+            this.lin5 = new GK.WCS.Client.Control.Belt();
+            this.bt161 = new System.Windows.Forms.Button();
+            this.bt121 = new System.Windows.Forms.Button();
+            this.taskNoText = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bt71 = new System.Windows.Forms.Button();
+            this.bt292 = new System.Windows.Forms.Button();
+            this.bt21 = new System.Windows.Forms.Button();
+            this.bt61 = new System.Windows.Forms.Button();
+            this.bt12 = new System.Windows.Forms.Button();
+            this.bt41 = new System.Windows.Forms.Button();
+            this.btnTaskClear = new System.Windows.Forms.Button();
+            this.lin7 = new GK.WCS.Client.Control.Belt();
+            this.lin16 = new GK.WCS.Client.Control.Belt();
+            this.lin19 = new GK.WCS.Client.Control.Belt();
+            this.lin2 = new GK.WCS.Client.Control.Belt();
+            this.lin18 = new GK.WCS.Client.Control.Belt();
+            this.lin15 = new GK.WCS.Client.Control.Belt();
+            this.lin9 = new GK.WCS.Client.Control.Belt();
+            this.lin6 = new GK.WCS.Client.Control.Belt();
+            this.lin4 = new GK.WCS.Client.Control.Belt();
+            this.lin1 = new GK.WCS.Client.Control.Belt();
+            this.lin3 = new GK.WCS.Client.Control.Belt();
+            this.lin8 = new GK.WCS.Client.Control.Belt();
+            this.lin14 = new GK.WCS.Client.Control.Belt();
+            this.lin13 = new GK.WCS.Client.Control.Belt();
+            this.lin10 = new GK.WCS.Client.Control.Belt();
+            this.lin11 = new GK.WCS.Client.Control.Belt();
+            this.lin12 = new GK.WCS.Client.Control.Belt();
+            this.lin26 = new GK.WCS.Client.Control.Belt();
+            this.lin28 = new GK.WCS.Client.Control.Belt();
+            this.SuspendLayout();
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // legend2
+            // 
+            this.legend2.BackColor = System.Drawing.Color.AliceBlue;
+            this.legend2.BELTID_IN = 0;
+            this.legend2.BELTID_OUT = 0;
+            this.legend2.Location = new System.Drawing.Point(20, 391);
+            this.legend2.Name = "legend2";
+            this.legend2.Size = new System.Drawing.Size(201, 171);
+            this.legend2.TabIndex = 158;
+            // 
+            // legend1
+            // 
+            this.legend1.BackColor = System.Drawing.Color.Aqua;
+            this.legend1.BELTID_IN = 0;
+            this.legend1.BELTID_OUT = 0;
+            this.legend1.ForeColor = System.Drawing.Color.Transparent;
+            this.legend1.Location = new System.Drawing.Point(20, 16);
+            this.legend1.Name = "legend1";
+            this.legend1.Size = new System.Drawing.Size(201, 369);
+            this.legend1.TabIndex = 157;
+            // 
+            // bt191
+            // 
+            this.bt191.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt191.Location = new System.Drawing.Point(827, 272);
+            this.bt191.Name = "bt191";
+            this.bt191.Size = new System.Drawing.Size(34, 23);
+            this.bt191.TabIndex = 156;
+            this.bt191.Tag = "";
+            this.bt191.Text = "191";
+            this.bt191.UseVisualStyleBackColor = true;
+            this.bt191.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt182
+            // 
+            this.bt182.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt182.Location = new System.Drawing.Point(827, 220);
+            this.bt182.Name = "bt182";
+            this.bt182.Size = new System.Drawing.Size(34, 23);
+            this.bt182.TabIndex = 155;
+            this.bt182.Tag = "14";
+            this.bt182.Text = "182";
+            this.bt182.UseVisualStyleBackColor = true;
+            this.bt182.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt181
+            // 
+            this.bt181.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt181.Location = new System.Drawing.Point(827, 124);
+            this.bt181.Name = "bt181";
+            this.bt181.Size = new System.Drawing.Size(34, 23);
+            this.bt181.TabIndex = 154;
+            this.bt181.Tag = "";
+            this.bt181.Text = "181";
+            this.bt181.UseVisualStyleBackColor = true;
+            this.bt181.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt192
+            // 
+            this.bt192.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt192.Location = new System.Drawing.Point(827, 354);
+            this.bt192.Name = "bt192";
+            this.bt192.Size = new System.Drawing.Size(34, 23);
+            this.bt192.TabIndex = 153;
+            this.bt192.Tag = "";
+            this.bt192.Text = "192";
+            this.bt192.UseVisualStyleBackColor = true;
+            this.bt192.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt211
+            // 
+            this.bt211.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt211.Location = new System.Drawing.Point(693, 272);
+            this.bt211.Name = "bt211";
+            this.bt211.Size = new System.Drawing.Size(34, 23);
+            this.bt211.TabIndex = 152;
+            this.bt211.Tag = "";
+            this.bt211.Text = "211";
+            this.bt211.UseVisualStyleBackColor = true;
+            this.bt211.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt202
+            // 
+            this.bt202.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt202.Location = new System.Drawing.Point(693, 220);
+            this.bt202.Name = "bt202";
+            this.bt202.Size = new System.Drawing.Size(34, 23);
+            this.bt202.TabIndex = 151;
+            this.bt202.Tag = "";
+            this.bt202.Text = "202";
+            this.bt202.UseVisualStyleBackColor = true;
+            this.bt202.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt201
+            // 
+            this.bt201.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt201.Location = new System.Drawing.Point(693, 124);
+            this.bt201.Name = "bt201";
+            this.bt201.Size = new System.Drawing.Size(34, 23);
+            this.bt201.TabIndex = 150;
+            this.bt201.Tag = "";
+            this.bt201.Text = "201";
+            this.bt201.UseVisualStyleBackColor = true;
+            this.bt201.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt212
+            // 
+            this.bt212.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt212.Location = new System.Drawing.Point(693, 354);
+            this.bt212.Name = "bt212";
+            this.bt212.Size = new System.Drawing.Size(34, 23);
+            this.bt212.TabIndex = 149;
+            this.bt212.Tag = "";
+            this.bt212.Text = "212";
+            this.bt212.UseVisualStyleBackColor = true;
+            this.bt212.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt231
+            // 
+            this.bt231.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt231.Location = new System.Drawing.Point(578, 272);
+            this.bt231.Name = "bt231";
+            this.bt231.Size = new System.Drawing.Size(34, 23);
+            this.bt231.TabIndex = 148;
+            this.bt231.Tag = "";
+            this.bt231.Text = "231";
+            this.bt231.UseVisualStyleBackColor = true;
+            this.bt231.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt222
+            // 
+            this.bt222.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt222.Location = new System.Drawing.Point(578, 220);
+            this.bt222.Name = "bt222";
+            this.bt222.Size = new System.Drawing.Size(34, 23);
+            this.bt222.TabIndex = 147;
+            this.bt222.Tag = "";
+            this.bt222.Text = "222";
+            this.bt222.UseVisualStyleBackColor = true;
+            this.bt222.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt221
+            // 
+            this.bt221.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt221.Location = new System.Drawing.Point(578, 124);
+            this.bt221.Name = "bt221";
+            this.bt221.Size = new System.Drawing.Size(34, 23);
+            this.bt221.TabIndex = 146;
+            this.bt221.Tag = "";
+            this.bt221.Text = "221";
+            this.bt221.UseVisualStyleBackColor = true;
+            this.bt221.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt232
+            // 
+            this.bt232.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt232.Location = new System.Drawing.Point(578, 354);
+            this.bt232.Name = "bt232";
+            this.bt232.Size = new System.Drawing.Size(34, 23);
+            this.bt232.TabIndex = 145;
+            this.bt232.Tag = "";
+            this.bt232.Text = "232";
+            this.bt232.UseVisualStyleBackColor = true;
+            this.bt232.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt251
+            // 
+            this.bt251.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt251.Location = new System.Drawing.Point(512, 272);
+            this.bt251.Name = "bt251";
+            this.bt251.Size = new System.Drawing.Size(34, 23);
+            this.bt251.TabIndex = 144;
+            this.bt251.Tag = "";
+            this.bt251.Text = "251";
+            this.bt251.UseVisualStyleBackColor = true;
+            this.bt251.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt242
+            // 
+            this.bt242.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bt242.Location = new System.Drawing.Point(512, 220);
+            this.bt242.Name = "bt242";
+            this.bt242.Size = new System.Drawing.Size(34, 23);
+            this.bt242.TabIndex = 143;
+            this.bt242.Tag = "";
+            this.bt242.Text = "242";
+            this.bt242.UseVisualStyleBackColor = true;
+            this.bt242.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt241
+            // 
+            this.bt241.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt241.Location = new System.Drawing.Point(512, 124);
+            this.bt241.Name = "bt241";
+            this.bt241.Size = new System.Drawing.Size(34, 23);
+            this.bt241.TabIndex = 142;
+            this.bt241.Tag = "";
+            this.bt241.Text = "241";
+            this.bt241.UseVisualStyleBackColor = true;
+            this.bt241.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt252
+            // 
+            this.bt252.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt252.Location = new System.Drawing.Point(512, 354);
+            this.bt252.Name = "bt252";
+            this.bt252.Size = new System.Drawing.Size(34, 23);
+            this.bt252.TabIndex = 141;
+            this.bt252.Tag = "";
+            this.bt252.Text = "252";
+            this.bt252.UseVisualStyleBackColor = true;
+            this.bt252.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt271
+            // 
+            this.bt271.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt271.Location = new System.Drawing.Point(394, 272);
+            this.bt271.Name = "bt271";
+            this.bt271.Size = new System.Drawing.Size(34, 23);
+            this.bt271.TabIndex = 140;
+            this.bt271.Tag = "";
+            this.bt271.Text = "271";
+            this.bt271.UseVisualStyleBackColor = true;
+            this.bt271.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt262
+            // 
+            this.bt262.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt262.Location = new System.Drawing.Point(394, 220);
+            this.bt262.Name = "bt262";
+            this.bt262.Size = new System.Drawing.Size(34, 23);
+            this.bt262.TabIndex = 139;
+            this.bt262.Tag = "";
+            this.bt262.Text = "262";
+            this.bt262.UseVisualStyleBackColor = true;
+            this.bt262.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt261
+            // 
+            this.bt261.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt261.Location = new System.Drawing.Point(394, 124);
+            this.bt261.Name = "bt261";
+            this.bt261.Size = new System.Drawing.Size(34, 23);
+            this.bt261.TabIndex = 138;
+            this.bt261.Tag = "";
+            this.bt261.Text = "261";
+            this.bt261.UseVisualStyleBackColor = true;
+            this.bt261.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt272
+            // 
+            this.bt272.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt272.Location = new System.Drawing.Point(394, 354);
+            this.bt272.Name = "bt272";
+            this.bt272.Size = new System.Drawing.Size(34, 23);
+            this.bt272.TabIndex = 137;
+            this.bt272.Tag = "";
+            this.bt272.Text = "272";
+            this.bt272.UseVisualStyleBackColor = true;
+            this.bt272.Click += new System.EventHandler(this.b_Click);
+            // 
+            // lin21
+            // 
+            this.lin21.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin21.ArrowWidth = 10;
+            this.lin21.BELTID_IN = 7;
+            this.lin21.BELTID_OUT = 0;
+            this.lin21.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin21.LineWidth = 1;
+            this.lin21.Location = new System.Drawing.Point(663, 253);
+            this.lin21.Name = "lin21";
+            this.lin21.Size = new System.Drawing.Size(28, 144);
+            this.lin21.TabIndex = 136;
+            this.lin21.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // lin23
+            // 
+            this.lin23.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin23.ArrowWidth = 10;
+            this.lin23.BELTID_IN = 7;
+            this.lin23.BELTID_OUT = 0;
+            this.lin23.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin23.LineWidth = 1;
+            this.lin23.Location = new System.Drawing.Point(613, 253);
+            this.lin23.Name = "lin23";
+            this.lin23.Size = new System.Drawing.Size(28, 144);
+            this.lin23.TabIndex = 135;
+            this.lin23.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // lin25
+            // 
+            this.lin25.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin25.ArrowWidth = 10;
+            this.lin25.BELTID_IN = 7;
+            this.lin25.BELTID_OUT = 0;
+            this.lin25.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin25.LineWidth = 1;
+            this.lin25.Location = new System.Drawing.Point(483, 253);
+            this.lin25.Name = "lin25";
+            this.lin25.Size = new System.Drawing.Size(28, 144);
+            this.lin25.TabIndex = 134;
+            this.lin25.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // lin27
+            // 
+            this.lin27.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin27.ArrowWidth = 10;
+            this.lin27.BELTID_IN = 7;
+            this.lin27.BELTID_OUT = 0;
+            this.lin27.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin27.LineWidth = 1;
+            this.lin27.Location = new System.Drawing.Point(427, 253);
+            this.lin27.Name = "lin27";
+            this.lin27.Size = new System.Drawing.Size(28, 144);
+            this.lin27.TabIndex = 133;
+            this.lin27.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // lin29
+            // 
+            this.lin29.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin29.ArrowWidth = 10;
+            this.lin29.BELTID_IN = 7;
+            this.lin29.BELTID_OUT = 0;
+            this.lin29.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin29.LineWidth = 1;
+            this.lin29.Location = new System.Drawing.Point(287, 253);
+            this.lin29.Name = "lin29";
+            this.lin29.Size = new System.Drawing.Size(28, 144);
+            this.lin29.TabIndex = 132;
+            this.lin29.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // bt171
+            // 
+            this.bt171.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt171.Location = new System.Drawing.Point(281, 47);
+            this.bt171.Name = "bt171";
+            this.bt171.Size = new System.Drawing.Size(34, 23);
+            this.bt171.TabIndex = 115;
+            this.bt171.Tag = "17";
+            this.bt171.Text = "171";
+            this.bt171.UseVisualStyleBackColor = true;
+            this.bt171.Click += new System.EventHandler(this.b_Click);
+            // 
+            // lin17
+            // 
+            this.lin17.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin17.ArrowWidth = 10;
+            this.lin17.BELTID_IN = 9;
+            this.lin17.BELTID_OUT = 0;
+            this.lin17.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin17.LineWidth = 1;
+            this.lin17.Location = new System.Drawing.Point(280, 73);
+            this.lin17.Name = "lin17";
+            this.lin17.Size = new System.Drawing.Size(48, 28);
+            this.lin17.TabIndex = 129;
+            this.lin17.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.Location = new System.Drawing.Point(521, 546);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 16);
+            this.label9.TabIndex = 120;
+            this.label9.Text = "写到";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(564, 545);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(40, 21);
+            this.textBox2.TabIndex = 119;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Location = new System.Drawing.Point(363, 550);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 16);
+            this.label8.TabIndex = 118;
+            this.label8.Text = "任务号";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(424, 547);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(94, 21);
+            this.textBox1.TabIndex = 117;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button4.ForeColor = System.Drawing.Color.Red;
+            this.button4.Location = new System.Drawing.Point(634, 539);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(93, 31);
+            this.button4.TabIndex = 116;
+            this.button4.Text = "写入任务";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // bt101
+            // 
+            this.bt101.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt101.Location = new System.Drawing.Point(709, 47);
+            this.bt101.Name = "bt101";
+            this.bt101.Size = new System.Drawing.Size(34, 23);
+            this.bt101.TabIndex = 105;
+            this.bt101.Tag = "10";
+            this.bt101.Text = "101";
+            this.bt101.UseVisualStyleBackColor = true;
+            this.bt101.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt111
+            // 
+            this.bt111.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt111.Location = new System.Drawing.Point(662, 47);
+            this.bt111.Name = "bt111";
+            this.bt111.Size = new System.Drawing.Size(34, 23);
+            this.bt111.TabIndex = 104;
+            this.bt111.Tag = "";
+            this.bt111.Text = "111";
+            this.bt111.UseVisualStyleBackColor = true;
+            this.bt111.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt291
+            // 
+            this.bt291.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt291.Location = new System.Drawing.Point(253, 272);
+            this.bt291.Name = "bt291";
+            this.bt291.Size = new System.Drawing.Size(34, 23);
+            this.bt291.TabIndex = 103;
+            this.bt291.Tag = "";
+            this.bt291.Text = "291";
+            this.bt291.UseVisualStyleBackColor = true;
+            this.bt291.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt131
+            // 
+            this.bt131.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt131.Location = new System.Drawing.Point(524, 47);
+            this.bt131.Name = "bt131";
+            this.bt131.Size = new System.Drawing.Size(34, 23);
+            this.bt131.TabIndex = 102;
+            this.bt131.Tag = "13";
+            this.bt131.Text = "131";
+            this.bt131.UseVisualStyleBackColor = true;
+            this.bt131.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt282
+            // 
+            this.bt282.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt282.Location = new System.Drawing.Point(253, 220);
+            this.bt282.Name = "bt282";
+            this.bt282.Size = new System.Drawing.Size(34, 23);
+            this.bt282.TabIndex = 101;
+            this.bt282.Tag = "14";
+            this.bt282.Text = "282";
+            this.bt282.UseVisualStyleBackColor = true;
+            this.bt282.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt91
+            // 
+            this.bt91.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt91.Location = new System.Drawing.Point(786, 47);
+            this.bt91.Name = "bt91";
+            this.bt91.Size = new System.Drawing.Size(34, 23);
+            this.bt91.TabIndex = 100;
+            this.bt91.Tag = "";
+            this.bt91.Text = "91";
+            this.bt91.UseVisualStyleBackColor = true;
+            this.bt91.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt81
+            // 
+            this.bt81.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt81.Location = new System.Drawing.Point(848, 47);
+            this.bt81.Name = "bt81";
+            this.bt81.Size = new System.Drawing.Size(34, 23);
+            this.bt81.TabIndex = 99;
+            this.bt81.Tag = "8";
+            this.bt81.Text = "81";
+            this.bt81.UseVisualStyleBackColor = true;
+            this.bt81.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt52
+            // 
+            this.bt52.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt52.Location = new System.Drawing.Point(1007, 379);
+            this.bt52.Name = "bt52";
+            this.bt52.Size = new System.Drawing.Size(34, 23);
+            this.bt52.TabIndex = 98;
+            this.bt52.Tag = "5";
+            this.bt52.Text = "51";
+            this.bt52.UseVisualStyleBackColor = true;
+            this.bt52.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt31
+            // 
+            this.bt31.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt31.Location = new System.Drawing.Point(1007, 429);
+            this.bt31.Name = "bt31";
+            this.bt31.Size = new System.Drawing.Size(34, 23);
+            this.bt31.TabIndex = 97;
+            this.bt31.Tag = "3";
+            this.bt31.Text = "31";
+            this.bt31.UseVisualStyleBackColor = true;
+            this.bt31.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt22
+            // 
+            this.bt22.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt22.Location = new System.Drawing.Point(1007, 474);
+            this.bt22.Name = "bt22";
+            this.bt22.Size = new System.Drawing.Size(34, 19);
+            this.bt22.TabIndex = 96;
+            this.bt22.Tag = "2";
+            this.bt22.Text = "22";
+            this.bt22.UseVisualStyleBackColor = true;
+            this.bt22.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt62
+            // 
+            this.bt62.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt62.Location = new System.Drawing.Point(1007, 220);
+            this.bt62.Name = "bt62";
+            this.bt62.Size = new System.Drawing.Size(34, 23);
+            this.bt62.TabIndex = 95;
+            this.bt62.Tag = "6";
+            this.bt62.Text = "62";
+            this.bt62.UseVisualStyleBackColor = true;
+            this.bt62.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt11
+            // 
+            this.bt11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt11.Location = new System.Drawing.Point(1007, 591);
+            this.bt11.Name = "bt11";
+            this.bt11.Size = new System.Drawing.Size(34, 23);
+            this.bt11.TabIndex = 94;
+            this.bt11.Tag = "1";
+            this.bt11.Text = "11";
+            this.bt11.UseVisualStyleBackColor = true;
+            this.bt11.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt42
+            // 
+            this.bt42.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt42.Location = new System.Drawing.Point(1124, 453);
+            this.bt42.Name = "bt42";
+            this.bt42.Size = new System.Drawing.Size(34, 23);
+            this.bt42.TabIndex = 93;
+            this.bt42.Tag = "4";
+            this.bt42.Text = "42";
+            this.bt42.UseVisualStyleBackColor = true;
+            this.bt42.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt281
+            // 
+            this.bt281.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt281.Location = new System.Drawing.Point(253, 124);
+            this.bt281.Name = "bt281";
+            this.bt281.Size = new System.Drawing.Size(34, 23);
+            this.bt281.TabIndex = 90;
+            this.bt281.Tag = "";
+            this.bt281.Text = "281";
+            this.bt281.UseVisualStyleBackColor = true;
+            this.bt281.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt151
+            // 
+            this.bt151.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt151.Location = new System.Drawing.Point(420, 47);
+            this.bt151.Name = "bt151";
+            this.bt151.Size = new System.Drawing.Size(34, 23);
+            this.bt151.TabIndex = 87;
+            this.bt151.Tag = "15";
+            this.bt151.Text = "151";
+            this.bt151.UseVisualStyleBackColor = true;
+            this.bt151.Click += new System.EventHandler(this.b_Click);
+            // 
+            // lin20
+            // 
+            this.lin20.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin20.ArrowWidth = 10;
+            this.lin20.BELTID_IN = 7;
+            this.lin20.BELTID_OUT = 0;
+            this.lin20.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin20.LineWidth = 1;
+            this.lin20.Location = new System.Drawing.Point(663, 108);
+            this.lin20.Name = "lin20";
+            this.lin20.Size = new System.Drawing.Size(28, 144);
+            this.lin20.TabIndex = 78;
+            this.lin20.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // lin22
+            // 
+            this.lin22.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin22.ArrowWidth = 10;
+            this.lin22.BELTID_IN = 9;
+            this.lin22.BELTID_OUT = 0;
+            this.lin22.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin22.LineWidth = 1;
+            this.lin22.Location = new System.Drawing.Point(613, 108);
+            this.lin22.Name = "lin22";
+            this.lin22.Size = new System.Drawing.Size(28, 144);
+            this.lin22.TabIndex = 77;
+            this.lin22.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // lin24
+            // 
+            this.lin24.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin24.ArrowWidth = 10;
+            this.lin24.BELTID_IN = 7;
+            this.lin24.BELTID_OUT = 0;
+            this.lin24.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin24.LineWidth = 1;
+            this.lin24.Location = new System.Drawing.Point(483, 108);
+            this.lin24.Name = "lin24";
+            this.lin24.Size = new System.Drawing.Size(28, 144);
+            this.lin24.TabIndex = 76;
+            this.lin24.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.ForeColor = System.Drawing.Color.Red;
+            this.button1.Location = new System.Drawing.Point(636, 474);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 31);
+            this.button1.TabIndex = 75;
+            this.button1.Text = "复位";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // bt141
+            // 
+            this.bt141.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt141.Location = new System.Drawing.Point(478, 47);
+            this.bt141.Name = "bt141";
+            this.bt141.Size = new System.Drawing.Size(34, 23);
+            this.bt141.TabIndex = 62;
+            this.bt141.Tag = "";
+            this.bt141.Text = "141";
+            this.bt141.UseVisualStyleBackColor = true;
+            this.bt141.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt51
+            // 
+            this.bt51.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt51.Location = new System.Drawing.Point(1007, 271);
+            this.bt51.Name = "bt51";
+            this.bt51.Size = new System.Drawing.Size(34, 23);
+            this.bt51.TabIndex = 61;
+            this.bt51.Tag = "5";
+            this.bt51.Text = "52";
+            this.bt51.UseVisualStyleBackColor = true;
+            this.bt51.Click += new System.EventHandler(this.b_Click);
+            // 
+            // lin5
+            // 
+            this.lin5.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin5.ArrowWidth = 10;
+            this.lin5.AutoScroll = true;
+            this.lin5.BELTID_IN = 9;
+            this.lin5.BELTID_OUT = 0;
+            this.lin5.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin5.LineWidth = 1;
+            this.lin5.Location = new System.Drawing.Point(1043, 258);
+            this.lin5.Name = "lin5";
+            this.lin5.Size = new System.Drawing.Size(28, 150);
+            this.lin5.TabIndex = 56;
+            this.lin5.TransDir = GK.WCS.Client.Control.Belt.输送方向.上;
+            // 
+            // bt161
+            // 
+            this.bt161.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt161.Location = new System.Drawing.Point(342, 47);
+            this.bt161.Name = "bt161";
+            this.bt161.Size = new System.Drawing.Size(34, 23);
+            this.bt161.TabIndex = 53;
+            this.bt161.Tag = "16";
+            this.bt161.Text = "161";
+            this.bt161.UseVisualStyleBackColor = true;
+            this.bt161.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt121
+            // 
+            this.bt121.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt121.Location = new System.Drawing.Point(606, 47);
+            this.bt121.Name = "bt121";
+            this.bt121.Size = new System.Drawing.Size(34, 23);
+            this.bt121.TabIndex = 52;
+            this.bt121.Tag = "";
+            this.bt121.Text = "121";
+            this.bt121.UseVisualStyleBackColor = true;
+            this.bt121.Click += new System.EventHandler(this.b_Click);
+            // 
+            // taskNoText
+            // 
+            this.taskNoText.Location = new System.Drawing.Point(413, 474);
+            this.taskNoText.Name = "taskNoText";
+            this.taskNoText.ReadOnly = true;
+            this.taskNoText.Size = new System.Drawing.Size(91, 21);
+            this.taskNoText.TabIndex = 47;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(314, 474);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 16);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "任 务 号:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // bt71
+            // 
+            this.bt71.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt71.Location = new System.Drawing.Point(1077, 71);
+            this.bt71.Name = "bt71";
+            this.bt71.Size = new System.Drawing.Size(34, 23);
+            this.bt71.TabIndex = 45;
+            this.bt71.Tag = "7";
+            this.bt71.Text = "71";
+            this.bt71.UseVisualStyleBackColor = true;
+            this.bt71.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt292
+            // 
+            this.bt292.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt292.Location = new System.Drawing.Point(253, 354);
+            this.bt292.Name = "bt292";
+            this.bt292.Size = new System.Drawing.Size(34, 23);
+            this.bt292.TabIndex = 44;
+            this.bt292.Tag = "";
+            this.bt292.Text = "292";
+            this.bt292.UseVisualStyleBackColor = true;
+            this.bt292.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt21
+            // 
+            this.bt21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt21.Location = new System.Drawing.Point(1007, 499);
+            this.bt21.Name = "bt21";
+            this.bt21.Size = new System.Drawing.Size(34, 19);
+            this.bt21.TabIndex = 43;
+            this.bt21.Tag = "2";
+            this.bt21.Text = "21";
+            this.bt21.UseVisualStyleBackColor = true;
+            this.bt21.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt61
+            // 
+            this.bt61.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt61.Location = new System.Drawing.Point(1007, 124);
+            this.bt61.Name = "bt61";
+            this.bt61.Size = new System.Drawing.Size(34, 23);
+            this.bt61.TabIndex = 42;
+            this.bt61.Tag = "6";
+            this.bt61.Text = "61";
+            this.bt61.UseVisualStyleBackColor = true;
+            this.bt61.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt12
+            // 
+            this.bt12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt12.Location = new System.Drawing.Point(1007, 539);
+            this.bt12.Name = "bt12";
+            this.bt12.Size = new System.Drawing.Size(34, 23);
+            this.bt12.TabIndex = 32;
+            this.bt12.Tag = "1";
+            this.bt12.Text = "12";
+            this.bt12.UseVisualStyleBackColor = true;
+            this.bt12.Click += new System.EventHandler(this.b_Click);
+            // 
+            // bt41
+            // 
+            this.bt41.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt41.Location = new System.Drawing.Point(1084, 453);
+            this.bt41.Name = "bt41";
+            this.bt41.Size = new System.Drawing.Size(34, 23);
+            this.bt41.TabIndex = 31;
+            this.bt41.Tag = "4";
+            this.bt41.Text = "41";
+            this.bt41.UseVisualStyleBackColor = true;
+            this.bt41.Click += new System.EventHandler(this.b_Click);
+            // 
+            // btnTaskClear
+            // 
+            this.btnTaskClear.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnTaskClear.ForeColor = System.Drawing.Color.Red;
+            this.btnTaskClear.Location = new System.Drawing.Point(539, 474);
+            this.btnTaskClear.Name = "btnTaskClear";
+            this.btnTaskClear.Size = new System.Drawing.Size(91, 31);
+            this.btnTaskClear.TabIndex = 11;
+            this.btnTaskClear.Text = "清除任务";
+            this.btnTaskClear.UseVisualStyleBackColor = true;
+            this.btnTaskClear.Click += new System.EventHandler(this.btnTaskClear_Click);
+            // 
+            // lin7
+            // 
+            this.lin7.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin7.ArrowWidth = 10;
+            this.lin7.BELTID_IN = 5;
+            this.lin7.BELTID_OUT = 0;
+            this.lin7.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin7.LineWidth = 1;
+            this.lin7.Location = new System.Drawing.Point(1043, 56);
+            this.lin7.Name = "lin7";
+            this.lin7.Size = new System.Drawing.Size(28, 48);
+            this.lin7.TabIndex = 5;
+            this.lin7.TransDir = GK.WCS.Client.Control.Belt.输送方向.上;
+            // 
+            // lin16
+            // 
+            this.lin16.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin16.ArrowWidth = 10;
+            this.lin16.BELTID_IN = 2;
+            this.lin16.BELTID_OUT = 0;
+            this.lin16.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin16.LineWidth = 1;
+            this.lin16.Location = new System.Drawing.Point(334, 73);
+            this.lin16.Name = "lin16";
+            this.lin16.Size = new System.Drawing.Size(80, 28);
+            this.lin16.TabIndex = 4;
+            this.lin16.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // lin19
+            // 
+            this.lin19.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin19.ArrowWidth = 10;
+            this.lin19.BELTID_IN = 9;
+            this.lin19.BELTID_OUT = 0;
+            this.lin19.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin19.LineWidth = 1;
+            this.lin19.Location = new System.Drawing.Point(796, 253);
+            this.lin19.Name = "lin19";
+            this.lin19.Size = new System.Drawing.Size(28, 144);
+            this.lin19.TabIndex = 3;
+            this.lin19.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // lin2
+            // 
+            this.lin2.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin2.ArrowWidth = 10;
+            this.lin2.BELTID_IN = 17;
+            this.lin2.BELTID_OUT = 0;
+            this.lin2.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin2.LineWidth = 1;
+            this.lin2.Location = new System.Drawing.Point(1043, 453);
+            this.lin2.Name = "lin2";
+            this.lin2.Size = new System.Drawing.Size(28, 80);
+            this.lin2.TabIndex = 2;
+            this.lin2.TransDir = GK.WCS.Client.Control.Belt.输送方向.上;
+            // 
+            // lin18
+            // 
+            this.lin18.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin18.ArrowWidth = 10;
+            this.lin18.BELTID_IN = 7;
+            this.lin18.BELTID_OUT = 0;
+            this.lin18.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin18.LineWidth = 1;
+            this.lin18.Location = new System.Drawing.Point(796, 108);
+            this.lin18.Name = "lin18";
+            this.lin18.Size = new System.Drawing.Size(28, 144);
+            this.lin18.TabIndex = 2;
+            this.lin18.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // lin15
+            // 
+            this.lin15.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin15.ArrowWidth = 10;
+            this.lin15.BELTID_IN = 4;
+            this.lin15.BELTID_OUT = 0;
+            this.lin15.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin15.LineWidth = 1;
+            this.lin15.Location = new System.Drawing.Point(420, 71);
+            this.lin15.Name = "lin15";
+            this.lin15.Size = new System.Drawing.Size(48, 28);
+            this.lin15.TabIndex = 68;
+            this.lin15.Tag = "50";
+            this.lin15.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // lin9
+            // 
+            this.lin9.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin9.ArrowWidth = 10;
+            this.lin9.BELTID_IN = 9;
+            this.lin9.BELTID_OUT = 0;
+            this.lin9.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin9.LineWidth = 1;
+            this.lin9.Location = new System.Drawing.Point(781, 71);
+            this.lin9.Name = "lin9";
+            this.lin9.Size = new System.Drawing.Size(48, 28);
+            this.lin9.TabIndex = 1;
+            this.lin9.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // lin6
+            // 
+            this.lin6.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin6.ArrowWidth = 10;
+            this.lin6.BELTID_IN = 8;
+            this.lin6.BELTID_OUT = 0;
+            this.lin6.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin6.LineWidth = 1;
+            this.lin6.Location = new System.Drawing.Point(1043, 108);
+            this.lin6.Name = "lin6";
+            this.lin6.Size = new System.Drawing.Size(28, 150);
+            this.lin6.TabIndex = 70;
+            this.lin6.TransDir = GK.WCS.Client.Control.Belt.输送方向.上;
+            // 
+            // lin4
+            // 
+            this.lin4.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin4.ArrowWidth = 10;
+            this.lin4.BELTID_IN = 8;
+            this.lin4.BELTID_OUT = 0;
+            this.lin4.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin4.LineWidth = 1;
+            this.lin4.Location = new System.Drawing.Point(1077, 419);
+            this.lin4.Name = "lin4";
+            this.lin4.Size = new System.Drawing.Size(80, 28);
+            this.lin4.TabIndex = 69;
+            this.lin4.TransDir = GK.WCS.Client.Control.Belt.输送方向.右;
+            // 
+            // lin1
+            // 
+            this.lin1.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin1.ArrowWidth = 10;
+            this.lin1.BELTID_IN = 7;
+            this.lin1.BELTID_OUT = 0;
+            this.lin1.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin1.LineWidth = 1;
+            this.lin1.Location = new System.Drawing.Point(1043, 539);
+            this.lin1.Name = "lin1";
+            this.lin1.Size = new System.Drawing.Size(28, 80);
+            this.lin1.TabIndex = 72;
+            this.lin1.TransDir = GK.WCS.Client.Control.Belt.输送方向.上;
+            // 
+            // lin3
+            // 
+            this.lin3.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin3.ArrowWidth = 10;
+            this.lin3.BELTID_IN = 7;
+            this.lin3.BELTID_OUT = 0;
+            this.lin3.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin3.LineWidth = 1;
+            this.lin3.Location = new System.Drawing.Point(1043, 412);
+            this.lin3.Name = "lin3";
+            this.lin3.Size = new System.Drawing.Size(28, 40);
+            this.lin3.TabIndex = 71;
+            this.lin3.TransDir = GK.WCS.Client.Control.Belt.输送方向.上;
+            // 
+            // lin8
+            // 
+            this.lin8.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin8.ArrowWidth = 10;
+            this.lin8.BELTID_IN = 9;
+            this.lin8.BELTID_OUT = 0;
+            this.lin8.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin8.LineWidth = 1;
+            this.lin8.Location = new System.Drawing.Point(830, 71);
+            this.lin8.Name = "lin8";
+            this.lin8.Size = new System.Drawing.Size(200, 28);
+            this.lin8.TabIndex = 79;
+            this.lin8.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // lin14
+            // 
+            this.lin14.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin14.ArrowWidth = 10;
+            this.lin14.AutoSize = true;
+            this.lin14.BELTID_IN = 9;
+            this.lin14.BELTID_OUT = 0;
+            this.lin14.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin14.LineWidth = 1;
+            this.lin14.Location = new System.Drawing.Point(471, 71);
+            this.lin14.Name = "lin14";
+            this.lin14.Size = new System.Drawing.Size(48, 28);
+            this.lin14.TabIndex = 81;
+            this.lin14.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // lin13
+            // 
+            this.lin13.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin13.ArrowWidth = 10;
+            this.lin13.BELTID_IN = 9;
+            this.lin13.BELTID_OUT = 0;
+            this.lin13.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin13.LineWidth = 1;
+            this.lin13.Location = new System.Drawing.Point(520, 71);
+            this.lin13.Name = "lin13";
+            this.lin13.Size = new System.Drawing.Size(80, 28);
+            this.lin13.TabIndex = 84;
+            this.lin13.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // lin10
+            // 
+            this.lin10.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin10.ArrowWidth = 10;
+            this.lin10.BELTID_IN = 9;
+            this.lin10.BELTID_OUT = 0;
+            this.lin10.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin10.LineWidth = 1;
+            this.lin10.Location = new System.Drawing.Point(700, 71);
+            this.lin10.Name = "lin10";
+            this.lin10.Size = new System.Drawing.Size(80, 28);
+            this.lin10.TabIndex = 82;
+            this.lin10.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // lin11
+            // 
+            this.lin11.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin11.ArrowWidth = 10;
+            this.lin11.BELTID_IN = 9;
+            this.lin11.BELTID_OUT = 0;
+            this.lin11.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin11.LineWidth = 1;
+            this.lin11.Location = new System.Drawing.Point(651, 71);
+            this.lin11.Name = "lin11";
+            this.lin11.Size = new System.Drawing.Size(48, 28);
+            this.lin11.TabIndex = 83;
+            this.lin11.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // lin12
+            // 
+            this.lin12.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin12.ArrowWidth = 10;
+            this.lin12.BELTID_IN = 9;
+            this.lin12.BELTID_OUT = 0;
+            this.lin12.Direction = GK.WCS.Client.Control.Belt.绘图方向.左右;
+            this.lin12.LineWidth = 1;
+            this.lin12.Location = new System.Drawing.Point(601, 71);
+            this.lin12.Name = "lin12";
+            this.lin12.Size = new System.Drawing.Size(48, 28);
+            this.lin12.TabIndex = 85;
+            this.lin12.TransDir = GK.WCS.Client.Control.Belt.输送方向.左;
+            // 
+            // lin26
+            // 
+            this.lin26.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin26.ArrowWidth = 10;
+            this.lin26.BELTID_IN = 7;
+            this.lin26.BELTID_OUT = 0;
+            this.lin26.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin26.LineWidth = 1;
+            this.lin26.Location = new System.Drawing.Point(427, 108);
+            this.lin26.Name = "lin26";
+            this.lin26.Size = new System.Drawing.Size(28, 144);
+            this.lin26.TabIndex = 130;
+            this.lin26.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // lin28
+            // 
+            this.lin28.ArrowCap = GK.WCS.Client.Control.Belt.箭头样式.单向;
+            this.lin28.ArrowWidth = 10;
+            this.lin28.BELTID_IN = 7;
+            this.lin28.BELTID_OUT = 0;
+            this.lin28.Direction = GK.WCS.Client.Control.Belt.绘图方向.上下;
+            this.lin28.LineWidth = 1;
+            this.lin28.Location = new System.Drawing.Point(287, 108);
+            this.lin28.Name = "lin28";
+            this.lin28.Size = new System.Drawing.Size(28, 144);
+            this.lin28.TabIndex = 131;
+            this.lin28.TransDir = GK.WCS.Client.Control.Belt.输送方向.下;
+            // 
+            // Carrier1
+            // 
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(1248, 680);
+            this.Controls.Add(this.legend2);
+            this.Controls.Add(this.legend1);
+            this.Controls.Add(this.bt191);
+            this.Controls.Add(this.bt182);
+            this.Controls.Add(this.bt181);
+            this.Controls.Add(this.bt192);
+            this.Controls.Add(this.bt211);
+            this.Controls.Add(this.bt202);
+            this.Controls.Add(this.bt201);
+            this.Controls.Add(this.bt212);
+            this.Controls.Add(this.bt231);
+            this.Controls.Add(this.bt222);
+            this.Controls.Add(this.bt221);
+            this.Controls.Add(this.bt232);
+            this.Controls.Add(this.bt251);
+            this.Controls.Add(this.bt242);
+            this.Controls.Add(this.bt241);
+            this.Controls.Add(this.bt252);
+            this.Controls.Add(this.bt271);
+            this.Controls.Add(this.bt262);
+            this.Controls.Add(this.bt261);
+            this.Controls.Add(this.bt272);
+            this.Controls.Add(this.lin21);
+            this.Controls.Add(this.lin23);
+            this.Controls.Add(this.lin25);
+            this.Controls.Add(this.lin27);
+            this.Controls.Add(this.lin29);
+            this.Controls.Add(this.bt171);
+            this.Controls.Add(this.lin17);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.bt101);
+            this.Controls.Add(this.bt111);
+            this.Controls.Add(this.bt291);
+            this.Controls.Add(this.bt131);
+            this.Controls.Add(this.bt282);
+            this.Controls.Add(this.bt91);
+            this.Controls.Add(this.bt81);
+            this.Controls.Add(this.bt52);
+            this.Controls.Add(this.bt31);
+            this.Controls.Add(this.bt22);
+            this.Controls.Add(this.bt62);
+            this.Controls.Add(this.bt11);
+            this.Controls.Add(this.bt42);
+            this.Controls.Add(this.bt281);
+            this.Controls.Add(this.bt151);
+            this.Controls.Add(this.lin20);
+            this.Controls.Add(this.lin22);
+            this.Controls.Add(this.lin24);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bt141);
+            this.Controls.Add(this.bt51);
+            this.Controls.Add(this.lin5);
+            this.Controls.Add(this.bt161);
+            this.Controls.Add(this.bt121);
+            this.Controls.Add(this.taskNoText);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.bt71);
+            this.Controls.Add(this.bt292);
+            this.Controls.Add(this.bt21);
+            this.Controls.Add(this.bt61);
+            this.Controls.Add(this.bt12);
+            this.Controls.Add(this.bt41);
+            this.Controls.Add(this.btnTaskClear);
+            this.Controls.Add(this.lin7);
+            this.Controls.Add(this.lin16);
+            this.Controls.Add(this.lin19);
+            this.Controls.Add(this.lin2);
+            this.Controls.Add(this.lin18);
+            this.Controls.Add(this.lin15);
+            this.Controls.Add(this.lin9);
+            this.Controls.Add(this.lin6);
+            this.Controls.Add(this.lin4);
+            this.Controls.Add(this.lin1);
+            this.Controls.Add(this.lin3);
+            this.Controls.Add(this.lin8);
+            this.Controls.Add(this.lin14);
+            this.Controls.Add(this.lin13);
+            this.Controls.Add(this.lin10);
+            this.Controls.Add(this.lin11);
+            this.Controls.Add(this.lin12);
+            this.Controls.Add(this.lin26);
+            this.Controls.Add(this.lin28);
+            this.ForeColor = System.Drawing.Color.White;
+            this.Name = "Carrier1";
+            this.Text = "传输线1";
+            this.Load += new System.EventHandler(this.FrmGlobal_Load);
+            this.VisibleChanged += new System.EventHandler(this.Carrier1_VisibleChanged);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private Control.Belt lin18;
+        private Control.Belt lin2;
+        private Control.Belt lin19;
+        private Control.Belt lin7;
+        private System.Windows.Forms.Button btnTaskClear;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button bt41;
+        private System.Windows.Forms.Button bt12;
+        private System.Windows.Forms.Button bt61;
+        private System.Windows.Forms.Button bt21;
+        private System.Windows.Forms.Button bt292;
+        private System.Windows.Forms.Button bt71;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox taskNoText;
+        private System.Windows.Forms.Button bt161;
+        private System.Windows.Forms.Button bt121;
+        private Control.Belt lin5;
+        private System.Windows.Forms.Button bt141;
+        private System.Windows.Forms.Button bt51;
+        private Control.Belt lin15;
+        private Control.Belt lin4;
+        private Control.Belt lin6;
+        private Control.Belt lin9;
+        private Control.Belt lin3;
+        private Control.Belt lin1;
+        private System.Windows.Forms.Button button1;
+        private Control.Belt lin22;
+        private Control.Belt lin24;
+        private Control.Belt lin14;
+        private Control.Belt lin8;
+        private Control.Belt lin20;
+        private Control.Belt lin16;
+        private Control.Belt lin10;
+        private Control.Belt lin11;
+        private Control.Belt lin13;
+        private Control.Belt lin12;
+        private System.Windows.Forms.Button bt151;
+        private System.Windows.Forms.Button bt281;
+
+        private System.Windows.Forms.Button bt52;
+        private System.Windows.Forms.Button bt31;
+        private System.Windows.Forms.Button bt22;
+        private System.Windows.Forms.Button bt62;
+        private System.Windows.Forms.Button bt11;
+        private System.Windows.Forms.Button bt42;
+        private System.Windows.Forms.Button bt81;
+        private System.Windows.Forms.Button bt282;
+        private System.Windows.Forms.Button bt91;
+        private System.Windows.Forms.Button bt291;
+        private System.Windows.Forms.Button bt131;
+        private System.Windows.Forms.Button bt101;
+        private System.Windows.Forms.Button bt111;
+        private System.Windows.Forms.Button bt171;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label9;
+      
+        private Control.Belt lin17;
+        private Control.Belt lin26;
+        private Control.Belt lin28;
+        private Control.Belt lin29;
+        private Control.Belt lin27;
+        private Control.Belt lin25;
+        private Control.Belt lin23;
+        private Control.Belt lin21;
+        private System.Windows.Forms.Button bt271;
+        private System.Windows.Forms.Button bt262;
+        private System.Windows.Forms.Button bt261;
+        private System.Windows.Forms.Button bt272;
+        private System.Windows.Forms.Button bt251;
+        private System.Windows.Forms.Button bt242;
+        private System.Windows.Forms.Button bt241;
+        private System.Windows.Forms.Button bt252;
+        private System.Windows.Forms.Button bt231;
+        private System.Windows.Forms.Button bt222;
+        private System.Windows.Forms.Button bt221;
+        private System.Windows.Forms.Button bt232;
+        private System.Windows.Forms.Button bt211;
+        private System.Windows.Forms.Button bt202;
+        private System.Windows.Forms.Button bt201;
+        private System.Windows.Forms.Button bt212;
+        private System.Windows.Forms.Button bt191;
+        private System.Windows.Forms.Button bt182;
+        private System.Windows.Forms.Button bt181;
+        private System.Windows.Forms.Button bt192;
+        private Control.Legend legend1;
+        private Control.Legend legend2;
+    }
+}

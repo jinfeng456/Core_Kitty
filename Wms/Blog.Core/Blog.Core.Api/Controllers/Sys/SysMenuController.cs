@@ -16,7 +16,7 @@ namespace Blog.Core.Controllers
     /// </summary>
     [Route("menu")]
     //[ApiController]
-    //[Authorize(Permissions.Name)]
+    [Authorize]
     public class SysMenuController : ControllerBase
     {
         readonly ISysMenuServices _sysMenuServices;

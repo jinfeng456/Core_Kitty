@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Principal;
+using System.Web;
+using System.Web.Http;
+using System.Web.Security;
+using HY.WCS.DAL;
+using Web.Authorize;
+
+namespace WebApi {
+    [FormAuthenticationFilter]
+    [RoutePrefix("api/welcome")]
+    public class WelcomeController: BaseApiController
+    {
+        [HttpGet, Route("data")]
+        public BaseResult data()
+        {
+            GenericPrincipal principal = HttpContext.Current.User as GenericPrincipal;
+            FormsIdentity identity = (FormsIdentity)principal.Identity;
+            FormsAuthenticationTicket ticket = identity.Ticket;
+            String userid = ticket.UserData;
+          
+           
+            return new BaseResult(null) ; 
+            
+        }
+
+       
+
+
+       
+    }
+}

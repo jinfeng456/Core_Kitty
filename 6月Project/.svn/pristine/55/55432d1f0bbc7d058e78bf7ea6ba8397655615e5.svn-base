@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace GK.Mongon.entity
+{
+    [Serializable]
+    public class WcsLog {
+        public WcsLog() {
+           
+        }
+        public Object _id
+        {
+            get; set;
+        }
+        public String info//plc name
+        {
+            get; set;
+        }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        public DateTime time//plc name
+        {
+            get; set;
+        }
+
+        public long ticks
+        {
+            get; set;
+        }
+    }
+}

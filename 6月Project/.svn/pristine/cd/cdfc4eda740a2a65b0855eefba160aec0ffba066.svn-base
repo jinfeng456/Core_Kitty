@@ -1,0 +1,28 @@
+﻿using GK.Common.dto;
+using GK.WWS.Entity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace GK.WMS.DAL.abs
+{
+    public abstract class AbsPhysicalLocationServer : AbsWMSBaseServer, IPhysicalLocationServer
+
+    {
+        public Page<PhysicalLocation> queryPhysicalLocationPage<PhysicalLocation>( int start, int end, object param = null)
+        {
+           
+           string sql = "physical_Location";
+           string orderBy = "id";
+           return  this.queryPage<PhysicalLocation>(sql, start,  end, orderBy, param);
+            
+        }
+
+        public PhysicalLocation getById(long id, IDbTransaction transaction)
+        {
+            return getById<PhysicalLocation>(id, transaction);
+        }
+    }
+}

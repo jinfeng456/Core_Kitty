@@ -1,0 +1,62 @@
+﻿using System;
+
+namespace GK.Mongon.entity
+{
+    [Serializable]
+    public class EquipmentPointState {
+        public EquipmentPointState(String name,int point) {
+            this.name = name;
+            this.p = point;
+        }
+
+        public String  name//plc name
+        {
+            get; set;
+        }
+        public int p//点位编号
+        {
+            get;set;
+        }
+        public int no //任务号
+        {
+            get; set;
+        }
+        public int s //信号状态，是否有货，或者设备状态，如垛机的1，2，3，4，5，6，7，8，9，
+        {
+            get; set;
+        }
+
+        public int e //错误码
+        {
+            get; set;
+        }
+        public bool isSame(object o) {
+            if(o.GetType() != this.GetType()) {
+                return false;
+            }
+
+            EquipmentPointState old = (EquipmentPointState)o;
+            if(old.name != name) {
+                return false;
+            }
+            if(old.p != p ) {
+                return false;
+            }
+
+            if( old.no != no) {
+                return false;
+            }
+
+            if(old.s != s) {
+                return false;
+            }
+            if(old.e != e) {
+                return false;
+            }
+            return true;
+
+        } 
+
+
+    }
+}

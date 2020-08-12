@@ -1,0 +1,89 @@
+﻿using GK.Common.dto;
+using GK.DAL.inter;
+using GK.WCS.dto;
+using GK.WCS.Entity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.DAL
+{
+   public interface ITaskCraneServer : IBaseServer
+    {
+        
+         TaskCrane GetItem(int TaskNo)
+    ;
+
+         List<Entity.TaskCrane> getTaskCraneByCraneId(long id)
+     ;
+
+         TaskCrane getTaskCraneById(long id)
+        ;
+
+
+
+         List<TaskCrane> getTaskCraneBycompleteId(long completeId)
+        ;
+
+
+
+        /// <summary>
+        /// 当前堆垛机货叉是否存在未执行完的任务
+        /// </summary>
+         List<Entity.TaskCrane> getWorkingTask(int craneId)
+    ;
+         List<TaskCrane> getPullTask(int craneId)
+        ;
+
+         TaskCrane getPullTask(int craneId, int forkNo)
+       ;
+         TaskCrane getPickTask(int craneId, int forkNo)
+;
+
+        int getUnWorkTaskCrane(long complateId);
+       
+
+
+         bool UpdateTaskStatus(long TaskNo, short Status, int forkNo)
+        ;
+         bool UpdateTaskStatusById(long id, short Status)
+        ;
+         bool UpdateTaskById(long id, PhysicalLocation pl)
+        ;
+         bool UpdateTaskPriorityById(long id, int Priority)
+        ;
+         bool UpdateTaskPriorityByCompleteId(long id, int Priority)
+        ;
+
+
+
+
+        /// <summary>
+        /// 判断任务完成状态是否已经更新到数据库了
+        /// </summary>
+         bool IsTaskFinished(long taskNo, short Status)
+        ;
+
+
+         List<TaskRely> getTaskRely(long taskId)
+        ;
+
+         List<TaskRely> getAllTaskRely()
+       ;
+
+
+         TaskCrane getCranePickTaskbyCarrierNO(int TaskNo)
+       ;
+
+
+         List<PriorityDto> getTaskforPriority()
+       ;
+
+
+         List<TaskCrane> getAllTaskforPriority()
+       ;
+
+    }
+}

@@ -1,0 +1,164 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using YabaoSoft.Common.Orm;
+using Huax_WMS.Sc.Entity;
+
+namespace Huax_WMS.Sc.DAO
+{
+
+    public class sys_UsersOperator 
+    {
+    
+        public sys_UsersOperator(Huax_WMS.Sc.Entity.sys_Users Entity)
+        {
+            _Ent = Entity;
+        }
+    
+        private Huax_WMS.Sc.Entity.sys_Users _Ent;
+        /// <summary>
+        /// 获取或设置用户表对应的数据实体
+        /// </summary>
+        public Huax_WMS.Sc.Entity.sys_Users Entity
+        {
+            internal set{ 
+                _Ent = value; 
+            }
+            get{
+                return _Ent; 
+            }
+        }
+  
+        /// <summary>
+        /// 删除
+        /// </summary>
+        public void Delete()
+        {
+            Huax_WMS.Sc.DBL.sys_Users.Delete(Entity,null);
+        }
+        
+        
+        /// <summary>
+        /// 在事务中删除
+        /// </summary>
+        public void Delete(IDbTransaction transaction)
+        {
+            Huax_WMS.Sc.DBL.sys_Users.Delete(Entity,transaction);
+        }
+
+        /// <summary>
+        /// 保存或新建（自动识别）
+        /// </summary>
+        public void Save()
+        {
+            if (Entity.Id == null)
+            {
+                this.Entity = Huax_WMS.Sc.DBL.sys_Users.Add(Entity,null);
+            }
+            else
+            {
+                Huax_WMS.Sc.DBL.sys_Users.Update(Entity,null);
+            }
+        }
+
+        
+        
+        /// <summary>
+        /// 保存或新建（自动识别）
+        /// </summary>
+        public void Save(IDbTransaction transaction)
+        {
+            if (Entity.Id == null)
+            {
+                this.Entity = Huax_WMS.Sc.DBL.sys_Users.Add(Entity,transaction);
+            }
+            else
+            {
+                Huax_WMS.Sc.DBL.sys_Users.Update(Entity,transaction);
+            }
+        }
+        
+        
+        /// <summary>
+        /// 初始化事务
+        /// </summary>        
+        public IDbTransaction CreatTransaction(){
+            return Huax_WMS.Sc.DBL.sys_Users.CreatTransaction();        
+        }
+        
+        /// <summary>
+        /// 初始化事务
+        /// </summary>        
+        public static IDbTransaction CreatTransactionSta(){
+            return Huax_WMS.Sc.DBL.sys_Users.CreatTransaction();        
+        }
+        
+#region 静态方法
+
+        /// <summary>
+        /// 保存或新建（自动识别）
+        /// </summary>
+        public static void Save(Huax_WMS.Sc.Entity.sys_Users Entity)
+        {
+            if (Entity.Id == null)
+            {
+                Huax_WMS.Sc.DBL.sys_Users.Add(Entity,null);
+            }
+            else
+            {
+                Huax_WMS.Sc.DBL.sys_Users.Update(Entity,null);
+            }
+        }
+        
+        public static void Delete(Huax_WMS.Sc.Entity.sys_Users Entity){
+            Huax_WMS.Sc.DBL.sys_Users.Delete(Entity,null);
+        }
+
+        public static void Delete(Huax_WMS.Sc.Entity.sys_Users Entity, IDbTransaction transaction){
+            Huax_WMS.Sc.DBL.sys_Users.Delete(Entity,transaction);
+        }        
+
+        public static void Delete(int entId){
+            Huax_WMS.Sc.Entity.sys_Users ent = new Huax_WMS.Sc.Entity.sys_Users();
+            ent.Id = entId ;
+            Huax_WMS.Sc.DBL.sys_Users.Delete(ent,null);
+        }
+        
+        
+        
+        /// <summary>
+        /// 保存或新建（自动识别）
+        /// </summary>
+        public static void Save(Huax_WMS.Sc.Entity.sys_Users Entity , IDbTransaction transaction)
+        {
+            if (Entity.Id == null)
+            {
+            //考虑事务中的 Add 
+                Huax_WMS.Sc.DBL.sys_Users.Add(Entity,transaction);
+            }
+            else
+            {
+                Huax_WMS.Sc.DBL.sys_Users.Update(Entity,transaction);
+            }
+        }
+        
+        /// <summary>
+        /// 保存关联对象
+        /// </summary>
+        /// <param name="ent">本体对象</param>
+        /// <param name="props">需要保存的关联字段，多个用“|”</param>
+        public static void SaveRela(sys_Users ent, IDbTransaction trans, sys_Users_RelaProp props)
+        {
+
+                sys_UsersOperator.Save(ent, trans);
+
+
+
+        }
+        
+        #endregion        
+        
+    
+    }
+
+}

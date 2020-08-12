@@ -1,0 +1,479 @@
+﻿namespace GK.WCS.Client.Control
+{
+    partial class CraneAuto
+    {
+        /// <summary> 
+        /// 必需的设计器变量。
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// 清理所有正在使用的资源。
+        /// </summary>
+        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region 组件设计器生成的代码
+
+        /// <summary> 
+        /// 设计器支持所需的方法 - 不要
+        /// 使用代码编辑器修改此方法的内容。
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CraneAuto));
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.semiBox = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.semiAutoPanel = new System.Windows.Forms.Panel();
+            this.rb2162 = new System.Windows.Forms.RadioButton();
+            this.rb2161 = new System.Windows.Forms.RadioButton();
+            this.rb2142 = new System.Windows.Forms.RadioButton();
+            this.rb2141 = new System.Windows.Forms.RadioButton();
+            this.rb2332 = new System.Windows.Forms.RadioButton();
+            this.rb2331 = new System.Windows.Forms.RadioButton();
+            this.rb2352 = new System.Windows.Forms.RadioButton();
+            this.rb2351 = new System.Windows.Forms.RadioButton();
+            this.rb1212 = new System.Windows.Forms.RadioButton();
+            this.rb1211 = new System.Windows.Forms.RadioButton();
+            this.rb1192 = new System.Windows.Forms.RadioButton();
+            this.rb1191 = new System.Windows.Forms.RadioButton();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.srcDeep = new System.Windows.Forms.ComboBox();
+            this.srcDeepLable = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.srcColLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.srcCol = new System.Windows.Forms.ComboBox();
+            this.forkNoBox = new System.Windows.Forms.ComboBox();
+            this.srcRow = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.srcRowLabel = new System.Windows.Forms.Label();
+            this.srcShelveList = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnExcuteSEMI_AUTO = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboxSEMI_AUTOActionType = new System.Windows.Forms.ComboBox();
+            this.semiBox.SuspendLayout();
+            this.semiAutoPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Online.png");
+            this.imageList1.Images.SetKeyName(1, "red.png");
+            this.imageList1.Images.SetKeyName(2, "Unline.png");
+            // 
+            // semiBox
+            // 
+            this.semiBox.Controls.Add(this.label6);
+            this.semiBox.Controls.Add(this.semiAutoPanel);
+            this.semiBox.ForeColor = System.Drawing.Color.White;
+            this.semiBox.Location = new System.Drawing.Point(3, 8);
+            this.semiBox.Name = "semiBox";
+            this.semiBox.Size = new System.Drawing.Size(414, 340);
+            this.semiBox.TabIndex = 19;
+            this.semiBox.TabStop = false;
+            this.semiBox.Text = "自动模式";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(3, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(413, 12);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "WARNING:非专业人员禁止操作，由此带来的设备损坏责任自负，请谨慎操作。";
+            // 
+            // semiAutoPanel
+            // 
+            this.semiAutoPanel.Controls.Add(this.rb2162);
+            this.semiAutoPanel.Controls.Add(this.rb2161);
+            this.semiAutoPanel.Controls.Add(this.rb2142);
+            this.semiAutoPanel.Controls.Add(this.rb2141);
+            this.semiAutoPanel.Controls.Add(this.rb2332);
+            this.semiAutoPanel.Controls.Add(this.rb2331);
+            this.semiAutoPanel.Controls.Add(this.rb2352);
+            this.semiAutoPanel.Controls.Add(this.rb2351);
+            this.semiAutoPanel.Controls.Add(this.rb1212);
+            this.semiAutoPanel.Controls.Add(this.rb1211);
+            this.semiAutoPanel.Controls.Add(this.rb1192);
+            this.semiAutoPanel.Controls.Add(this.rb1191);
+            this.semiAutoPanel.Controls.Add(this.checkBox1);
+            this.semiAutoPanel.Controls.Add(this.srcDeep);
+            this.semiAutoPanel.Controls.Add(this.srcDeepLable);
+            this.semiAutoPanel.Controls.Add(this.comboBox1);
+            this.semiAutoPanel.Controls.Add(this.srcColLabel);
+            this.semiAutoPanel.Controls.Add(this.label2);
+            this.semiAutoPanel.Controls.Add(this.srcCol);
+            this.semiAutoPanel.Controls.Add(this.forkNoBox);
+            this.semiAutoPanel.Controls.Add(this.srcRow);
+            this.semiAutoPanel.Controls.Add(this.label1);
+            this.semiAutoPanel.Controls.Add(this.srcRowLabel);
+            this.semiAutoPanel.Controls.Add(this.srcShelveList);
+            this.semiAutoPanel.Controls.Add(this.label19);
+            this.semiAutoPanel.Controls.Add(this.btnExcuteSEMI_AUTO);
+            this.semiAutoPanel.Controls.Add(this.label4);
+            this.semiAutoPanel.Controls.Add(this.cboxSEMI_AUTOActionType);
+            this.semiAutoPanel.Enabled = false;
+            this.semiAutoPanel.Location = new System.Drawing.Point(24, 52);
+            this.semiAutoPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.semiAutoPanel.Name = "semiAutoPanel";
+            this.semiAutoPanel.Size = new System.Drawing.Size(379, 268);
+            this.semiAutoPanel.TabIndex = 25;
+            // 
+            // rb2162
+            // 
+            this.rb2162.AutoSize = true;
+            this.rb2162.Location = new System.Drawing.Point(275, 236);
+            this.rb2162.Name = "rb2162";
+            this.rb2162.Size = new System.Drawing.Size(59, 16);
+            this.rb2162.TabIndex = 63;
+            this.rb2162.TabStop = true;
+            this.rb2162.Text = "下左远";
+            this.rb2162.UseVisualStyleBackColor = true;
+            // 
+            // rb2161
+            // 
+            this.rb2161.AutoSize = true;
+            this.rb2161.Location = new System.Drawing.Point(208, 236);
+            this.rb2161.Name = "rb2161";
+            this.rb2161.Size = new System.Drawing.Size(59, 16);
+            this.rb2161.TabIndex = 62;
+            this.rb2161.TabStop = true;
+            this.rb2161.Text = "下左近";
+            this.rb2161.UseVisualStyleBackColor = true;
+            // 
+            // rb2142
+            // 
+            this.rb2142.AutoSize = true;
+            this.rb2142.Location = new System.Drawing.Point(275, 209);
+            this.rb2142.Name = "rb2142";
+            this.rb2142.Size = new System.Drawing.Size(59, 16);
+            this.rb2142.TabIndex = 61;
+            this.rb2142.TabStop = true;
+            this.rb2142.Text = "下右远";
+            this.rb2142.UseVisualStyleBackColor = true;
+            // 
+            // rb2141
+            // 
+            this.rb2141.AutoSize = true;
+            this.rb2141.Location = new System.Drawing.Point(208, 209);
+            this.rb2141.Name = "rb2141";
+            this.rb2141.Size = new System.Drawing.Size(59, 16);
+            this.rb2141.TabIndex = 60;
+            this.rb2141.TabStop = true;
+            this.rb2141.Text = "下右近";
+            this.rb2141.UseVisualStyleBackColor = true;
+            // 
+            // rb2332
+            // 
+            this.rb2332.AutoSize = true;
+            this.rb2332.Location = new System.Drawing.Point(275, 182);
+            this.rb2332.Name = "rb2332";
+            this.rb2332.Size = new System.Drawing.Size(59, 16);
+            this.rb2332.TabIndex = 59;
+            this.rb2332.TabStop = true;
+            this.rb2332.Text = "上左远";
+            this.rb2332.UseVisualStyleBackColor = true;
+            // 
+            // rb2331
+            // 
+            this.rb2331.AutoSize = true;
+            this.rb2331.Location = new System.Drawing.Point(208, 182);
+            this.rb2331.Name = "rb2331";
+            this.rb2331.Size = new System.Drawing.Size(59, 16);
+            this.rb2331.TabIndex = 58;
+            this.rb2331.TabStop = true;
+            this.rb2331.Text = "上左近";
+            this.rb2331.UseVisualStyleBackColor = true;
+            // 
+            // rb2352
+            // 
+            this.rb2352.AutoSize = true;
+            this.rb2352.Location = new System.Drawing.Point(275, 155);
+            this.rb2352.Name = "rb2352";
+            this.rb2352.Size = new System.Drawing.Size(59, 16);
+            this.rb2352.TabIndex = 57;
+            this.rb2352.TabStop = true;
+            this.rb2352.Text = "上右远";
+            this.rb2352.UseVisualStyleBackColor = true;
+            // 
+            // rb2351
+            // 
+            this.rb2351.AutoSize = true;
+            this.rb2351.Location = new System.Drawing.Point(208, 155);
+            this.rb2351.Name = "rb2351";
+            this.rb2351.Size = new System.Drawing.Size(59, 16);
+            this.rb2351.TabIndex = 56;
+            this.rb2351.TabStop = true;
+            this.rb2351.Text = "上右近";
+            this.rb2351.UseVisualStyleBackColor = true;
+            this.rb2351.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // rb1212
+            // 
+            this.rb1212.AutoSize = true;
+            this.rb1212.Location = new System.Drawing.Point(275, 128);
+            this.rb1212.Name = "rb1212";
+            this.rb1212.Size = new System.Drawing.Size(65, 16);
+            this.rb1212.TabIndex = 55;
+            this.rb1212.TabStop = true;
+            this.rb1212.Text = "1号左远";
+            this.rb1212.UseVisualStyleBackColor = true;
+            // 
+            // rb1211
+            // 
+            this.rb1211.AutoSize = true;
+            this.rb1211.Location = new System.Drawing.Point(208, 128);
+            this.rb1211.Name = "rb1211";
+            this.rb1211.Size = new System.Drawing.Size(65, 16);
+            this.rb1211.TabIndex = 54;
+            this.rb1211.TabStop = true;
+            this.rb1211.Text = "1号左近";
+            this.rb1211.UseVisualStyleBackColor = true;
+            // 
+            // rb1192
+            // 
+            this.rb1192.AutoSize = true;
+            this.rb1192.Location = new System.Drawing.Point(275, 101);
+            this.rb1192.Name = "rb1192";
+            this.rb1192.Size = new System.Drawing.Size(65, 16);
+            this.rb1192.TabIndex = 53;
+            this.rb1192.TabStop = true;
+            this.rb1192.Text = "1号右远";
+            this.rb1192.UseVisualStyleBackColor = true;
+            // 
+            // rb1191
+            // 
+            this.rb1191.AutoSize = true;
+            this.rb1191.Location = new System.Drawing.Point(208, 101);
+            this.rb1191.Name = "rb1191";
+            this.rb1191.Size = new System.Drawing.Size(65, 16);
+            this.rb1191.TabIndex = 52;
+            this.rb1191.TabStop = true;
+            this.rb1191.Text = "1号右近";
+            this.rb1191.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(55, 102);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(48, 16);
+            this.checkBox1.TabIndex = 51;
+            this.checkBox1.Text = "货位";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // srcDeep
+            // 
+            this.srcDeep.FormattingEnabled = true;
+            this.srcDeep.Location = new System.Drawing.Point(55, 227);
+            this.srcDeep.Name = "srcDeep";
+            this.srcDeep.Size = new System.Drawing.Size(51, 20);
+            this.srcDeep.TabIndex = 46;
+            // 
+            // srcDeepLable
+            // 
+            this.srcDeepLable.AutoSize = true;
+            this.srcDeepLable.Location = new System.Drawing.Point(21, 230);
+            this.srcDeepLable.Name = "srcDeepLable";
+            this.srcDeepLable.Size = new System.Drawing.Size(35, 12);
+            this.srcDeepLable.TabIndex = 45;
+            this.srcDeepLable.Text = "序列:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(82, 56);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(60, 20);
+            this.comboBox1.TabIndex = 50;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // srcColLabel
+            // 
+            this.srcColLabel.AutoSize = true;
+            this.srcColLabel.ForeColor = System.Drawing.Color.Red;
+            this.srcColLabel.Location = new System.Drawing.Point(28, 168);
+            this.srcColLabel.Name = "srcColLabel";
+            this.srcColLabel.Size = new System.Drawing.Size(23, 12);
+            this.srcColLabel.TabIndex = 44;
+            this.srcColLabel.Text = "列:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(15, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 12);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "光纤类型:";
+            // 
+            // srcCol
+            // 
+            this.srcCol.FormattingEnabled = true;
+            this.srcCol.Items.AddRange(new object[] {
+            "行列值",
+            "坐标值"});
+            this.srcCol.Location = new System.Drawing.Point(55, 165);
+            this.srcCol.Margin = new System.Windows.Forms.Padding(2);
+            this.srcCol.Name = "srcCol";
+            this.srcCol.Size = new System.Drawing.Size(51, 20);
+            this.srcCol.TabIndex = 41;
+            this.srcCol.Tag = "src";
+            // 
+            // forkNoBox
+            // 
+            this.forkNoBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.forkNoBox.FormattingEnabled = true;
+            this.forkNoBox.Location = new System.Drawing.Point(262, 56);
+            this.forkNoBox.Name = "forkNoBox";
+            this.forkNoBox.Size = new System.Drawing.Size(60, 20);
+            this.forkNoBox.TabIndex = 48;
+            // 
+            // srcRow
+            // 
+            this.srcRow.FormattingEnabled = true;
+            this.srcRow.Location = new System.Drawing.Point(55, 196);
+            this.srcRow.Name = "srcRow";
+            this.srcRow.Size = new System.Drawing.Size(51, 20);
+            this.srcRow.TabIndex = 28;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(228, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 12);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "货叉:";
+            // 
+            // srcRowLabel
+            // 
+            this.srcRowLabel.AutoSize = true;
+            this.srcRowLabel.Location = new System.Drawing.Point(31, 199);
+            this.srcRowLabel.Name = "srcRowLabel";
+            this.srcRowLabel.Size = new System.Drawing.Size(23, 12);
+            this.srcRowLabel.TabIndex = 1;
+            this.srcRowLabel.Text = "层:";
+            // 
+            // srcShelveList
+            // 
+            this.srcShelveList.FormattingEnabled = true;
+            this.srcShelveList.Items.AddRange(new object[] {
+            "行列值",
+            "坐标值"});
+            this.srcShelveList.Location = new System.Drawing.Point(55, 134);
+            this.srcShelveList.Margin = new System.Windows.Forms.Padding(2);
+            this.srcShelveList.Name = "srcShelveList";
+            this.srcShelveList.Size = new System.Drawing.Size(51, 20);
+            this.srcShelveList.TabIndex = 0;
+            this.srcShelveList.Tag = "src";
+            this.srcShelveList.SelectedIndexChanged += new System.EventHandler(this.ShelveList_SelectedIndexChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.Red;
+            this.label19.Location = new System.Drawing.Point(17, 137);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(35, 12);
+            this.label19.TabIndex = 35;
+            this.label19.Text = "位置:";
+            // 
+            // btnExcuteSEMI_AUTO
+            // 
+            this.btnExcuteSEMI_AUTO.BackColor = System.Drawing.SystemColors.Control;
+            this.btnExcuteSEMI_AUTO.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExcuteSEMI_AUTO.Location = new System.Drawing.Point(240, 9);
+            this.btnExcuteSEMI_AUTO.Name = "btnExcuteSEMI_AUTO";
+            this.btnExcuteSEMI_AUTO.Size = new System.Drawing.Size(75, 29);
+            this.btnExcuteSEMI_AUTO.TabIndex = 4;
+            this.btnExcuteSEMI_AUTO.Text = "执行";
+            this.btnExcuteSEMI_AUTO.UseVisualStyleBackColor = false;
+            this.btnExcuteSEMI_AUTO.Click += new System.EventHandler(this.btnExcuteSEMI_AUTO_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(17, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 12);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "动作类型:";
+            // 
+            // cboxSEMI_AUTOActionType
+            // 
+            this.cboxSEMI_AUTOActionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxSEMI_AUTOActionType.FormattingEnabled = true;
+            this.cboxSEMI_AUTOActionType.Location = new System.Drawing.Point(82, 14);
+            this.cboxSEMI_AUTOActionType.Name = "cboxSEMI_AUTOActionType";
+            this.cboxSEMI_AUTOActionType.Size = new System.Drawing.Size(62, 20);
+            this.cboxSEMI_AUTOActionType.TabIndex = 24;
+            // 
+            // CraneAuto
+            // 
+            this.Controls.Add(this.semiBox);
+            this.Name = "CraneAuto";
+            this.Size = new System.Drawing.Size(432, 356);
+            this.semiBox.ResumeLayout(false);
+            this.semiBox.PerformLayout();
+            this.semiAutoPanel.ResumeLayout(false);
+            this.semiAutoPanel.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.GroupBox semiBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel semiAutoPanel;
+        private System.Windows.Forms.Button btnExcuteSEMI_AUTO;
+        private System.Windows.Forms.Label srcColLabel;
+        private System.Windows.Forms.ComboBox srcCol;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox srcShelveList;
+        private System.Windows.Forms.ComboBox srcRow;
+        private System.Windows.Forms.Label srcRowLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboxSEMI_AUTOActionType;
+        private System.Windows.Forms.ComboBox forkNoBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox srcDeep;
+        private System.Windows.Forms.Label srcDeepLable;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.RadioButton rb2162;
+        private System.Windows.Forms.RadioButton rb2161;
+        private System.Windows.Forms.RadioButton rb2142;
+        private System.Windows.Forms.RadioButton rb2141;
+        private System.Windows.Forms.RadioButton rb2332;
+        private System.Windows.Forms.RadioButton rb2331;
+        private System.Windows.Forms.RadioButton rb2352;
+        private System.Windows.Forms.RadioButton rb2351;
+        private System.Windows.Forms.RadioButton rb1212;
+        private System.Windows.Forms.RadioButton rb1211;
+        private System.Windows.Forms.RadioButton rb1192;
+        private System.Windows.Forms.RadioButton rb1191;
+    }
+}

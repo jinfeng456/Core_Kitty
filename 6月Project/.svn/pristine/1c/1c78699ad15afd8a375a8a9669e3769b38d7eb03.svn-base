@@ -1,0 +1,81 @@
+﻿using System;
+using System.Text;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+
+using System.Collections.Generic;
+using MongoDB.Driver;
+using MongoDB.Bson;
+using Newtonsoft.Json;
+using MongoDB.Driver.Builders;
+
+using GK.Mongon.entity;
+using GK.Common.dto;
+
+namespace GK.Mongon.DAL {//
+    public class MongonUtil {
+ 
+    
+
+        public static void save(LoggerDto log,MongoCollection<LoggerDto> collection) {
+         
+                var document = BsonDocument.Parse(JsonConvert.SerializeObject(log));
+                document.Remove("_id");
+                collection.Insert(document);
+            
+        }
+
+        public static LoggerDto wmsShow(String  id,MongoCollection<LoggerDto> collection) {
+            var query = Query.EQ("_id",new ObjectId(id));
+
+            LoggerDto logger = collection.FindOneAs<LoggerDto>(query);
+
+           return logger;
+        }
+        
+
+        public static Page<LoggerDto> page(MongoCollection<LoggerDto> collection,int begin,int limit,String param,String urlName,String res) {
+            begin -= 1;
+            begin *= limit;
+            Page<LoggerDto> page = new Page<LoggerDto>();
+
+           List< IMongoQuery> queryList = new List<IMongoQuery>();
+
+            if(!String.IsNullOrEmpty(param)) {
+                queryList.Add ( Query.Matches("param","/" + param + "/"));
+            }
+            if(!String.IsNullOrEmpty(urlName)) {
+                queryList.Add(Query.Matches("urlName","/" + urlName + "/"));
+
+            }
+
+            if(!String.IsNullOrEmpty(res)) {
+                queryList.Add(Query.Matches("result","/" + res + "/"));
+
+            }
+
+
+            MongoCursor<LoggerDto> result = null;
+            if(queryList.Count>0) {
+                var query = Query.And(queryList);
+
+                result = collection.Find(query).SetSkip(begin).SetLimit(limit) .SetSortOrder(SortBy.Descending("orderNo"));
+                page.count = collection.Count(query);
+            } else {
+                result = collection.FindAll().SetSkip(begin).SetLimit(limit) .SetSortOrder(SortBy.Descending("orderNo"));
+                page.count = collection.Count();
+            }
+
+            List<LoggerDto> logList = new List<LoggerDto>();
+            foreach (LoggerDto log in result) {
+                logList.Add(log);
+            }
+
+            page.list = logList;
+            return page;
+        }
+
+    }
+
+}

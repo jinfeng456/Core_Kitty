@@ -1,0 +1,62 @@
+﻿using GK.Common.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Entity
+{
+    [Serializable]
+    public class BaseTask : BaseEntity {
+
+        public BaseTask() {
+
+            String className = this.GetType().Name;
+            classType = className.Substring(4).ToLower();
+        }
+      
+        public String classType {
+            get ; set ;
+        }
+      
+        public long completeId
+        {
+            get; set;
+        }
+        public int TaskNo
+        {
+            get; set;
+        }
+        public int Status
+        {
+            get; set;
+        }
+
+        public String code
+        {
+            get; set;
+        }
+        public DateTime StartTime
+        {
+            get; set;
+        }
+        public DateTime EndTime
+        {
+            get; set;
+        }
+        public String Extra
+        {
+            get; set;
+        }
+
+
+        public virtual  List<String> getLableData() {
+            List<String> list = new List<String>();
+           list.Add("任务描述："+Extra);
+            return list;
+        }
+
+
+      
+    }
+}

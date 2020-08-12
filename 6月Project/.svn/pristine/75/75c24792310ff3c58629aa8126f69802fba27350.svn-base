@@ -1,0 +1,79 @@
+﻿using GK.Common.dto;
+using GK.WMS.Entity;
+using GK.WWS.Entity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using Dapper;
+using GK.Common;
+using System.Data.SqlClient;
+
+namespace GK.WMS.DAL.abs
+{
+    public abstract class AbsSysAuthorityServer : AbsWMSBaseServer, ISysAuthorityServer
+    {
+        public long addRole(SysRole role)
+        {
+            throw new NotImplementedException();
+        }
+
+        public long addUser(SysUser user)
+        {
+            return Connection.Insert<SysUser>(user);
+        }
+
+        public List<SysMenu> getAllMenu()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<SysRole> getAllRole()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<SysMenu> getMenu(long userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<SysUser> getUser(string loginName, string password)
+        {
+
+            String sql = "select * from sys_user where login_Name=@loginName and password=@password";
+            return Connection.Query<SysUser>(sql, new { loginName = loginName, password = password }).ToList();
+
+        }
+
+        public Page<SysUser> queryUserPage<SysUser>(int start, int end, string orderBy, object param = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<SysUser> getAllUser(string loginName)
+        {
+            var sql = string.Empty;
+            List<SqlParameter> sqlParameters = new List<SqlParameter>();
+            if (!string.IsNullOrEmpty(loginName))
+            {
+                sql += " AND login_Name = @loginName ";
+                SqlParameter citySqlParameter = new SqlParameter("@loginName", SqlDbType.NVarChar);
+                citySqlParameter.Value = loginName;
+                sqlParameters.Add(citySqlParameter);
+            }
+            return GetEntities<SysUser>("select * from sys_user where 1=1 " + sql + "", null, sqlParameters.ToArray());
+        }
+
+        public bool updateUser(SysUser user)
+        {
+            return Connection.Update<SysUser>(user);
+        }
+
+        public bool deleteUser(string id)
+        {
+            return Connection.Delete<SysUser>(id);
+        }
+    }
+}

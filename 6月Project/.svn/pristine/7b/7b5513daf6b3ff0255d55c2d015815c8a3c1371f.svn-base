@@ -1,0 +1,26 @@
+﻿
+using GK.WMS.DAL;
+using HY.WCS.DAL;
+using HY.WCS.DAL.dto;
+using HY.WCS.Entity.dto;
+using java.util;
+using System;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web;
+using System.Web.Http;
+using Web.Authorize;
+
+namespace WebApi
+{
+    [FormAuthenticationFilter]
+    [RoutePrefix("api/users")]
+    public class UsersController : BaseApiController
+    {
+
+        ISysAuthorityServer authorityServer =WMSDalFactray.getDal<ISysAuthorityServer>();
+       
+
+       
+    }
+}

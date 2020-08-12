@@ -1,0 +1,119 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using HY.Mongon.DAL.dto;
+using HY.WCS.Entity.dto;
+
+namespace HY.WCS.DAL {
+    public class DBUtil {
+
+        public static  Page<T> page<T>(DataSet ds) where T : new() {
+            List<T> l = ToList<T>(ds.Tables[0]);
+            DataTable dt = ds.Tables[1];
+            object count = dt.Rows[0][0];
+            int c = ToInt32(count);
+            return new Page<T>() {
+                count = c,
+                list = l
+            };
+        }
+
+        //修改
+        public static Page<T> pages<T>(DataSet ds) where T : new()
+        {
+            List<T> l = ToList<T>(ds.Tables[0]);
+            DataTable dt = ds.Tables[0];
+            object count = dt.Rows[0][0];
+            int c = ToInt32(count);
+            return new Page<T>()
+            {
+                count = c,
+                list = l
+            };
+        }
+
+
+        public static List<T> ToList<T>(DataTable dt) where T : new() {
+            List<T> list = new List<T>();
+            string text = string.Empty;
+            foreach(DataRow dataRow in dt.Rows) {
+                T t = (default(T) == null) ? System.Activator.CreateInstance<T>() : default(T);
+                System.Reflection.PropertyInfo[] properties = t.GetType().GetProperties();
+                System.Reflection.PropertyInfo[] array = properties;
+                for(int i = 0;i < array.Length;i++) {
+                    System.Reflection.PropertyInfo propertyInfo = array[i];
+                    text = propertyInfo.Name;
+                    if(dt.Columns.Contains(text) && propertyInfo.CanWrite) {
+                        object obj = dataRow[text];
+                        if(obj != System.DBNull.Value) {
+                            if(propertyInfo.PropertyType.IsGenericType) {
+                                propertyInfo.SetValue(t,System.Convert.ChangeType(obj,propertyInfo.PropertyType.GetGenericArguments()[0]),null);
+                            } else {
+                                propertyInfo.SetValue(t,System.Convert.ChangeType(obj,propertyInfo.PropertyType),null);
+                            }
+                        }
+                    }
+                }
+                list.Add(t);
+            }
+            return list;
+        }
+
+        public static T FillModel<T>(DataRow row) where T : new() {
+            T result;
+            if(row == null) {
+                result = default(T);
+            } else {
+                T t = (default(T) == null) ? System.Activator.CreateInstance<T>() : default(T);
+                for(int i = 0;i < row.Table.Columns.Count;i++) {
+                    System.Reflection.PropertyInfo property = t.GetType().GetProperty(row.Table.Columns[i].ColumnName);
+                    if(property != null && row[i] != System.DBNull.Value) {
+                        if(property.PropertyType.IsGenericType) {
+                            property.SetValue(t,System.Convert.ChangeType(row[i],property.PropertyType.GetGenericArguments()[0]),null);
+                        } else {
+                            property.SetValue(t,System.Convert.ChangeType(row[i],property.PropertyType),null);
+                        }
+                    }
+                }
+                result = t;
+            }
+            return result;
+        }
+        public static int ToInt32(object obj) {
+            int result;
+            try {
+                if(obj.GetType() == typeof(decimal)) {
+                    result = decimal.ToInt32((decimal)obj);
+                } else {
+                    result = int.Parse(obj.ToString());
+                }
+            } catch(System.Exception) {
+                result = -2147483648;
+            }
+            return result;
+        }
+
+
+
+
+
+        public static int toInt(DataSet ds,int index) {
+            DataTable dt = ds.Tables[index];
+            object count = dt.Rows[0][0];
+            int c = DBUtil.ToInt32(count);
+            return c;
+        }
+
+
+
+
+
+
+
+   
+
+
+
+    }
+}

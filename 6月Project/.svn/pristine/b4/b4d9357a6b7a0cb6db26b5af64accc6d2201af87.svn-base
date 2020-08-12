@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Common.dto {
+    [Serializable]
+    public class TaskStat {
+        public long workAllTime
+        {
+            get; set;
+        }
+        public long worklastTime
+        {
+            get; set;
+        }
+        public long maxTime
+        {
+            get; set;
+        }
+        public long minTime
+        {
+            get; set;
+        }
+        public long workCount
+        {
+            get; set;
+        }
+        public String className
+        {
+            get; set;
+        }
+        public int time  {
+            get; set;
+        }
+        public int exceptionCount
+        {
+            get; set;
+        }
+    }
+}

@@ -1,0 +1,53 @@
+﻿
+using System.Collections.Generic;
+using CMNetLib.Robots.CarrierChain;
+using CMNetLib.Robots.Crane;
+using GK.WCS.Carrier;
+using GK.WCS.Common.core.dto;
+using GK.WCS.Crane.dto;
+
+namespace GK.WCS.Crane {
+    public abstract class CraneSimpleForkCarrierJobHX:CraneSimpleForkTask {
+
+        public CraneSimpleForkCarrierJobHX(int id) :base(id) {
+        }
+
+        public override TaskModel preExecution() {
+            return null;
+        }
+        public override List<FullTask> willRemove(List<FullTask> allFtList) {
+            List < FullTask > removeList = base.willRemove(allFtList);
+            ushort inList = inPoint();
+            List<ushort> outList =  outPoint();
+
+            HySignalState ss1 = CarrierPool.getSs(inList);
+            bool cannotOut = false;
+            foreach(ushort o in outList) {
+                HySignalState ssOut1 = CarrierPool.getSs(o);
+             
+                if(ssOut1 == null || ssOut1.TaskNo != 0 || ssOut1.OnOff) {
+                    cannotOut = true;
+                }
+                
+            }
+            foreach(FullTask ft in allFtList) {
+                if(ft.pick.Status == 1 && ft.pick.type == 1 && !ss1.OnOff&&(ss1 == null || ft.pick.TaskNo != ss1.TaskNo)) {
+                    removeList.Add(ft);
+
+
+                } else if(cannotOut) {
+                    if(ft.pick.type == 1) {
+                        removeList.Add(ft);
+
+                    }
+                }
+            }
+            return removeList;
+        }
+
+
+        public abstract ushort inPoint();
+        public abstract int defoutPoint();
+        public abstract List<ushort> outPoint();
+    }
+}

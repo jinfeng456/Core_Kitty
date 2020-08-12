@@ -1,0 +1,47 @@
+﻿using GK.Common;
+using Oracle.DataAccess.Client;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Text;
+
+namespace GK.WCS.Common
+{
+    public class DBUtils
+    {
+        private static IDbConnection WCSConnection = null;
+        static DBUtils(){   
+            Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+        }
+    public static IDbConnection CreateWCSConnection(GKDBType type)
+        {
+            if (WCSConnection != null) {
+                return WCSConnection;
+            }
+
+            if (type == GKDBType.sqlserver) {
+                ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings["DB_WCS"];
+                IDbConnection connection =
+                    DbProviderFactories.GetFactory(connectionStringSettings.ProviderName).CreateConnection();
+                connection.ConnectionString = connectionStringSettings.ConnectionString;
+                WCSConnection = connection;
+            }
+
+
+            if (type == GKDBType.oracle)
+            {
+                ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings["DB_WCS"];
+                var connection = new OracleConnection(connectionStringSettings.ConnectionString);
+                connection.Open();
+                WCSConnection = connection;
+            }
+
+
+            return WCSConnection;
+        }
+
+    }
+}

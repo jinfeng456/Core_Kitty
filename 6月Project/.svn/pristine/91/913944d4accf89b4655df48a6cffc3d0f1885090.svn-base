@@ -1,0 +1,73 @@
+﻿using System;
+using System.Linq;
+using System.Net.Sockets;
+
+namespace GK.WCS.Common {
+    public abstract class SocketZtTaskConnect:ZtTaskConnect {
+        public bool Send(byte[] packet,int FailedRetrySeconds = 1) {//发报文
+            int size = clientRead.Send(packet);
+            return size == packet.Length;
+
+        }
+
+        public byte[] ReadTelex(int bufferSize = 128) {//接收报文
+            byte[] array = new byte[bufferSize];
+            int count = clientRead.Receive(array,SocketFlags.None);
+            return array.Take(count).ToArray<byte>();
+        }
+
+
+
+        public override void forceDisConnection() {
+            if(clientRead == null) {
+                return;
+            }
+            try {
+                clientRead.Close();
+                clientRead.Dispose();
+            } catch {
+                throw new Exception("关闭连接" + className + ip + ":" + port);
+            }
+            clientRead = null;
+        }
+        protected Socket clientRead = null;
+
+        public override void newConnection() {
+            if(clientRead == null) {
+                clientRead = new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
+                clientRead.Connect(IPEndPoints[0]);
+            } else {
+                forceDisConnection();
+            }
+
+        }
+        public override bool reConnect() {
+            if(clientRead != null && clientRead.Connected) {
+                return false;
+            }
+            newConnection();
+            if(clientRead == null) {
+                newConnection();
+            }
+
+            if(!clientRead.Connected) {
+                forceDisConnection();
+            }
+       
+            return true;
+
+        }
+
+        public override bool noConn() {
+            if(clientRead == null) {
+                return true;
+            }
+            if(!clientRead.Connected) {
+                return true;
+            }
+
+            return false;
+        }
+
+    }
+}

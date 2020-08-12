@@ -16,7 +16,7 @@ namespace Blog.Core.Controllers
     /// </summary>
     [Route("role")]
     //[ApiController]
-    //[Authorize(Permissions.Name)]
+    [Authorize]
     public class SysRoleController : ControllerBase
     {
         readonly ISysRoleServices _sysRoleServices;

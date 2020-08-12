@@ -1,0 +1,24 @@
+﻿
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System;
+using GK.WCS.Entity;
+using System.Data;
+using GK.DAL.inter;
+
+namespace GK.WCS.DAL {
+    public interface ITaskCarrierServer : IBaseServer
+    {
+        bool UpdateTaskCarrierStatus(long id, short status, IDbTransaction transaction = null);
+        bool finshTaskCarrier(long id, IDbTransaction transaction = null);
+        TaskCarrier getCarrarTasksByTaskNo(int taskNo, IDbTransaction transaction = null);
+        List<TaskCarrier> getOutCarrirerCodes(int start, IDbTransaction transaction = null);
+        List<TaskCarrier> getCarrarTasksByStn(int from, int end, IDbTransaction transaction = null); 
+        List<TaskCarrier> getCarrarTasks(long completeId, IDbTransaction transaction = null);
+       
+        TaskCarrier getByCode(String code, IDbTransaction transaction = null);
+
+
+    }
+}

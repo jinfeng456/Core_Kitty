@@ -1,0 +1,77 @@
+﻿using GK.Mongon.entity;
+using System;
+
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Diagnostics;
+
+namespace GK.WCS.Common {
+    public class LoggerCommon {
+  
+        public static bool showDebug=true;
+        static List<MongonLog> List = new List<MongonLog>();
+
+        public static List<MongonLog> getAll() {
+            List<MongonLog> dbList = new List<MongonLog>();
+            lock(List) {
+                dbList.AddRange(List);
+                List.Clear();
+            }
+            return dbList;
+        }
+
+        static void addMongon(String s) {
+            if(String.IsNullOrEmpty(s)) {
+                return;
+            }
+            lock(List) {
+                List.Add(new MongonLog(s));
+                if(List.Count > 10000) {
+                    List.RemoveAt(0);
+                }
+            }
+
+        }
+
+
+
+        //file all   
+        public static void fileAll(string s) {
+            if(String.IsNullOrEmpty(s)) {
+                return;
+            }
+            addMongon(s);
+           // FileLogger.Info(s);
+            LoggerCache.has(s);
+        }
+
+       
+        public static void error(string s,Exception ex) {
+            if(String.IsNullOrEmpty(s)) {
+                return;
+            }
+
+           
+            addMongon(s+ex.Message+ex.StackTrace);;
+            FileLogger.Error(s,ex);
+            LoggerCache.has(s);
+         
+        }
+       
+        public static void consol(string s) {
+            if(String.IsNullOrEmpty(s)) {
+                return;
+            }
+           
+            if(LoggerCache.has(s)) {
+                return;
+            }
+            addMongon(s);
+            //FileLogger.Info(s);
+
+        }
+
+
+
+    }
+}

@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+using GK.WCS.Common;
+
+namespace GK.WCS.Controller {
+    public class Wcs2WmsTask:ZtTask {
+        public Wcs2WmsTask() {
+            time = 2000;
+        }
+      
+       // WcsProcedure wcsProcedure = new WcsProcedure();
+
+        ITaskCompleteServer completeDAL = ServerFactray.getServer<ITaskCompleteServer>();
+        public override bool init() {
+            return true;
+        }
+        public override void excute() {
+            List<TaskComplete> list =  completeDAL.getWorkingTasks();
+
+            foreach(TaskComplete task in list) {
+
+                if(task.status == 2) {
+                    //wcsProcedure.wcsCompleteFinish(task.Id);//试图完成这个任务
+                } else if(task.status == 3|| task.status == -1) {
+                    if(task.upload == 0) {//任务完成 同步任务
+
+
+                        String info = null;// wmsProcedure.WmsSyncWcsReult(task.wmsTaskId,task.Status);
+                     
+                        if(info.StartsWith( "ok")) {//同步成功
+                            LoggerCommon.fileAll(task.wmsTaskId + "wms 同步" + info);
+                            completeDAL.finshSyncById(task.id);
+                        }
+                    }
+                }
+            }
+           
+        }
+    }
+}

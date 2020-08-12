@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Common.supplier {
+    public abstract class Ap {
+
+        public bool joinUp() {
+            ApStatus ztStatus = getZtStatus();
+            ApStatus supplierStatus = getSupplierStatus();
+            if((int)ztStatus * (int)supplierStatus == 0) {//其中一个拒绝通讯
+                return false;
+            }
+            if((int)ztStatus * (int)supplierStatus > 0) {//都在取货或者都要放货
+                throw new Exception("zt：" + ztStatus.ToString() + "supplier:" + supplierStatus.ToString());
+            }
+            switch(ztStatus) {
+                case ApStatus.IN_READY:
+                if(supplierStatus == ApStatus.OUT_READY) {//我准备入时，你必须时等待出
+                    return doZtIn();
+                } else {//
+                    throw new Exception("zt：" + ztStatus.ToString() + "supplier:" + supplierStatus.ToString());
+                }
+                case ApStatus.IN_ING:
+                if(supplierStatus == ApStatus.OUT_READY) {
+                    return doSupplierOut();
+                } else if(supplierStatus == ApStatus.OUT_ING) {//入库时，大家都滚动
+                    return false;
+                } else {
+                    throw new Exception("zt：" + ztStatus.ToString() + "supplier:" + supplierStatus.ToString());
+                }
+                case ApStatus.IN_FINISH:
+                if(supplierStatus == ApStatus.OUT_ING) {//入库时，我准备就绪，但是对方已经滚动
+                    return doSupplierFinish();
+                } else if(supplierStatus == ApStatus.OUT_FINISH) {
+                    return false;
+                } else {
+                    throw new Exception("zt：" + ztStatus.ToString() + "supplier:" + supplierStatus.ToString());
+                }
+                case ApStatus.OUT_READY:
+                if(supplierStatus == ApStatus.IN_READY) {
+                    return doSupplierIn();
+                } else if(supplierStatus == ApStatus.IN_ING) {//入库时，我准备就绪，但是对方已经滚动
+                    return doZtOut();
+                } else {
+                    throw new Exception("zt：" + ztStatus.ToString() + "supplier:" + supplierStatus.ToString());
+                }
+                case ApStatus.OUT_ING:
+                if(supplierStatus == ApStatus.IN_ING) {//入库时，我准备就绪，但是对方已经滚动
+                    return false;
+                } else if(supplierStatus == ApStatus.IN_FINISH) {
+                    return doZtFinish();
+                } else {
+                    throw new Exception("zt：" + ztStatus.ToString() + "supplier:" + supplierStatus.ToString());
+                }
+                case ApStatus.OUT_FINISH:
+                if(supplierStatus == ApStatus.IN_FINISH) {
+                    return false;
+                } else {
+                    throw new Exception("zt：" + ztStatus.ToString() + "supplier:" + supplierStatus.ToString());
+                }
+                default: {
+                        throw new Exception("zt：" + ztStatus.ToString() + "supplier:" + supplierStatus.ToString());
+                    }
+            }
+        }
+
+        public virtual bool doZtIn() {
+            return false;
+        }
+        public virtual bool doSupplierOut() {
+            return false;
+        }
+        public virtual bool doSupplierFinish() {
+            return false;
+        }
+
+
+
+        public virtual bool doSupplierIn() {
+            return false;
+        }
+        public virtual bool doZtOut() {
+            return false;
+        }
+        public virtual bool doZtFinish() {
+            return false;
+        }
+
+        public abstract ApStatus getZtStatus();
+        //供应商状态
+        public abstract ApStatus getSupplierStatus();
+
+
+
+
+    }
+}

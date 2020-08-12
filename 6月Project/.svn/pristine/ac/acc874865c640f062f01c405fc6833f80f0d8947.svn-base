@@ -1,0 +1,163 @@
+
+      
+        
+
+using System;      
+using System.Collections.Generic;
+using System.Collections;
+using YabaoSoft.Common.Orm;
+using Huax_WMS.Sc.Entity;
+
+namespace Huax_WMS.Sc.DAO
+{
+    public class sys_UserRolesReador 
+    {
+
+    
+        public DataSelector<sys_UserRolesField> Selector { get; set; }
+    
+        private YabaoSoft.Common.PagerAdapter _PagerAdapter;
+        /// <summary>
+        /// 分页适配器,默认每页1000条
+        /// </summary>
+        public YabaoSoft.Common.PagerAdapter PagerAdapter
+        {
+            set { _PagerAdapter = value; }
+            get
+            {
+                if (_PagerAdapter == null)
+                {
+                    _PagerAdapter = new YabaoSoft.Common.PagerAdapter();
+                    _PagerAdapter.RecPerPage = 1000;
+                }
+                return _PagerAdapter;
+            }
+        }
+
+        private List<Huax_WMS.Sc.DBL.sys_UserRolesSelectOrder> _SelectOrders;
+        /// <summary>
+        /// 列表排序
+        /// </summary>
+        public List<Huax_WMS.Sc.DBL.sys_UserRolesSelectOrder> SelectOrders
+        {
+            set { _SelectOrders = value; }
+            get {
+                if (_SelectOrders == null)
+                    _SelectOrders = new List<Huax_WMS.Sc.DBL.sys_UserRolesSelectOrder>();        
+                    return _SelectOrders; }
+        }
+
+
+
+
+        /// <summary>
+        /// 执行读取
+        /// </summary>
+        /// <returns></returns>
+        public List<Huax_WMS.Sc.Entity.sys_UserRoles> Read()
+        {
+            if (_PagerAdapter == null)
+            {
+                _PagerAdapter = new YabaoSoft.Common.PagerAdapter();
+                _PagerAdapter.RecPerPage = 1000;
+            }
+            return Huax_WMS.Sc.DBL.sys_UserRoles.GetList(this.Selector, _PagerAdapter, _SelectOrders);
+        }
+
+
+        #region 新增的静态方法
+
+        public static List<Huax_WMS.Sc.Entity.sys_UserRoles> ReadAll()
+        {
+            sys_UserRolesReador reador = new sys_UserRolesReador();
+            return reador.Read();
+        }
+
+        public static Huax_WMS.Sc.Entity.sys_UserRoles Read(int Id)
+        {
+            sys_UserRolesReador reador = new sys_UserRolesReador();
+            reador.Selector = Huax_WMS.Sc.Entity.sys_UserRoles.Prop.Id == Id;
+            List<Huax_WMS.Sc.Entity.sys_UserRoles> rtli = reador.Read();
+            if (rtli.Count == 1)
+                return rtli[0];
+            return null;
+        }
+        
+        public static Huax_WMS.Sc.Entity.sys_UserRoles ReadOne(DataSelector<sys_UserRolesField> Selector
+         )
+        {
+            List<Huax_WMS.Sc.Entity.sys_UserRoles> rtli = Read(Selector);
+            if (rtli.Count > 0 )
+                return rtli[0];
+            return null;
+        }
+
+        public static List<Huax_WMS.Sc.Entity.sys_UserRoles> Read(int[] ids)
+        {
+            if (ids.Length == 0)
+                return new List<sys_UserRoles>();
+                
+            sys_UserRolesReador reador = new sys_UserRolesReador();
+            foreach (var item in ids)
+            {
+                reador.Selector /= Huax_WMS.Sc.Entity.sys_UserRoles.Prop.Id == item;
+            }
+            return reador.Read();
+        }
+
+        public static List<Huax_WMS.Sc.Entity.sys_UserRoles> Read(DataSelector<sys_UserRolesField> Selector
+            , YabaoSoft.Common.PagerAdapter PagerAdapter
+            , List<Huax_WMS.Sc.DBL.sys_UserRolesSelectOrder> SelectOrders
+            )
+        {
+            sys_UserRolesReador reador = new sys_UserRolesReador();
+            if (Selector != null) reador.Selector = Selector;
+            if (PagerAdapter != null) reador.PagerAdapter = PagerAdapter;
+            if (SelectOrders != null) reador.SelectOrders = SelectOrders;
+            return reador.Read();
+        }
+
+        public static List<Huax_WMS.Sc.Entity.sys_UserRoles> Read(DataSelector<sys_UserRolesField> Selector
+           , YabaoSoft.Common.PagerAdapter PagerAdapter
+           )
+        {
+            return sys_UserRolesReador.Read(Selector, PagerAdapter, null);
+        }
+
+        public static List<Huax_WMS.Sc.Entity.sys_UserRoles> Read(DataSelector<sys_UserRolesField> Selector
+         )
+        {
+            return sys_UserRolesReador.Read(Selector, null, null);
+        }
+        #endregion
+        
+        
+        #region 读取关联对象
+        /// <summary>
+        /// 读取关联对象
+        /// </summary>
+        /// <param name="ent">本体对象</param>
+        /// <param name="props">需要读取的关联字段，多个用“,”</param>
+        public static void ReadRela(sys_UserRoles ent, params sys_UserRoles_RelaProp[] props)
+        {
+            List<sys_UserRoles_RelaProp> propLi = new List<sys_UserRoles_RelaProp>(props);
+
+        }
+
+        /// <summary>
+        /// 读取对象列表的关联对象
+        /// </summary>
+        /// <param name="ents">本体对象列表</param>
+        /// <param name="props">需要读取的关联字段，多个用“,”</param>
+        public static void ReadRela(List<sys_UserRoles> ents, params sys_UserRoles_RelaProp[] props)
+        {
+            List<sys_UserRoles_RelaProp> propLi = new List<sys_UserRoles_RelaProp>(props);
+
+        }
+
+        #endregion
+
+    }
+}
+
+        

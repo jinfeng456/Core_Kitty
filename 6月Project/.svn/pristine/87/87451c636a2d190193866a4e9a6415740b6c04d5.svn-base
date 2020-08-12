@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace HY.WCS.Common.Entity {
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+    public class Path {
+
+        public Path(ushort plcId,ushort path,ushort from,ushort end,String info) {
+
+            this.path = path;
+            this.from = (ushort)(from+ plcId*100);
+            this.end = (ushort)(end + plcId * 100);
+            this.info = info;
+            this.plcId = plcId;
+        
+
+        }
+        public ushort plcId;
+        public ushort path;//编号
+        public ushort from;
+        public ushort end;
+        public String info;
+       
+    }
+}

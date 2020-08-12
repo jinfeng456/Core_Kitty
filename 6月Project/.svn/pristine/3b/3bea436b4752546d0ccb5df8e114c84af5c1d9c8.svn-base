@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Common.core.task.exchange {
+
+    public enum ExchangeStatus :byte{
+        unNone=0,
+        Idle = 1,
+        InIng=2,
+        Ined=3,
+        OutReady = 4,
+        OutIng = 5
+    }
+}

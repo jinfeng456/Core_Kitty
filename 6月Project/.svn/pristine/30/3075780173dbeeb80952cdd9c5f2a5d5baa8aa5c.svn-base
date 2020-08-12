@@ -1,0 +1,571 @@
+
+using System;
+using System.Data;
+using System.Text;
+using System.Collections;
+using System.Data.SqlClient;
+using System.Collections.Generic;
+using YabaoSoft.Common;
+using YabaoSoft.Common.Orm;
+
+using Huax_WMS.Sc.Entity;
+
+namespace Huax_WMS.Sc.DBL
+{
+/// <summary>
+    /// sys_UserRoles可以排序的字段
+    /// </summary>
+    public enum sys_UserRolesOrderField
+    {
+        
+        /// <summary>
+        ///对象编号
+        /// </summary>
+        Id
+
+                    /// <summary>
+                    /// 权限ID
+                    /// </summary>
+                    ,RoleId
+                    
+                    /// <summary>
+                    /// 用户ID
+                    /// </summary>
+                    ,UserId
+                    
+    }
+    
+    
+
+      
+    /// <summary>
+    /// 对“用户权限关联”查询的排序规则
+    /// </summary>
+    public class sys_UserRolesSelectOrder
+    {
+        public sys_UserRolesSelectOrder(sys_UserRolesOrderField OrderField, OrderType OrderType)
+        {
+            _OrderField = OrderField;
+            _OrderType = OrderType;
+        }
+
+        private sys_UserRolesOrderField _OrderField;
+        public sys_UserRolesOrderField OrderField
+        {
+            set { _OrderField = value; }
+            get { return _OrderField; }
+        }
+
+        private OrderType _OrderType;
+        public OrderType OrderType
+        {
+            set { _OrderType = value; }
+            get { return _OrderType; }
+        }
+    }
+  
+        /// <summary>
+        /// 用户权限关联 的数据操作
+        /// </summary>
+  public class sys_UserRoles
+  {
+private static List<Huax_WMS.Sc.Entity.sys_UserRoles> BuildEntList(DataTable dt)
+{
+            List<Huax_WMS.Sc.Entity.sys_UserRoles> li = new List<Huax_WMS.Sc.Entity.sys_UserRoles>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                li.Add(FromDr(dr));
+            }
+            return li;
+}
+        /// <summary>
+        /// 通过读取数据行获得实体
+        /// </summary>
+/// <param name="dr">数据行</param>
+public static Huax_WMS.Sc.Entity.sys_UserRoles FromDr(DataRow dr)
+  {
+Huax_WMS.Sc.Entity.sys_UserRoles ei = new Huax_WMS.Sc.Entity.sys_UserRoles();
+  ei.Id = Convert.ToInt32(dr["Id"]);
+ if(dr["RoleId"].GetType()!=typeof( DBNull))
+ei.RoleId = Convert.ToString(dr["RoleId"]);
+  ei.Id = Convert.ToInt32(dr["Id"]);
+ if(dr["UserId"].GetType()!=typeof( DBNull))
+ei.UserId = Convert.ToString(dr["UserId"]);
+  return ei;
+  }
+
+      
+      
+        /// <summary>
+        /// 查询得到“sys_UserRoles”对象。aaa
+        /// </summary>
+        /// <returns></returns>
+        public static Entity.sys_UserRoles GetSingle(Entity.sys_UserRoles ReferenceObject)
+        {
+            return GetSingle((int)ReferenceObject.Id);                  
+        }  
+        
+        
+        public static Entity.sys_UserRoles GetSingle(int Id)
+        {
+            int[] arr = { Id };
+            List<Entity.sys_UserRoles> li = GetList( arr );
+            if (li != null)           
+            {
+                if (li.Count > 0){
+                   return li[0];
+                }
+            }
+            return new Entity.sys_UserRoles();      
+        }
+      
+        /// <summary>
+        /// 查询得到“sys_UserRoles”对象列表，不筛选，最多返回1000条数据
+        /// </summary>
+        /// <returns></returns>
+        public static List<Entity.sys_UserRoles> GetList()
+        {
+            return GetList(new DataSelector<sys_UserRolesField>());        
+        }
+
+
+        /// <summary>
+        /// 查询得到满足参照对象的“sys_UserRoles”对象列表，最多返回1000条数据
+        /// </summary>
+        /// <param name="ReferenceObject">参照对象</param>
+        /// <returns></returns>
+        public static List<Entity.sys_UserRoles> GetList(DataSelector<sys_UserRolesField> selector)
+        {
+            YabaoSoft.Common.PagerAdapter MyPagerAdapter = new YabaoSoft.Common.PagerAdapter();
+            MyPagerAdapter.RecPerPage = 1001;
+            MyPagerAdapter.RecNum = 1000;
+            return GetList(selector, MyPagerAdapter);
+        }
+        
+        /// <summary>
+        /// 查询得到“sys_UserRoles”对象列表，不筛选，默认排序，需要分页控制器
+        /// </summary>
+        /// <param name="MyPagerAdapter">分页控制器</param>
+        /// <returns></returns>
+        public static List<Entity.sys_UserRoles> GetList( YabaoSoft.Common.PagerAdapter MyPagerAdapter)
+        {
+            return GetList(new DataSelector<sys_UserRolesField>(), MyPagerAdapter);
+        }
+
+
+        /// <summary>
+        /// 查询得到“sys_UserRoles”对象列表
+        /// </summary>
+        /// <param name="ReferenceObject">参照对象</param>
+        /// <param name="MyPagerAdapter">分页控制器</param>
+        /// <returns></returns>
+        public static List<Entity.sys_UserRoles> GetList(DataSelector<sys_UserRolesField> selector, YabaoSoft.Common.PagerAdapter MyPagerAdapter){
+            List<sys_UserRolesSelectOrder> li = new List<sys_UserRolesSelectOrder>();
+            li.Add(new sys_UserRolesSelectOrder(sys_UserRolesOrderField.Id, OrderType.DESC));
+            return GetList(selector, MyPagerAdapter, li);
+        }
+
+
+        /// <summary>
+        /// 查询得到“sys_UserRoles”对象列表
+        /// </summary>
+        /// <param name="ReferenceObject">参照对象</param>
+        /// <param name="MyPagerAdapter">分页控制器</param>
+        /// <param name="SelectOrderList">排序定义</param>
+        /// <returns></returns>       
+        public static List<Entity.sys_UserRoles> GetList(DataSelector<sys_UserRolesField> selector, YabaoSoft.Common.PagerAdapter MyPagerAdapter, List<sys_UserRolesSelectOrder> SelectOrderList)
+        {
+
+            MyPagerAdapter.RecNum = GetCount(selector);
+            int SkipNumber = (MyPagerAdapter.PageNo - 1) * MyPagerAdapter.RecPerPage;
+            string sqlSelectStr1 = string.Format(" select top {0} * from [Huax_WMS.Sc.sys_UserRoles]  ", MyPagerAdapter.RecPerPage);
+            string sqlSelectStr2 = string.Format(" select top {0} Id from [Huax_WMS.Sc.sys_UserRoles] ", SkipNumber);
+
+            string sqlWhereStr = "";
+            string sqlOrderStr = CreatOrderByStr(SelectOrderList);
+
+            SqlCommand sc = new SqlCommand();
+            sc.Connection = DblUtil.getConn();
+
+            int pNum = 0;
+            if( selector == null ){
+                sqlWhereStr = " Id > 0 ";
+            }else{
+                sqlWhereStr = selector.SqlString;
+                foreach (NameValue nv in selector.NameValues)
+                {
+                    if(nv != null)
+                        sc.Parameters.Add(new SqlParameter(nv.Pname, nv.Value));
+                }
+                pNum = selector.NameValues.Count;
+            }            
+            
+            string sqlCmd = "";
+            if (pNum > 1)
+            {
+                sqlCmd = sqlSelectStr1 + " WHERE (" + sqlWhereStr + ")" ;
+                if (SkipNumber > 0) sqlCmd += " AND ";
+                
+            }
+            else if (pNum == 1)
+            {
+                sqlCmd = sqlSelectStr1 + " WHERE " + sqlWhereStr  ;
+                if (SkipNumber > 0) sqlCmd += " AND ";
+            }
+            else
+            {
+                sqlCmd = sqlSelectStr1 ;
+                if (SkipNumber > 0) sqlCmd += " WHERE ";
+            }
+            if (SkipNumber > 0) sqlCmd += "  ( Id NOT IN (" + sqlSelectStr2 + " WHERE (" + sqlWhereStr + " ) " + sqlOrderStr + ")) "  ;
+            
+            sqlCmd += sqlOrderStr;
+
+            sc.CommandText = sqlCmd;
+            SqlDataAdapter sda = new SqlDataAdapter(sc);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            return BuildEntList(dt);
+            
+        }
+        
+                
+        /// <summary>
+        /// 查询得到“sys_UserRoles”对象列表
+        /// </summary>
+        /// <param name="IdList">“sys_UserRoles”编号的数组</param>
+        /// <returns></returns>
+        public static List<Entity.sys_UserRoles> GetList(int[] IdList)
+        {
+            //================ 数组空，直接返回；
+            if (IdList.Length == 0)
+                return null;
+
+            //================ 删除重复的成员
+            Array.Sort(IdList);
+
+            StringBuilder sqlStr = new StringBuilder(" select * from [Huax_WMS.Sc.sys_UserRoles] WHERE");
+
+            string spiStr = "";
+            int lastId = IdList[0] - 1;
+            foreach (int id in IdList)
+            {
+                if (id != lastId)
+                {
+                    sqlStr.AppendFormat(spiStr + " (Id= {0}) ", id.ToString());
+                    if (spiStr == "") { spiStr = "OR"; }
+                    lastId = id;
+                }
+            }
+            
+
+            SqlCommand sc = new SqlCommand();
+            sc.Connection = DblUtil.getConn();
+            sc.CommandText = sqlStr.ToString();
+            SqlDataAdapter sda = new SqlDataAdapter(sc);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            return BuildEntList(dt);
+        }
+        
+
+        private static string CreatOrderByStr(List<sys_UserRolesSelectOrder> SelectOrderList)
+        {
+            string sqlOrderStr = "";
+            if (SelectOrderList != null)
+            {
+                if (SelectOrderList.Count > 0)
+                {
+                    sqlOrderStr += " ORDER BY ";
+                    string fgf = "";
+                    foreach (sys_UserRolesSelectOrder so in SelectOrderList)
+                    {
+                        sqlOrderStr += fgf + "[" + Enum.GetName(typeof(sys_UserRolesOrderField), so.OrderField) + "]";
+                        sqlOrderStr += " " + Enum.GetName(typeof(OrderType), so.OrderType);
+                        fgf = ",";
+                    }
+                }
+            }
+            return sqlOrderStr;
+        }
+
+      
+    
+
+
+        /// <summary>
+        /// 得到符合条件的数据总数
+        /// </summary>
+        /// <param name="ReferenceObject">参照对象</param>
+        /// <returns></returns>
+        public static int GetCount(DataSelector<sys_UserRolesField> selector)
+        {
+            string sqlSelectStr = string.Format(" select Count(Id) from [Huax_WMS.Sc.sys_UserRoles] ");
+
+            string sqlWhereStr = "";
+
+            SqlConnection conn = DblUtil.getConn();
+            SqlCommand sc = new SqlCommand();
+            sc.Connection = conn;
+            
+            if (selector == null)
+            {
+                sc.CommandText = sqlSelectStr;
+            }
+            else {
+                sqlWhereStr = selector.SqlString;
+                foreach (NameValue nv in selector.NameValues)
+                {
+                    if(nv != null)
+                    sc.Parameters.Add(new SqlParameter(nv.Pname, nv.Value));
+                }
+
+                int pNum = selector.NameValues.Count;
+
+                string sqlCmd = "";
+                if (pNum > 1)
+                {
+                    sqlCmd = sqlSelectStr + " WHERE (" + sqlWhereStr + ")" ;
+                }
+                else if (pNum == 1)
+                {
+                    sqlCmd = sqlSelectStr + " WHERE " + sqlWhereStr ;
+                }
+                else
+                {
+                    sqlCmd = sqlSelectStr;
+                }
+                sc.CommandText = sqlCmd;
+            }
+            conn.Open();
+            
+            int rtval=0;
+            try
+            {
+                SqlDataReader sdr = sc.ExecuteReader();
+                sdr.Read();
+                rtval = sdr.GetInt32(0);
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+            finally { conn.Close(); }
+
+            return rtval;
+        }
+
+      
+    
+        /// <summary>
+        /// 将sys_UserRoles实例保存到数据库
+        /// </summary>
+        /// <param name="AddEnt">需要添加的实例（不包含ID）</param>
+        /// <returns>包含ID的实例</returns>
+        public static Entity.sys_UserRoles Add(Entity.sys_UserRoles AddEnt, IDbTransaction transaction)
+        {
+
+            string sqlStrIns = "INSERT INTO [Huax_WMS.Sc.sys_UserRoles] (";
+            string sqlStrVal = ") VALUES (";
+            string sqlStrInd = ");";
+            if (transaction == null) sqlStrInd = ");SELECT @@IDENTITY;";
+            string fgf = "";
+
+            SqlCommand sc = new SqlCommand();
+
+
+            if (AddEnt.RoleId != null)
+            {
+                sqlStrIns += fgf + " RoleId ";
+                sqlStrVal += fgf + " @RoleId ";
+                sc.Parameters.Add(new SqlParameter("RoleId", AddEnt.RoleId));
+                fgf = ",";
+            }
+            
+            
+	
+            if (AddEnt.UserId != null)
+            {
+                sqlStrIns += fgf + " UserId ";
+                sqlStrVal += fgf + " @UserId ";
+                sc.Parameters.Add(new SqlParameter("UserId", AddEnt.UserId));
+                fgf = ",";
+            }
+            
+            
+	
+
+            string sqlCommand = sqlStrIns + sqlStrVal + sqlStrInd;
+            sc.CommandText = sqlCommand;
+            
+            if( transaction == null ){
+                SqlConnection conn = DblUtil.getConn();
+                sc.Connection =conn;
+                
+                try
+                {
+                    conn.Open();
+                    SqlDataReader sdr = sc.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        AddEnt.Id = Convert.ToInt32(sdr[0]);
+                    }
+                }
+                catch (Exception ex) { throw new Exception(ex.Message); }
+                finally { conn.Close(); }
+            }else{
+                sc.Transaction =   (SqlTransaction)transaction ;
+                sc.Connection = (SqlConnection)transaction.Connection;
+                sc.ExecuteNonQuery();
+            }
+            return AddEnt;
+
+        }
+        
+        
+	
+
+        /// 删除sys_UserRoles实体对应的数据
+        /// </summary>
+        /// <param name="DeleteEnt">数据实体</param>
+        /// <param name="transaction">事务</param>        
+        public static void Delete(Entity.sys_UserRoles DeleteEnt , IDbTransaction transaction)
+        {
+            if (DeleteEnt.Id!=null && DeleteEnt.Id != int.MinValue)
+            {
+                string sqlCommand = "DELETE [Huax_WMS.Sc.sys_UserRoles] WHERE ( [Id] =" + DeleteEnt.Id.ToString() + ") ";
+               
+                SqlCommand sc = new SqlCommand();
+                sc.CommandText = sqlCommand;
+                if(transaction==null){
+                    SqlConnection conn = DblUtil.getConn();
+                    sc.Connection =conn;                   
+                    try
+                    {
+                        conn.Open();
+                        sc.ExecuteNonQuery();
+                    }
+                    catch (Exception ex) { throw new Exception(ex.Message); }
+                    finally { conn.Close(); }
+                }else{
+
+                    sc.Transaction =   (SqlTransaction)transaction ;
+                    sc.Connection = (SqlConnection)transaction.Connection;
+                    sc.ExecuteNonQuery();
+                }
+            }
+        }
+        
+	
+    
+        /// <summary>
+        /// 删除sys_UserRoles实体对应的数据
+        /// </summary>
+        /// <param name="DeleteEnts"></param>
+        public static void Delete(List<Entity.sys_UserRoles> DeleteEnts, IDbTransaction transaction)
+        {
+            if (DeleteEnts.Count > 0)
+            {
+                int pNum = 0;
+                string sqlCommand = "DELETE [Huax_WMS.Sc.sys_UserRoles]  ";
+                string sqlWhereStr = "";
+                string fgf="";
+                foreach (Entity.sys_UserRoles DeleteEnt in DeleteEnts)
+                {
+                    if (DeleteEnt.Id != int.MinValue)
+                    {
+                        sqlWhereStr += fgf + " ( [Id] =" + DeleteEnt.Id.ToString() + ") ";
+                        fgf = " AND "; pNum += 1;
+                    }
+                }
+
+                SqlCommand sc = new SqlCommand();
+                sc.CommandText = sqlCommand;
+                if(transaction==null){
+                    SqlConnection conn = DblUtil.getConn();
+                    sc.Connection =conn;
+                    
+                    try
+                    {
+                        conn.Open();
+                        sc.ExecuteNonQuery();
+                    }
+                    catch (Exception ex) { throw new Exception(ex.Message); }
+                    finally { conn.Close(); }
+                }else{
+
+                    sc.Transaction =   (SqlTransaction)transaction ;
+                    sc.Connection = (SqlConnection)transaction.Connection;
+                    sc.ExecuteNonQuery();
+                }
+            }
+        }
+        
+        
+	
+
+      
+         public static SqlTransaction CreatTransaction(){
+             SqlConnection conn = DblUtil.getConn();
+             conn.Open();
+             return conn.BeginTransaction();
+         }
+      
+      
+        /// <summary>
+        /// 将已经修改的对象保存到数据库
+        /// </summary>
+        /// <param name="UpdEnt">对象（必须包含ID）</param>
+        public static void Update(Entity.sys_UserRoles UpdEnt , IDbTransaction transaction )
+        {
+
+            if (UpdEnt.Id == null)
+            {
+                throw new Exception("对象尚未读取，不能执行更新操作");
+            }
+
+            string sqlStr = "UPDATE [Huax_WMS.Sc.sys_UserRoles] SET";
+            string sqlStrWhere = " WHERE ";
+
+            string fgf = "";
+
+
+            SqlCommand sc = new SqlCommand();
+
+            sqlStrWhere += "( Id = @Id)";
+            sc.Parameters.Add(new SqlParameter("Id", UpdEnt.Id));
+
+
+        if(UpdEnt.RoleId!=null){
+            sqlStr += fgf + " RoleId = @RoleId";
+            sc.Parameters.Add(new SqlParameter("RoleId", UpdEnt.RoleId));
+            fgf = ",";            
+            
+        }
+    
+        if(UpdEnt.UserId!=null){
+            sqlStr += fgf + " UserId = @UserId";
+            sc.Parameters.Add(new SqlParameter("UserId", UpdEnt.UserId));
+            fgf = ",";            
+            
+        }
+    
+
+            sc.CommandText = sqlStr + sqlStrWhere;
+            
+            if(transaction==null){
+                SqlConnection conn = DblUtil.getConn(); 
+                sc.Connection = conn;
+                try
+                { 
+                    conn.Open();
+                    sc.ExecuteNonQuery();
+                }
+                catch (Exception ex) { throw new Exception(ex.Message); }
+                finally { conn.Close(); }
+                
+            }else{
+                sc.Transaction = (SqlTransaction)transaction;
+                sc.Connection = (SqlConnection)transaction.Connection;
+                sc.ExecuteNonQuery();
+            }
+        }
+      }
+}

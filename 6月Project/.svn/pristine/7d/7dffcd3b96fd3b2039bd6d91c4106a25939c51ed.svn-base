@@ -1,0 +1,28 @@
+﻿
+using System.Collections.Generic;
+using System.Threading;
+using GK.WCS.Common;
+using GK.WCS.Carrier;
+using GK.WCS.DAL;
+using GK.WCS.dto;
+using GK.WCS.Entity;
+
+namespace GK.WCS.Controller {
+    public  class CranePriority:ZtTask {
+    
+
+        public CranePriority() {
+            time = 100;
+        }
+
+        public override void excute()
+        {
+
+            IPhysicalLocationServer physicalLocationServer = ServerFactray.getServer<IPhysicalLocationServer>();
+            PhysicalLocation pl = physicalLocationServer.getById(1191);
+
+
+        }
+      
+    }
+}

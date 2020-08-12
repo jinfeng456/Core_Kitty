@@ -1,0 +1,65 @@
+﻿using GK.Common.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Entity
+{
+    [Serializable]
+    public class BaseTask : BaseEntity {
+
+        public BaseTask() {
+
+           
+        }
+      
+     
+        public int taskNo
+        {
+            get; set;
+        }
+        public int code
+        {
+            get; set;
+        }
+
+        public String completeId
+        {
+            get; set;
+        }
+        public DateTime conpleteParamId
+        {
+            get; set;
+        }
+        public DateTime StartTime
+        {
+            get; set;
+        }
+        public String EndTime
+        {
+            get; set;
+        }
+
+        public String Extra
+        {
+            get; set;
+        }
+
+        public String status
+        {
+            get; set;
+        }
+
+        public String taskType
+        {
+            get; set;
+        }
+
+
+
+
+
+
+    }
+}

@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Entity
+{
+    [Serializable]
+    public partial class TaskCrane:BaseTask {
+		public TaskCrane()
+		{}
+        override public List<String> getLableData() {
+            List<String> list = base.getLableData();
+         
+            list.Add("编号：" + locId);
+            list.Add("优先级：" + Priority);
+            list.Add("动作：" + (MotionType==1?"取货":"放货"));
+            if(type == 1) {
+                list.Add("类型：入库");
+            }else  if(type == 2) {
+                list.Add("类型：出库");
+            } else if(type == 3) {
+                list.Add("类型：移库");
+            } else if(type == 4) {
+                list.Add("类型：摆渡");
+            }
+            return list;
+        }
+
+        public int locX
+        {
+            get; set;
+        }
+
+        public int locY
+        {
+            get; set;
+        }
+       
+        public int locDir
+        {
+            get; set;
+        }
+
+        public ushort forkNo
+        {
+            get; set;
+        }
+
+        
+
+
+        public int locId
+        {
+            get; set;
+        }
+       
+        public int Priority
+        {
+            get; set;
+        }
+
+        public int MotionType
+        {
+            get; set;
+        }
+
+       
+       
+
+        public int locZ
+        {
+            get; set;
+        }
+
+
+       public int type
+        {
+            get;set;
+        }
+        public int itemType
+        {
+            get; set;
+        }
+
+    }
+}

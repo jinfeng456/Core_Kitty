@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Common.core.task.exchange {
+
+    
+    public abstract class ExchangeBaseTask:ZtTask {
+        ExchangeEquipment eea;
+        ExchangeEquipment eeb;
+
+        public override void onlyOneTime() {
+
+        }
+        public override void excute() {
+            ExchangeStatus statusA = eea.getStatus();
+            ExchangeStatus statusB = eeb.getStatus();
+            if(statusA == ExchangeStatus.unNone || statusB == ExchangeStatus.unNone) {
+                return;
+            }
+            if(statusA== ExchangeStatus.Idle) {
+                if(statusB == ExchangeStatus.OutReady) {
+                    eea.doIn();
+                } 
+            } else if(statusA == ExchangeStatus.InIng) {//b正在向a运货
+                if(statusB == ExchangeStatus.OutReady) {
+                    eeb.doOut();
+                } 
+
+            } else if(statusA == ExchangeStatus.Ined) {//b准备到a
+                if(statusB == ExchangeStatus.OutIng) {
+                    eeb.finishOut();
+                }
+
+            } else if(statusA == ExchangeStatus.OutReady) {//a向b上一个完成
+                if(statusB == ExchangeStatus.Idle) {
+                    eeb.doIn();
+                } else if(statusB == ExchangeStatus.InIng) {
+                    eea.doOut();
+                }
+
+            } else if(statusA == ExchangeStatus.OutIng) {//a准备到b
+                 if(statusB == ExchangeStatus.Ined) {
+                    eea.finishOut();
+                }
+            } 
+
+        }
+
+        
+
+
+    }
+}

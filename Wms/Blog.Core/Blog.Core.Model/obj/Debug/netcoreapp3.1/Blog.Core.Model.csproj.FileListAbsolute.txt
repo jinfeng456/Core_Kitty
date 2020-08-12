@@ -11,3 +11,16 @@ G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Model\obj\
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.csproj.CopyComplete
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.dll
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Model.deps.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Model.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Common.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.csprojAssemblyReference.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.csproj.CoreCompileInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.AssemblyInfoInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.AssemblyInfo.cs
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.csproj.CopyComplete
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.pdb

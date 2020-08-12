@@ -1,0 +1,415 @@
+﻿using CMFrameWork.Common;
+using CMNetLib.Robots.Crane;
+using GK.WCS.Client.Station;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+using GK.WCS.Open.http.dto;
+using System;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
+
+namespace GK.WCS.Client.Device
+{
+    public partial class FrmCraneCtrl : Form
+    {
+        private int cId = 1;
+        IRTConfigServer rTConfigServer = ServerFactray.getServer<IRTConfigServer>();
+        public FrmCraneCtrl()
+        {
+            InitializeComponent();
+            TaskInfo1.setForkNO(1);
+            TaskInfo2.setForkNO(2);
+        }
+
+        private void FrmCraneCtrl_Load(object sender, EventArgs e)
+        {
+            cId = 1;
+            init();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            cId = rb.Tag.ToInt32();
+            info.showBut(false);
+            craneManual.CraneId = cId;
+
+        }
+
+
+        private void ChangeMode_Click(object sender, EventArgs e)
+        {
+            var ctrl = sender as Button;
+            if (ctrl == null)
+                return;
+            var tag = ctrl.Tag.ToString();
+            if (string.IsNullOrEmpty(tag))
+            {
+                return;
+            }
+
+            int model;
+            if (!int.TryParse(tag, out model))
+                return;
+            if (MessageBox.Show("确认切换模式到" + ctrl.Text, "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK)
+            {
+                return;
+            }
+            IRTConfigServer rTConfigServer = ServerFactray.getServer<IRTConfigServer>();
+            rTConfigServer.Update(cId, model);
+            var craneModel = RobotMode.SEMI_AUTO;
+            if (model != 3)
+            {
+                craneModel = (RobotMode)model;
+            }
+
+            CraneData carrierData = HttpCraneUtil.loadData(cId);
+            if (carrierData == null)
+            {
+                return;
+            }
+            if (carrierData.craneStatus == CraneStatus.Manual)
+            {
+                MessageBox.Show("目前处于物理手动，暂不能切换自动控制模式", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (carrierData.controlMode == craneModel)
+                return;
+
+            var res = HttpCraneUtil.SwtichMode(cId, craneModel);
+            string success = string.Empty;
+
+            var info = string.Format("{1}号堆垛机切换成{2}{0}", res ? "成功" : "失败", cId, success);
+            MessageUtil.warning(info);
+        }
+        private void timerRefresh_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                lblCraneName.Text = cId + @"号堆垛机";
+
+
+
+                CraneData carrierData = HttpCraneUtil.loadData(cId);
+
+
+                this.Invoke(new Action(() =>
+                {
+                    try
+                    {
+                        SetUiValue(carrierData);
+
+                    }
+                    catch { }
+
+                }));
+
+                if (carrierData.taskState == null) {
+                    return;
+                }
+                TaskInfo1.ShowInfo(carrierData.taskState[0], cId);
+                if (carrierData.taskState.Count > 1)
+                {
+                    if (!TaskInfo2.Visible)
+                    {
+                        TaskInfo2.Visible = true;
+                    }
+
+                    TaskInfo2.ShowInfo(carrierData.taskState[1], cId);
+                }
+                else
+                {
+                    if (TaskInfo2.Visible)
+                    {
+                        TaskInfo2.Visible = false;
+                    }
+                }
+
+                netInfo.ShowInfo(carrierData.netData);
+                craneAuto.ShowInfo(cId);
+                info.ShowInfo(carrierData, cId);
+                cranePointSign.ShowInfo(carrierData.DI);
+
+            }
+            catch
+            {
+
+            }
+            Thread.Sleep(300);
+        }
+
+
+
+
+        private void SetUiValue(CraneData carrierData)
+        {
+
+            CraneStatus craneStatus = carrierData.craneStatus;
+
+            if (craneStatus == CraneStatus.SystemManual)
+            {
+                if (!lblCurrentMode.Text.Equals("系统手动"))
+                {
+                    lblCurrentMode.Text = "系统手动";
+                    SetModeButtonState(1);
+
+                }
+                return;
+            }
+            switch (craneStatus)
+            {
+                case CraneStatus.Offline:
+                    if (!lblCurrentMode.Text.Equals("设备离线"))
+                        lblCurrentMode.Text = "设备离线";
+
+                    SetModeButtonState(0);
+                    return;
+                case CraneStatus.Fault:
+                    if (!lblCurrentMode.Text.Equals("设备故障"))
+                        lblCurrentMode.Text = "设备故障";
+                    SetModeButtonState(0);
+                    break;
+                case CraneStatus.Manual:
+                    if (!lblCurrentMode.Text.Equals("物理手动"))
+                        lblCurrentMode.Text = "物理手动";
+                    SetModeButtonState(0);
+                    break;
+                case CraneStatus.INIT:
+                    if (!lblCurrentMode.Text.Equals("初始化中"))
+                        lblCurrentMode.Text = "初始化中";
+                    SetModeButtonState(3);
+                    break;
+                case CraneStatus.Semimode:
+                    {
+                        IRTConfigServer rTConfigServer = ServerFactray.getServer<IRTConfigServer>();
+                        
+                                    RTConfig rt = rTConfigServer.GetRTConfig(cId);
+                        if (rt.Cranestatus == 2)
+                        {
+                            if (!lblCurrentMode.Text.Equals("自动"))
+                            {
+                                lblCurrentMode.Text = "自动";
+                                SetModeButtonState(2);
+                            }
+                        }
+                        else if (rt.Cranestatus == 3)
+                        {
+                            if (!lblCurrentMode.Text.Equals("全自动"))
+                            {
+                                lblCurrentMode.Text = "全自动";
+                                SetModeButtonState(4);
+
+                            }
+
+                            if (carrierData.Fault)
+                            {
+                                this.info.showBut(true);
+
+                            }
+                        }
+                        else if (rt.Cranestatus == 1)
+                        {
+                            if (!lblCurrentMode.Text.Equals("系统手动"))
+                            {
+                                lblCurrentMode.Text = "系统手动";
+                                SetModeButtonState(1);
+                            }
+                        }
+                    }
+
+
+                    break;
+                default:
+
+                    String info = "状态：" + carrierData.craneStatus.ToString();
+                    if (!lblCurrentMode.Text.Equals(info))
+                    {
+                        lblCurrentMode.Text = info;
+                        SetModeButtonState(3);
+                    }
+                    break;
+
+            }
+
+
+
+        }
+
+
+        //0物理手动，或者离线
+        //1系统手动
+        //2 自动
+        //3 初始化
+        //4 全自动
+        private void SetModeButtonState(int status)
+        {
+            if (status == 0)
+            {
+                btnManual.Visible = false;
+                btnSemiAuto.Visible = false;
+                autoButton1.Visible = false;
+
+                craneAuto.Enabled = false;
+                craneManual.Enabled = false;
+            }
+            else if (status == 1)
+            {
+                btnManual.BackColor = Color.Black;
+                btnSemiAuto.BackColor = Color.Black;
+                btnManual.Visible = false;
+                btnSemiAuto.Visible = true;
+                autoButton1.Visible = true;
+
+                craneAuto.Enabled = false;
+                craneManual.Enabled = true;
+            }
+            else if (status == 2)
+            {
+                btnManual.BackColor = Color.Black;
+                btnSemiAuto.BackColor = Color.Black;
+                btnManual.Visible = true;
+                btnSemiAuto.Visible = false;
+                autoButton1.Visible = true;
+
+                craneAuto.Enabled = true;
+                craneManual.Enabled = false;
+            }
+            else if (status == 4)
+            {
+                btnManual.BackColor = Color.Black;
+                btnSemiAuto.BackColor = Color.Black;
+                btnManual.Visible = true;
+                btnSemiAuto.Visible = true;
+                autoButton1.Visible = false;
+
+                craneAuto.Enabled = false;
+                craneManual.Enabled = false;
+            }
+            else
+            {
+                btnManual.BackColor = Color.Black;
+                btnSemiAuto.BackColor = Color.Black;
+                btnManual.Visible = true;
+                btnSemiAuto.Visible = true;
+                autoButton1.Visible = true;
+
+                craneAuto.Enabled = false;
+                craneManual.Enabled = false;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            HttpCraneUtil.EmergencyStop(1, RobotMode.SEMI_AUTO);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            HttpCraneUtil.EmergencyStop(2, RobotMode.SEMI_AUTO);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HttpCraneUtil.EmergencyStop(3, RobotMode.SEMI_AUTO);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            HttpCraneUtil.EmergencyStop(4, RobotMode.SEMI_AUTO);
+        }
+
+        private void FrmCraneCtrl_Paint(object sender, PaintEventArgs e)
+        {
+            this.timerRefresh.Enabled = true;
+        }
+        string idle = "点击恢复执行";
+        string working = "点击循环停止";
+        private void btnCrane1stop_Click(object sender, EventArgs e)
+        {
+         
+            if (working == btnCrane1stop.Text)
+            {
+                rTConfigServer.updateCraneOverStop(1, 1);
+            }
+            else
+            {
+                rTConfigServer.updateCraneOverStop(1, 0);
+            }
+            init();
+        }
+        private void init()
+        {
+          
+            int crane1Stop = rTConfigServer.getCraneOverStop(1);
+            changeCraneButton(crane1Stop, btnCrane1stop);
+
+            int crane2Stop = rTConfigServer.getCraneOverStop(2);
+            changeCraneButton(crane2Stop, btnCrane2stop);
+
+
+            int crane3Stop = rTConfigServer.getCraneOverStop(3);
+            changeCraneButton(crane3Stop, btnCrane3stop);
+
+            int crane4Stop = rTConfigServer.getCraneOverStop(4);
+            changeCraneButton(crane4Stop, btnCrane4stop);
+        }
+        void changeCraneButton(int crane1Stop, Button btnCrane)
+        {
+            this.Invoke(new Action(() =>
+            {
+                if (crane1Stop == 1)
+                {
+                    btnCrane.Text = idle;
+                }
+                else
+                {
+                    btnCrane.Text = working;
+                }
+            }));
+        }
+
+        private void btnCrane2stop_Click(object sender, EventArgs e)
+        {
+            if (working == btnCrane2stop.Text)
+            {
+                rTConfigServer.updateCraneOverStop(2, 1);
+            }
+            else
+            {
+                rTConfigServer.updateCraneOverStop(2, 0);
+            }
+            init();
+        }
+
+        private void btnCrane3stop_Click(object sender, EventArgs e)
+        {
+            if (working == btnCrane3stop.Text)
+            {
+                rTConfigServer.updateCraneOverStop(3, 1);
+            }
+            else
+            {
+                rTConfigServer.updateCraneOverStop(3, 0);
+            }
+            init();
+        }
+
+        private void btnCrane4stop_Click(object sender, EventArgs e)
+        {
+           if (working == btnCrane4stop.Text)
+            {
+                rTConfigServer.updateCraneOverStop(4, 1);
+            }
+            else
+            {
+                rTConfigServer.updateCraneOverStop(4, 0);
+            }
+            init();
+        }
+
+        private void pnlMain_Paint(object sender,PaintEventArgs e) {
+
+        }
+    }
+}

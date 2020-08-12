@@ -1,0 +1,35 @@
+﻿using System;
+using GK.WCS.Open.http.server;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace GK.WCS.Client.Station {
+    public class HttpCarrierUtil {
+
+
+       public static  String clearAction(int plcId,int CarrierID) {
+            JValue data = HttpUtil.getJValue("Carrier/clearAction/"+ plcId+"/" + CarrierID);
+            return data.ToString();
+        }
+        public static String resetAction(int plcId,int CarrierID) {
+            JValue data = HttpUtil.getJValue("Carrier/resetAction/"+plcId+"/" + CarrierID);
+            return data.ToString();
+        }
+
+        public static String sendMiddle( int Taskno,int path,int posin ) {
+            JValue data = HttpUtil.getJValue("Carrier/sendMiddle/" + Taskno + "/" + path + "/" + posin);
+            return data.ToString();
+        }
+        public static CarrierData reflash(int plcId) {
+            JObject data = HttpUtil.getObject("Carrier/reflash/"+ plcId);
+            if(data == null) {
+                return null;
+            }
+            CarrierData carrierData = JsonConvert.DeserializeObject<CarrierData>(data.ToString());
+            return carrierData;
+        }
+
+       
+
+    }
+}

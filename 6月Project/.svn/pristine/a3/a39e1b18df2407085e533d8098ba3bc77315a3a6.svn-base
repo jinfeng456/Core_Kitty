@@ -1,0 +1,20 @@
+﻿
+using System.Collections.Generic;
+using System.Text;
+namespace GK.WCS.Carrier {
+    //美芝输送线
+    public class CarrierChainReaderConnect1:CarrierChainReaderConnect {
+        public CarrierChainReaderConnect1():base(1) {
+        }
+    }
+    public class CarrierChainReaderConnect2:CarrierChainReaderConnect {
+        public CarrierChainReaderConnect2():base(2) {
+        }
+    }
+    public class CarrierChainReaderConnect3:CarrierChainReaderConnect {
+        public CarrierChainReaderConnect3():base(3) {
+        }
+    }
+    
+    
+}

@@ -1,0 +1,19 @@
+﻿
+using GK.WMS.DAL;
+
+using System.Web.Http;
+using Web.Authorize;
+
+namespace WebApi
+{
+    [FormAuthenticationFilter]
+    [RoutePrefix("api/users")]
+    public class UsersController : BaseApiController
+    {
+
+        ISysAuthorityServer authorityServer =WMSDalFactray.getDal<ISysAuthorityServer>();
+       
+
+       
+    }
+}

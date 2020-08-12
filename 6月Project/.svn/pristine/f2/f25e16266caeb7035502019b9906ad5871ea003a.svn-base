@@ -1,0 +1,167 @@
+﻿using System;
+
+using GK.WCS.Common.task;
+using GK.WCS.Carrier;
+using CMNetLib.Robots.CarrierChain;
+using GK.WCS.Scan;
+using GK.WCS.Common.core.dto;
+using GK.WCS.Common;
+using System.Threading;
+using GK.WCS.Crane;
+using CMNetLib.Robots.Crane;
+using System.Collections.Generic;
+using GK.WCS.Common.Util;
+using HY.Ws.Mes;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+
+namespace GK.WCS.Controller {
+    public class CarrierBeginTask2:CarrierBeginTaskAbs {
+        CarrierWriteConnect22 connect22 = null;
+        public override void onlyOneTime() {
+             connect = TaskPool.get<CarrierWriteConnect21>();
+             dateLogicReader = TaskPool.get<DateLogicReader3>();
+             connect22 = TaskPool.get<CarrierWriteConnect22>();
+        }
+        ITaskCraneServer craneDal = ServerFactray.getServer<ITaskCraneServer>();
+
+        INoTaskControlServer noTaskControlDAL = ServerFactray.getServer<INoTaskControlServer>();
+
+     
+       
+        public override void excute() {
+        
+            sendCarrerOut(35,1,2);
+           
+            sendCarrerOut(33,1,1);
+            sendCarrerOut(31,2,2);
+            sendCarrerOut(29,2,1);
+            sendCarrerOut(27,3,2);
+            sendCarrerOut(25,3,1);
+            bool isout = outTask();
+            bool isIn = instock();
+            if(isout || isIn) {
+                Thread.Sleep(2000);
+            }
+        }
+
+        bool outTask() {
+
+            DateLogicReader dateLogicReader = TaskPool.get<DateLogicReader2>();
+            contralscan(dateLogicReader);
+            HySignalState hss = CarrierPool.getSs(2451);
+            if(hss != null && hss.TaskNo == 0) {
+                String data = dateLogicReader.getData();
+                if(!String.IsNullOrWhiteSpace(data)) {
+                    dateLogicReader.getStopScan();
+                    TaskCarrier carrier = CarrierDAL.getByCode(data);
+                    if(carrier == null) {
+                        LoggerCommon.fileAll("出库扫码无任务" + data);
+                        return true;
+                    }
+                    CarrierDAL.UpdateTaskCarrierStatus(carrier.id,2);
+                    CarrierWriteConnect connect = TaskPool.get<CarrierWriteConnect22>();
+                    bool sended = connect.SendTask(TaskUtil.getTaskNo(),245,carrier.endPath);
+                    if(sended) {
+                        CarrierDAL.finshTaskCarrier(carrier.id);
+                        return true;
+                    }
+                    
+                }
+
+            }
+            return false;
+        }
+
+        void contralscan(DateLogicReader dateLogicReader) {
+            HyMachineState ms = CarrierPool.getMs(2,45);
+            HySignalState hss = CarrierPool.getSs(2451);
+            if(ms == null||hss==null) {
+                return;
+            }
+           
+            if(ms.Status== MachineStatus.自动状态下停止&& hss.needTask()) {
+                dateLogicReader.startScan();
+            } else {
+                dateLogicReader.getStopScan();
+
+            }
+        }
+
+        void sendCarrerOut(ushort carrer,int craneid,int dir) {
+            HySignalState hss1 = CarrierPool.getSs(2,carrer*10 + 1);
+            HySignalState hss2 = CarrierPool.getSs(2,carrer * 10 + 2);
+            HyMachineState hms = CarrierPool.getMs(2,carrer);
+
+            if(hss1 == null|| hss2 == null || hms == null || MachineStatus.自动状态下停止 != hms.Status || !hss1.needTask()&& !hss2.needTask()) {
+                return;
+            }
+            RobotStatus status = CranePool.instance.get(craneid);
+            List<TaskStatusModel> stateList = status.TaskState;
+            foreach(TaskStatusModel model in stateList) {
+                if(model.TaskNo == 0) {
+                    continue;
+                }
+                TaskCrane tc = craneDal.GetItem(model.TaskNo);
+                if(tc == null || tc.type != 2|| tc.status==9|| tc.status == 7) {
+                    continue;
+                } else {
+                    return;
+                }
+            }
+            connect22.send(carrer);
+        }
+
+
+
+
+        public  bool instock() {
+            HySignalState hss = CarrierPool.getSs(2511);
+            if(hss == null || hss.TaskNo > 0) {
+                dateLogicReader.getStopScan();
+                return false;
+            }
+            if(hss.OnOff) {
+                dateLogicReader.startScan();
+            }
+            if(!dateLogicReader.isScan()) {
+                return false;
+            }
+        
+            if(!hss.OnOff &&dateLogicReader.getScanTime() > 5) {
+                dateLogicReader.getStopScan();
+                return false;
+            }
+            CarrierSignal2 carrierSignal2 = TaskPool.get<CarrierSignal2>();
+            if(carrierSignal2.canRead != 1) {
+                return false;
+            }
+            String code = dateLogicReader.getData();
+            if(String.IsNullOrEmpty(code)) {
+                LoggerCommon.consol("着色光纤扫码枪code：" + code);
+                return false;
+            } else {
+                LoggerCommon.fileAll("着色光纤扫码枪code：" + code);
+            }
+            dateLogicReader.getStopScan();
+            int width = carrierSignal2.width;
+            if(width < 90) {
+                LoggerCommon.fileAll("着色入库口测宽" + width);
+                return false;
+            }
+            WsMes.yingrkshuj(code);
+            if(!WsMes.rkCheck(code)) {
+                LoggerCommon.fileAll("着色入库口MES验证失败" + code);
+                return false;
+            }
+            saveAndcreateInfoTask(251,code,width,2);
+            TaskCarrier carrier = CarrierDAL.getByCode(code);
+            if(carrier != null) {
+                sendCrarrer(connect,carrier);
+                return true;
+            }
+            return false;
+        }
+
+    }
+}

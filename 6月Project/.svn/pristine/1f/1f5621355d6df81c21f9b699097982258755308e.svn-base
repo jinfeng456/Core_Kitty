@@ -1,0 +1,117 @@
+﻿using GK.Common.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GK.WMS.Entity
+{
+    
+    public  class CoreStock : BaseEntity
+    {
+        public int LocationID
+        {
+            get; set;
+        }
+
+        public int Status
+        {
+            get; set;
+        }
+        public DateTime createTime
+        {
+            get; set;
+        }
+
+        public int count
+        {
+            get; set;
+        }
+        public String BoxCode
+        {
+            get; set;
+        }
+        public String soNo//订单号
+        {
+            get; set;
+        }
+    
+
+        public int Type//1裸光纤 2着色纤
+        {
+            get; set;
+        }
+        public String Supplier
+        {
+            get; set;
+        }
+        public String trayCode
+        {
+            get; set;
+        }
+        public String Model
+        {
+            get; set;
+        }
+        public Decimal Length
+        {
+            get; set;
+        }
+        public Decimal Mfd
+        {
+            get; set;
+        }
+        public Decimal P1310
+        {
+            get; set;
+        }
+        public Decimal P1550
+        {
+            get; set;
+        }
+        public Decimal P1383
+        {
+            get; set;
+        }
+        public Decimal P1625
+        {
+            get; set;
+        }
+
+        
+public Decimal pmd
+        {
+            get; set;
+        }
+
+        public String gxLevel
+        {
+            get; set;
+        }
+        public String Color
+        {
+            get; set;
+        }
+
+        public String Inspector
+        {
+            get; set;
+        }
+
+        public int Thickness
+        {
+            get; set;
+        }
+
+        public int IsDistribute
+        {
+            get; set;
+        }
+
+
+
+
+
+    }
+}

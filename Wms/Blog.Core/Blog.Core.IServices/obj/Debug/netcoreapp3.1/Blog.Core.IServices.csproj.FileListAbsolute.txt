@@ -13,3 +13,18 @@ G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csproj.CopyComplete
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.dll
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.IServices.deps.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.IServices.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.IServices.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Common.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Model.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csprojAssemblyReference.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csproj.CoreCompileInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.AssemblyInfoInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.AssemblyInfo.cs
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csproj.CopyComplete
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.pdb

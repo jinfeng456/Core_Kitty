@@ -1,0 +1,39 @@
+﻿using System;
+using MongoDB.Driver;
+
+namespace GK.Mongon.DAL {//
+    public class MongonBaseDAL {
+
+
+        protected static MongoServer mongoServer;
+
+        protected static object lockedObj = new object();
+
+
+        static MongonBaseDAL(){
+            MongoClientSettings settings = new MongoClientSettings();
+            settings.WaitQueueSize = int.MaxValue;
+            settings.WaitQueueTimeout = new TimeSpan(0,2,0);
+            settings.MinConnectionPoolSize = 10;
+            settings.MaxConnectionPoolSize = 300;
+            settings.MaxConnectionIdleTime = new TimeSpan(1,2,0);
+            settings.MaxConnectionLifeTime = new TimeSpan(1,2,0);
+            settings.Server = new MongoServerAddress("127.0.0.1");
+            settings.SocketTimeout = new TimeSpan(0,1,0);
+            var client = new MongoClient(settings);
+            mongoServer = client.GetServer();
+        }
+    public static MongoDatabase database
+        {
+            get
+            {
+               
+                MongoDatabase  _database = mongoServer.GetDatabase("logger");
+                return _database;
+            }
+        }
+    }
+}
+
+
+

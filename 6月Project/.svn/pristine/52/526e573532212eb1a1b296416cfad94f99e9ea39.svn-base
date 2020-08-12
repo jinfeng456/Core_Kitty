@@ -1,0 +1,219 @@
+﻿using System;
+using System.Collections.Generic;
+using GK.Mongon;
+using GK.Mongon.DAL;
+using HY.Ws.Mes.huaxMes;
+using Newtonsoft.Json;
+
+namespace HY.Ws.Mes
+    {
+    public class WsMes {
+        private static LikuWSSoapClient client;
+        private static LikuWSSoapClient getClient() {
+            if(client == null) {
+                client = new LikuWSSoapClient();
+            }
+            return client;
+        }
+     
+        public static bool chuhuoCheck(String boxCode) {//主要为出厂，如出到烽火
+            bool data = false;
+            String inf = "";
+            try {
+                data = getClient().ISchuhuo(boxCode);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                WebserverUtil.saveWsLogger("","ISchuhuo",boxCode,inf + data);
+            }
+            return data;
+        }
+
+        public static dingdan chuhuoDingdan(String so) {//根据订单号获取订单数据
+
+
+            dingdan data = null;
+            String inf = "";
+            try {
+                data = getClient().getdingdanshuju(so);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                if(data != null) {
+                    inf += JsonConvert.SerializeObject(data);
+                }
+                WebserverUtil.saveWsLogger("","getdingdanshuju",so,inf );
+            }
+            return data;
+
+         
+
+        }
+        public static int chuhuoXiangHao(String so) {//发货获取箱号
+
+            int data = 0;
+            String inf = "";
+            try {
+                data = getClient().getxianghao(so);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+               
+               inf += data;
+                
+                WebserverUtil.saveWsLogger("","getxianghao",so,inf);
+            }
+            return data;
+            
+        }
+        public static String chuhuoFinsh(string dingdan,string xianghao,string gg,string boxCode) {//已发货，入纸箱库之前 如发到烽火
+
+            String data = "";
+            String inf = "";
+            try {
+                data = getClient().fahuohou(dingdan,xianghao,gg,boxCode);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                inf += data;
+                WebserverUtil.saveWsLogger("","fahuohou",dingdan+xianghao+gg+boxCode,inf);
+            }
+            return data;
+        }
+        public static bool lingliaoCheck(String boxCode,String pq_no) {//到着色器等
+
+            bool data = false;
+            String inf = "";
+            try {
+                data = getClient().ISlingliao(boxCode,pq_no);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                WebserverUtil.saveWsLogger("","ISlingliao",boxCode+ pq_no,inf + data);
+            }
+            return data;
+           
+        }
+
+
+        public static List<String> lingliaoCode(string pxfa) {//配纤编号返回光纤编号
+            List<String> data = null;
+            String inf = "";
+            try {
+                data = getClient().getguangxianhao(pxfa);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                if(data != null) {
+                    inf += JsonConvert.SerializeObject(data);
+                }
+                WebserverUtil.saveWsLogger("","getguangxianhao",pxfa,inf);
+            }
+            return data;
+
+        }
+        public static string lingliaoFinsh(string suilingliao,string lldanhao,string llren,string po_no) {//  （光纤，并带，光缆）==suilingliao po_no 没有领料单号用“空格”
+         
+
+            String data = "";
+            String inf = "";
+            try {
+                data = getClient().lingliaohou(suilingliao,lldanhao,llren,po_no);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                inf += data;
+                WebserverUtil.saveWsLogger("","lingliaohou",suilingliao+lldanhao+llren+po_no,inf);
+            }
+            return data;
+
+        }
+        public static bool rkCheck(String boxCode) {//入库验证
+            
+            bool data = false;
+            String inf = "";
+            try {
+                data = getClient().ISrk(boxCode);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                WebserverUtil.saveWsLogger("","ISrk",boxCode,inf + data);
+            }
+            return data;
+
+        }
+        public static string rkFinsh(string boxCode,string zuobiao) {//入库完成通知mes后
+
+
+
+            String data = "";
+            String inf = "";
+            DateTime dt = DateTime.Now;
+            int time= int.Parse(dt.ToString("yyyyMMdd").Substring(2));
+            int h = int.Parse(dt.ToString("HH"));
+            if(h < 8) {
+                time -= 1;
+            }
+
+            String rkdanhao = "N" + boxCode.Substring(0,2) + time;
+            if(h < 8 || h > 20) {
+                rkdanhao += "-0";
+            }
+            try {
+                data = getClient().kucunhou(boxCode,rkdanhao,"user1",zuobiao);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                inf += data;
+                WebserverUtil.saveWsLogger("","kucunhou",boxCode +"-"+ zuobiao+"-"+ rkdanhao,inf);
+            }
+            return data;
+           
+
+        }
+        public static Location rkInfo(String boxCode) {//获取光纤信息
+
+            Location data = null;
+            String inf = "";
+            try {
+                data = getClient().kucunqian(boxCode);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                if(data != null) {
+                    inf += JsonConvert.SerializeObject(data);
+                }
+                WebserverUtil.saveWsLogger("","kucunqian",boxCode,inf);
+            }
+            return data;
+
+
+        }
+
+
+
+
+
+        public static void yingrkshuj(String boxCode) {//获取光纤信息
+
+            String data = null;
+            String inf = "";
+            try {
+                data = getClient().yingrkshuj(boxCode);
+            } catch(Exception e) {
+                inf = e.Message;
+            } finally {
+                if(data != null) {
+                    inf += JsonConvert.SerializeObject(data);
+                }
+                WebserverUtil.saveWsLogger("","yingrkshuj",boxCode,inf);
+            }
+        }
+
+
+
+
+
+
+    }
+}

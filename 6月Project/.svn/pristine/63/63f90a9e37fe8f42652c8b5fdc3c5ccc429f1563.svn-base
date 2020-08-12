@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WebApi
+{
+    public class BaseResult
+    {
+        public Object data { get; set; }
+        public string Message { get; set; }
+        public int code { get; set; }
+
+        public long total { get; set; }
+
+        public BaseResult(int c, string message, String data)
+        {
+            this.code = c;
+            Message = message;
+            this.data = data;
+        }
+
+        public BaseResult(Object data)
+        {
+            code = 20000;
+            Message = "";
+            this.data = data;           
+        }
+
+        public BaseResult(Object data,long total)
+        {
+            code = 20000;
+            Message = "";
+            this.data = data;
+            this.total = total;
+        }
+    }
+}

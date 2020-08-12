@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+ 
+
+  <appSettings>
+    <add key="log4net.Config" value="log4net.config" />
+    <add key="log4net.Config.Watch" value="True" />
+
+    <add key="wcsServer" value="http://127.0.0.1:12138/" />
+
+  </appSettings>
+  <system.net>
+    <settings>
+      <httpWebRequest useUnsafeHeaderParsing="true" />
+    </settings>
+  </system.net>
+  <connectionStrings>
+    <add name="DB_WCS" connectionString="server=127.0.0.1;database=huax_WCS;uid=sa;pwd=1;Asynchronous Processing=True" providerName="System.Data.SqlClient" />
+    <add name="DB_WMS" connectionString="server=127.0.0.1;database=huax_WMS;uid=sa;pwd=1;Asynchronous Processing=True" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0" />
+  </startup>
+
+</configuration>

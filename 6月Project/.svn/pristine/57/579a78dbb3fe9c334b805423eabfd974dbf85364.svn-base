@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Security.Principal;
+using System.Web;
+using System.Web.Http;
+using System.Web.Security;
+using Hx.Wms.Domain;
+using HY.WCS.DAL;
+using HY.WCS.DAL.wcs;
+using Web.Authorize;
+
+namespace WebApi {
+    [FormAuthenticationFilter]
+    [RoutePrefix("api/menu")]
+    public class MenuController:BaseApiController {
+        [HttpGet, Route("getMenu")]
+        public BaseResult getMenu() {
+            UserRoleDAL UserRoledal = new UserRoleDAL();
+            GenericPrincipal principal = (GenericPrincipal)HttpContext.Current.User;
+            FormsIdentity identity = (FormsIdentity)principal.Identity;
+            FormsAuthenticationTicket ticket = identity.Ticket;
+            string userid = ticket.UserData;
+            string  Roleid = UserRoledal.getSelectionRolesId(userid).id.ToString();
+            DataTable dt = UserRoledal.getUsersRolesList_Qiantai(Roleid, "0");
+            List<Menu> list = new List<Menu>();
+<<<<<<< HEAD
+            Menu munu = new Menu("系统管理","");
+            munu.add(new Menu("管理员列表","User/admin-list.html"));
+            munu.add(new Menu("权限列表", "User/frm_RoleSys.html"));
+            munu.add(new Menu("WMS日志","sys/logger/wmsLoger.html"));
+            munu.add(new Menu("webserver日志","sys/logger/webserverLoger.html"));
+            munu.add(new Menu("wcs日志","sys/logger/wcsLoger.html"));
+            munu.add(new Menu("系统参数","sys/sysParam.html"));
+=======
+            foreach(DataRow dr in dt.Rows)
+             {
+                string name = dr["Name"].ToString();
+                string menuId = dr["MenuId"].ToString();
+                Menu munu = new Menu(name, "");
+                DataTable data= UserRoledal.getUsersRolesList_Qiantai(Roleid, menuId);
+                foreach (DataRow datar in data.Rows)
+                {
+                    munu.add(new Menu(datar["name"].ToString(), datar["url"].ToString()));
+                }
+>>>>>>> 0065747e9af00d134eb73826c6ab9f5acaf0716f
+            list.Add(munu);
+            }
+            return new BaseResult(list);
+        }
+    }
+
+    public class Menu{
+
+        public Menu(String name, String path)
+        {
+            this.name = name;
+            this.path = path;
+        }
+
+        public void add(Menu m) {
+            if(children == null) {
+                children = new List<Menu>();
+            }
+            children.Add(m);
+        }
+       public String name;
+        public String path;
+        public List<Menu> children;
+    }
+}

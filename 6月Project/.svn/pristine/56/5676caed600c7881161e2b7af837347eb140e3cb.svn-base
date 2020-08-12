@@ -1,0 +1,108 @@
+﻿using System.Collections.Generic;
+using GK.WCS.Crane;
+using GK.WCS.Crane.dto;
+
+namespace GK.WCS.Crane {
+    public class TaskOrderUtil {
+        
+       public const int CENTER_DISTANCE = 6150;//货叉大概距离 用于计算行走时间，不能直接使用的定位上
+        /**
+         * 从多个中取两个的逻辑，仅在垛机货叉都为空闲的时候使用
+         * */
+        public static TaskOrder pick2(int x,int y,List<FullTask> fullTaskList) {
+            int count = fullTaskList.Count;
+            if(fullTaskList.Count == 1) {
+                TaskOrder order1 = onlyOne( x,y,fullTaskList,1);
+                TaskOrder order2 = onlyOne(x,y,fullTaskList,2);
+                return MathUtil.min(order1,order2);
+            } 
+           TaskOrder minOrder = null;
+            for(int i = 0;i < count;i++) {
+                FullTask ft1 = fullTaskList[i];
+                TaskOrder order = fromTask(x,y,ft1,fullTaskList);
+                minOrder = MathUtil.min(minOrder,order);
+            }
+            return minOrder;
+        }
+        /**
+         * 仅一个任务时
+         * */
+        private static TaskOrder onlyOne(int x,int y,List<FullTask> fullTaskList,int forkNO) {
+            FullTask ft = fullTaskList[0];
+            if(forkNO == 2) {
+                x += CENTER_DISTANCE;
+            }
+            TaskOrder order = new TaskOrder(ft.getPickTime(x,y),ft,ft.pick,forkNO);
+            TaskOrder order2 =null;
+            order.add(order2);
+            return order;
+        }
+        public static TaskOrder fromTask(int x,int y,FullTask ft1,List<FullTask> fullTaskList) {
+            TaskOrder order1 = pick(x,y,ft1,fullTaskList,1);
+
+            TaskOrder order2 = pick(x,y,ft1,fullTaskList,2);
+            return MathUtil.min(order1,order2);
+        }
+        /**
+         *  x 垛机上显示的x轴位置
+         * 
+         * */
+        public static TaskOrder pick(int x,int y,FullTask ft1,List<FullTask> fullTaskList,int forkNo) {
+            if(forkNo == 2) {//如果时2号货叉，取货位置应该少一个中心距，即目标位置减一个中心距， 坐标变换得当前位置增加一个中心距，即为行走距离
+                x += CENTER_DISTANCE;
+            }
+            TaskOrder order1 = new TaskOrder(ft1.getPickTime(x,y),ft1,ft1.pick,forkNo);
+            TaskOrder order1Next1 = pickFirstFinsh(ft1,forkNo,fullTaskList);
+            order1.add(order1Next1);
+            return order1;
+        }
+        static TaskOrder pickFirstFinsh(FullTask ft1,int forkno,List<FullTask> fullTaskList) {
+          
+         
+            TaskOrder minOrder = null;
+            foreach(FullTask ft in fullTaskList) {
+                if(ft.pick.id == ft1.pick.id) {//同一个对象
+                    continue;
+                }
+                TaskOrder pickRorder = pickTegether(ft1,forkno,ft);
+                minOrder = MathUtil.min(minOrder,pickRorder);
+                pickRorder = oneByOne(ft1,forkno,ft);
+                minOrder = MathUtil.min(minOrder,pickRorder);
+            }
+            return minOrder;
+        }
+        private static TaskOrder pickTegether(FullTask ft1,int forkno,FullTask otherFt) {//取两个货的时间
+          
+            TaskOrder order =null;
+
+           
+
+           
+           
+            return order;
+        }
+        private static TaskOrder oneByOne(FullTask ft1,int forkno,FullTask ft) {
+           
+                return null;
+            
+            
+        }
+
+        public static TaskOrder put2minTime(int x,int y,FullTask ft1,FullTask ft2) {//放两个货的时间
+            TaskOrder order = new TaskOrder(0,null,null,0);
+            TaskOrder last = new TaskOrder(0,null,null,0);
+            order.add(last);
+            return null ;
+        }
+
+        public static TaskOrder firstUnworkTaskOrder(List<TaskOrder> list) {
+            foreach(TaskOrder o in list) {
+                if(CraneTools.isFinsh(o.getTask())) {
+                    continue;
+                }
+                return o;
+            }
+            return null;
+        }
+    }
+}

@@ -10,3 +10,16 @@ G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.dll
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.pdb
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.genruntimeconfig.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.exe
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.deps.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.runtimeconfig.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.runtimeconfig.dev.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\bin\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.csprojAssemblyReference.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.csproj.CoreCompileInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.AssemblyInfoInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.AssemblyInfo.cs
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.genruntimeconfig.cache

@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using GK.Common.dto;
+using GK.Mongon.DAL;
+using GK.Mongon.entity;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
+using Newtonsoft.Json;
+
+namespace GK.Mongon
+{
+   public  class WebserverUtil {
+
+        static public void saveWsLogger(String ip, String url, String parm, String res) {
+            LoggerDto log = new LoggerDto();
+            log.ip = ip;
+            log.urlName = url;
+            log.param = parm;
+            log.result = res;
+           
+                MongoCollection<LoggerDto> collection = MongonBaseDAL. database.GetCollection<LoggerDto>("webserver");
+                MongonUtil.save(log, collection);
+            
+        }
+
+        static public LoggerDto show(String id) {
+            MongoCollection<LoggerDto> collection = MongonBaseDAL.database.GetCollection<LoggerDto>("webserver");
+            return MongonUtil.wmsShow(id, collection);
+        }
+        static public Page<LoggerDto> page(int begin, int limit, String param, String urlName, String res) {
+
+            MongoCollection<LoggerDto> collection = MongonBaseDAL.database.GetCollection<LoggerDto>("webserver");
+            Page<LoggerDto> page = MongonUtil.page(collection, begin, limit, param, urlName, res);
+            collection.Exists();
+            return page;
+        }
+
+
+
+        
+       
+    }
+}

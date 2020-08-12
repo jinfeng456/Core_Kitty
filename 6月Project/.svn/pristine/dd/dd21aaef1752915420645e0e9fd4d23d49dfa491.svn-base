@@ -1,0 +1,33 @@
+﻿using GK.Common.dto;
+using GK.DAL.inter;
+using GK.WMS.Entity;
+using GK.WWS.Entity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace GK.WMS.DAL
+{
+    public interface ISysAuthorityServer : IBaseServer
+    {
+
+        Page<SysUser> queryUserPage<SysUser>(int start, int end, string orderBy, object param = null);
+        //同名，同密码可能多个用户
+        List<SysUser> getUser(String loginName, String password);
+        //返回id
+        long addUser(SysUser user);
+
+        long addRole(SysRole role);
+
+        List<SysRole> getAllRole();
+
+        List<SysUser> getAllUser(string loginName);
+        bool updateUser(SysUser user);
+        List<SysMenu> getMenu(long userId);
+        //角色一般较少不用分页
+        List<SysMenu> getAllMenu();
+        bool deleteUser(string id);
+    }
+}

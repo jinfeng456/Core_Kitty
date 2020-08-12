@@ -1,0 +1,91 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Entity
+{
+    [Serializable]
+    public  class TaskComplete {
+        public TaskComplete() { }
+
+        public long Id
+        {
+            get; set;
+        }
+
+        public long wmsTaskId
+        {
+            get; set;
+        }
+        /**
+         * 1 待执行
+         * 2 执行中//任务已经分配，执行中
+         * 3 执行完成
+         * **/
+        public int Status
+        {
+            get; set;
+        }
+
+        /**
+         * 1 入库 2 出库 3 移库 4 摆渡
+         */
+        public int type
+        {
+            get; set;
+        }
+
+        /**
+         * 0.未上报
+         * 1 已经上报
+         */
+        public int upload
+        {
+            get; set;
+        }
+        
+        public DateTime createTime
+        {
+            get; set;
+        }
+
+        public DateTime endTime
+        {
+            get; set;
+        }
+
+        public String remark
+        {
+            get; set;
+        }
+
+        public int Priority
+        {
+            get; set;
+        }
+     
+
+       
+        public String src
+         {
+            get; set;
+        }
+        public String des
+        {
+            get; set;
+        }
+
+
+
+        public long itemType
+        {
+            get; set;
+        }
+       
+        public String boxCode
+        {
+            get; set;
+        }
+    }
+}

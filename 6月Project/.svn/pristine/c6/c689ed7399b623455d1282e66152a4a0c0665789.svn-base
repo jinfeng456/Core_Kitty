@@ -1,0 +1,38 @@
+﻿
+using System.Collections.Generic;
+using System.Linq;
+
+using System.Data.SqlClient;
+using System;
+using System.Data;
+using GK.WCS.Entity;
+
+namespace GK.WCS.DAL
+{
+    public interface ITaskCompleteServer 
+    {
+
+        List<TaskComplete> getWorkingTasks();
+
+
+
+        List <TaskComplete> getUnfinshTasks()
+        ;
+
+
+         TaskComplete getTaskCompleteByWmsTaskId(long wmsTaskId)
+        ;
+
+
+         T getOnlyOne<T>(String sql, Object value) where T : new()
+        ;
+
+
+         bool UpdatePriorityById(long id, int Priority)
+        ;
+         bool finshSyncById(long id)
+        ;
+
+
+    }
+}

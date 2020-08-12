@@ -1,0 +1,226 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Threading;
+using GK.WCS.Client.Control;
+using CMFrameWork.Common;
+using Newtonsoft.Json.Linq;
+
+using GK.WCS.Entity;
+using GK.WCS.Open.http.server;
+using GK.WCS.Client.Station;
+using GK.WCS.Client.Control;
+using GK.WCS.Client;
+using GK.WCS.DAL;
+
+namespace GK.WCS.Client.Frm {
+    public partial class Carrier1 :CarrierBase {
+        int plcId = 1;
+
+        public Carrier1() {
+       
+            InitializeComponent();
+          
+            legend1.dict = CU.getMachineErrCode();
+         
+            legend1.title = "输送线异常原因图例";
+            legend2.dict = CU.getMachineStatus();
+            legend2.title = "输送线状态图例（箭头）";
+            
+            lines.Add(lin1);
+            lines.Add(lin2);
+            lines.Add(lin3);
+            lines.Add(lin4);
+            lines.Add(lin5);
+            lines.Add(lin6);
+            lines.Add(lin7);
+            lines.Add(lin8);
+            lines.Add(lin9);
+            lines.Add(lin10);
+            lines.Add(lin11);
+            lines.Add(lin12);
+            lines.Add(lin13);
+            lines.Add(lin14);
+            lines.Add(lin15);
+            lines.Add(lin16);
+            lines.Add(lin17);
+            lines.Add(lin18);
+            lines.Add(lin19);
+            lines.Add(lin20);
+            lines.Add(lin21);
+            lines.Add(lin22);
+            lines.Add(lin23);
+            lines.Add(lin24);
+            lines.Add(lin25);
+            lines.Add(lin26);
+            lines.Add(lin27);
+            lines.Add(lin28);
+            lines.Add(lin29);
+            buttonAtt.Add( bt11);
+            buttonAtt.Add(bt12);
+
+            buttonAtt.Add(bt21);
+            buttonAtt.Add(bt22);
+            buttonAtt.Add(bt31);
+    
+            buttonAtt.Add(bt41);
+            buttonAtt.Add(bt42);
+            buttonAtt.Add(bt51);
+            buttonAtt.Add(bt52);
+            buttonAtt.Add(bt61);
+            buttonAtt.Add(bt62);
+            buttonAtt.Add(bt71);
+            buttonAtt.Add(bt81);
+            buttonAtt.Add(bt91);
+            buttonAtt.Add(bt101);
+       
+            buttonAtt.Add(bt111);
+        
+            buttonAtt.Add(bt121);
+            buttonAtt.Add(bt131);
+            buttonAtt.Add(bt141);
+            buttonAtt.Add(bt151);
+            buttonAtt.Add(bt161);
+            buttonAtt.Add(bt171);
+            buttonAtt.Add(bt181);
+            buttonAtt.Add(bt182);
+            buttonAtt.Add(bt191);
+            buttonAtt.Add(bt192);
+
+            buttonAtt.Add(bt201);
+            buttonAtt.Add(bt202);
+            buttonAtt.Add(bt211);
+            buttonAtt.Add(bt212);
+            buttonAtt.Add(bt221);
+            buttonAtt.Add(bt222);
+            buttonAtt.Add(bt231);
+            buttonAtt.Add(bt232);
+
+            buttonAtt.Add(bt241);
+            buttonAtt.Add(bt242);
+            buttonAtt.Add(bt251);
+            buttonAtt.Add(bt252);
+            buttonAtt.Add(bt261);
+            buttonAtt.Add(bt262);
+            buttonAtt.Add(bt271);
+            buttonAtt.Add(bt272);
+            buttonAtt.Add(bt281);
+            buttonAtt.Add(bt282);
+            buttonAtt.Add(bt291);
+            buttonAtt.Add(bt292);
+          
+            foreach(Button b in buttonAtt) {
+                b.BackColor = System.Drawing.Color.Black;
+            }
+
+        }
+        public override void setText(int path) {
+            textBox2.Text = path+"";
+
+        }
+        private void FrmGlobal_Load(object sender, EventArgs e) {
+          
+            taskNoInupt = taskNoText;
+        }
+
+        private void timer1_Tick(object sender,EventArgs e) {
+            try {
+           
+            CarrierData carrierData = HttpCarrierUtil.reflash(1);
+            if(carrierData == null) {
+                return;
+            }
+            updateCarrierChain(carrierData.machineState);
+            dict = carrierData.SignalStates;
+
+
+            uploadSignalStates(dict);
+
+            foreach(Belt b in lines) {
+                b.Invoke(new Action(() => {
+                    b.reflash();
+                }));
+                }
+            } catch { }
+        }
+        public void b_Click(object sender,EventArgs e) {
+            bClick(sender,e);
+        }
+      
+      
+       
+       
+       
+        private void btnTaskClear_Click(object sender, EventArgs e) {
+            if (buttomName == String.Empty) {
+                MessageBox.Show("请选择清除位置！");
+                return;
+            }
+            string Carrier = buttomName.Substring(2);
+            ushort CarrierID = (ushort)Carrier.ToInt(0);
+            try {
+               
+                String info = HttpCarrierUtil.clearAction(plcId,CarrierID) ;
+                if(String.IsNullOrEmpty(info)) {
+                    MessageBox.Show("成功清除");
+                } else {
+                    MessageBox.Show(info);
+                }
+
+
+            } catch (Exception e1) {
+                MessageBox.Show("输送线" + CarrierID + "任务清除失败: " + e1.Message);
+            }
+
+        }
+
+      
+        
+
+        private void button1_Click(object sender,EventArgs e) {
+            if(buttomName == String.Empty) {
+                MessageBox.Show("请选择复位位置！");
+                return;
+            }
+            string Carrier = buttomName.Substring(2);
+            ushort CarrierID = (ushort)(Carrier.ToInt(0)/10);
+            try {
+                String info = HttpCarrierUtil.resetAction(plcId,CarrierID);
+            
+                if(String.IsNullOrEmpty(info)) {
+                    MessageBox.Show("成功复位");
+                } else {
+                    MessageBox.Show(info);
+                }
+
+            } catch(Exception e1) {
+                MessageBox.Show("输送线" + CarrierID + "任务复位失败: " + e1.Message);
+            }
+        }
+
+        
+        
+
+        private void button4_Click(object sender,EventArgs e) {
+            int taskNo = textBox1.Text.ToInt32();
+            if(taskNo < 10000000) {
+                MessageBox.Show("任务号异常！");
+            }
+
+            int stn = textBox2.Text.ToInt32();
+
+            ITaskCarrierServer carrierDAL = ServerFactray.getServer<ITaskCarrierServer>();
+        TaskCarrier carrier = carrierDAL.getCarrarTasksByTaskNo(taskNo);
+            Send(carrier.TaskNo,carrier.StartPath,carrier.EndPath,stn);
+        }
+
+       
+
+        private void Carrier1_VisibleChanged(object sender,EventArgs e) {
+            this.timer1.Enabled = true;
+        }
+
+     
+    }
+}

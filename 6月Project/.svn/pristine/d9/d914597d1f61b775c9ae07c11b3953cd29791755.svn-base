@@ -1,0 +1,74 @@
+﻿using GK.Common.Entity;
+using System;
+
+
+namespace GK.WMS.Entity
+
+{
+   
+    /// <summary>
+    /// 货架
+    /// </summary>
+    public class CoreTask : BaseEntity {
+       public long  stockId
+        {
+            get; set;
+        }
+
+        public int stockType
+        {
+            get; set;
+        }
+        public string boxCode
+        {
+            get; set;
+        }
+        public int Status
+        {
+            get; set;
+        }
+        public int TaskType
+        {
+            get; set;
+        }
+        public int SrcID
+        {
+            get; set;
+        }
+        public int DesID
+        {
+            get; set;
+        }
+        public DateTime CreateTime
+        {
+            get; set;
+        }
+        public DateTime FinshTime
+        {
+            get; set;
+        }
+        public int Priority
+        {
+            get; set;
+        }
+        
+      
+        public long count
+        {
+            get; set;
+        }
+        public long relyTaskId
+        {
+            get; set;
+        }
+
+        public int Thickness
+        {
+            get; set;
+        }
+        public string info
+        {
+            get; set;
+        }
+    }
+}

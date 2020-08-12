@@ -1,0 +1,113 @@
+﻿using System;
+using System.Collections.Generic;
+using GK.WCS.Common.dto;
+
+namespace GK.WCS.Common.task {
+   public  class TaskPool {
+        private static Dictionary<String,ZtTask> taskDictionary=new Dictionary<string,ZtTask>();
+        public  static void add( ZtTask task,String key=null ){
+            if(task==null) {
+                throw new Exception(key+"新线程为空");
+            }
+            String name=task.GetType().Name;
+            if(!String.IsNullOrEmpty(key)){
+                name+="_"+key;
+            }
+           
+
+            if(taskDictionary.ContainsKey(name)){
+                throw new Exception(key+"已存在");
+            }
+            taskDictionary[name]=task;
+        }
+
+
+        public static ZtTask get(String key) {
+            if(taskDictionary.ContainsKey(key)) {
+                return taskDictionary[key];
+            } else {
+
+                return null;
+            }
+        }
+
+        public static T get<T>(int id) where T : ZtTask {
+            Type type = typeof(T);
+            String name = type.Name;
+            ZtTask task = get(name+id);
+            if(task == null) {
+                throw new Exception(name + "不存在");
+            }
+            return (T)task;
+        }
+        public static T get<T> () where T:ZtTask {
+            Type type = typeof(T);
+            String name = type.Name;
+            ZtTask task = get(name);
+            if(task == null) {
+                throw new Exception(name + "不存在");
+            }
+            return (T)task;
+        }
+        /***
+        public static ZtTask get(Type type) {
+            String name=type.Name;
+            ZtTask task =  get(name);
+            if(task == null) {
+                throw new Exception(name + "不存在");
+            }
+            return task;
+        }
+        **/
+       
+        public static void start(params  Type[] keys) {
+            foreach(Type key in keys) {
+                start(key.Name);
+            }
+        }
+        
+        private static void start(params  String[] keys) {
+            foreach(String key in keys) {
+                ZtTask task=get(key);
+                if(task==null) {
+                    LoggerCommon.fileAll(key+"任务未初始化");
+                } else {
+                    task.start();
+                   
+                }
+               
+            }
+        }
+
+        public static List<TaskStat> getStat() {
+            List<TaskStat> l = new List<TaskStat>();
+            foreach(var k in taskDictionary) {
+                l.Add(k.Value.stat);
+              
+            }
+            return l;
+        }
+
+        public static List<ZtTask> getZtTask() {
+            List<ZtTask> l = new List<ZtTask>();
+            foreach(var k in taskDictionary) {
+                l.Add(k.Value);
+
+            }
+            return l;
+        }
+        public static int count<T>() {
+            int sum = 0;
+            foreach(var k in taskDictionary) {
+                ZtTask task = k.Value;
+                if(task is T) {
+                    sum++;
+                }
+            }
+            return sum;
+
+        }
+
+
+    }
+}

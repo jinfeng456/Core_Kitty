@@ -1,0 +1,35 @@
+﻿
+using System;
+using GK.WCS.Open.http.dto;
+using GK.WCS.Open.http.server;
+//using GK.WCS.Client.ClientServiceReference;
+
+namespace GK.WCS.Client.Control
+{
+    public partial class NetInfo:BaseControl {
+        public int CraneId=0;
+        public NetInfo()
+        {
+            InitializeComponent();
+        }
+
+
+
+
+        public void ShowInfo(CraneNetData netData) {
+
+
+            this.Invoke(new Action(() => {
+                lblNetDelay.Text = netData.RoundtripTime + "ms";
+                lblCraneIP.Text = netData.ip;
+                lblControlPort.Text = netData.controlPort + "";
+                lblReadPort.Text = netData.readPort + "";
+
+            }));
+
+           
+        }
+
+       
+    }
+}

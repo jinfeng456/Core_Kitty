@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using CMNetLib.Robots.Crane;
+using GK.WCS.Entity;
+using GK.WCS.Crane.dto;
+
+namespace GK.WCS.Crane {
+    public class TaskStatusUtil {
+
+
+        public static  TaskCrane getForkTask(List<TaskCrane> tcList,int forkNo) {
+            TaskCrane Task1 = null;
+            foreach(TaskCrane tc in tcList) {
+                if(tc.forkNo == forkNo) {
+                    if(Task1 != null) {
+                        throw new Exception(tc.TaskNo + "数据库任务重复" + Task1.TaskNo);
+                    }
+                    Task1 = tc;
+                }
+            }
+            return Task1;
+        }
+        //1,空闲，2取货中，3取货完成，4 放货中
+        public static int task2Type(TaskCrane Task1) {
+            if(Task1 == null) {
+                return 1;
+            }
+            int t1 = 1;
+            if(Task1.Status != 1) {
+                if(Task1.MotionType == 1) {
+                    t1 = 2;
+                } else {
+                    t1 = 4;
+                }
+
+            } else {
+                if(Task1.MotionType == 2) {
+                    t1 = 3;
+                } else {
+                    throw new Exception("数据库脚本异常" + Task1.TaskNo);
+                }
+            }
+            return t1;
+
+        }
+
+
+        public static bool check(TaskStatusModel model,TaskCrane Task) {
+            if(model.State == TaskStatus.INIT || model.State == TaskStatus.WAITING || model.State == TaskStatus.SEMIAUTO_COMPLETE || model.State == TaskStatus.UNLOADED) {
+                if(Task != null && Task.Status != 1) {
+                    return false;
+                }
+            } else {
+                if(Task == null) {
+                    return false;
+                }
+                if(model.TaskNo != Task.TaskNo) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+        public static List<FullTask> buildFullTask(List<TaskCrane> list) {
+            List<FullTask> res = new List<FullTask>();
+            foreach(TaskCrane tc in list) {
+                bool has = false;
+                foreach(FullTask ft in res) {
+                    has = ft.add(tc);
+                    if(has) {
+                        break;
+                    }
+                }
+                if(!has) {
+                    FullTask newft = new FullTask();
+                    newft.add(tc);
+                    res.Add(newft);
+                }
+            }
+            return res;
+        }
+    }
+}

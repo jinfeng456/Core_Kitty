@@ -1,0 +1,178 @@
+﻿
+using System.Collections.Generic;
+
+using CMNetLib.Robots.Crane;
+
+using System;
+using GK.WCS.Crane.dto;
+using GK.WCS.Common;
+using GK.WCS.Common.core.dto;
+using GK.WCS.Carrier;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+
+namespace GK.WCS.Crane {
+    public abstract class CraneDoubleForkTask:CraneAllocateJobHX {
+
+        IPhysicalLocationServer physicalLocationServer = ServerFactray.getServer<IPhysicalLocationServer>();
+        INoTaskControlServer noTaskControlServer = ServerFactray.getServer<INoTaskControlServer>();
+        public CraneDoubleForkTask(int id) : base(id) {
+        }
+       
+        
+        bool checkCraneDB(List<TaskStatusModel> models,TaskCrane Task1,TaskCrane Task2) {
+            bool val = TaskStatusUtil.check(models[0],Task1);
+            if(!val) {
+                return false;
+            }
+            return TaskStatusUtil.check(models[1],Task2);
+        }
+
+        sealed public override TaskModel analyseTaskModel() {
+            TaskModel model = getWorkModle();
+            return model;
+        }
+        TaskModel getWorkModle() {
+            List<TaskCrane> tcList = craneTaskDAL.getWorkingTask(CraneId);
+            TaskCrane Task1 = TaskStatusUtil.getForkTask(tcList,1);//1号货叉正在执行或者将要执行的任务
+            TaskCrane Task2 = TaskStatusUtil.getForkTask(tcList,2);//2hao 
+            int t1 = TaskStatusUtil.task2Type(Task1);
+            int t2 = TaskStatusUtil.task2Type(Task2);
+            bool val = checkCraneDB(status.TaskState,Task1,Task2);
+            if(!val) {
+                LoggerCommon.fileAll("数据库与垛机任务不匹配");
+                return null;
+            }
+            int x = decimal.ToInt32(status.NowX);
+            int y = decimal.ToInt32(status.NowY);
+            //1,空闲，2取货中，3取货完成，4 放货中
+
+            int t = t1 * 10 + t2;
+
+            switch(t) {
+                case 11: //都空闲
+                return type1(x,y);
+                case 12: //1号空闲 取二号位
+                return type2(2,Task2);
+                case 21: //取一号货，二号空闲
+                return type2(1,Task1);
+                case 13: //1号空闲 2号取货完成
+                return type3(x,y,2,Task2);
+                case 31: //1号取货完成，2号空闲
+                return type3(x,y,1,Task1);
+                //case 23: //1号取货中，2号取货完成
+                //return type6(1);
+                //case 32: //1号有货，2号取货
+                //return type6(2);
+                case 33: //取货都完成
+                return type9(x,y,status);
+                case 34: //1号有货2号放货
+                return fanghuo(Task1,1,Task2);
+                case 43: //1号放货。二号有货
+                return fanghuo(Task2,2,Task1);
+            }
+            return null;
+        }
+
+       
+        /**
+         *
+         * 任务不能立刻完成必须，需要预先执行的部分
+         * 
+         */
+        TaskModel type1(int x,int y) {
+            List<FullTask> res = getCanWorkingData();
+            if(res.Count == 0) {
+               // Logger.consol(CraneId + "号垛机未找到待执行任务");//会反馈号空闲
+                return null;
+            }
+            TaskOrder order = TaskOrderUtil.pick2(x,y,res);
+            List<TaskOrder> list = order.toList();
+            TaskOrder select = TaskOrderUtil.firstUnworkTaskOrder(list);
+            if(select == null) {
+                return null;
+            }
+          
+            ushort forkNo = (ushort)select.forkNo;
+            List<int> bestOrder = new List<int>();
+            bestOrder.Add(forkNo);
+            bestOrder.Add(3-forkNo);
+            forkNo = getPickForkNo(select.getTask(),list,bestOrder);
+            
+            if(forkNo == 0) {
+                return null;
+            }
+            return packModel(select.getTask(),forkNo);
+        }
+
+        TaskModel packModel(TaskCrane tc,ushort forkNo = 1) {
+            if(tc.type == 1 ) {
+                List<int> pointList = this.inPoint();
+                foreach(int point in pointList) {
+                    HySignalState s1 = CarrierPool.getSs(point);
+                    if(s1 == null) {
+                        continue;
+                    }
+                  
+                }
+                return null;
+            } 
+            return CraneTools.ConvertTaskModel(tc,forkNo);
+        }
+
+
+
+        public abstract ushort getPickForkNo(TaskCrane tc,List<TaskOrder> list,List<int> bastForkNo);
+
+        public abstract int getPutPoint(int forkNo,TaskCrane tc,TaskCrane otherPutTc);
+
+        TaskModel type2(ushort workingforkNo,TaskCrane tc) {
+            List<FullTask> res = getCanWorkingData();
+            
+            if(res.Count == 1) {
+                return null;
+            } 
+            FullTask ft1 = MathUtil.getFullTask(tc,res);
+
+           
+            List<int> bestOrder = new List<int>();
+            bestOrder.Add(3 - workingforkNo);
+        
+            return null ;
+           
+        }
+        //一个有货一个空闲，xy  当前位置
+        /**
+         * tc 将要执行的放货任务
+         * */
+        TaskModel type3(int x,int y,ushort hasStockForkNo,TaskCrane putTc) {
+            List<FullTask> res = getCanWorkingData();
+            TaskOrder order = null;
+            FullTask ft1 = null;
+            if(res.Count == 1) {
+                ft1 = res[0];
+                order = MathUtil.onlyOne(x,y,res);
+            } else {
+                 ft1 = MathUtil.getFullTask(putTc,res);
+                order = TaskOrderUtil.pick(x,y,ft1,res,hasStockForkNo);
+            }
+            List<TaskOrder> craneList = order.toList();
+            TaskOrder tc1 =  TaskOrderUtil.firstUnworkTaskOrder(craneList);
+            TaskCrane tc = tc1.tc1;
+            return null;
+
+        }
+
+        private TaskModel fanghuo(TaskCrane tc,ushort forkNo,TaskCrane otherPutTc) {
+            return null;
+        }
+
+    
+        TaskModel type9(int x,int y,RobotStatus status) {
+           
+            return null;
+        }
+        public abstract List<int> inPoint();
+       
+    }
+}

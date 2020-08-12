@@ -3049,10 +3049,7 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Common.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       },
       "Blog.Core.Model/1.0.0": {
         "type": "project",
@@ -3066,10 +3063,7 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Model.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       }
     }
   },
@@ -9357,23 +9351,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jinfeng\\.nuget\\packages\\": {},
-    "D:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\项目源码\\2020-5\\老张的哲学  Blog.Core\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj",
+      "projectUniqueName": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj",
       "projectName": "Blog.Core.IRepository",
-      "projectPath": "G:\\项目源码\\2020-5\\老张的哲学  Blog.Core\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj",
-      "packagesPath": "C:\\Users\\jinfeng\\.nuget\\packages\\",
-      "outputPath": "G:\\项目源码\\2020-5\\老张的哲学  Blog.Core\\Blog.Core\\Blog.Core.IRepository\\obj\\",
+      "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jinfeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -9387,8 +9383,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "G:\\项目源码\\2020-5\\老张的哲学  Blog.Core\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
-              "projectPath": "G:\\项目源码\\2020-5\\老张的哲学  Blog.Core\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj"
+            "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
+              "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj"
             }
           }
         }
@@ -9412,9 +9408,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

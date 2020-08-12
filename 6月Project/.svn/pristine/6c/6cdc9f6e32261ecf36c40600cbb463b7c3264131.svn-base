@@ -1,0 +1,57 @@
+﻿using System;
+using System.Text;
+using System.Linq;
+using System.Data;
+using System.Data.SqlClient;
+using System.Collections.Generic;
+using Dapper;
+using static Dapper.SqlMapper;
+using GK.Common.dto;
+using GK.Common;
+using GK.DAL.inter;
+using GK.DAL.dialect;
+using GK.WCS.Common;
+
+namespace GK.WCS.DAL.abs
+{//
+
+
+    public abstract class AbsWCSBaseServer : IBaseServer
+    {
+        protected IDbConnection Connection
+        {
+            get { return DBUtils.CreateWCSConnection(ServerFactray.prefixal); }
+        }
+        
+
+
+        public T getById<T>(long id, IDbTransaction transaction = null) where T : class { 
+           return  Connection.GetById<T>(ServerFactray.prefixal, id, transaction);
+        }
+
+        public Page<T> queryPage<T>(string sql, string orderBy, PageDto param = null)
+        {
+            int start = param.start;
+            int end = param.end;
+            if (string.IsNullOrEmpty(sql))
+            {
+                return null;
+            }
+            if ((start <= 0 && end <= 0))
+            {
+
+                return null;
+            }
+            sql = PageDialect.pageSql(ServerFactray.prefixal, sql, start, end, orderBy);
+            GridReader ds = Connection.QueryMultiple(sql, param);
+            List<T> it = ds.Read<T>().ToList(); ;
+            int count = ds.Read<int>().First();
+            Page<T> page = new Page<T>();
+            page.count = count;
+            page.list = it;
+            return page;
+
+        }
+    }
+   
+}

@@ -1,0 +1,38 @@
+﻿
+
+namespace GK.WCS.Crane {
+    public class CraneReader1:CraneDB {
+  
+        public CraneReader1() :base(1) {
+
+        }
+
+      
+    }
+
+    public class CraneReader2:CraneDB {
+
+        public CraneReader2() : base(2) {
+
+        }
+
+      
+    }
+    public class CraneReader3:CraneDB {
+
+        public CraneReader3() : base(3) {
+
+        }
+
+      
+    }
+
+    public class CraneReader4:CraneDB {
+
+        public CraneReader4() : base(4) {
+
+        }
+
+
+    }
+}

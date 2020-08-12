@@ -1,0 +1,15 @@
+﻿using GK.Common.dto;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace GK.DAL.inter
+{
+    public interface IBaseServer
+    {
+         Page<T> queryPage<T>(string sql, string orderBy, PageDto param = null);
+        T getById<T>(long id, IDbTransaction transaction = null) where T : class;
+    }
+}

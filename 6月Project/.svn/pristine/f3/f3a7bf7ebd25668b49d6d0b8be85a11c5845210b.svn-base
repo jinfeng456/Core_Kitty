@@ -1,0 +1,200 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Threading;
+using GK.WCS.Client.Station;
+using GK.WCS.Client.Control;
+using CMFrameWork.Common;
+using Newtonsoft.Json.Linq;
+using GK.WCS.Open.http.server;
+using Newtonsoft.Json;
+using CMNetLib.Robots.CarrierChain;
+using GK.WCS.DAL;
+using GK.WCS.Entity;
+using GK.WCS.Client;
+using GK.WCS.Client.Control;
+
+namespace GK.WCS.Client.Frm {
+    public partial class Carrier3:CarrierBase {
+        int plcId = 3;
+        public Carrier3() {
+       
+            InitializeComponent();
+          
+            legend1.dict = CU.getMachineErrCode();
+         
+            legend1.title = "输送线异常原因图例";
+            legend2.dict = CU.getMachineStatus();
+            legend2.title = "输送线状态图例（箭头）";
+            
+            lines.Add(lin5);
+            lines.Add(lin6);
+            lines.Add(lin7);
+          
+            lines.Add(lin8);
+            lines.Add(lin1);
+          
+            lines.Add(lin2);
+            lines.Add(lin3);
+            lines.Add(lin4);
+
+            buttonAtt.Add(bt11);
+            buttonAtt.Add(bt12);
+
+            buttonAtt.Add(bt21);
+            buttonAtt.Add(bt31);
+            buttonAtt.Add(bt41);
+            buttonAtt.Add(bt51);
+            buttonAtt.Add(bt52);
+            buttonAtt.Add(bt61);
+            buttonAtt.Add(bt62);
+            buttonAtt.Add(bt71);
+          
+       ;
+            buttonAtt.Add(bt72);
+            buttonAtt.Add(bt81);
+            buttonAtt.Add(bt82);
+        
+           
+            
+            foreach(Button b in buttonAtt) {
+                b.BackColor = System.Drawing.Color.Black;
+            }
+
+        }
+
+        private void FrmGlobal_Load(object sender, EventArgs e) {
+          
+            taskNoInupt = taskNoText;
+        }
+        public  void b_Click(object sender,EventArgs e) {
+            bClick(sender,e);
+        }
+        private void timer1_Tick(object sender,EventArgs e) {
+            CarrierData carrierData = HttpCarrierUtil.reflash(3);
+            if(carrierData == null) {
+                return;
+            }
+            updateCarrierChain(carrierData.machineState);
+            dict = carrierData.SignalStates;
+            uploadSignalStates(dict);
+            
+            foreach(Belt b in lines) {
+                try {
+                    b.Invoke(new Action(() => {
+                        b.reflash();
+                    }));
+                } catch {
+                    return;
+                }
+               
+            }
+        }
+
+       
+       
+        void changeCraneButton(int crane1Stop,Button btnCrane) {
+            this.Invoke(new Action(() => {
+                if(crane1Stop == 1) {
+                    btnCrane.Text = idle;
+                } else {
+                    btnCrane.Text = working;
+                }
+            }));
+        }
+        string idle = "点击恢复执行";
+        string working = "点击循环停止";
+        
+        private void btnTaskClear_Click(object sender, EventArgs e) {
+            if (buttomName == String.Empty) {
+                MessageBox.Show("请选择清除位置！");
+                return;
+            }
+            string Carrier = buttomName.Substring(2);
+            ushort CarrierID = (ushort)(Carrier.ToInt(0));
+            try {
+               
+                String info = HttpCarrierUtil.clearAction(plcId,CarrierID) ;
+                if(String.IsNullOrEmpty(info)) {
+                    MessageBox.Show("成功清除");
+                } else {
+                    MessageBox.Show(info);
+                }
+
+
+            } catch (Exception e1) {
+                MessageBox.Show("输送线" + CarrierID + "任务清除失败: " + e1.Message);
+            }
+
+        }
+
+
+        public override void setText(int path) {
+            textBox2.Text = path + "";
+
+        }
+
+        private void button1_Click(object sender,EventArgs e) {
+            if(buttomName == String.Empty) {
+                MessageBox.Show("请选择复位位置！");
+                return;
+            }
+            string Carrier = buttomName.Substring(2);
+            ushort CarrierID = (ushort)(Carrier.ToInt(0)/10);
+            try {
+                String info = HttpCarrierUtil.resetAction(plcId,CarrierID);
+            
+                if(String.IsNullOrEmpty(info)) {
+                    MessageBox.Show("成功复位");
+                } else {
+                    MessageBox.Show(info);
+                }
+
+            } catch(Exception e1) {
+                MessageBox.Show("输送线" + CarrierID + "任务复位失败: " + e1.Message);
+            }
+        }
+
+        
+
+     
+
+      
+      
+       
+
+        private void button4_Click(object sender,EventArgs e) {
+            int taskNo = textBox1.Text.ToInt32();
+            if(taskNo < 10000000) {
+                MessageBox.Show("任务号异常！");
+            }
+
+            int stn = textBox2.Text.ToInt32();
+            ITaskCarrierServer carrierDAL = ServerFactray.getServer<ITaskCarrierServer>();
+            TaskCarrier carrier = carrierDAL.getCarrarTasksByTaskNo(taskNo);
+            Send(carrier.TaskNo,carrier.StartPath,carrier.EndPath,stn);
+        }
+
+       
+       
+
+
+        private void button10_Click(object sender,EventArgs e) {
+            Send(0,16,14,16);
+        }
+
+       
+        private void Carrier2_Activated(object sender,EventArgs e) {
+            this.timer1.Enabled = true;
+        }
+
+        private void Carrier2_Deactivate(object sender,EventArgs e) {
+            this.timer1.Enabled = false;
+        }
+
+        private void lin4_Load(object sender,EventArgs e) {
+
+        }
+    }
+}

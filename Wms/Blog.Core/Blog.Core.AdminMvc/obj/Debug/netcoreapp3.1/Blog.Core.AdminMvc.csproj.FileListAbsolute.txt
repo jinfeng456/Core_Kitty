@@ -18,3 +18,23 @@ G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.AdminMvc\o
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.pdb
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.genruntimeconfig.cache
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.csprojAssemblyReference.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\bin\Debug\netcoreapp3.1\appsettings.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\bin\Debug\netcoreapp3.1\Blog.Core.AdminMvc.exe
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\bin\Debug\netcoreapp3.1\Blog.Core.AdminMvc.deps.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\bin\Debug\netcoreapp3.1\Blog.Core.AdminMvc.runtimeconfig.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\bin\Debug\netcoreapp3.1\Blog.Core.AdminMvc.runtimeconfig.dev.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\bin\Debug\netcoreapp3.1\Blog.Core.AdminMvc.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\bin\Debug\netcoreapp3.1\Blog.Core.AdminMvc.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.csprojAssemblyReference.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.csproj.CoreCompileInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.MvcApplicationPartsAssemblyInfo.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.AssemblyInfoInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.AssemblyInfo.cs
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.RazorTargetAssemblyInfo.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\staticwebassets\Blog.Core.AdminMvc.StaticWebAssets.Manifest.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\staticwebassets\Blog.Core.AdminMvc.StaticWebAssets.xml
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.genruntimeconfig.cache

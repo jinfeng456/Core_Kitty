@@ -1,0 +1,27 @@
+﻿
+using System;
+using System.Text;
+using GK.WCS.Common;
+namespace GK.WCS.Carrier
+    {
+    //美芝输送线
+    public class CarrierChainReaderConnect:SocketZtTaskConnect {
+        public int plcId;
+        public CarrierChainReaderConnect(int plcId) {
+            this.plcId = plcId;
+        }
+
+       public byte[] getData(int len) {
+            if(noConn()) {
+                throw new Exception(className + "链接异常:" + ip);
+            }
+            bool sended = Send(Encoding.ASCII.GetBytes("HelloHuayu"));
+            if(sended) {
+                return ReadTelex(len);
+              
+            }
+            return null;
+        }
+      
+    }
+}

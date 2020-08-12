@@ -1,0 +1,135 @@
+﻿using System;
+using CMNetLib.Robots.Crane;
+using CMNetLib.Robots.Crane.CLBE_Pallet_V2;
+using System.Net;
+using HY.WCS.Common;
+using HY.WCS.Common.Entity;
+using System.Collections.Generic;
+using GK.WCS.Common.Interface;
+using GK.WCS.Entity;
+using GK.WCS.DAL;
+using GK.Mongon.entity;
+using GK.WCS.Common;
+
+namespace GK.WCS.Crane {
+    public class CraneDB:CraneReader, LoggerTaskInterface {
+   
+        
+        private RobotStatus _hisStatus = null;
+
+        public CraneDB( int id) : base(id) {
+      
+        }
+        public override void craneExcute(RobotStatus status) {
+          
+            try {
+                CranePool.instance.set(craneId,status);
+                UpdateTaskStatus(status);
+                ParseErr(status);
+                updateWaining(status);
+               
+                if(status.Cranestatus == CraneStatus.Manual || status.Cranestatus == CraneStatus.SystemManual) {
+                    CranePool.instance.setFault(craneId,true);
+                
+                }
+                _hisStatus = status;
+               
+            } catch (Exception e) {
+                Console.WriteLine(e);
+            }
+        }
+
+
+      
+
+
+        void UpdateTaskStatus(RobotStatus _status) {
+            if(_hisStatus == null) {
+                for(int i = 0;i < _status.TaskState.Count;i++) {
+                    update(_status.TaskState[i]);
+                }
+                return ;
+            }
+            for(int i = 0;i < _hisStatus.TaskState.Count;i++) {
+                TaskStatusModel tsm = _status.TaskState[i];
+                TaskStatusModel tsmh = _hisStatus.TaskState[i];
+                if(tsm.State != tsmh.State|| tsm.TaskNo != tsmh.TaskNo) {
+                    update(_status.TaskState[i]);
+                }
+            }
+
+        }
+
+        void update(TaskStatusModel curTaskStatusModel) {
+            ITaskCraneServer taskCraneServer = ServerFactray.getServer<ITaskCraneServer>();
+            int taskNo = curTaskStatusModel.TaskNo;
+            TaskCrane task = taskCraneServer.GetItem(taskNo);
+            if(task == null) {
+                return;
+            }
+            short upStatus = CraneTools.CovertTaskStatus(curTaskStatusModel.State);
+
+            //状态已经更新过了，防止系统重启导致的多次更新。
+            if(taskCraneServer.IsTaskFinished(taskNo,upStatus)) {
+                LoggerCommon.fileAll(taskNo + "状态以完成:" + upStatus);
+                return;
+            }
+            var res = taskCraneServer.UpdateTaskStatus(taskNo,upStatus,curTaskStatusModel.ForkNo);
+        }
+
+        void updateWaining(RobotStatus status) {
+            string Warning = string.Empty;
+            if(status.RoundtripTime >= 500) {
+                Warning = "Warning:Network delay,Please check the network,Pingdelay " + status.RoundtripTime + "ms";
+                LoggerCommon.fileAll(Warning);
+            }
+            CranePool.instance.setWarning(craneId,Warning);
+
+        }
+        void ParseErr(RobotStatus status) {
+          
+            string err = CraneTools.CheckRobot(status);
+            if(!string.IsNullOrEmpty(err) ) {
+                CranePool.instance.setFault(craneId,true);
+                CranePool.instance.setErrLog(craneId,err);
+                LoggerCommon.fileAll("Crane Error(" + craneId + "):---->" + err);
+            } else {
+                CranePool.instance.setErrLog(craneId,string.Empty);
+            }
+           
+        }
+
+
+
+        public List<EquipmentPointState> getLogger() {
+            List<EquipmentPointState> res = new List<EquipmentPointState>();
+
+            EquipmentPointState eps = new EquipmentPointState("crane" + craneId,1);
+            RobotStatus status = CranePool.instance.get(craneId);
+            if(status == null) {
+                return res;
+            }
+            eps.no = 0;
+            eps.s = (int)status.errCode;
+            eps.e = (int)status.Cranestatus;
+
+            res.Add(eps);
+
+
+            for(int i = 0;i < status.TaskState.Count;i++) {
+
+                TaskStatusModel model = status.TaskState[i];
+                eps = new EquipmentPointState("crane" + craneId,2 + i);
+                eps.no = model.TaskNo;
+                eps.s = (int)model.State;
+                eps.e = (int)status.ForkStatus[i + 1];
+                res.Add(eps);
+
+            }
+
+            return res;
+        }
+
+
+    }
+}

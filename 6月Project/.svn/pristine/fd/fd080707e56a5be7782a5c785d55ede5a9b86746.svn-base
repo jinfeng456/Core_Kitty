@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GK.WCS.Common.pool {
+   public class PoolBase {
+         Dictionary<int,DateTime> lastTimeDict = new Dictionary<int,DateTime>();
+        public  int isDelay(int craneId) {
+            if(lastTimeDict.ContainsKey(craneId)) {
+                DateTime dt = lastTimeDict[craneId];
+                return (DateTime.Now - dt).Milliseconds;
+            } else {
+                return int.MaxValue;
+            }
+        }
+
+        public  void updateReflashTime(int craneId) {
+            if(lastTimeDict.ContainsKey(craneId)) {
+               lastTimeDict[craneId]=DateTime.Now;
+            } else {
+                lastTimeDict.Add(craneId,DateTime.Now);
+            }
+        }
+    }
+}

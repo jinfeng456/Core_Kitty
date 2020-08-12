@@ -1,0 +1,219 @@
+﻿using System;
+using System.Collections.Generic;
+using System;
+using System.Data;
+using System.Configuration;
+using System.Data.SqlClient;
+
+
+namespace Huax_WMS.Sc
+{
+    public class SqlSel
+    {
+        static string getconn()
+        {
+            string ConnectionString = Huax_WMS.Sc.DBL.DblSetting.ConnStr;
+            return ConnectionString;
+        }
+
+        public static SqlConnection Connection_Local()
+        {
+            SqlConnection connection_Local;
+            //string connectionString =Encryption.DecryptString( ConfigurationManager.ConnectionStrings["CNPrice_Local"].ConnectionString);
+            string connectionString = Huax_WMS.Sc.DBL.DblSetting.ConnStr;
+            connection_Local = new SqlConnection(connectionString);
+            connection_Local.Open();
+            return connection_Local;
+        }
+
+        #region 无参数执行增删改
+        /// <summary>
+        /// 无参数执行增删改
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool setData(string sql)
+        {
+            SqlConnection conn = new SqlConnection(getconn());
+            conn.Open();
+            SqlCommand comm = new SqlCommand(sql, conn);
+            int i = comm.ExecuteNonQuery();
+            conn.Close();
+            return i > 0;
+        }
+        #endregion
+        public static bool GetSqlSel(ref DataTable ODT, string SQL)
+        {
+            string ConnectionString = getconn();
+            SqlConnection _SqlConnection1 = new SqlConnection();
+            SqlCommand sc = new SqlCommand();
+            sc.CommandTimeout = 720;
+            try
+            {
+                if (_SqlConnection1.State != ConnectionState.Open)
+                {
+                    _SqlConnection1.ConnectionString = ConnectionString;
+                    _SqlConnection1.Open();
+                }
+                //开始填充
+                string sqlCmd = SQL;
+                sc.Connection = _SqlConnection1;
+                sc.CommandText = sqlCmd;
+                SqlDataAdapter sda = new SqlDataAdapter(sc);
+                ODT = new DataTable();
+                sda.Fill(ODT);
+                if (ODT.Rows.Count == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                _SqlConnection1.Close();
+            }
+        }
+
+        public static object GetSqlScale(string SQL)
+        {
+            string ConnectionString = getconn();
+            SqlConnection _SqlConnection1 = new SqlConnection();
+            SqlCommand sc = new SqlCommand();
+            sc.CommandTimeout = 720;
+            try
+            {
+                if (_SqlConnection1.State != ConnectionState.Open)
+                {
+                    _SqlConnection1.ConnectionString = ConnectionString;
+                    _SqlConnection1.Open();
+                }
+                //开始填充
+                string sqlCmd = SQL;
+                sc.Connection = _SqlConnection1;
+                sc.CommandText = sqlCmd;
+                return sc.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+            finally
+            {
+                _SqlConnection1.Close();
+            }
+        }
+
+        public static int ExeSql(string SQL)
+        {
+            string ConnectionString = getconn();
+            SqlConnection _SqlConnection1 = new SqlConnection();
+            SqlCommand sc = new SqlCommand();
+            try
+            {
+                if (_SqlConnection1.State != ConnectionState.Open)
+                {
+                    _SqlConnection1.ConnectionString = ConnectionString;
+                    _SqlConnection1.Open();
+                }
+                //开始执行
+                string sqlCmd = SQL;
+                sc.Connection = _SqlConnection1;
+                sc.CommandText = sqlCmd;
+                return sc.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+            finally
+            {
+                _SqlConnection1.Close();
+            }
+        }
+
+
+
+        public static DataTable GetDataSet(CommandType commandType, string commandText, params SqlParameter[] values)
+        {
+            DataSet ds = new DataSet();
+            using (SqlConnection conn = Connection_Local())
+            {
+                SqlCommand cmd = new SqlCommand(commandText, conn);
+                cmd.CommandTimeout = 720;
+                cmd.CommandType = commandType;
+                cmd.Parameters.AddRange(values);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+                cmd.Parameters.Clear();
+            }
+            return ds.Tables[0];
+        }
+
+        public static DataTable GetListPage(string Table, string Col, int ColType, int OrderBy, string Collist, int PageSize, int PageIndex, string strWhere)
+        {
+
+            SqlParameter[] para = new SqlParameter[]
+                {
+                    new SqlParameter("@tb", Table),
+                    new SqlParameter("@col",Col),
+                    new SqlParameter("@coltype", ColType),
+                    new SqlParameter("@orderby",OrderBy),
+                    new SqlParameter("@collist", Collist),
+                    new SqlParameter("@pagesize", PageSize),
+                    new SqlParameter("@page", PageIndex),
+                    new SqlParameter("@condition", " 1=1 "+strWhere)
+
+                };
+
+
+
+            DataTable ds = GetDataSet(CommandType.StoredProcedure, "Sp_Page", para);
+            return ds;
+        }
+
+
+        public static bool getds(ref DataTable ODT, string ProcName, int id1)
+        {
+            //建立连接   
+            string ConnectionString = getconn();
+            SqlConnection conn = new SqlConnection(ConnectionString);
+            try
+            {
+                //建立查询命令   
+                SqlCommand myCommand = new SqlCommand(ProcName, conn);
+                //调用存储过程名   
+                myCommand.CommandType = CommandType.StoredProcedure;
+
+                //设置存储过程的参数值,其中@id 为存储过程的参数.   
+                SqlParameter id = myCommand.Parameters.Add("@id", SqlDbType.Int);
+                id.Value = id1;
+                SqlDataAdapter sda = new SqlDataAdapter(myCommand);
+                ODT = new DataTable();
+                sda.Fill(ODT);
+                if (ODT.Rows.Count == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            //执行命令   
+            //SqlDataReader reader = myCommand.ExecuteReader();//读取数据   
+            //或者   
+            //SqlDataReader reader = myCommand.ExecuteNonQuery();//数据更新</SPAN>  
+
+        }
+    }
+}

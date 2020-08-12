@@ -1,0 +1,53 @@
+﻿using GK.Common.dto;
+using GK.WCS.Entity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using Dapper;
+using static Dapper.SqlMapper;
+namespace GK.WCS.DAL.abs
+{
+    public abstract class AbsTaskCarrierServer : AbsWCSBaseServer, ITaskCarrierServer
+
+    {
+        public bool finshTaskCarrier(long id, IDbTransaction transaction = null)
+        {
+          
+            return true;
+
+        }
+
+        public TaskCarrier getByCode(string code, IDbTransaction transaction = null)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public List<TaskCarrier> getCarrarTasks(long completeId, IDbTransaction transaction = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TaskCarrier> getCarrarTasksByStn(int from, int end, IDbTransaction transaction = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TaskCarrier getCarrarTasksByTaskNo(int taskNo, IDbTransaction transaction = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TaskCarrier> getOutCarrirerCodes(int start, IDbTransaction transaction = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateTaskCarrierStatus(long id, short status, IDbTransaction transaction = null)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

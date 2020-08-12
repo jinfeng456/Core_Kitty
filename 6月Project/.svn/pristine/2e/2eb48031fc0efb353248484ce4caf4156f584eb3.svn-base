@@ -1,0 +1,75 @@
+﻿using GK.Common;
+using GK.WMS.DAL;
+using GK.WMS.Entity;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Web;
+using System.Web.Http;
+using System.Web.Security;
+
+using Web.Authorize;
+
+namespace WebApi {
+    [RoutePrefix("api")]
+    public class LoginController : BaseApiController
+    {
+        ISysAuthorityServer authorityServer = WMSDalFactray.getDal<ISysAuthorityServer>();
+
+        [HttpPost, Route("login/{name}")]
+        public BaseResult login(String name , [FromBody]SysUser user)
+        {
+            String data = " 0";
+            string password2 = HttpContext.Current.Request["password"];
+            string password = GKMD5.MD5Encrypt(user.password);
+
+            List<SysUser>  userList = authorityServer.getUser(name, password);
+
+            if (userList.Count > 0) {
+               data = userList[0].id.ToString();
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(0,FormAuthenticationFilterAttribute.cookieName,DateTime.Now,
+                                DateTime.Now.AddHours(1),true,data,  FormsAuthentication.FormsCookiePath);
+                //返回登录结果、用户信息、用户验证票据信息
+                String Ticket = FormsAuthentication.Encrypt(ticket) ;
+                return new BaseResult(Ticket);
+                //存储为cookie
+                //HttpCookie cookie = new HttpCookie(FormAuthenticationFilterAttribute.cookieName,Ticket);
+               // cookie.Path = FormsAuthentication.FormsCookiePath;
+               // HttpContext.Current.Response.AppendCookie(cookie);
+
+       
+            }
+            return new BaseResult("");
+        }
+
+
+        [HttpPost, Route("login")]
+        public BaseResult login([FromBody] SysUser user)
+        {
+            String data = " 0";
+            //string password = HttpContext.Current.Request["password"];
+            //password = GKMD5.MD5Encrypt(password);
+            List<SysUser> userList = authorityServer.getUser(user.loginName, user.password);
+            if (userList.Count > 0)
+            {
+                data = userList[0].id.ToString();
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(0, FormAuthenticationFilterAttribute.cookieName, DateTime.Now,
+                                DateTime.Now.AddHours(1), true, data, FormsAuthentication.FormsCookiePath);
+                //返回登录结果、用户信息、用户验证票据信息
+                String Ticket = FormsAuthentication.Encrypt(ticket);
+                //存储为cookie
+                HttpCookie cookie = new HttpCookie(FormAuthenticationFilterAttribute.cookieName, Ticket);
+                cookie.Path = FormsAuthentication.FormsCookiePath;
+                HttpContext.Current.Response.AppendCookie(cookie);
+            }
+            return new BaseResult(data);
+        }
+
+
+
+
+
+
+
+    }
+}

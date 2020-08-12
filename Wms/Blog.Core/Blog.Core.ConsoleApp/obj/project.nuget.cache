@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DYxCbLpLxNoE3ZwhE5uh206FrR4k/Cpcl7Dgw1rPZArybdf34eV7ZnxJXD/aFhUUzEsYuvjRJTcffh8svvc6fw==",
+  "dgSpecHash": "JRckqF3MzvWIO1WwqbvqWy75KbJUKQuI68/ONyJ5iWlIvVgpdLyIUDIr7GWjmcAKViDPaQqyrW67oQTWrUV6OQ==",
   "success": true,
-  "projectFilePath": "G:\\项目源码\\2020-5\\老张的哲学  Blog.Core\\Blog.Core\\Blog.Core.ConsoleApp\\Blog.Core.ConsoleApp.csproj",
+  "projectFilePath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.ConsoleApp\\Blog.Core.ConsoleApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

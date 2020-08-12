@@ -1,0 +1,22 @@
+﻿
+using ConsoleApplication2.HttpServer;
+using GK.WCS.Common;
+
+using System.ServiceModel;
+
+namespace HY.WCS.Open  {
+
+    public class OpenFactray:ZtFactray {
+        public override ZtTask create() {
+           
+
+            new HttpServer(12138);
+            return null;
+
+        }
+
+        public override void setParam(string p) {
+        
+        }
+    }
+}

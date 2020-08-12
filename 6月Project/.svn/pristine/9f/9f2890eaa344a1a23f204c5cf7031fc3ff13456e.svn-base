@@ -1,0 +1,157 @@
+﻿
+
+using System.Collections.Generic;
+
+namespace GK.WCS.Crane {
+    public class CraneAllocateJobHX1 :CraneDoubleForkCarrierJobHX {
+  
+        public CraneAllocateJobHX1() :base(1) {
+     
+        }
+
+        public override int defoutPoint() {
+            return 1;
+        }
+
+        public override List<int> inPoint() {
+
+            List<int> list = new List<int>();
+            list.Add(1191);
+            list.Add(1192);
+            list.Add(1211);
+            list.Add(1212);
+
+            list.Add(2142);
+            list.Add(2141);
+            list.Add(2161);
+            list.Add(2162);
+            return list;
+        }
+
+        public override List<int> outPointLeft() {
+            List<int> list = new List<int>();
+          
+            list.Add(2331);
+            list.Add(2332);
+            return list;
+        }
+
+        public override List<int> outPointRight() {
+            List<int> list = new List<int>();
+            list.Add(2351);
+            list.Add(2352);
+           
+            return list;
+        }
+    }
+
+    public class CraneAllocateJobHX2:CraneDoubleForkCarrierJobHX {
+
+        public CraneAllocateJobHX2() : base(2) {
+    
+        }
+
+        public override int defoutPoint() {
+            return 1;
+        }
+
+        public override List<int> inPoint() {
+
+            List<int> list = new List<int>();
+            list.Add(1231);
+            list.Add(1232);
+            list.Add(1251);
+            list.Add(1252);
+
+            list.Add(2181);
+            list.Add(2182);
+            list.Add(2201);
+            list.Add(2202);
+          
+        
+            return list;
+        }
+
+
+        public override List<int> outPointLeft() {
+            List<int> list = new List<int>();
+            list.Add(2291);
+            list.Add(2292);
+            return list;
+        }
+
+        public override List<int> outPointRight() {
+            List<int> list = new List<int>();
+            list.Add(2311);
+            list.Add(2312);
+
+            return list;
+        }
+       
+    }
+    public class CraneAllocateJobHX3:CraneDoubleForkCarrierJobHX {
+
+        public CraneAllocateJobHX3() : base(3) {
+       
+        }
+
+        public override int defoutPoint() {
+            return 1;
+        }
+
+        public override List<int> inPoint() {
+
+            List<int> list = new List<int>();
+            list.Add(1271);
+            list.Add(1272);
+            list.Add(1291);
+            list.Add(1292);
+
+            list.Add(2221);
+            list.Add(2222);
+            list.Add(2241);
+            list.Add(2242);
+
+
+            return list;
+        }
+
+
+        public override List<int> outPointLeft() {
+            List<int> list = new List<int>();
+            list.Add(2251);
+            list.Add(2252);
+            return list;
+        }
+
+        public override List<int> outPointRight() {
+            List<int> list = new List<int>();
+            list.Add(2271);
+            list.Add(2272);
+
+            return list;
+        }
+        
+    }
+    public class CraneAllocateJobHX4:CraneSimpleForkCarrierJobHX {
+
+        public CraneAllocateJobHX4() : base(4) {
+         
+        }
+
+        public override int defoutPoint() {
+            return 1;
+        }
+
+        public override ushort inPoint() {
+            return 3041;
+        }
+
+        public override List<ushort> outPoint() {
+            List<ushort> list = new List<ushort>();
+            list.Add(3071);
+            list.Add(3051);
+            return list;
+        }
+    }
+}

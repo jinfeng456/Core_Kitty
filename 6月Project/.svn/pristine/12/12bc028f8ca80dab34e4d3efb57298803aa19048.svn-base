@@ -1,0 +1,56 @@
+﻿
+using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
+using System.Data.Common;
+using Dapper;
+using System.Collections.Generic;
+using GK.WCS.DAL;
+using GK.WMS.Entity;
+using GK.WMS.DAL;
+using GK.WMS.Common;
+
+namespace GK.Common
+{
+    public  class StockInEngine
+    {
+          void Execute(CoreStock cs,int stn, long loc=0)
+        {
+            IDbConnection connection = DBUtils.CreateWMSConnection(WMSDalFactray.prefixal);
+            connection.Open();
+            IDbTransaction transaction = connection.BeginTransaction();
+            try
+            {
+                if (loc == 0) {
+                    loc = getLoction(cs, stn, connection, transaction);
+                }
+               
+                bool check = checkLoction(cs, stn, loc, connection, transaction);
+                if (check) {
+                    saveData(cs, stn, loc, connection, transaction);
+                    transaction.Commit();
+                }  else {
+                    transaction.Rollback();
+                }
+           
+            }catch{
+                transaction.Rollback();
+            }
+        }
+
+
+        public long getLoction(CoreStock cs, int stn,IDbConnection connection, IDbTransaction transaction) {
+            return 0;
+        }
+        public bool checkLoction(CoreStock cs, int stn,long loction,IDbConnection connection, IDbTransaction transaction) {
+         return false;
+        }
+        void saveData(CoreStock cs, int stn,long loc ,IDbConnection connection, IDbTransaction transaction) { 
+        
+        }
+
+
+    }
+}

@@ -1,0 +1,117 @@
+﻿using System;
+
+using System.Collections.Generic;
+using CMNetLib.Robots.CarrierChain;
+
+using System.Linq;
+
+using GK.WCS.Common.core.dto;
+using GK.WCS.Common;
+using GK.WCS.Common.pool;
+
+namespace GK.WCS.Carrier {
+    public class CarrierPool:PoolBase {
+        public static CarrierPool instance = null;
+        
+        /// <summary>
+        /// 输送线设备状态
+        /// </summary>
+        public  Dictionary<int,Dictionary<int,HyMachineState>> MachineStates = new Dictionary<int,Dictionary<int,HyMachineState>>();
+        /// <summary>
+        /// 光电信号状态
+        /// </summary>
+        public  Dictionary<int,Dictionary<int,HySignalState>> SignalStates = new Dictionary<int,Dictionary<int,HySignalState>>();
+     
+        static CarrierPool(){
+            instance = new CarrierPool();
+            instance.MachineStates.Add(1,new Dictionary<int,HyMachineState>());
+            instance.MachineStates.Add(2,new Dictionary<int,HyMachineState>());
+            instance.MachineStates.Add(3,new Dictionary<int,HyMachineState>());
+
+
+            instance.SignalStates.Add(1,new Dictionary<int,HySignalState>());
+            instance.SignalStates.Add(2,new Dictionary<int,HySignalState>());
+            instance.SignalStates.Add(3,new Dictionary<int,HySignalState>());
+        }
+        public  void updateMachineState(int plcId,List<byte> machineData) {
+            for(var i = 0;i < machineData.Count / 4;i++) {
+                var b = machineData.Skip(i * 4).Take(4).ToArray();
+                instance.addMS(plcId,b[0],b[1],b[2]);
+            }
+            
+        }
+
+        public  void updateSignalStates(int plcId,List<byte> t2) {
+            for(var i = 0;i < t2.Count / 8;i++) {
+                var b = t2.Skip(i * 8).Take(8).ToArray();
+                short Sid = Tools.short16(b,0);
+                bool OnOff = Convert.ToBoolean(b[3]);
+                int TaskNo = Tools.int32(b,4);
+                instance.addSS(plcId,Sid,OnOff,TaskNo);
+            }
+        }
+
+        public static HySignalState getSs(int point) {
+            int plcId = point / 1000;
+            point = point % 1000;
+            return getSs(plcId,point);
+        }
+
+        public static HySignalState getSs(int plcId,int point) {
+            Dictionary<int,HySignalState> dict = instance.SignalStates[plcId];
+            if(dict.ContainsKey(point)) {
+                return dict[point];
+            } else {
+                return null;
+            }
+        }
+
+        public static HyMachineState getMs(int plcId,int carrier) {
+            Dictionary<int,HyMachineState> dict = instance.MachineStates[plcId];
+            if(dict.ContainsKey(carrier)) {
+                return dict[carrier];
+            } else {
+                return null;
+            }
+        }
+
+        private  void addMS(int plc,short Bid,byte status,byte code) {
+            Dictionary<int,HyMachineState> dict = MachineStates[plc];
+            MachineStatus msEnum = Enum.IsDefined(typeof(MachineStatus),status) ? (MachineStatus)status : MachineStatus.运行;
+            MachineErrCode errcode = Enum.IsDefined(typeof(MachineErrCode),code) ? (MachineErrCode)code : MachineErrCode.未知错误;
+            if(!dict.ContainsKey(Bid)) {
+                var ms = new HyMachineState {
+                    Bid = Bid,
+                    Status = msEnum,
+                    ErrCode = errcode
+
+                };
+                dict.Add(ms.Bid,ms);
+            } else {
+                dict[Bid].Status = msEnum;
+                dict[Bid].ErrCode = errcode;
+            }
+
+        }
+       
+
+        private  void addSS(int plc,short sid,bool onOff,int taskNo) {
+           
+            Dictionary<int,HySignalState> dict = SignalStates[plc];
+            if(!dict.ContainsKey(sid)) {
+                HySignalState val  = new HySignalState {
+                    Sid = sid,
+                    OnOff = onOff,
+                    TaskNo = taskNo
+                };
+                dict.Add(sid,val);
+            } else {
+                dict[sid].OnOff = onOff;
+                dict[sid].TaskNo = taskNo;
+            }
+
+        }
+
+
+    }
+}

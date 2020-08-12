@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace GK.Common.trans {
+   public abstract class GkTransaction {
+        public void doWork(IDbConnection connection) {
+            IDbTransaction transaction = connection.BeginTransaction();
+            try {
+              
+                if ( Execute(connection,  transaction)) {
+                    transaction.Commit();
+                } else {
+                    transaction.Rollback();
+                }
+            
+            } catch {
+                transaction.Rollback();
+            }
+        }
+
+        protected abstract bool Execute(IDbConnection connection, IDbTransaction transaction);
+
+
+    }
+}

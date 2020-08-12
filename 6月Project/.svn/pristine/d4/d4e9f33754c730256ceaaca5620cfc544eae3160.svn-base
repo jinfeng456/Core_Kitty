@@ -1,0 +1,29 @@
+﻿using System;
+using GK.WCS.Common;
+
+namespace GK.WCS.Controller {
+
+
+    public class WCSBackTask: ZtTask
+    {
+       // CommonProcedure wcsProcedure = new CommonProcedure();
+        public WCSBackTask(){
+            time = 15000;
+        }
+
+
+  
+        public override void excute() {
+            String info = "";
+            do {
+                //info = wcsProcedure.zBack();
+                if("" != info) {
+                    LoggerCommon.fileAll("归档" + info);
+                }
+            } while(info != "");
+          
+         
+        }
+       
+    }
+}
