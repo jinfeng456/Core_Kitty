@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8034FE39-57C3-4AB4-ADA5-1570F529BCC4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GK.WCS.Crane</RootNamespace>
+    <AssemblyName>GK.WCS.Crane</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UsingDlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="dto\GkDYGCraneStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="synchro\CraneSynchroDYG.cs" />
+    <Compile Include="synchro\CraneSynchroReal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\common\GK.Common\Common.csproj">
+      <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\GK.WCS.Common\WCS.Common.csproj">
+      <Project>{c345f915-22ea-454e-8552-c4cb4c67b7b1}</Project>
+      <Name>WCS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\GK.WCS.Crane\WCS.Crane.csproj">
+      <Project>{6b107e66-510c-40d8-9e52-f0dbbd86069e}</Project>
+      <Name>WCS.Crane</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\GK.WCS.Entity\WCS.Entity.csproj">
+      <Project>{af5cfa9b-0662-4ab4-ae9b-12f58816235c}</Project>
+      <Name>WCS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\WMS.Entity\WMS.Entity.csproj">
+      <Project>{b2821d57-8ca8-4781-90e2-2c0b643d3ccb}</Project>
+      <Name>WMS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\GK.Engine.WMS\GK.Engine.WMS.csproj">
+      <Project>{7f1690a5-faac-45b4-aa06-172ee4582527}</Project>
+      <Name>GK.Engine.WMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\GK.WMS.Entity\GK.WMS.Entity.csproj">
+      <Project>{c7e8e16e-ecdb-4e86-b90e-46690b15ea7e}</Project>
+      <Name>GK.WMS.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+  </Target>
+</Project>
