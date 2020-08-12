@@ -1,8 +1,0 @@
-﻿
-
-namespace GK.WCS.Common  {
-   public abstract  class ZtFactray {
-        public abstract void  setParam(string p);
-        public abstract ZtTask create();
-   }
-}
