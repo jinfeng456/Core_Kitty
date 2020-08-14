@@ -94,7 +94,7 @@ export default {
             ///------------
             Cookies.set('token', token) // 放置token到Cookie
             ///-------------
-              _this.getUserInfoByToken(token)
+            _this.getUserInfoByToken(token)
 
             sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
             this.$store.commit('menuRouteLoaded', false) // 要求重新加载导航菜单

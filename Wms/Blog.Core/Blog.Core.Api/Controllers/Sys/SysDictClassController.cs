@@ -23,7 +23,7 @@ namespace Blog.Core.Controllers
         readonly IUser _user;
 
 
-        public SysDictClassController(ISysDictClassServices sysDictClassServices,IUser user)
+        public SysDictClassController(ISysDictClassServices sysDictClassServices, IUser user)
         {
             _sysDictClassServices = sysDictClassServices;
             _user = user;
@@ -49,7 +49,7 @@ namespace Blog.Core.Controllers
         /// <summary>
         /// 添加字典分类
         /// </summary>
-        /// <param name="SysDictClass"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("Save")]
@@ -80,7 +80,7 @@ namespace Blog.Core.Controllers
         /// <returns></returns>
         [HttpPost, Route("Delete")]
         public async Task<BaseResult> Delete([FromBody]List<SysDictClass> modelList)
-        {          
+        {
             foreach (var model in modelList)
             {
                 await _sysDictClassServices.Delete(model);
