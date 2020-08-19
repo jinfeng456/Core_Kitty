@@ -3,7 +3,8 @@
 namespace Blog.Core.Model.ViewModels
 {
     public class SysDictDto : PageDto
-    {      
+    {
         public string label { get; set; }
+        public int? dictClassId { get; set; }
     }
 }

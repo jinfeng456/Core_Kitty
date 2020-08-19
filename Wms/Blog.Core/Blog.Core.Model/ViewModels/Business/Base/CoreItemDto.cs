@@ -5,15 +5,15 @@ namespace Blog.Core.Controllers
     public class CoreItemDto : PageDto
     {
         //分类
-        public long classifyId { get; set; }
+        public long? classifyId { get; set; }
         //编码
         public string code { get; set; }
         //名称
         public string name { get; set; }
         //能否使用
-        public int active { get; set; }
+        public int? active { get; set; }
 
-        public int coreItemType { get; set; }
+        public int? coreItemType { get; set; }
         public string modelSpecs { get; set; }
 
         public string packageSpecs { get; set; }

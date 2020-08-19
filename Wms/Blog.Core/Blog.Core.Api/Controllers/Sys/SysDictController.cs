@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Blog.Core.Common.HttpContextUser;
 using Blog.Core.IServices;
@@ -24,7 +25,7 @@ namespace Blog.Core.Controllers
         readonly IUser _user;
 
 
-        public SysDictController(ISysDictServices sysDictServices,IUser user,ISysDictClassServices sysDictClassServices)
+        public SysDictController(ISysDictServices sysDictServices, IUser user, ISysDictClassServices sysDictClassServices)
         {
             _sysDictClassServices = sysDictClassServices;
             _sysDictServices = sysDictServices;
@@ -44,6 +45,7 @@ namespace Blog.Core.Controllers
             {
                 dto.label = "";
             }
+            // && (a.dictClassId != null && a.dictClassId.Equals(dto.dictClassId))
             var data = await _sysDictServices.QueryPage(a => (a.label != null && a.label.Contains(dto.label)), dto.pageNum, dto.pageSize, " createTime desc ");
             return BaseResult.Ok(data);
 
@@ -52,7 +54,7 @@ namespace Blog.Core.Controllers
         /// <summary>
         /// 添加字典
         /// </summary>
-        /// <param name="SysDict">字典实体</param>
+        /// <param name="model">字典实体</param>
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("Save")]
@@ -62,7 +64,7 @@ namespace Blog.Core.Controllers
             {
                 if (model.dictClassId != 0)
                 {
-                    model.dtype =(await _sysDictClassServices.QueryById(model.dictClassId)).dictClassName;
+                    model.dtype = (await _sysDictClassServices.QueryById(model.dictClassId)).dictClassName;
                 }
                 model.id = _sysDictServices.GetId();
                 model.createTime = DateTime.Now;
@@ -91,7 +93,7 @@ namespace Blog.Core.Controllers
         /// <returns></returns>
         [HttpPost, Route("Delete")]
         public async Task<BaseResult> Delete([FromBody]List<SysDict> modelList)
-        {          
+        {
             foreach (var model in modelList)
             {
                 await _sysDictServices.Delete(model);

@@ -220,7 +220,7 @@
             <summary>
             添加字典分类
             </summary>
-            <param name="SysDictClass"></param>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:Blog.Core.Controllers.SysDictClassController.Delete(System.Collections.Generic.List{Blog.Core.Model.Models.SysDictClass})">
@@ -252,7 +252,7 @@
             <summary>
             添加字典
             </summary>
-            <param name="SysDict">字典实体</param>
+            <param name="model">字典实体</param>
             <returns></returns>
         </member>
         <member name="M:Blog.Core.Controllers.SysDictController.Delete(System.Collections.Generic.List{Blog.Core.Model.Models.SysDict})">
