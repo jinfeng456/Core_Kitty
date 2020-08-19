@@ -8,25 +8,23 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\jinfeng\\.nuget\\packages\\": {},
+    "D:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.AdminMvc\\Blog.Core.AdminMvc.csproj",
+      "projectUniqueName": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.AdminMvc\\Blog.Core.AdminMvc.csproj",
       "projectName": "Blog.Core.AdminMvc",
-      "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.AdminMvc\\Blog.Core.AdminMvc.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.AdminMvc\\obj\\",
+      "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.AdminMvc\\Blog.Core.AdminMvc.csproj",
+      "packagesPath": "C:\\Users\\jinfeng\\.nuget\\packages\\",
+      "outputPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.AdminMvc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "D:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jinfeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

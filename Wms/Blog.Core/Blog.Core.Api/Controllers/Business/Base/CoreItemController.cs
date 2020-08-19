@@ -11,11 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace Blog.Core.Controllers
 {
     /// <summary>
-    /// 字典管理
+    /// 物料管理
     /// </summary>
     [Route("item")]
-    //[ApiController]
-    //[Authorize(Permissions.Name)]
+    [Authorize]
     public class CoreItemController : ControllerBase
     {
         readonly ICoreItemServices _coreItemServices;
@@ -41,7 +40,7 @@ namespace Blog.Core.Controllers
             {
                 dto.name = "";
             }
-            var data = await _coreItemServices.QueryPage(a => (a.name != null && a.name.Contains(dto.name)), dto.pageNum, dto.pageSize, " createTime desc ");
+            var data = await _coreItemServices.QueryPage(a => (a.name != null && a.name.Contains(dto.name)), dto.pageNum, dto.pageSize, " id desc ");
             return BaseResult.Ok(data);
         }
 

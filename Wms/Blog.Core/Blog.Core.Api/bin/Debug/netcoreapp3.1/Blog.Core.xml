@@ -4,9 +4,14 @@
         <name>Blog.Core.Api</name>
     </assembly>
     <members>
+        <member name="F:Blog.Core.Api.Controllers.CoreClassifyController._coreClassifyServices">
+            <summary>
+            服务器接口，因为是模板生成，所以首字母是大写的，自己可以重构下
+            </summary>
+        </member>
         <member name="T:Blog.Core.Controllers.CoreItemController">
             <summary>
-            字典管理
+            物料管理
             </summary>
         </member>
         <member name="M:Blog.Core.Controllers.CoreItemController.FindPage(Blog.Core.Controllers.CoreItemDto)">

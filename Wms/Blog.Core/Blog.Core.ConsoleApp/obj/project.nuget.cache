@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JRckqF3MzvWIO1WwqbvqWy75KbJUKQuI68/ONyJ5iWlIvVgpdLyIUDIr7GWjmcAKViDPaQqyrW67oQTWrUV6OQ==",
+  "dgSpecHash": "PGMJ4OmeByDRaqm3cyO19yNY0P8Jt5yrNpM4VMuFSibWmlDPO4G3kqn/lliTAVBja9yabHIsIHfl1bAn79FfKQ==",
   "success": true,
-  "projectFilePath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.ConsoleApp\\Blog.Core.ConsoleApp.csproj",
+  "projectFilePath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.ConsoleApp\\Blog.Core.ConsoleApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

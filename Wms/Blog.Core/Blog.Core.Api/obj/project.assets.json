@@ -11256,25 +11256,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\jinfeng\\.nuget\\packages\\": {},
+    "D:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Api\\Blog.Core.Api.csproj",
+      "projectUniqueName": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Api\\Blog.Core.Api.csproj",
       "projectName": "Blog.Core.Api",
-      "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Api\\Blog.Core.Api.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Api\\obj\\",
+      "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Api\\Blog.Core.Api.csproj",
+      "packagesPath": "C:\\Users\\jinfeng\\.nuget\\packages\\",
+      "outputPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "D:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jinfeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -11288,14 +11286,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Extensions\\Blog.Core.Extensions.csproj": {
-              "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Extensions\\Blog.Core.Extensions.csproj"
+            "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Extensions\\Blog.Core.Extensions.csproj": {
+              "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Extensions\\Blog.Core.Extensions.csproj"
             },
-            "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj": {
-              "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj"
+            "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj": {
+              "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj"
             },
-            "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj": {
-              "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj"
+            "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj": {
+              "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj"
             }
           }
         }

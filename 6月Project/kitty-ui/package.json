@@ -16,6 +16,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.0",
+    "qrcodejs2": "0.0.2",
     "vue": "^2.5.2",
     "vue-i18n": "^8.0.0",
     "vue-router": "^3.0.1",
