@@ -9,13 +9,12 @@ namespace Blog.Core.Model.Models
 	 [Table("CoreItem")]	
 	 public class CoreItem: BaseEntity
 	{
-	 
-	
-		 /// <summary>
+
+		/// <summary>
         /// ClassifyId
         /// </summary>
 		[Required]
-		public int classifyId { get; set; }
+		public int? classifyId { get; set; }
 	
 		 /// <summary>
         /// Code
@@ -34,9 +33,7 @@ namespace Blog.Core.Model.Models
 	
 		 /// <summary>
         /// Type
-        /// </summary>
-		public int? type { get; set; }
-	
+        /// </summary>	
 		 /// <summary>
         /// CoreItemType
         /// </summary>

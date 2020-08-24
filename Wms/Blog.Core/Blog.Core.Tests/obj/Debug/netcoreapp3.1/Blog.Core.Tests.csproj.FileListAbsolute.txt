@@ -440,9 +440,6 @@ E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Repository.dll
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Services.dll
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Tasks.dll
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Api.pdb
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Repository.pdb
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Services.pdb
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Extensions.pdb
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb
@@ -458,3 +455,6 @@ E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\obj\Debug\netcoreapp3.1
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\obj\Debug\netcoreapp3.1\Blog.Core.Tests.dll
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\obj\Debug\netcoreapp3.1\Blog.Core.Tests.pdb
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\obj\Debug\netcoreapp3.1\Blog.Core.Tests.genruntimeconfig.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Api.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Repository.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Tests\bin\Debug\netcoreapp3.1\Blog.Core.Services.pdb

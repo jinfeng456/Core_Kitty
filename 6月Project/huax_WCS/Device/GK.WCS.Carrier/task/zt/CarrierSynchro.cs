@@ -17,7 +17,7 @@ namespace GK.WCS.Carrier {
         protected CarrierConnect connect3 = TaskPool.get<CarrierConnect>(3);
         protected CarrierConnect connect4 = TaskPool.get<CarrierConnect>(4);
         protected CarrierConnect connect5 = TaskPool.get<CarrierConnect>(5);
-        protected CarrierConnect connect6 = TaskPool.get<CarrierConnect>(6);
+
         protected int plcId;
         GkCarrierStatus carrierStatus;
       
@@ -29,7 +29,6 @@ namespace GK.WCS.Carrier {
       
         public CarrierSynchro()
         {
-            this.plcId = 1;
             time = 300;
         }
         public  CarrierSignalStatus getSignalStatus(int id) {
@@ -59,7 +58,6 @@ namespace GK.WCS.Carrier {
         public override void excute() {
             Dictionary<int, CarrierSignalStatus> carrierMessage = new Dictionary<int, CarrierSignalStatus>();
             readerSign(carrierMessage);
-            keyPointAssign(carrierMessage);
             syncSign(carrierMessage);
           
             carrierStatus = new  GkCarrierStatus(carrierMessage);
@@ -68,29 +66,39 @@ namespace GK.WCS.Carrier {
         }
 
        void readerSign(Dictionary<int, CarrierSignalStatus> carrierMessage ) {
-            byte[] rsTaskNo1 = connect1.getData(52, 0, 444);
-            byte[] rsSign1 = connect1.getData(54, 0, 222);
-            CarrierStatusDB(carrierMessage,rsTaskNo1, rsSign1 , 1000 ,1111, 1000);
+            if (false)
+            {
+                byte[] rsTaskNo1 = connect1.getData(52, 0, 444);
+                byte[] rsSign1 = connect1.getData(54, 0, 222);
+                byte[] carrierState1 = connect1.getCarrierStatus(0, 782);//关键点
+                CarrierStatusDB(carrierMessage, rsTaskNo1, rsSign1, carrierState1,1000, 1111);
+            }
 
-            byte[] rsTaskNo2 = connect2.getData(52, 444, 140);
-            byte[] rsSign2 = connect2.getData(54, 222, 70);
-            CarrierStatusDB(carrierMessage,rsTaskNo2, rsSign2 , 1200,1235,1089);
+  
+            byte[] rsTaskNo2 = connect2.getData(52, 0, 140);
+            byte[] rsSign2 = connect2.getData(54, 0, 70);
+            byte[] carrierState2 = connect2.getCarrierStatus(0, 202);
+            CarrierStatusDB(carrierMessage,rsTaskNo2, rsSign2 , carrierState2,1200, 1235);
 
-            byte[] rsTaskNo3 = connect3.getData(52, 584, 304);
-            byte[] rsSign3 = connect3.getData(54, 292, 152);
-               CarrierStatusDB(carrierMessage,rsTaskNo3, rsSign3, 1300, 1376,1154);
+            byte[] rsTaskNo3 = connect3.getData(52, 0, 304);
+            byte[] rsSign3 = connect3.getData(54, 0, 152);
+            byte[] carrierState3 = connect3.getCarrierStatus(0, 422);
+            CarrierStatusDB(carrierMessage,rsTaskNo3, rsSign3, carrierState3,1300, 1376);
 
-            byte[] rsTaskNo4 = connect4.getData(52, 888, 144);
-            byte[] rsSign4 = connect4.getData(54, 444, 72);
-             CarrierStatusDB(carrierMessage,rsTaskNo4, rsSign4, 2001, 2037,1779);
+            if (false)
+            {
+                byte[] rsTaskNo4 = connect4.getData(52, 0, 144);
+                byte[] rsSign4 = connect4.getData(54, 0, 72);
+                byte[] carrierState4 = connect4.getCarrierStatus(0, 246);
+                CarrierStatusDB(carrierMessage, rsTaskNo4, rsSign4, carrierState4, 2001, 2037);
+            }
 
-            byte[] rsTaskNo5 = connect5.getData(52, 1032, 44);
-            byte[] rsSign5 = connect5.getData(54, 516, 22);
-               CarrierStatusDB(carrierMessage,rsTaskNo5, rsSign5, 2201, 2212,1943);
 
-            byte[] rsTaskNo6 = connect6.getData(52, 1076, 100);
-            byte[] rsSign6 = connect6.getData(54, 538, 50);
-           CarrierStatusDB(carrierMessage,rsTaskNo6, rsSign6, 2300, 2325,2031);
+            byte[] rsTaskNo5 = connect5.getData(52, 0, 144);
+            byte[] rsSign5 = connect5.getData(54, 0, 72);
+            byte[] carrierState5 = connect5.getCarrierStatus(0, 246);
+            CarrierStatusDB(carrierMessage,rsTaskNo5, rsSign5, carrierState5,2201, 2212);
+
         }
         List<int> GetTasks(Dictionary<int, CarrierSignalStatus> curCarrierMessage) {
                List<int> curTaskTmp = new List<int>();
@@ -133,45 +141,34 @@ namespace GK.WCS.Carrier {
             hisTask=curTask;
             finshTask(curCarrierMessage);
         }
-        void CarrierStatusDB(Dictionary<int, CarrierSignalStatus> carrierMessage,byte[] rsTaskNo, byte[] rsSign, int src ,int des ,int begin)
-        {
-            if (rsTaskNo !=null && rsSign!=null)
-            {
-                int number = rsSign.Length / 2;
-                if (rsTaskNo.Length / 4 != number)
-                {
-                    throw new Exception("长度异常");
-                }
-                for (int i = src; i < des; i++)
-                {
-                    int sign = Tools.ushort16(rsSign, (i - begin) * 2);
-                    int taskNo = Tools.int32(rsTaskNo, (i - begin) * 4);
-                    carrierMessage.Add(i, new CarrierSignalStatus(i, taskNo, sign));
-                }
-            }
-            
-        }
-        public void keyPointAssign(Dictionary<int, CarrierSignalStatus> carrierMessage)
+        void CarrierStatusDB(Dictionary<int, CarrierSignalStatus> carrierMessage,byte[] rsTaskNo, byte[] rsSign, byte[] carrierState ,int src ,int des)
         {
             if (carrierMessage == null)
             {
                 return;
             }
+            if (rsTaskNo !=null && rsSign!=null)
+            {
+                int number = rsTaskNo.Length / 2;
+                if (number != rsSign.Length)
+                {
+                    throw new Exception("长度异常");
+                }
+                for (int i = src; i < des; i++)
+                {
+                    int sign = Tools.ushort16(rsSign, (i - src) * 2);
+                    int taskNo = Tools.int32(rsTaskNo, (i - src) * 4);
+                    carrierMessage.Add(i, new CarrierSignalStatus(i, taskNo, sign));
+                }
+            }
+            keyPointAssign(carrierMessage, carrierState);
+        }
+        public void keyPointAssign(Dictionary<int, CarrierSignalStatus> carrierMessage,byte[] carrierState)
+        {
             Dictionary<int, PlcCarrierPoint> plcCarrierPoint = CarrierPoint.carrierPoint;
-            byte[] carrierState1 = connect1.getCarrierStatus(0,782);
-            byte[] carrierState2 = connect2.getCarrierStatus(782,1034);
-            byte[] carrierState3 = connect3.getCarrierStatus(1034,1566);
-            byte[] carrierState4 = connect4.getCarrierStatus(1566,1902);
-            byte[] carrierState5 = connect5.getCarrierStatus(1902,2014);
-            byte[] carrierState6 = connect6.getCarrierStatus(2014,2238);
-            byte[] full=new byte[carrierState1.Length+carrierState2.Length+carrierState3.Length+carrierState4.Length+carrierState5.Length+carrierState6.Length];   
+            byte[] full=new byte[carrierState.Length];   
             Stream s = new MemoryStream();   
-            s.Write(carrierState1, 0, carrierState1.Length);   
-            s.Write(carrierState2, 0, carrierState2.Length);   
-            s.Write(carrierState3, 0, carrierState3.Length);   
-            s.Write(carrierState4, 0, carrierState4.Length);  
-            s.Write(carrierState5, 0, carrierState5.Length);   
-            s.Write(carrierState6, 0, carrierState6.Length);  
+            s.Write(carrierState, 0, carrierState.Length);     
             s.Read(full,0,full.Length);
       
             foreach (KeyValuePair<int, PlcCarrierPoint> item in plcCarrierPoint)
@@ -186,8 +183,7 @@ namespace GK.WCS.Carrier {
                 carrierMessage[item.Value.pathNo].inTask = ms.inTask;
                 carrierMessage[item.Value.pathNo].plcMode = ms.plcMode;
                 carrierMessage[item.Value.pathNo].plcState = ms.plcState;
-            }
-           
+            }           
         }
        
         public void finshTask(Dictionary<int, CarrierSignalStatus> curCarrierMessage)
@@ -206,12 +202,12 @@ namespace GK.WCS.Carrier {
                     TaskCarrier taskCarrier = taskCarrierServer.getCarrarTasksByTaskNo(taskNO);
                     if (taskCarrier != null&& taskCarrier.endPath== it.Value.pathNo)
                     {
-                        if (taskCarrier.itemType == 2)
+                        if (taskCarrier.taskType == 2)
                         {
                             taskCarrierServer.UpdateTaskCarrierStatus(taskCarrier.taskNo, 9);
                             ClearTask(it.Value.PlcId,it.Value.WOffset);
                         }
-                        else if(taskCarrier.itemType == 1)
+                        else if(taskCarrier.taskType == 1)
                         {
                             taskCarrierServer.UpdateTaskCarrierStatus(taskCarrier.taskNo, 9);
                             TaskCrane taskCrane= taskCraneServer.getTaskCraneByTaskNo(taskCarrier.taskNo);
@@ -251,10 +247,7 @@ namespace GK.WCS.Carrier {
             {
                 connect5.clearCarrierTask(wOffset);
             }
-            if (plcId == 6)
-            {
-                connect6.clearCarrierTask(wOffset);
-            }
+
         }
     }
 

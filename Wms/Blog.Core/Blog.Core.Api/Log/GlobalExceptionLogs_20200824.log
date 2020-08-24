@@ -1,0 +1,642 @@
+2020-08-24 11:09:23,208| ERROR 
+（若新添加服务，需要重新编译项目）Unable to resolve service for type 'Blog.Core.IServices.ICoreClassifyServices' while attempting to activate 'Blog.Core.Api.Controllers.CoreClassifyController'.
+【自定义错误】：（若新添加服务，需要重新编译项目）Unable to resolve service for type 'Blog.Core.IServices.ICoreClassifyServices' while attempting to activate 'Blog.Core.Api.Controllers.CoreClassifyController'. 
+【异常类型】：InvalidOperationException 
+【异常信息】：Unable to resolve service for type 'Blog.Core.IServices.ICoreClassifyServices' while attempting to activate 'Blog.Core.Api.Controllers.CoreClassifyController'. 
+【堆栈调用】：   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 13:53:19,973| FATAL 
+Application startup exception
+--------------------------------
+System.Exception: Could not resolve a service of type 'Blog.Core.IServices.ITasksQzServices' for the parameter 'tasksQzServices' of method 'Configure' on type 'Blog.Core.Startup'.
+ ---> Autofac.Core.Registration.ComponentNotRegisteredException: The requested service 'Blog.Core.IServices.ITasksQzServices' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2020-08-24 13:54:08,011| FATAL 
+Application startup exception
+--------------------------------
+System.Exception: Could not resolve a service of type 'Blog.Core.IServices.ITasksQzServices' for the parameter 'tasksQzServices' of method 'Configure' on type 'Blog.Core.Startup'.
+ ---> Autofac.Core.Registration.ComponentNotRegisteredException: The requested service 'Blog.Core.IServices.ITasksQzServices' has not been registered. To avoid this exception, either register a component to provide the service, check for service registration using IsRegistered(), or use the ResolveOptional() method to resolve an optional dependency.
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2020-08-24 13:57:21,656| ERROR 
+对象名 'CoreClassify' 无效。
+【自定义错误】：对象名 'CoreClassify' 无效。 
+【异常类型】：SqlException 
+【异常信息】：对象名 'CoreClassify' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](KeyValuePair`2 sqlObj)
+   at SqlSugar.QueryableProvider`1._ToListAsync[TResult]()
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 480
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 44
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 14:42:16,336| ERROR 
+English Message : Entity mapping error.Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+Chinese Message : 实体与表映射出错。Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+【自定义错误】：English Message : Entity mapping error.Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+Chinese Message : 实体与表映射出错。Unable to cast object of type 'System.Int32' to type 'System.Int64'. 
+【异常类型】：SqlSugarException 
+【异常信息】：English Message : Entity mapping error.Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+Chinese Message : 实体与表映射出错。Unable to cast object of type 'System.Int32' to type 'System.Int64'. 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.DbBindAccessory.GetEntityListAsync[T](SqlSugarProvider context, IDataReader dataReader)
+   at SqlSugar.DbBindProvider.DataReaderToListAsync[T](Type type, IDataReader dataReader)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](Boolean isComplexModel, Type entityType, IDataReader dataReader)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](KeyValuePair`2 sqlObj)
+   at SqlSugar.QueryableProvider`1._ToListAsync[TResult]()
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 476
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 46
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:20:33,347| ERROR 
+列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。
+【自定义错误】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【异常类型】：SqlException 
+【异常信息】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetScalarAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetCountAsync()
+   at SqlSugar.QueryableProvider`1.CountAsync()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 476
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 47
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:24:15,357| ERROR 
+列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。
+【自定义错误】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【异常类型】：SqlException 
+【异常信息】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetScalarAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetCountAsync()
+   at SqlSugar.QueryableProvider`1.CountAsync()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 476
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 47
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:24:50,265| ERROR 
+列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。
+【自定义错误】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【异常类型】：SqlException 
+【异常信息】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetScalarAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetCountAsync()
+   at SqlSugar.QueryableProvider`1.CountAsync()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 476
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 47
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:34:11,883| ERROR 
+列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。
+【自定义错误】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【异常类型】：SqlException 
+【异常信息】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetScalarAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetCountAsync()
+   at SqlSugar.QueryableProvider`1.CountAsync()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 476
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 47
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:34:16,376| ERROR 
+列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。
+【自定义错误】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【异常类型】：SqlException 
+【异常信息】：列名 'Append' 无效。
+多次为 'CountTable' 指定了列 'classifyId'。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetScalarAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetCountAsync()
+   at SqlSugar.QueryableProvider`1.CountAsync()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 476
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 47
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:34:58,334| ERROR 
+列名 'Append' 无效。
+【自定义错误】：列名 'Append' 无效。 
+【异常类型】：SqlException 
+【异常信息】：列名 'Append' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetScalarAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetCountAsync()
+   at SqlSugar.QueryableProvider`1.CountAsync()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 476
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 47
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:47:51,160| ERROR 
+Non-static method requires a target.
+【自定义错误】：Non-static method requires a target. 
+【异常类型】：TargetException 
+【异常信息】：Non-static method requires a target. 
+【堆栈调用】：   at System.Reflection.RuntimeMethodInfo.CheckConsistency(Object target)
+   at System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimePropertyInfo.GetValue(Object obj, Object[] index)
+   at SqlSugar.UpdateableProvider`1.SetUpdateItemByEntity(Int32 i, T item, List`1 updateItem)
+   at SqlSugar.UpdateableProvider`1.Init()
+   at SqlSugar.SqlSugarProvider.CreateUpdateable[T](T[] UpdateObjs)
+   at SqlSugar.SqlSugarProvider.Updateable[T](T[] UpdateObjs)
+   at SqlSugar.SqlSugarProvider.Updateable[T](T UpdateObj)
+   at SqlSugar.SqlSugarClient.Updateable[T](T UpdateObj)
+   at Blog.Core.Repository.Base.BaseRepository`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 144
+   at Blog.Core.Services.BASE.BaseServices`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 72
+   at Blog.Core.Controllers.CoreItemController.Disable(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 131
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:48:20,342| ERROR 
+Object reference not set to an instance of an object.
+【自定义错误】：Object reference not set to an instance of an object. 
+【异常类型】：NullReferenceException 
+【异常信息】：Object reference not set to an instance of an object. 
+【堆栈调用】：   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 82
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:48:26,591| ERROR 
+Object reference not set to an instance of an object.
+【自定义错误】：Object reference not set to an instance of an object. 
+【异常类型】：NullReferenceException 
+【异常信息】：Object reference not set to an instance of an object. 
+【堆栈调用】：   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 82
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:51:44,235| ERROR 
+Object reference not set to an instance of an object.
+【自定义错误】：Object reference not set to an instance of an object. 
+【异常类型】：NullReferenceException 
+【异常信息】：Object reference not set to an instance of an object. 
+【堆栈调用】：   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 82
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 15:58:28,455| ERROR 
+You cannot have no primary key and no conditions
+【自定义错误】：You cannot have no primary key and no conditions 
+【异常类型】：SqlSugarException 
+【异常信息】：You cannot have no primary key and no conditions 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.UpdateableProvider`1._ExecuteCommand()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandAsync()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandHasChangeAsync()
+   at Blog.Core.Repository.Base.BaseRepository`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 144
+   at Blog.Core.Services.BASE.BaseServices`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 72
+   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 90
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 16:00:09,048| ERROR 
+You cannot have no primary key and no conditions
+【自定义错误】：You cannot have no primary key and no conditions 
+【异常类型】：SqlSugarException 
+【异常信息】：You cannot have no primary key and no conditions 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.UpdateableProvider`1._ExecuteCommand()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandAsync()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandHasChangeAsync()
+   at Blog.Core.Repository.Base.BaseRepository`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 144
+   at Blog.Core.Services.BASE.BaseServices`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 72
+   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 90
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 16:06:50,350| ERROR 
+You cannot have no primary key and no conditions
+【自定义错误】：You cannot have no primary key and no conditions 
+【异常类型】：SqlSugarException 
+【异常信息】：You cannot have no primary key and no conditions 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.UpdateableProvider`1._ExecuteCommand()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandAsync()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandHasChangeAsync()
+   at Blog.Core.Repository.Base.BaseRepository`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 144
+   at Blog.Core.Services.BASE.BaseServices`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 72
+   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 90
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 16:14:24,062| ERROR 
+You cannot have no primary key and no conditions
+【自定义错误】：You cannot have no primary key and no conditions 
+【异常类型】：SqlSugarException 
+【异常信息】：You cannot have no primary key and no conditions 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.UpdateableProvider`1._ExecuteCommand()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandAsync()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandHasChangeAsync()
+   at Blog.Core.Repository.Base.BaseRepository`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 144
+   at Blog.Core.Services.BASE.BaseServices`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 72
+   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 90
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 16:16:36,813| ERROR 
+You cannot have no primary key and no conditions
+【自定义错误】：You cannot have no primary key and no conditions 
+【异常类型】：SqlSugarException 
+【异常信息】：You cannot have no primary key and no conditions 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.UpdateableProvider`1._ExecuteCommand()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandAsync()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandHasChangeAsync()
+   at Blog.Core.Repository.Base.BaseRepository`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 144
+   at Blog.Core.Services.BASE.BaseServices`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 72
+   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 90
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 16:17:13,005| ERROR 
+You cannot have no primary key and no conditions
+【自定义错误】：You cannot have no primary key and no conditions 
+【异常类型】：SqlSugarException 
+【异常信息】：You cannot have no primary key and no conditions 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.UpdateableProvider`1._ExecuteCommand()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandAsync()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandHasChangeAsync()
+   at Blog.Core.Repository.Base.BaseRepository`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 144
+   at Blog.Core.Services.BASE.BaseServices`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 72
+   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 90
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 16:17:20,196| ERROR 
+You cannot have no primary key and no conditions
+【自定义错误】：You cannot have no primary key and no conditions 
+【异常类型】：SqlSugarException 
+【异常信息】：You cannot have no primary key and no conditions 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.UpdateableProvider`1._ExecuteCommand()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandAsync()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandHasChangeAsync()
+   at Blog.Core.Repository.Base.BaseRepository`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 144
+   at Blog.Core.Services.BASE.BaseServices`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 72
+   at Blog.Core.Controllers.CoreItemController.Restore(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 119
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 16:18:44,115| ERROR 
+You cannot have no primary key and no conditions
+【自定义错误】：You cannot have no primary key and no conditions 
+【异常类型】：SqlSugarException 
+【异常信息】：You cannot have no primary key and no conditions 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.UpdateableProvider`1._ExecuteCommand()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandAsync()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommandHasChangeAsync()
+   at Blog.Core.Repository.Base.BaseRepository`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 144
+   at Blog.Core.Services.BASE.BaseServices`1.Update(TEntity entity) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 72
+   at Blog.Core.Controllers.CoreItemController.Save(CoreItem model) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 90
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 16:23:29,563| ERROR 
+English Message : Entity mapping error.Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+Chinese Message : 实体与表映射出错。Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+【自定义错误】：English Message : Entity mapping error.Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+Chinese Message : 实体与表映射出错。Unable to cast object of type 'System.Int32' to type 'System.Int64'. 
+【异常类型】：SqlSugarException 
+【异常信息】：English Message : Entity mapping error.Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+Chinese Message : 实体与表映射出错。Unable to cast object of type 'System.Int32' to type 'System.Int64'. 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.DbBindAccessory.GetEntityListAsync[T](SqlSugarProvider context, IDataReader dataReader)
+   at SqlSugar.DbBindProvider.DataReaderToListAsync[T](Type type, IDataReader dataReader)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](Boolean isComplexModel, Type entityType, IDataReader dataReader)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](KeyValuePair`2 sqlObj)
+   at SqlSugar.QueryableProvider`1._ToListAsync[TResult]()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 476
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 47
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 16:23:32,765| ERROR 
+English Message : Entity mapping error.Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+Chinese Message : 实体与表映射出错。Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+【自定义错误】：English Message : Entity mapping error.Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+Chinese Message : 实体与表映射出错。Unable to cast object of type 'System.Int32' to type 'System.Int64'. 
+【异常类型】：SqlSugarException 
+【异常信息】：English Message : Entity mapping error.Unable to cast object of type 'System.Int32' to type 'System.Int64'.
+Chinese Message : 实体与表映射出错。Unable to cast object of type 'System.Int32' to type 'System.Int64'. 
+【堆栈调用】：   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.DbBindAccessory.GetEntityListAsync[T](SqlSugarProvider context, IDataReader dataReader)
+   at SqlSugar.DbBindProvider.DataReaderToListAsync[T](Type type, IDataReader dataReader)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](Boolean isComplexModel, Type entityType, IDataReader dataReader)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](KeyValuePair`2 sqlObj)
+   at SqlSugar.QueryableProvider`1._ToListAsync[TResult]()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 476
+   at Blog.Core.Services.BASE.BaseServices`1.QueryMuchPage[T,T2,TResult](Expression`1 joinExpression, Expression`1 selectExpression, Expression`1 whereLambda, Int32 intPageIndex, Int32 intPageSize) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 308
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 47
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 17:20:55,629| ERROR 
+Attempted to divide by zero.
+【自定义错误】：Attempted to divide by zero. 
+【异常类型】：DivideByZeroException 
+【异常信息】：Attempted to divide by zero. 
+【堆栈调用】：   at System.Decimal.DecCalc.VarDecDiv(DecCalc& d1, DecCalc& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 433
+   at Blog.Core.Services.BASE.BaseServices`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 296
+   at Blog.Core.Controllers.SysDictClassController.FindPage(SysDictClassDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Sys\SysDictClassController.cs:line 45
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 17:21:59,698| ERROR 
+Attempted to divide by zero.
+【自定义错误】：Attempted to divide by zero. 
+【异常类型】：DivideByZeroException 
+【异常信息】：Attempted to divide by zero. 
+【堆栈调用】：   at System.Decimal.DecCalc.VarDecDiv(DecCalc& d1, DecCalc& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 433
+   at Blog.Core.Services.BASE.BaseServices`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 296
+   at Blog.Core.Api.Controllers.CoreClassifyController.FindPage(CoreClassifyDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreClassifyController.cs:line 52
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 17:22:27,779| ERROR 
+Attempted to divide by zero.
+【自定义错误】：Attempted to divide by zero. 
+【异常类型】：DivideByZeroException 
+【异常信息】：Attempted to divide by zero. 
+【堆栈调用】：   at System.Decimal.DecCalc.VarDecDiv(DecCalc& d1, DecCalc& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 433
+   at Blog.Core.Services.BASE.BaseServices`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 296
+   at Blog.Core.Api.Controllers.CoreClassifyController.FindPage(CoreClassifyDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreClassifyController.cs:line 52
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-24 17:23:09,929| ERROR 
+Attempted to divide by zero.
+【自定义错误】：Attempted to divide by zero. 
+【异常类型】：DivideByZeroException 
+【异常信息】：Attempted to divide by zero. 
+【堆栈调用】：   at System.Decimal.DecCalc.VarDecDiv(DecCalc& d1, DecCalc& d2)
+   at System.Decimal.op_Division(Decimal d1, Decimal d2)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 433
+   at Blog.Core.Services.BASE.BaseServices`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 296
+   at Blog.Core.Api.Controllers.CoreClassifyController.FindPage(CoreClassifyDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreClassifyController.cs:line 52
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------

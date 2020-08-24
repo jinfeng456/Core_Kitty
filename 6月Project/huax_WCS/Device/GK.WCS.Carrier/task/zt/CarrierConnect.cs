@@ -61,7 +61,7 @@ namespace GK.WCS.Carrier {
         }
 
         public byte[] getData(int dbid, int begin, int len) {
-
+        
             return reader(dbid, begin, len);
         }
         public int getCarrierDir(int begin)

@@ -297,6 +297,17 @@ namespace Blog.Core.Services.BASE
          intPageIndex, intPageSize, strOrderByFileds);
         }
 
+
+        public async Task<PageModel<TResult>> QueryMuchPage<T, T2, T3, TResult>(Expression<Func<T, T2, T3, object[]>> joinExpression, Expression<Func<T, T2, T3, TResult>> selectExpression, Expression<Func<T, T2, T3, bool>> whereLambda = null, int intPageIndex = 1, int intPageSize = 20) where T : class, new()
+        {
+            return await BaseDal.QueryMuchPage(joinExpression, selectExpression, whereLambda, intPageIndex, intPageSize);
+        }
+
+        public async Task<PageModel<TResult>> QueryMuchPage<T, T2, TResult>(Expression<Func<T, T2, object[]>> joinExpression, Expression<Func<T, T2, TResult>> selectExpression, Expression<Func<T, T2, bool>> whereLambda = null, int intPageIndex = 1, int intPageSize = 20) where T : class, new()
+        {
+            return await BaseDal.QueryMuchPage(joinExpression, selectExpression, whereLambda, intPageIndex, intPageSize);
+        }
+
         public async Task<List<TResult>> QueryMuch<T, T2, T3, TResult>(Expression<Func<T, T2, T3, object[]>> joinExpression, Expression<Func<T, T2, T3, TResult>> selectExpression, Expression<Func<T, T2, T3, bool>> whereLambda = null) where T : class, new()
         {
             return await BaseDal.QueryMuch(joinExpression, selectExpression, whereLambda);

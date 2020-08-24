@@ -23,16 +23,36 @@ namespace Blog.Core.Api.Controllers
         {
             _coreClassifyServices = CoreClassifyServices;
         }
+        //[HttpPost, Route("FindPage")]
+        //public async Task<BaseResult> FindPage([FromBody]CoreClassifyDto dto)
+
+        //{
+        //    if (string.IsNullOrEmpty(dto.name) || string.IsNullOrWhiteSpace(dto.name))
+        //    {
+        //        dto.name = "";
+        //    }
+        //    Expression<Func<CoreClassify, bool>> whereExpression = a => (a.name != null && a.name.Contains(dto.name));
+        //    var data = await _coreClassifyServices.QueryPage(whereExpression, dto.pageNum, dto.pageSize, " id desc ");
+        //    return BaseResult.Ok(data);
+        //}
+
+        /// <summary>
+        /// 查询物料分类
+        /// </summary>
+        /// <param name="dto">物料分类</param>
+        /// <returns></returns>
+        // GET: api/User
         [HttpPost, Route("FindPage")]
         public async Task<BaseResult> FindPage([FromBody]CoreClassifyDto dto)
         {
+            dto.pageNum = 1;
+            dto.pageSize = 1000;
             if (string.IsNullOrEmpty(dto.name) || string.IsNullOrWhiteSpace(dto.name))
             {
                 dto.name = "";
             }
-            Expression<Func<CoreClassify, bool>> whereExpression = a => (a.name != null && a.name.Contains(dto.name));
-            var data = await _coreClassifyServices.QueryPage(whereExpression, dto.pageNum, dto.pageSize, " id desc ");
+            var data = await _coreClassifyServices.QueryPage(a => (a.name != null && a.name.Contains(dto.name)), dto.pageNum, dto.pageSize, " id desc ");
             return BaseResult.Ok(data);
-        }       
+        }
     }
 }

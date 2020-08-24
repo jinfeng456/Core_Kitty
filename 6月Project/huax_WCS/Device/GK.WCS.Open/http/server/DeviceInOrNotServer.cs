@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 using GK.WCS.DAL;
 using GK.DAL.inter;
-using GK.Engine.WCS.wcs;
-using GK.Engine.WCS;
 using GK.WCS.DAL.inter;
 
 namespace GK.WCS.Open.http.server {

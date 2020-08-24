@@ -19,6 +19,8 @@ namespace GK.WCS.Controller {
             time = 500;
         }
 
+        ITaskCraneServer craneDAL = ServerFactray.getServer<ITaskCraneServer>();
+        ITaskCarrierServer carrierDAL = ServerFactray.getServer<ITaskCarrierServer>();
         GK.WCS.DAL.ISequenceIdServer sequenceIdServer = ServerFactray.getServer<GK.WCS.DAL.ISequenceIdServer>();
         ITaskServer taskServer;
         ITaskCompleteServer completeServer = null;
@@ -44,47 +46,39 @@ namespace GK.WCS.Controller {
             List<CoreTask> list = taskServer.getAllUnSyncTask();
             foreach (CoreTask task in list)
             {
-                //CoreTask，CoreTaskParam 保存 到Task_complete，Task_complete_param
-                //判断Task_complete是否含有此数据
-                TaskComplete complete = completeServer.getTaskCompleteByWmsTaskId(task.id);
-                if (complete == null)
+                if (task.status==2)
                 {
-                    complete = new TaskComplete();
-                    complete.id = sequenceIdServer.getId();
-                    complete.wmsTaskId = task.id;
-                    complete.boxCode = task.boxCode;
-                    complete.taskType = task.taskType;
-                    complete.des = task.des;
-                    complete.src = task.src;
-                    complete.status = 1;
-                    complete.Priority = task.Priority;
-                    complete.info = task.info;
-                    complete.relyTaskId = task.relyTaskId;
-                    complete.createTime = DateTime.Now;
-                    completeServer.insertNotNull(complete);
+                    //CoreTask，CoreTaskParam 保存 到Task_complete，Task_complete_param
+                    //判断Task_complete是否含有此数据
+                    TaskComplete complete = completeServer.getTaskCompleteByWmsTaskId(task.id);
+                    if (complete == null)
+                    {
+                        complete = new TaskComplete();
+                        complete.id = sequenceIdServer.getId();
+                        complete.wmsTaskId = task.id;
+                        complete.boxCode = task.boxCode;
+                        complete.taskType = task.taskType;
+                        complete.des = task.des;
+                        complete.src = task.src;
+                        complete.status = 1;
+                        complete.Priority = task.Priority;
+                        complete.info = task.info;
+                        complete.relyTaskId = task.relyTaskId;
+                        complete.createTime = DateTime.Now;
+                        completeServer.insertNotNull(complete);
+                    }
                 }
-                #region
-                //List<CoreTaskParam> paramlist = taskServer.getTaskParam(task.id);
-                //foreach (CoreTaskParam param in paramlist)
-                //{
-                //    TaskCompleteParam para = completeServer.getTaskCompleteParamByDetailId(param.id);
-                //    if (para != null)
-                //    {
-                //        continue;
-                //    }
-                //    para = new TaskCompleteParam();
-                //    para.id = sequenceIdServer.getId();
-                //    para.status = 1;
-                //    para.completeId = param.wmsTaskId;
-                //    para.detailId = param.id;
-                //    para.des = param.des;
-                //    para.pos = param.pos;
-                //    completeServer.insertNotNull(para);
-                //}
-                #endregion
+                else if (task.status == -2)
+                {
+                    //1、查询completeId
+                    TaskComplete complete = completeServer.getTaskCompleteByWmsTaskId(task.id);
+                    //2、查询修改垛机和输送线状态为-1
+                    craneDAL.UpdateCraneStatusByComId(complete.id,-1);
+                    carrierDAL.UpdateCraneStatusByComId(complete.id, -1);
+                }
             }
         }
-
+        
         public void sync(TaskComplete task) {   
             lock (lock_obj) {
                 bool check = false;

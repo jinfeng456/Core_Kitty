@@ -61,9 +61,6 @@
     <Reference Include="CMNetLib">
       <HintPath>..\UsingDlls\CMNetLib.dll</HintPath>
     </Reference>
-    <Reference Include="EasyModbus, Version=5.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EasyModbusTCP.5.5.0\lib\EasyModbus.dll</HintPath>
-    </Reference>
     <Reference Include="GK.Common">
       <HintPath>..\..\common\UsingDlls\GK.Common.dll</HintPath>
     </Reference>

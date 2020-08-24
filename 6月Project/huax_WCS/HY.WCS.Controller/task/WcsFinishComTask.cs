@@ -22,7 +22,6 @@ namespace GK.WCS.Controller {
         }
         public override void excute() {
             List<TaskComplete> list = completeDAL.getResolveTasks();
-
             foreach (TaskComplete task in list)
             {
                 TaskCrane craneTask = craneDAL.getTaskCraneByCompleteId(task.id);

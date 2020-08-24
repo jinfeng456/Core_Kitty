@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Zl1LN+9aRS9lLU+qD+DXpeKtF3fe05PqYDNwEhKOnMR5wS26OzaWFcjTPUZa1jVnVGd38Yv1nNFreVxI02fodA==",
+  "dgSpecHash": "G8PqGKTtsR7Iwj1PU7RlDOdyYKRi4em91CfkBeDH6JfI0WdbzpbCb2RCHHhm8yyVmLJU5js1hPYyC1G1BuDgDw==",
   "success": true,
-  "projectFilePath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.FrameWork\\Blog.Core.FrameWork.csproj",
+  "projectFilePath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.FrameWork\\Blog.Core.FrameWork.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

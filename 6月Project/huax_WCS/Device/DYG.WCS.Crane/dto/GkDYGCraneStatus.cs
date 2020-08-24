@@ -9,7 +9,10 @@ namespace GK.WCS.Crane
 {
 
     public class GkDYGCraneStatus:GkCraneStatusBase
-    { public GkDYGCraneStatus(int id):base(id) {
+    {
+        public GkDYGCraneStatus() : base ( 0 ,null ) {
+        }
+        public GkDYGCraneStatus(int id ,GkCraneStatusBase bs) :base(id,bs ) {
         }
         public int stnId;
         public override bool checkCrane()
@@ -60,11 +63,11 @@ namespace GK.WCS.Crane
         List<ErrorKey> list = new List<ErrorKey>();
         public ushort mw85;
         public ushort mw87;
-         public ushort mw89;
+        public ushort mw89;
         public ushort mw91;
-         public ushort mw93;
-         int walkNowValue;//走行现在值
-         int liftNowValue;//升降现在值
+        public ushort mw93;
+        public int walkNowValue;//走行现在值
+        public int liftNowValue;//升降现在值
         public int craneState;//堆垛机状态
         public int craneMode;//堆垛机模式
         public int sendData13;//发送数据_13
@@ -175,7 +178,7 @@ namespace GK.WCS.Crane
 
         public override void parseError(byte[] b)
         {
-             mw10 = Tools.ushort16(b, 0);
+            mw10 = Tools.ushort16(b, 0);
             mw12 = Tools.ushort16(b, 2);
             mw14 = Tools.ushort16(b, 4);
             mw16 = Tools.ushort16(b, 8);
@@ -188,17 +191,14 @@ namespace GK.WCS.Crane
             if (getStatus(StatusKey.CRANE异常) == 1) {
                 setFault();
             } else {
-                clearFault();
                 list.Clear();
             }
-
-
             ticks = DateTime.Now.Ticks;
         }
 
         public override void parseStatus(byte[] b)
         {
-             walkNowValue = Tools.ushort16(b, 12);
+            walkNowValue = Tools.ushort16(b, 12);
             liftNowValue = Tools.ushort16(b, 16);
             craneState = Tools.ushort16(b, 22);
             craneMode = Tools.ushort16(b, 24);
@@ -211,20 +211,16 @@ namespace GK.WCS.Crane
             finishTaskNo = Tools.ushort16(b, 38);
         }
 
-        public override Dictionary<int,int> getTaskNo() {
-           Dictionary<int,int> dict=new Dictionary<int,int>();
-                if(finishFlag == 1) {
-                    dict.Add(finishTaskNo,9);
-                   
-                }
-          
-                if(finishFlag == 0) {
-                   dict.Add(finishTaskNo,2);
-                }
-            
-           
+        Dictionary<int, int> dict;
+        public override Dictionary<int, int> getTaskNo()
+        {
+            if (dict == null)
+            {
+                dict = new Dictionary<int, int>();
+                dict.Add(finishTaskNo, finishFlag);
+            }
             return dict;
-           
+
         }
     }
 }

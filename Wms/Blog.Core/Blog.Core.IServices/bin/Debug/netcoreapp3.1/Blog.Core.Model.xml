@@ -165,12 +165,10 @@
             Active
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.CoreItem.type">
+        <member name="P:Blog.Core.Model.Models.CoreItem.coreItemType">
             <summary>
             Type
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.CoreItem.coreItemType">
+            </summary>	
             <summary>
             CoreItemType
             </summary>

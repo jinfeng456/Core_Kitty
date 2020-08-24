@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dqDDzb4KlxhBefA+NESGmuo7XQwY8BdiTKFQUG4KInrAkLlI8oj6ptGZ/OjKKxVoilhkiSmvsoEyU2DF5czLOg==",
+  "dgSpecHash": "vm6xdNEf4faVpxNSZ/xTkbJvqP89z/SnL8LY4rU4DofQYvywSNqXrLOLz8Yy6vUqXjWBeDJi4pKNGJ1jnFj9lQ==",
   "success": true,
-  "projectFilePath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.AdminMvc\\Blog.Core.AdminMvc.csproj",
+  "projectFilePath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.AdminMvc\\Blog.Core.AdminMvc.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

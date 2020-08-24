@@ -12,7 +12,7 @@ namespace GK.WCS.Crane {
 
         }
          protected override  GkCraneStatusBase parse() {
-            GkDYGCraneStatus cs = new GkDYGCraneStatus(CraneId);
+            GkDYGCraneStatus cs = new GkDYGCraneStatus(CraneId,craneStatus );
             cs.stnId = CraneId;
             byte[] statebyte = craneConnect.reader(500,0,40);
             cs.parseStatus(statebyte);

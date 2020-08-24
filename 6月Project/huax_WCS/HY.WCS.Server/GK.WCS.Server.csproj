@@ -164,6 +164,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\common\GK.WCS.Common\WCS.Common.csproj">
+      <Project>{c345f915-22ea-454e-8552-c4cb4c67b7b1}</Project>
+      <Name>WCS.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\common\GK.WCS.DAL\GK.WCS.DAL.csproj">
       <Project>{4966a051-ff5e-4867-97f8-5b484eeec0b2}</Project>
       <Name>GK.WCS.DAL</Name>

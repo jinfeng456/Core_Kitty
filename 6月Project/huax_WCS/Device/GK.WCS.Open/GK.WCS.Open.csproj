@@ -96,9 +96,13 @@
     <Folder Include="http\dto\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\common\GK.WCS.Entity\GK.WCS.Entity.csproj">
+    <ProjectReference Include="..\..\..\..\common\GK.WCS.DALBase\WCS.DAL.csproj">
+      <Project>{fe84b517-dad9-4c32-9949-eb22faf6511c}</Project>
+      <Name>WCS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\GK.WCS.Entity\WCS.Entity.csproj">
       <Project>{af5cfa9b-0662-4ab4-ae9b-12f58816235c}</Project>
-      <Name>GK.WCS.Entity</Name>
+      <Name>WCS.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\common\GK.Engine.WCS\GK.Engine.WCS.csproj">
       <Project>{60a2ff46-24ff-45e8-9851-3328c5c09531}</Project>

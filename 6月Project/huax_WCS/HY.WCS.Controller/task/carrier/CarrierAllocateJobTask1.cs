@@ -61,7 +61,7 @@ namespace GK.WCS.Controller {
             {
                 string code = "BA0029102";
                 CarrierSignalStatus carrierSignal = carrierSynchro.getSignalStatus(point);
-                if (carrierSignal!=null && carrierSignal.code != 0 && carrierSignal.arrived==1)
+                if (carrierSignal!=null && carrierSignal.code != 0 && carrierSignal.arriveApply == 1)
                 {
                     List<TaskComplete> taskComplete = taskCompleteServer.GetTaskCompleteByCode(code);
                     if (taskComplete.Count <= 0)
@@ -96,7 +96,18 @@ namespace GK.WCS.Controller {
                     if (carrierSignal.arriveApply == 1)
                     {
                         TaskCarrier taskCarrier = taskCarrierServer.getByCode(carrierSignal.code.ToString());
-
+                        if (taskCarrier == null)
+                        {
+                            continue;
+                        }
+                        if (taskCarrier.taskNo == carrierSignal.taskNo)
+                        {
+                            continue;
+                        }
+                        if (taskCarrier.status != 1)
+                        {
+                            continue;
+                        }
                         sendCrarrer(1, taskCarrier, (short)carrierPoint[point].WOffset, (short)carrierPoint[point].ROffset, carrierPoint[point].PlcId);
                         a = true;
                     }

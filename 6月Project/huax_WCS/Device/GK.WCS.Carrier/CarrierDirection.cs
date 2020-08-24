@@ -18,124 +18,158 @@ namespace GK.WCS.Carrier {
         CarrierConnect connectLeft = TaskPool.get<CarrierConnect>(4);
         CarrierConnect connectRight1 = TaskPool.get<CarrierConnect>(5);
         CarrierConnect connectRight2 = TaskPool.get<CarrierConnect>(6);
-        CarrierSynchro carrierSynchro1 = TaskPool.get<CarrierSynchro>();
-        public static int dirL = 0;
-        public static int dirR = 0;
-        int LeftMode1;
-        int RightModel1;
+        CarrierSynchro carrierSynchro = TaskPool.get<CarrierSynchro>();
+        public static int dirL;
+        static int carrierContr1 = 1;
 
+
+        static public bool canIn()
+        {
+            if (carrierContr1 != 1)
+            {
+                return false;
+            }
+            return dirL == 1;
+
+
+        }
+        static public bool canOut()
+        {
+            if (carrierContr1 != 1)
+            {
+                return false;
+            }
+            return dirL == 2;
+
+
+        }
         public override void excute() {
-            LeftMode1 = deviceInOrOutServer.GetInOrNot(4);
-            RightModel1 = deviceInOrOutServer.GetInOrNot(5);
+            int LeftMode1 = deviceInOrOutServer.GetInOrNot(4);
+            //int RightModel1 = deviceInOrOutServer.GetInOrNot(5);
             ReadDir();
+            LoggerCommon.fileAll("当前输送线方向：" + dirL);
 
-            if (LeftMode1 == 3) {
-                changeDirL();
-            } else {
-                HandChangeDirL(RightModel1);
+            List<TaskCrane> taskCranes = taskCraneServer.getWorkingCraneTask();
+            List<TaskCarrier> taskCarriers = taskCarrierServer.getWorkingCarrierTask();
+            bool isIn = false;
+            bool isOut = false;
+            foreach (TaskCrane ct in taskCranes)
+            {
+                if (ct.taskType == 1)
+                {
+                    isIn = true;
+                }
+                else if (ct.taskType == 2)
+                {
+                    isOut = true;
+
+                }
+                if (isIn && isOut)
+                {
+                    break;
+                }
             }
-            if (RightModel1 == 3) {
-                changeDirR();
-            } else {
-                HandChangeDirR(RightModel1);
+            foreach (TaskCarrier ct in taskCarriers)
+            {
+                if (ct.taskType == 1)
+                {
+
+                    isIn = true;
+                }
+                else if (ct.taskType == 2)
+                {
+
+                    isOut = true;
+                }
+                if (isIn && isOut)
+                {
+                    break;
+                }
+            }
+            CarrierSignalStatus carrierSignalStatus1 = carrierSynchro.getSignalStatus(1);
+            if (carrierSignalStatus1 == null)
+            {
+                return;
+            }
+            if (carrierSignalStatus1.free != 0)//需要入库
+            {
+                isIn = true;
             }
 
+            if (isOut && isIn)
+            {//口没有被取走 或者 刚刚放上去 即既有入库有用出口 这不变
+                return;
+            }
+
+            changeDirL(isIn, isOut, LeftMode1);
         }
         public void ReadDir() {
             dirL = connectLeft.getCarrierDir(4);
-            dirR = connectRight1.getCarrierDir(4);
         }
-        public void changeDirL() {
-            CarrierSignalStatus carrierSignalStatus1 = carrierSynchro1.getSignalStatus(223);
-            if (carrierSignalStatus1.free != 0) {
-                return;
-            }
-            List<TaskCrane> taskCranes = taskCraneServer.getWorkingCraneTask();//状态等于2的
-            List<TaskCarrier> taskCarriers = taskCarrierServer.getWorkingCarrierTask();//状态等于2
-            if (taskCranes.Count > 0 || taskCarriers.Count > 0) {
-                return;
-            }
-            List<TaskCrane> outTaskCranes = taskCraneServer.getAllOutCraneTask();//查所有未执行和执行中的出库
-            if (outTaskCranes.Count > 0) {
+        public void changeDirL(bool neadIn, bool neadOut, int carrierMode) {
+            if (CheckIsChange(223)) 
+            {
                 if (dirL == 1)//入库
                 {
                     connectLeft.changeCarrierDir(4,2);//改为出库
                 }
-            } else {
-                if (dirL == 2) {
+            } else 
+            {
+                if (dirL == 2) 
+                {
                     connectLeft.changeCarrierDir(4,1);//改为入库
                 }
             }
         }
 
-        public void changeDirR() {
-            CarrierSignalStatus carrierSignalStatus1 = carrierSynchro1.getSignalStatus(259);
-            if (carrierSignalStatus1.free != 0) {
-                return;
+        private bool CheckIsChange(int point)
+        {
+            CarrierSignalStatus carrierSignalStatus1 = carrierSynchro.getSignalStatus(point);
+            if (carrierSignalStatus1.free != 0)
+            {
+                return false;
             }
             List<TaskCrane> taskCranes = taskCraneServer.getWorkingCraneTask();
             List<TaskCarrier> taskCarriers = taskCarrierServer.getWorkingCarrierTask();
-            if (taskCranes.Count > 0 || taskCarriers.Count > 0) {
-                return;
+            if (taskCranes.Count > 0 || taskCarriers.Count > 0)
+            {
+                return false;
             }
             List<TaskCrane> outTaskCranes = taskCraneServer.getAllOutCraneTask();
-
-            if (outTaskCranes.Count > 0) {
-                if (dirR == 1) {
-                    connectRight1.changeCarrierDir(4,2);
-                    connectRight2.changeCarrierDir(4,2);
-                }
-            } else {
-                if (dirR == 2) {
-                    connectRight1.changeCarrierDir(4,1);
-                    connectRight2.changeCarrierDir(4,1);
-                }
+            if (outTaskCranes.Count <= 0)
+            {
+                return false;
             }
+            return true;
         }
         public void HandChangeDirL(int carrierMode1) {
-            CarrierSignalStatus carrierSignalStatus1 = carrierSynchro1.getSignalStatus(223);
-            if (carrierSignalStatus1.free != 0) {
-                return;
-            }
-
-            List<TaskCrane> taskCranes = taskCraneServer.getWorkingCraneTask();
-            List<TaskCarrier> taskCarriers = taskCarrierServer.getWorkingCarrierTask();
-            if (taskCranes.Count > 0 || taskCarriers.Count > 0) {
-                return;
-            }
-            List<TaskCrane> outTaskCranes = taskCraneServer.getAllOutCraneTask();
-            if (outTaskCranes.Count > 0) {
-                return;
-            }
-            if (carrierMode1 == 1) {
-                connectLeft.changeCarrierDir(4,1);
-            } else if (carrierMode1 == 2) {
-                connectLeft.changeCarrierDir(4,2);
+            if (CheckIsChange(223))
+            {
+                if (carrierMode1 == 1)
+                {
+                    connectLeft.changeCarrierDir(4, 1);
+                }
+                else if (carrierMode1 == 2)
+                {
+                    connectLeft.changeCarrierDir(4, 2);
+                }
             }
         }
 
 
         public void HandChangeDirR(int carrierMode3) {
-            CarrierSignalStatus carrierSignalStatus1 = carrierSynchro1.getSignalStatus(259);
-            if (carrierSignalStatus1.free != 0) {
-                return;
-            }
-
-            List<TaskCrane> taskCranes = taskCraneServer.getWorkingCraneTask();
-            List<TaskCarrier> taskCarriers = taskCarrierServer.getWorkingCarrierTask();
-            if (taskCranes.Count > 0 || taskCarriers.Count > 0) {
-                return;
-            }
-            List<TaskCrane> outTaskCranes = taskCraneServer.getAllOutCraneTask();
-            if (outTaskCranes.Count > 0) {
-                return;
-            }
-            if (carrierMode3 == 1) {
-                connectRight1.changeCarrierDir(4,1);
-                connectRight2.changeCarrierDir(4,1);
-            } else if (carrierMode3 == 2) {
-                connectRight1.changeCarrierDir(4,2);
-                connectRight2.changeCarrierDir(4,2);
+            if (CheckIsChange(259))
+            {
+                if (carrierMode3 == 1)
+                {
+                    connectRight1.changeCarrierDir(4, 1);
+                    connectRight2.changeCarrierDir(4, 1);
+                }
+                else if (carrierMode3 == 2)
+                {
+                    connectRight1.changeCarrierDir(4, 2);
+                    connectRight2.changeCarrierDir(4, 2);
+                }
             }
         }
 

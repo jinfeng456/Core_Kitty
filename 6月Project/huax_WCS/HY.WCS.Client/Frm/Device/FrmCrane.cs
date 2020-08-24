@@ -96,36 +96,28 @@ namespace HY.WCS.Client.Frm.Device
             {
                 LabMsg2.Text = "堆垛机模式：" + "联机";
             }
+            craneData.GkCraneError();
+            List<String> list = craneData.getError();
 
-            if (craneData.getStatus(StatusKey.CRANE异常) == 1)
-            {
-                LabMsg3.Text = "堆垛机：" + "异常";
-                List<ErrorKey> list = craneData.GetError();
-                if (list.Count == 1)
-                {
-                    LabMsg4.Text = list[0].ToString();
-                }
-                if (list.Count == 2)
-                {
-                    LabMsg4.Text = list[0].ToString();
-                    LabMsg5.Text = list[1].ToString();
-                }
-                if (list.Count >= 3)
-                {
-                    LabMsg4.Text = list[0].ToString();
-                    LabMsg5.Text = list[1].ToString();
-                    LabMsg6.Text = list[2].ToString();
-                }
-                
-            }
+            list.Add("");
+            list.Add("");
+            list.Add("");
+            list.Add("");
+            errorshow(list);
+        }
 
-
+        private void errorshow(List<string> list)
+        {
+            LabMsg3.Text = list[0].ToString();
+            LabMsg4.Text = list[1].ToString();
+            LabMsg5.Text = list[2].ToString();
+            LabMsg6.Text = list[3].ToString();
         }
 
         private void ShowInfo(GkDYGCraneStatus craneData, int craneId)
         {
             TxtTaskNo.Text = craneData.finishTaskNo.ToString();
-            TxtTaskStatus.Text = craneData.finishTaskNo.ToString();
+            TxtTaskStatus.Text = craneData.finishFlag.ToString();
         }
 
         private void LabCrane1_Click(object sender, EventArgs e)

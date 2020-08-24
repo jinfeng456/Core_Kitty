@@ -16,35 +16,16 @@ using System.Runtime.ExceptionServices;
 
 namespace GK.WCS.Open.http.server {
 
-    public class PlcData {
-
-
-
-        public Dictionary<int,CarrierSignalStatus> SignalStates {
-            get; set;
-        }
-
-        public List<GkCraneStatusBase> craneList {
-            get; set;
-        }
-
-
-    }
     public class DapingServer:BaseServer {
 
         ITaskCarrierServer taskCarrierServer = ServerFactray.getServer<ITaskCarrierServer>();
-
-
+        CarrierSynchro carrierSynchro = (CarrierSynchro)TaskPool.get<CarrierSynchro>();
+        List<TaskCarrier> carrierList = new List<TaskCarrier>();
         public override object work(List<String> param) {
 
-            PlcData d = new PlcData();
-             Dictionary<int, CarrierSignalStatus> dic=new  Dictionary<int, CarrierSignalStatus>();
-            CarrierSignalStatus css = new CarrierSignalStatus(41,1222,4);
-            dic.Add(41,css);
-            d.SignalStates=dic;
-           /*
-            CarrierSynchro carrierSynchro = (CarrierSynchro)TaskPool.get<CarrierSynchro>();
-            d.SignalStates = carrierSynchro.getAllPointSignal();
+            Dictionary<int, Object> taskCarrier = new Dictionary<int, Object>();
+           
+            Dictionary<int, CarrierSignalStatus>  SignalStates = carrierSynchro.getAllPointSignal();
             List<GkCraneStatusBase> craneList = new List<GkCraneStatusBase>();
             for (int i = 1;i < 12;i++) {
                 CraneSynchro reader = TaskPool.get<CraneSynchro>(i);
@@ -52,11 +33,43 @@ namespace GK.WCS.Open.http.server {
                 if (rs != null) {
                     craneList.Add(rs);
                 }
+            }
+            getTaskCarrier(taskCarrier, SignalStates);
+          
+            return new { craneList = craneList, taskCarrier= taskCarrier , SignalStates = SignalStates };
+        }
+
+
+        void getTaskCarrier(Dictionary<int, Object>  taskCarrier, Dictionary<int, CarrierSignalStatus> SignalStates)
+        {
+            foreach (var key in SignalStates)
+            {
+                int taskNo = key.Value.taskNo;
+
+                foreach (TaskCarrier c in carrierList)
+                {
+                    if (taskNo == c.taskNo)
+                    {
+                        taskCarrier.Add(taskNo, new { endPath = c.endPath });
+                        taskNo = 0;
+                        break;
+                    }
+                }
+                if (taskNo != 0)
+                {
+                    TaskCarrier carrier = taskCarrierServer.getCarrarTasksByTaskNo(taskNo);
+                    if (carrier != null) {
+                        carrierList.Add(carrier);
+                        taskCarrier.Add(taskNo, new { endPath = carrier.endPath });
+                    }
+                   
+                }
 
             }
-            d.craneList = craneList;
-         */
-            return d;
+
+            while (carrierList.Count > 1000) {
+                carrierList.RemoveAt(0);
+            }
         }
 
 

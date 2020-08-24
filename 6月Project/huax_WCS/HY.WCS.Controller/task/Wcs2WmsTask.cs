@@ -26,24 +26,13 @@ namespace GK.WCS.Controller {
             string errorMsg = string.Empty;
             foreach (TaskComplete task in list)
             {
-                TaskCrane craneTask = craneDAL.getTaskCraneByCompleteId(task.id);
-                TaskCarrier carrierTask = carrierDAL.getCarrierTaskByCompleteId(task.id);
-                if (craneTask.status == 9 && carrierTask.status == 9)
-                {
-                    if (WMSTransactionFacade.syncWcsReult(task.wmsTaskId, task.status,ref errorMsg))
-                    {//同步成功
-                        LoggerCommon.fileAll(task.wmsTaskId + "wms 同步");
-                        completeDAL.finshSyncById(task.id);
-                    }
+
+                if (WMSTransactionFacade.syncWcsReult(task.wmsTaskId, task.status,ref errorMsg))
+                {//同步成功
+                    LoggerCommon.fileAll(task.wmsTaskId + "wms 同步");
+                    completeDAL.finshSyncById(task.id);
                 }
-                else if (craneTask.status == -1 && carrierTask.status == -1)
-                { 
-                    if (WMSTransactionFacade.syncWcsReult(task.wmsTaskId, task.status,ref errorMsg))
-                    {//同步成功
-                        LoggerCommon.fileAll(task.wmsTaskId + "wms 同步");
-                        completeDAL.finshSyncById(task.id);
-                    }
-                }
+
             }
         }
 

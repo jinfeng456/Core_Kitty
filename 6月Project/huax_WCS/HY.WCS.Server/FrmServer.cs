@@ -13,7 +13,7 @@ namespace GK.WCS.Server {
         }
         private void FrmServer_Load(object sender, EventArgs e) {
  
-            //InitServer.start();
+            InitServer.start();
         }
 
         private void FrmServer_FormClosing(object sender,FormClosingEventArgs e) {

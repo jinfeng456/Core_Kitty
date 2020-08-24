@@ -148,20 +148,7 @@
                     v-bind:disabled="dataForm.id"
                     auto-complete="off"></el-input>
         </el-form-item>
-
-
-         <el-form-item label="是否可分拣"
-                      prop="isSorting">
-          <el-select v-model="dataForm.isSorting"
-                     placeholder="请选择"
-                     style="width: 100%;" >
-            <el-option v-for="item in dicts.itemSorting"
-                       :key="item.value"
-                       :label="item.label"
-                       :value="item.value">
-            </el-option>
-          </el-select>
-           </el-form-item>
+  
         <el-form-item label="物料类型"
                       prop="coreItemType">
           <el-select v-model="dataForm.coreItemType"
@@ -395,7 +382,10 @@ export default {
 			let propt=column.property;
 			if(propt=="coreItemType"){
 				key="coreItemType"
-			}
+      }
+      else if(propt=="active"){
+				key="activeStatus"
+      }
 		    let val=row[column.property];
 			let dict =this.$store.state.dict.dicts[key];
 			if(dict==undefined){
@@ -518,15 +508,12 @@ export default {
         //{ prop: "id", label: "ID", minWidth: 50 },
         { prop: "code", label: "item.code", minWidth: 100 },
         { prop: "name", label: "item.name", minWidth: 100 },
-
         { prop: "modelSpecs", label: "规格型号", minWidth: 100 },
-        { prop: "isSorting", label: "是否可分拣", minWidth: 110 , formatter: this.selectionFormat1},
         { prop: "coreItemType", label: "物料类型", minWidth: 100, formatter:this.selectionFormats },
         { prop: "classifyId", label: "item.classifyId", minWidth: 100, formatter: this.selectionFormat },
         { prop: "packageSpecs", label: "包装规格", minWidth: 100 },
-        { prop: "active", label: "item.active", minWidth: 100 },
-
-
+        { prop: "active", label: "item.active", minWidth: 100 , formatter:this.selectionFormats},
+        { prop: "info", label: "物料分类描述", minWidth: 120 }
 
       ]
       this.filterColumns = this.columns;
@@ -588,21 +575,7 @@ export default {
 				}
       }
       return id
-    },
-    selectionFormat1: function (row, column, val, index) {
-
-        //let val=row["isSorting"];
-        let dict =this.$store.state.dict.dicts["itemSorting"];
-        if(dict==undefined){
-            return val
-        }
-        for(let i=0;i<dict.length;i++){
-          if(dict[i].value==val){
-            return dict[i].label;
-          }
-        }
-        return val
-    },
+    } 
   },
 
 

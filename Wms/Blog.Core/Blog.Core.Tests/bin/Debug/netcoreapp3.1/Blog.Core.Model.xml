@@ -135,6 +135,11 @@
             逻辑删除
             </summary>
         </member>
+        <member name="T:Blog.Core.Model.Models.CoreClassify">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Blog.Core.Model.Models.CoreItem">
             <summary>
             CoreItem
@@ -160,12 +165,10 @@
             Active
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.CoreItem.type">
+        <member name="P:Blog.Core.Model.Models.CoreItem.coreItemType">
             <summary>
             Type
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.CoreItem.coreItemType">
+            </summary>	
             <summary>
             CoreItemType
             </summary>

@@ -6,13 +6,14 @@ using GK.WCS.Common.task;
 
 namespace GK.WCS.Carrier {
     
-    public class CarrierConnect1 : CarrierConnect {
+    public class CarrierConnect1 : DYGCarrierConnect
+    {
         public CarrierConnect1():base(1) {
         }
       
     }
 
-    public class CarrierConnect2 : CarrierConnect
+    public class CarrierConnect2 : DYGCarrierConnect
     {
         public CarrierConnect2() : base(2)
         {
@@ -20,7 +21,7 @@ namespace GK.WCS.Carrier {
         
     }
 
-    public class CarrierConnect3 : CarrierConnect
+    public class CarrierConnect3 : DYGCarrierConnect
     {
         public CarrierConnect3() : base(3)
         {
@@ -28,7 +29,7 @@ namespace GK.WCS.Carrier {
       
     }
 
-    public class CarrierConnect4 : CarrierConnect
+    public class CarrierConnect4 : DYGCarrierConnect
     {
         public CarrierConnect4() : base(4)
         {
@@ -36,7 +37,7 @@ namespace GK.WCS.Carrier {
         
     }
 
-    public class CarrierConnect5 : CarrierConnect
+    public class CarrierConnect5 : DYGCarrierConnect
     {
         public CarrierConnect5() : base(5)
         {
@@ -44,11 +45,5 @@ namespace GK.WCS.Carrier {
         
     }
 
-    public class CarrierConnect6 : CarrierConnect
-    {
-        public CarrierConnect6() : base(6)
-        {
-        }
-        
-    }
+
 }

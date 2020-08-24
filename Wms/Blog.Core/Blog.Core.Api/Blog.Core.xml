@@ -9,6 +9,13 @@
             服务器接口，因为是模板生成，所以首字母是大写的，自己可以重构下
             </summary>
         </member>
+        <member name="M:Blog.Core.Api.Controllers.CoreClassifyController.FindPage(Blog.Core.Controllers.CoreClassifyDto)">
+            <summary>
+            查询物料分类
+            </summary>
+            <param name="dto">物料分类</param>
+            <returns></returns>
+        </member>
         <member name="T:Blog.Core.Controllers.CoreItemController">
             <summary>
             物料管理
@@ -18,14 +25,14 @@
             <summary>
             查询物料信息
             </summary>
-            <param name="dto">物料分类</param>
+            <param name="dto">物料名称</param>
             <returns></returns>
         </member>
         <member name="M:Blog.Core.Controllers.CoreItemController.Save(Blog.Core.Model.Models.CoreItem)">
             <summary>
             添加物料
             </summary>
-            <param name="CoreItem"></param>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:Blog.Core.Controllers.CoreItemController.Delete(System.Collections.Generic.List{Blog.Core.Model.Models.CoreItem})">

@@ -4,8 +4,9 @@ namespace Blog.Core.Controllers
 {
     public class CoreItemDto : PageDto
     {
+        public int? id { get; set; }
         //分类
-        public long? classifyId { get; set; }
+        public int? classifyId { get; set; }
         //编码
         public string code { get; set; }
         //名称
@@ -22,5 +23,7 @@ namespace Blog.Core.Controllers
         public string classifyName { get; set; }
         //用于导出显示
         public string coreItemTypeName { get; set; }
+
+        public string info { get; set; }
     }
 }

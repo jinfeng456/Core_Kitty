@@ -61,3 +61,108 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
 --------------------------------
+2020-08-14 17:29:31,340| ERROR 
+列名 'createTime' 无效。
+【自定义错误】：列名 'createTime' 无效。 
+【异常类型】：SqlException 
+【异常信息】：列名 'createTime' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](KeyValuePair`2 sqlObj)
+   at SqlSugar.QueryableProvider`1._ToListAsync[TResult]()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 428
+   at Blog.Core.Services.BASE.BaseServices`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 296
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 44
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-14 17:29:38,093| ERROR 
+列名 'createTime' 无效。
+【自定义错误】：列名 'createTime' 无效。 
+【异常类型】：SqlException 
+【异常信息】：列名 'createTime' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](KeyValuePair`2 sqlObj)
+   at SqlSugar.QueryableProvider`1._ToListAsync[TResult]()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 428
+   at Blog.Core.Services.BASE.BaseServices`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 296
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 44
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-14 17:34:27,316| ERROR 
+列名 'createTime' 无效。
+【自定义错误】：列名 'createTime' 无效。 
+【异常类型】：SqlException 
+【异常信息】：列名 'createTime' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](KeyValuePair`2 sqlObj)
+   at SqlSugar.QueryableProvider`1._ToListAsync[TResult]()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 428
+   at Blog.Core.Services.BASE.BaseServices`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 296
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 44
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-14 17:34:36,401| ERROR 
+列名 'createTime' 无效。
+【自定义错误】：列名 'createTime' 无效。 
+【异常类型】：SqlException 
+【异常信息】：列名 'createTime' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](KeyValuePair`2 sqlObj)
+   at SqlSugar.QueryableProvider`1._ToListAsync[TResult]()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 428
+   at Blog.Core.Services.BASE.BaseServices`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 296
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 44
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------
+2020-08-14 17:34:37,965| ERROR 
+列名 'createTime' 无效。
+【自定义错误】：列名 'createTime' 无效。 
+【异常类型】：SqlException 
+【异常信息】：列名 'createTime' 无效。 
+【堆栈调用】：   at SqlSugar.AdoProvider.GetDataReaderAsync(String sql, SugarParameter[] parameters)
+   at SqlSugar.QueryableProvider`1.GetDataAsync[TResult](KeyValuePair`2 sqlObj)
+   at SqlSugar.QueryableProvider`1._ToListAsync[TResult]()
+   at SqlSugar.QueryableProvider`1.ToPageListAsync(Int32 pageIndex, Int32 pageSize, RefAsync`1 totalNumber)
+   at Blog.Core.Repository.Base.BaseRepository`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Repository\BASE\BaseRepository.cs:line 428
+   at Blog.Core.Services.BASE.BaseServices`1.QueryPage(Expression`1 whereExpression, Int32 intPageIndex, Int32 intPageSize, String strOrderByFileds) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\BASE\BaseServices.cs:line 296
+   at Blog.Core.Controllers.CoreItemController.FindPage(CoreItemDto dto) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Controllers\Business\Base\CoreItemController.cs:line 44
+   at lambda_method(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+--------------------------------

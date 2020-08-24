@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\Blog.Core.Services.csproj": {}
+    "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\Blog.Core.Services.csproj": {}
   },
   "projects": {
-    "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj": {
+    "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj",
+        "projectUniqueName": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj",
         "projectName": "Blog.Core.Common",
-        "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj",
-        "packagesPath": "C:\\Users\\jinfeng\\.nuget\\packages\\",
-        "outputPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\obj\\",
+        "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jinfeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -113,20 +114,21 @@
         }
       }
     },
-    "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj": {
+    "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj",
+        "projectUniqueName": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj",
         "projectName": "Blog.Core.IRepository",
-        "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj",
-        "packagesPath": "C:\\Users\\jinfeng\\.nuget\\packages\\",
-        "outputPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\obj\\",
+        "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jinfeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -140,8 +142,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
-                "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj"
+              "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
+                "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj"
               }
             }
           }
@@ -176,20 +178,21 @@
         }
       }
     },
-    "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj": {
+    "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj",
+        "projectUniqueName": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj",
         "projectName": "Blog.Core.IServices",
-        "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj",
-        "packagesPath": "C:\\Users\\jinfeng\\.nuget\\packages\\",
-        "outputPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\obj\\",
+        "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jinfeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -203,8 +206,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
-                "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj"
+              "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
+                "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj"
               }
             }
           }
@@ -239,20 +242,21 @@
         }
       }
     },
-    "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
+    "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj",
+        "projectUniqueName": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj",
         "projectName": "Blog.Core.Model",
-        "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj",
-        "packagesPath": "C:\\Users\\jinfeng\\.nuget\\packages\\",
-        "outputPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\obj\\",
+        "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jinfeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -266,8 +270,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj": {
-                "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj"
+              "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj": {
+                "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj"
               }
             }
           }
@@ -308,20 +312,21 @@
         }
       }
     },
-    "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\Blog.Core.Services.csproj": {
+    "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\Blog.Core.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\Blog.Core.Services.csproj",
+        "projectUniqueName": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\Blog.Core.Services.csproj",
         "projectName": "Blog.Core.Services",
-        "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\Blog.Core.Services.csproj",
-        "packagesPath": "C:\\Users\\jinfeng\\.nuget\\packages\\",
-        "outputPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\obj\\",
+        "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\Blog.Core.Services.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jinfeng\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -335,11 +340,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj": {
-                "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj"
+              "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj": {
+                "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj"
               },
-              "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj": {
-                "projectPath": "E:\\WMS项目\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj"
+              "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj": {
+                "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj"
               }
             }
           }

@@ -11,10 +11,7 @@ namespace Blog.Core.Model.Models
     ///</summary>
     [SugarTable( "CoreClassify")]
     public class CoreClassify : BaseEntity
-    {
-       
-        
-           public int id { get; set; }
+    {       
 
            public string name { get; set; }
 

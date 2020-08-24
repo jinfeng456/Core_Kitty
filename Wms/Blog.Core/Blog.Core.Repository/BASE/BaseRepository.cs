@@ -434,6 +434,54 @@ namespace Blog.Core.Repository.Base
             return new PageModel<TEntity>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
         }
 
+        /// <summary> 
+        ///查询-多表查询分页
+        /// </summary> 
+        /// <typeparam name="T">实体1</typeparam> 
+        /// <typeparam name="T2">实体2</typeparam> 
+        /// <typeparam name="T3">实体3</typeparam>
+        /// <typeparam name="TResult">返回对象</typeparam>
+        /// <param name="joinExpression">关联表达式 (join1,join2) => new object[] {JoinType.Left,join1.UserNo==join2.UserNo}</param> 
+        /// <param name="selectExpression">返回表达式 (s1, s2) => new { Id =s1.UserNo, Id1 = s2.UserNo}</param>
+        /// <param name="whereLambda">查询表达式 (w1, w2) =>w1.UserNo == "")</param> 
+        /// <returns>值</returns>
+        public async Task<PageModel<TResult>> QueryMuchPage<T, T2, T3, TResult>(
+            Expression<Func<T, T2, T3, object[]>> joinExpression,
+            Expression<Func<T, T2, T3, TResult>> selectExpression,
+            Expression<Func<T, T2, T3, bool>> whereLambda = null, int intPageIndex = 1, int intPageSize = 20) where T : class, new()
+        {
+            RefAsync<int> totalCount = 0;
+            List<TResult> list;
+            if (whereLambda == null)
+            {
+                list = await _db.Queryable(joinExpression).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+            }
+            else
+            {
+                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+            }
+            int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
+            return new PageModel<TResult>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
+        }
+
+        public async Task<PageModel<TResult>> QueryMuchPage<T, T2, TResult>(
+            Expression<Func<T, T2, object[]>> joinExpression,
+            Expression<Func<T, T2, TResult>> selectExpression,
+            Expression<Func<T, T2, bool>> whereLambda = null, int intPageIndex = 1, int intPageSize = 20) where T : class, new()
+        {
+            RefAsync<int> totalCount = 0;
+            List<TResult> list;
+            if (whereLambda == null)
+            {
+                list = await _db.Queryable(joinExpression).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+            }
+            else
+            {
+                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+            }
+            int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
+            return new PageModel<TResult>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
+        }
 
         /// <summary> 
         ///查询-多表查询
@@ -461,16 +509,16 @@ namespace Blog.Core.Repository.Base
         static int SEQUENCES_ID = 0;
         static int index = 0;
         public int GetId()
-        {     
-                int id = 0;
-                if (SEQUENCES_ID == 0 || index == 99)
-                {
-                    SEQUENCES_ID =  _db.Ado.GetInt("SELECT NEXT VALUE FOR sequence_id");
-                    index = 0;
-                }
-                index++;
-                id = SEQUENCES_ID * 100 + index;
-                return  id;         
+        {
+            int id = 0;
+            if (SEQUENCES_ID == 0 || index == 99)
+            {
+                SEQUENCES_ID = _db.Ado.GetInt("SELECT NEXT VALUE FOR sequence_id");
+                index = 0;
+            }
+            index++;
+            id = SEQUENCES_ID * 100 + index;
+            return id;
         }
 
     }

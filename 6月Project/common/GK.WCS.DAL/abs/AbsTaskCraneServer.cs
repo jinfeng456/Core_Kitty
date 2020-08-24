@@ -224,7 +224,7 @@ namespace GK.WCS.DAL.abs
 
         public List<TaskCrane> getWorkingCraneTask()
         {
-            string sql = "select * from Task_crane where status = 2";
+            string sql = "select * from Task_crane where status>=1 and  status<9  and task_type in (1,2) ";
             List<TaskCrane> taskCranes = Connection.Query<TaskCrane>(sql).AsList();
             return taskCranes;
         }
