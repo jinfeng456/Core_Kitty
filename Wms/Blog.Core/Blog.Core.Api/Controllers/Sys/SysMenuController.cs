@@ -41,7 +41,7 @@ namespace Blog.Core.Controllers
         {
             if (model.id == 0)
             {
-                model.id =  _sysMenuServices.GetId();
+                model.id = await _sysMenuServices.GetId();
                 model.createTime = DateTime.Now;
                 model.createBy = _user.Name;
                 model.lastUpdateBy = _user.Name;

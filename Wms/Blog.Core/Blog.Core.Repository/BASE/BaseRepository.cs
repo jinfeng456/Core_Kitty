@@ -425,11 +425,21 @@ namespace Blog.Core.Repository.Base
         {
 
             RefAsync<int> totalCount = 0;
-            var list = await _db.Queryable<TEntity>()
+            List<TEntity> list;
+            if (intPageSize != -1)
+            {
+                list = await _db.Queryable<TEntity>()
+            .OrderByIF(!string.IsNullOrEmpty(strOrderByFileds), strOrderByFileds)
+            .WhereIF(whereExpression != null, whereExpression)
+            .ToPageListAsync(intPageIndex, intPageSize, totalCount);
+            }
+            else
+            {
+                list = await _db.Queryable<TEntity>()
              .OrderByIF(!string.IsNullOrEmpty(strOrderByFileds), strOrderByFileds)
              .WhereIF(whereExpression != null, whereExpression)
-             .ToPageListAsync(intPageIndex, intPageSize, totalCount);
-
+             .ToListAsync();
+            }
             int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
             return new PageModel<TEntity>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
         }
@@ -466,7 +476,7 @@ namespace Blog.Core.Repository.Base
             }
             else
             {
-                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToListAsync(); 
+                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToListAsync();
             }
             int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
             return new PageModel<TResult>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
@@ -493,7 +503,7 @@ namespace Blog.Core.Repository.Base
             }
             else
             {
-                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToListAsync(); 
+                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToListAsync();
             }
             int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
             return new PageModel<TResult>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
@@ -524,12 +534,12 @@ namespace Blog.Core.Repository.Base
 
         static int SEQUENCES_ID = 0;
         static int index = 0;
-        public int GetId()
+        public async Task<int> GetId()
         {
             int id = 0;
             if (SEQUENCES_ID == 0 || index == 99)
             {
-                SEQUENCES_ID = _db.Ado.GetInt("SELECT NEXT VALUE FOR sequence_id");
+                SEQUENCES_ID = await _db.Ado.GetIntAsync("SELECT NEXT VALUE FOR sequence_id");
                 index = 0;
             }
             index++;

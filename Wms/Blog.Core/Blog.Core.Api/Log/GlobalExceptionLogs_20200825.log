@@ -174,3 +174,54 @@ Method 'FindPage' in type 'Blog.Core.Services.CoreItemServices' from assembly 'B
    at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
    at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
 System.TypeLoadException: Method 'FindPage' in type 'Blog.Core.Services.CoreItemServices' from assembly 'Blog.Core.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' does not have an implementation.
+2020-08-25 17:06:57,421| FATAL 
+Application startup exception
+Method 'ImportList' in type 'Blog.Core.Services.CoreItemServices' from assembly 'Blog.Core.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' does not have an implementation.
+--------------------------------
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types.
+Method 'ImportList' in type 'Blog.Core.Services.CoreItemServices' from assembly 'Blog.Core.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' does not have an implementation.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at Blog.Core.Extensions.AllServicesMildd.UseAllServicesMildd(IApplicationBuilder app, IServiceCollection _services) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\Middlewares\AllServicesMildd.cs:line 22
+   at Blog.Core.Startup.Configure(IApplicationBuilder app, IWebHostEnvironment env, MyContext myContext, ITasksQzServices tasksQzServices, ISchedulerCenter schedulerCenter, IHostApplicationLifetime lifetime) in E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\Startup.cs:line 117
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+System.TypeLoadException: Method 'ImportList' in type 'Blog.Core.Services.CoreItemServices' from assembly 'Blog.Core.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' does not have an implementation.
+2020-08-25 17:15:40,355| FATAL 
+Application startup exception
+--------------------------------
+System.Exception: Could not resolve a service of type 'Blog.Core.IServices.ITasksQzServices' for the parameter 'tasksQzServices' of method 'Configure' on type 'Blog.Core.Startup'.
+ ---> Autofac.Core.DependencyResolutionException: An exception was thrown while activating Blog.Core.Services.TasksQzServices.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'Blog.Core.Services.TasksQzServices' can be invoked with the available services and parameters:
+Cannot resolve parameter 'Blog.Core.IRepository.ITasksQzRepository dal' of constructor 'Void .ctor(Blog.Core.IRepository.ITasksQzRepository)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.GetValidConstructorBindings(ConstructorInfo[] availableConstructors, IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.CreateInstance(IEnumerable`1 parameters)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.InstanceLookup.CreateInstance(IEnumerable`1 parameters)
+   at Autofac.Core.Resolving.InstanceLookup.Execute()
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ResolveComponent(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)

@@ -57,7 +57,7 @@ namespace Blog.Core.Controllers
         {
             if (model.id == 0)
             {
-                model.id = _sysDictClassServices.GetId();
+                model.id = await _sysDictClassServices.GetId();
                 model.createTime = DateTime.Now;
                 model.createBy = _user.Name;
                 model.lastUpdateBy = _user.Name;

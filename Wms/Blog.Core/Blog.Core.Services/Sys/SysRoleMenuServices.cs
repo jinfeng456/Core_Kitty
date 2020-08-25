@@ -39,7 +39,7 @@ namespace Blog.Core.Services
             await dal.Delete(a => a.roleId == roleId);
             foreach (var model in modelList)
             {
-                model.id = dal.GetId();
+                model.id = await dal.GetId();
                 model.createTime = DateTime.Now;
                 model.createBy = userDal.Name;
                 model.lastUpdateBy = userDal.Name;

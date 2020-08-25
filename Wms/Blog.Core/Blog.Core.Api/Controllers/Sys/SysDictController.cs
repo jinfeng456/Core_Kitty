@@ -71,7 +71,7 @@ namespace Blog.Core.Controllers
                 {
                     model.dtype = (await _sysDictClassServices.QueryById(model.dictClassId)).dictClassName;
                 }
-                model.id = _sysDictServices.GetId();
+                model.id = await _sysDictServices.GetId();
                 model.createTime = DateTime.Now;
                 model.createBy = _user.Name;
                 model.lastUpdateBy = _user.Name;

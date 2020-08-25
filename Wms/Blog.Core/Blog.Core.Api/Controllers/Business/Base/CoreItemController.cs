@@ -102,7 +102,7 @@ namespace Blog.Core.Controllers
         {
             if (model.id == 0)
             {
-                model.id = _coreItemServices.GetId();
+                model.id = await _coreItemServices.GetId();
                 return BaseResult.Ok(await _coreItemServices.Add(model));
             }
             else
@@ -160,10 +160,10 @@ namespace Blog.Core.Controllers
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("ImportList")]
-        public BaseResult ImportList([FromBody]List<CoreItem> coreItemList)
+        public async Task<BaseResult> ImportList([FromBody]List<CoreItem> coreItemList)
         {
-            string message = string.Empty;
-            bool result = _coreItemServices.ImportList(coreItemList, out message);
+            RefAsync<string> message = string.Empty;
+            bool result = await _coreItemServices.ImportList(coreItemList, message);
             if (result)
             {
                 return BaseResult.Ok("操作成功!");

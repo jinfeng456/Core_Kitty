@@ -5,6 +5,7 @@ using Blog.Core.Controllers;
 using Blog.Core.IServices.BASE;
 using Blog.Core.Model;
 using Blog.Core.Model.Models;
+using SqlSugar;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace Blog.Core.IServices
     /// </summary>	
     public interface ICoreItemServices : IBaseServices<CoreItem>
     {
-        bool ImportList(List<CoreItem> coreItemList, out string message);
+       Task<bool> ImportList(List<CoreItem> coreItemList, RefAsync<string> message);
 
     }
 }

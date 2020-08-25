@@ -14,6 +14,8 @@ using Blog.Core.IServices;
 using Blog.Core.Model;
 using Blog.Core.Model.Models;
 using Blog.Core.Services.BASE;
+using SqlSugar;
+
 namespace Blog.Core.Services
 {
     /// <summary>
@@ -30,25 +32,25 @@ namespace Blog.Core.Services
         }
 
 
-        public bool ImportList(List<CoreItem> coreItemList, out string message)
+        public async Task<bool> ImportList(List<CoreItem> coreItemList, RefAsync<string> message)
         {
-            if (!Check(coreItemList, out message))
+            if (!Check(coreItemList, message))
             {
                 return false;
             }
             foreach (var model in coreItemList)
             {
-                var coreItem = dal.Query(a => a.code == model.code);
-                if (coreItem != null && coreItem.Result.Count > 0)
+                var coreItem = await dal.Query(a => a.code == model.code);
+                if (coreItem != null && coreItem.Count > 0)
                 {
                     message = "该物料编码已存在";
                     return false;
                 }
-                model.id = dal.GetId();
+                model.id = await dal.GetId();
             }
             try
             {
-                dal.Add(coreItemList);
+                await dal.Add(coreItemList);
                 return true;
             }
             catch
@@ -60,7 +62,7 @@ namespace Blog.Core.Services
         }
 
 
-        private bool Check(List<CoreItem> coreItemList, out string message)
+        private bool Check(List<CoreItem> coreItemList, RefAsync<string> message)
         {
             int oldCount = coreItemList.Count;
             message = string.Empty;

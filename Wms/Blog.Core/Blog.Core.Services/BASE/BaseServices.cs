@@ -312,10 +312,10 @@ namespace Blog.Core.Services.BASE
         {
             return await BaseDal.QueryMuch(joinExpression, selectExpression, whereLambda);
         }
-    
-        public int GetId()
+
+        public async Task<int> GetId()
         {
-            return  BaseDal.GetId();
+            return await BaseDal.GetId();
         }
 
     }

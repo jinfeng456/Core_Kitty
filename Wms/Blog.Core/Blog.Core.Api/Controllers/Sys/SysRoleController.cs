@@ -68,7 +68,7 @@ namespace Blog.Core.Controllers
                 {
                     return BaseResult.Error("角色已存在!");
                 }
-                model.id = _sysRoleServices.GetId();
+                model.id = await _sysRoleServices.GetId();
                 model.createTime = DateTime.Now;
                 model.createBy = _user.Name;
                 model.lastUpdateBy = _user.Name;

@@ -73,7 +73,7 @@ namespace Blog.Core.Controllers
         {
             if (model.id == 0)
             {
-                model.id = _sysUserServices.GetId();
+                model.id = await _sysUserServices.GetId();
                 model.createTime = DateTime.Now;
                 model.createBy = _user.Name;
                 model.lastUpdateBy = _user.Name;
@@ -88,7 +88,7 @@ namespace Blog.Core.Controllers
                 await _sysUserRoleServices.Delete(a => a.userIds == model.id);
                 foreach (var item in model.userRoles)
                 {
-                    item.id = _sysUserRoleServices.GetId();
+                    item.id = await _sysUserRoleServices.GetId();
                     item.createTime = DateTime.Now;
                     item.createBy = model.name;
                     item.lastUpdateBy = model.name;
