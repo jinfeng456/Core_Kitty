@@ -10,11 +10,11 @@ using System.Collections.Generic;
 
 using GK.WMS.Entity;
 using GK.WMS.DAL;
-using GK.Common;
-using GK.Common.trans;
 using GK.WMS.Entity.wms;
 using GK.Engine.WMS.wms.stockOut;
 using System.Linq;
+using WMS.DAL;
+using WMS.Entity;
 
 namespace GK.Engine.WMS
 {

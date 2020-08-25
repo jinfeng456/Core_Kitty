@@ -9,7 +9,7 @@
     carrierBackPic.src = "png/carrierBack.png";  
     screenHeight= window.screen.height 
     screenWidth =window.screen.width
-    productBegin =150//其实y坐标
+    productBegin =170//其实y坐标
     carrierOffsetX=25;//边距距离
     cols=82
     carrierlength = screenWidth/20;//水平传输线长 

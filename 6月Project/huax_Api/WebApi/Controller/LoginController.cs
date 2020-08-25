@@ -1,4 +1,4 @@
-﻿using GK.Common;
+﻿using Common;
 using GK.WMS.DAL;
 using GK.WMS.Entity;
 using HY.WCS.DAL.dto;
@@ -8,9 +8,9 @@ using System.Data.SqlClient;
 using System.Web;
 using System.Web.Http;
 using System.Web.Security;
-
 using Web.Authorize;
 using WebApi.util;
+using WMS.DAL;
 
 namespace WebApi
 {

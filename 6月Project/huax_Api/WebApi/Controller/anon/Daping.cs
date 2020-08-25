@@ -5,6 +5,8 @@ using HY.WCS.DAL.dto;
 using System.Collections.Generic;
 using System.Web.Http;
 using Web.Authorize;
+using WMS.DAL;
+using WMS.Entity;
 
 namespace WebApi {
     [RoutePrefix("api/dp")]

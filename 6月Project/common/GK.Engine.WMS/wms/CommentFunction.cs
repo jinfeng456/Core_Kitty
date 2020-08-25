@@ -8,6 +8,8 @@ using System.Data;
 using System.Linq;
 using System.Management.Instrumentation;
 using System.Text;
+using WMS.DAL;
+using WMS.Entity;
 
 namespace GK.Engine.WMS.wms
 {

@@ -1,5 +1,4 @@
-﻿using GK.Common.dto;
-using GK.DAL.inter;
+﻿using Common.dto;
 using GK.WMS.DAL.abs;
 using GK.WMS.Entity;
 using GK.WMS.Entity.dto;

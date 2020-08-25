@@ -6,12 +6,11 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using Dapper;
 using static Dapper.SqlMapper;
-using GK.Common.dto;
-using GK.Common;
-using GK.DAL.inter;
-using GK.DAL.dialect;
 using GK.BACK.DAL;
 using GK.WMS.DAL.abs;
+using Common.DAL.abs;
+using Common.DAL.inter;
+using Common;
 
 namespace GK.BACK.DAL.abs
 {//

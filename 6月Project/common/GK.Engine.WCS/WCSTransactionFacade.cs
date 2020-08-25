@@ -1,9 +1,18 @@
+<<<<<<< .mine
 ﻿using GK.Engine.WCS.wcs;
 using GK.WCS.Entity;
+||||||| .r1169
+﻿using Engine.WCS;
+
+using GK.WCS.Entity;
+=======
+﻿using Engine.WCS;
+>>>>>>> .r1198
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WCS.Entity;
 
 namespace GK.Engine.WCS {
     public class WCSTransactionFacade {
@@ -20,8 +29,9 @@ namespace GK.Engine.WCS {
                     wcsCreateInEngine.srcId=task.src;
                     wcsCreateInEngine.desId=task.des;
                     wcsCreateInEngine.boxCode=task.boxCode;
-                    wcsCreateInEngine.itemType=task.taskType;  
-                    return wcsCreateInEngine.doWork();
+                    wcsCreateInEngine.itemType=task.taskType;
+                String data = "";
+                return wcsCreateInEngine.doWork( ref data );
                 }       
         }
 
@@ -33,8 +43,9 @@ namespace GK.Engine.WCS {
                     wcsCreateMoveEngine.desId=task.des;
                     wcsCreateMoveEngine.boxCode=task.boxCode;
                     wcsCreateMoveEngine.itemType=task.taskType;
-                    wcsCreateMoveEngine.relyTaskId=task.relyTaskId;           
-                    return wcsCreateMoveEngine.doWork();
+                    wcsCreateMoveEngine.relyTaskId=task.relyTaskId;
+                String data = "";
+                    return wcsCreateMoveEngine.doWork(ref data );
                 }        
         }
 
@@ -47,7 +58,8 @@ namespace GK.Engine.WCS {
                     wcsCreateOutEngine.boxCode = task.boxCode;
                     wcsCreateOutEngine.itemType = task.taskType;
                     wcsCreateOutEngine.relyTaskId = task.relyTaskId;
-                    return wcsCreateOutEngine.doWork();
+                String data = "";
+                return wcsCreateOutEngine.doWork( ref data );
                 }
         
         }
@@ -57,7 +69,8 @@ namespace GK.Engine.WCS {
             lock (wcsDeleteCraneAndCarrierTask)
             {
                 wcsDeleteCraneAndCarrierTask.completeId = completeId;
-                return wcsDeleteCraneAndCarrierTask.doWork();
+                String data = "";
+                return wcsDeleteCraneAndCarrierTask.doWork( ref data );
             }
 
         }

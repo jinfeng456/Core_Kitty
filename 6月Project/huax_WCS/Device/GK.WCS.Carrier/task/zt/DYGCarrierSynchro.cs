@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using GK.WCS.Carrier.dto;
-using GK.WCS.Carrier.enumerate;
-using GK.WCS.Common;
-using GK.WCS.Common.core.dto;
-using GK.WCS.Common.task;
 using GK.WCS.DAL;
-using GK.WCS.Entity;
+using WCS.Carrier;
 using WCS.Carrier.dto;
+using WCS.Carrier.enumerate;
 
 namespace GK.WCS.Carrier {
     public abstract class DYGCarrierSynchro : CarrierSynchro

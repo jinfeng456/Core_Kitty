@@ -1,4 +1,4 @@
-﻿using GK.Common.dto;
+﻿using Common.dto;
 using GK.WMS.DAL;
 using GK.WMS.Entity;
 using HY.WCS.DAL.dto;
@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WMS.DAL;
 
 namespace WebApi.util
 {

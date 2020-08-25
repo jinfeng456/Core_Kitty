@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using GK.WCS.Common;
-using GK.WCS.Common.task;
 using GK.WCS.Carrier;
-using GK.WCS.Common.core.dto;
 using GK.WCS.Scan;
 using GK.WCS.DAL;
-using GK.WCS.Entity;
 using System.Threading;
 using GK.WMS.DAL;
 using GK.WMS.Entity;
+using WCS.Common;
+using WCS.DAL;
+using WMS.DAL;
+using WCS.Entity;
+using WCS.Common.task;
+using WMS.Entity;
+using WCS.Carrier;
 
 namespace GK.WCS.Controller {
     public abstract class CarrierAllocateJobTask : ZtTask {
@@ -23,7 +26,6 @@ namespace GK.WCS.Controller {
         protected ITaskCompleteServer comServer = ServerFactray.getServer<ITaskCompleteServer>();
         protected ICoreTaskServer coreTaskServer = ServerFactray.getServer<ICoreTaskServer>();
         ITaskServer taskServer = WMSDalFactray.getDal<ITaskServer>();
-        GK.WCS.DAL.ISequenceIdServer sequenceIdServer = ServerFactray.getServer<GK.WCS.DAL.ISequenceIdServer>();
 
         protected int CarrierId=1;
         public CarrierAllocateJobTask(int carrierId) {
@@ -43,14 +45,6 @@ namespace GK.WCS.Controller {
             connect = (CarrierConnect)TaskPool.get<CarrierConnect>(plcId);
             connect.SendTask(codestate,carrier, wbegin);
             connect.sendTaskHandshake(wbegin, 1);
-            for (int i = 0; i < 3; i++)
-            {                
-                Thread.Sleep(10);
-                if (Tools.ushort16(connect.ReadTaskHandshake(rbegin, 2), 0) == 2)
-                {
-                    connect.sendTaskHandshake(wbegin, 0);
-                }
-            }
         }
 
         protected void InsertIntoTaskComplete(string code, int point)
@@ -63,7 +57,7 @@ namespace GK.WCS.Controller {
                 if (complete == null)
                 {
                     complete = new TaskComplete();
-                    complete.id = sequenceIdServer.getId();
+                    complete.id = WCSDalUtil.getID();
                     complete.wmsTaskId = task.id;
                     complete.boxCode = task.boxCode;
                     complete.taskType = task.taskType;

@@ -1,9 +1,9 @@
 ﻿
 using System.Collections.Generic;
-using GK.WCS.Common;
-using GK.WCS.Common.dto;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using WCS.Common;
+using WCS.Common.dto;
 
 namespace GK.WCS.Client.Station {
     public class HttpSysUtil {

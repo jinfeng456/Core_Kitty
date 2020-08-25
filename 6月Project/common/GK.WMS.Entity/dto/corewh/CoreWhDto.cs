@@ -1,4 +1,4 @@
-﻿using GK.Common.dto;
+﻿using Common.dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;

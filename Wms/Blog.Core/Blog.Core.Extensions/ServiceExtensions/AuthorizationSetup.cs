@@ -67,7 +67,7 @@ namespace Blog.Core.Extensions
                 Issuer,//发行人
                 Audience,//听众
                 signingCredentials,//签名凭据
-                expiration: TimeSpan.FromSeconds(60 * 60)//接口的过期时间
+                expiration: TimeSpan.FromSeconds(600 * 600)//接口的过期时间
                 );
             #endregion
 

@@ -1,7 +1,8 @@
 ﻿
 
 using GK.Engine.WMS.wms;
-using GK.WMS.Entity.wms.Device;
+using WCS.Crane;
+using WMS.Entity;
 
 namespace GK.WCS.Crane {
     //输送线
@@ -10,15 +11,7 @@ namespace GK.WCS.Crane {
 
         public CraneSynchroDYG(int craneId) : base(craneId) {
 
-        }
-         protected override  GkCraneStatusBase parse() {
-            GkDYGCraneStatus cs = new GkDYGCraneStatus(CraneId,craneStatus );
-            cs.stnId = CraneId;
-            byte[] statebyte = craneConnect.reader(500,0,40);
-            cs.parseStatus(statebyte);
-            cs.parseError(statebyte);
-            return cs;
-        }
+        }        
         protected override void after(GkCraneStatusBase oldCraneStatus, GkCraneStatusBase cs)
         {
             string errorMsg = string.Empty;

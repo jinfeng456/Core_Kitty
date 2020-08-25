@@ -1,8 +1,8 @@
-﻿using GK.WCS.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WCS.Entity;
 
 namespace GK.WCS.Client {
     public class TaskUtil {

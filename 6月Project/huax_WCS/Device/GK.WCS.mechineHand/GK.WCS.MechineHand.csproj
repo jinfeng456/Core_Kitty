@@ -37,12 +37,6 @@
     <Reference Include="CMNetLib">
       <HintPath>..\..\UsingDlls\CMNetLib.dll</HintPath>
     </Reference>
-    <Reference Include="GK.Common">
-      <HintPath>..\..\..\common\UsingDlls\GK.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="GK.WCS.Common">
-      <HintPath>..\..\..\common\UsingDlls\GK.WCS.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -58,6 +52,14 @@
     <Compile Include="task\ManipulatorConnect.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\common\Common\Common.csproj">
+      <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\WCS.Common\WCS.Common.csproj">
+      <Project>{c345f915-22ea-454e-8552-c4cb4c67b7b1}</Project>
+      <Name>WCS.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GK.WCS.Carrier\GK.WCS.Carrier.csproj">
       <Project>{AF05A636-EF64-45C5-91D0-4AC980CF04DF}</Project>
       <Name>GK.WCS.Carrier</Name>

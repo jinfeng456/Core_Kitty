@@ -1,21 +1,22 @@
 ﻿using System;
-using GK.WCS.Common.task;
 using GK.WCS.Carrier;
 using GK.WCS.Scan;
-using GK.WCS.Common.core.dto;
-using GK.WCS.Common;
 using GK.WCS.DAL;
-using GK.WCS.Entity;
-using GK.WCS.Carrier.dto;
 using log4net.Repository.Hierarchy;
 using System.Collections.Generic;
 using GK.Engine.WMS.wms;
 using System.Threading.Tasks;
 using GK.WMS.Entity;
 using GK.WMS.DAL;
-using GK.WCS.Carrier.enumerate;
-using static GK.WCS.Carrier.enumerate.CarrierPoint;
 using System.Threading;
+using WCS.Carrier.dto;
+using WCS.DAL;
+using WMS.DAL;
+using WCS.Common.task;
+using WCS.Entity;
+using WCS.Carrier.enumerate;
+using WCS.Common;
+using WCS.Carrier;
 
 namespace GK.WCS.Controller {
     public class CarrierAllocateJobTask5 : CarrierAllocateJobTask {
@@ -24,7 +25,7 @@ namespace GK.WCS.Controller {
         ITaskCraneServer taskCraneServer = ServerFactray.getServer<ITaskCraneServer>();
         ITaskCompleteServer taskCompleteServer = ServerFactray.getServer<ITaskCompleteServer>();
         ITaskServer taskServer = WMSDalFactray.getDal<ITaskServer>();
-        GK.WCS.DAL.ISequenceIdServer sequenceIdServer = ServerFactray.getServer<GK.WCS.DAL.ISequenceIdServer>();
+        CarrierDirection carrierDirection = null;
 
         CarrierSynchro carrierSynchro;
         Wms2WcsTask wms2WcsTask;
@@ -37,20 +38,21 @@ namespace GK.WCS.Controller {
         protected override void onlyOneTime() {          
             carrierSynchro = (CarrierSynchro)TaskPool.get<CarrierSynchro>();
             wms2WcsTask = (Wms2WcsTask)TaskPool.get<Wms2WcsTask>();
+            carrierDirection = TaskPool.get<CarrierDirectionR>();
         }
         public override void excute() {
             inPointAssign();
             OutPointAssign();
             DownLoadTask(inPoint);
-            int dirR = CarrierDirection.dirR;
-            if (dirR == 1)
+
+            if (carrierDirection.canIn())
             {
                 if (inPointApply(inPoint))
                 {
                     Thread.Sleep(2000);
                 }
             }
-            else if(dirR == 2)
+            else if(carrierDirection.canOut())
             {
                 if (outPointApply(outPoint))
                 {
@@ -167,6 +169,17 @@ namespace GK.WCS.Controller {
             outPoint.Add(2209);
             outPoint.Add(2210);
             outPoint.Add(2211);
+
+            outPoint.Add(2226);
+            outPoint.Add(2228);
+            outPoint.Add(2229);
+            outPoint.Add(2230);
+            outPoint.Add(2231);
+            outPoint.Add(2232);
+            outPoint.Add(2233);
+            outPoint.Add(2234);
+            outPoint.Add(2235);
+            outPoint.Add(2236);
         }
        
 

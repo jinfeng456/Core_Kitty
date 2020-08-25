@@ -1,6 +1,4 @@
 ﻿using Dapper;
-using GK.Common.dto;
-using GK.DAL.inter;
 using GK.WMS.DAL.abs;
 using GK.WMS.Entity;
 using GK.WMS.Entity.wms;

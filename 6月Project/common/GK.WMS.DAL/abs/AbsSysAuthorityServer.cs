@@ -1,17 +1,18 @@
-﻿using GK.Common.dto;
-using GK.WMS.Entity;
+﻿using GK.WMS.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using Dapper;
-using GK.Common;
 using System.Data.SqlClient;
 using HY.WCS.DAL.dto;
 using System.Configuration;
 using System.ComponentModel;
 using WebApi.util;
+using WMS.DAL;
+using Common.dto;
+using Common;
 
 namespace GK.WMS.DAL.abs
 {

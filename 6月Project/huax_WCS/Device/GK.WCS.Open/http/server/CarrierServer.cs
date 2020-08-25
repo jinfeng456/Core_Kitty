@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using GK.WCS.Common;
-
-using GK.WCS.Common.task;
 using GK.WCS.Carrier;
 using CMNetLib.Robots.CarrierChain;
-using GK.WCS.Common.core.dto;
 using CMNetLib.Robots.Crane;
-using GK.WCS.Entity;
 using GK.WCS.DAL;
-using GK.WCS.Carrier.dto;
+using WCS.Carrier.dto;
+using WCS.Entity;
+using WCS.DAL;
+using WCS.Common.task;
+using WCS.Common;
+using WCS.Carrier;
 
 namespace GK.WCS.Open.http.server {
 
@@ -39,6 +38,7 @@ namespace GK.WCS.Open.http.server {
         public CarrierData reflash(List<String> param) {
             int plcId = int.Parse(param[0]);
             CarrierData d = new CarrierData();
+
             CarrierSynchro carrierSynchro = (CarrierSynchro)TaskPool.get<CarrierSynchro>();
             d.SignalStates = carrierSynchro.getAllPointSignal();
 

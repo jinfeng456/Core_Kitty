@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Security;
 using Web.Authorize;
-
 using Newtonsoft.Json;
 using System.Data;
 using GK.WMS.Entity;
 using GK.WMS.DAL;
 using HY.WCS.DAL.dto;
-using GK.Common.dto;
+using WMS.DAL;
+using WMS.Entity;
 
 namespace WebApi
 {

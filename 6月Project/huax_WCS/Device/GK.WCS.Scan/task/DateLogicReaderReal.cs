@@ -1,8 +1,7 @@
 ﻿using System;
-
 using System.Net.Sockets;
 using System.Text;
-using GK.WCS.Common.task;
+using WCS.Common.task;
 
 namespace GK.WCS.Scan {
 

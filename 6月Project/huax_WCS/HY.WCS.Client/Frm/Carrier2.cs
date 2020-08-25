@@ -4,11 +4,12 @@ using GK.WCS.Client.Station;
 using CMFrameWork.Common;
 using GK.WCS.Open.http.server;
 using GK.WCS.DAL;
-using GK.WCS.Entity;
 using GK.WCS.Client;
 using GK.WCS.Client.Frm;
 using GK.WCS.Client.Control;
-using GK.WCS.Carrier.dto;
+using WCS.Carrier.dto;
+using WCS.DAL;
+using WCS.Entity;
 
 namespace GK.WCS.Client.Frm {
     public partial class p:CarrierBase {

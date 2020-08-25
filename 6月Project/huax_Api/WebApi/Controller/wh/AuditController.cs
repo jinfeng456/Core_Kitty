@@ -1,8 +1,6 @@
 ﻿
-using GK.Common;
-using GK.Common.dto;
+using Common;
 using GK.WMS.DAL;
-
 using GK.WMS.Entity;
 using HY.WCS.DAL;
 using HY.WCS.DAL.dto;
@@ -13,12 +11,11 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
-
-
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Web.Authorize;
 using WebApi.util;
+using WMS.DAL;
 
 namespace WebApi
 {

@@ -1,9 +1,8 @@
-﻿using GK.WCS.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-
+using WCS.Common;
 
 namespace GK.WCS.Server {
     public partial class FrmServer : Form {

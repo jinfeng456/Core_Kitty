@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GK.WCS.DAL;
-using GK.WCS.Common;
 using GK.WMS.Entity;
 using GK.WMS.DAL;
-using GK.WCS.Entity;
 using GK.Engine.WCS;
 using GK.WCS.Carrier;
-using GK.WCS.Common.task;
+using WCS.Common;
+using WCS.DAL;
+using WMS.DAL;
+using WCS.Common.task;
+using WCS.Entity;
+using WMS.Entity;
+using WCS.Carrier;
 
 namespace GK.WCS.Controller {
 
@@ -21,7 +25,6 @@ namespace GK.WCS.Controller {
 
         ITaskCraneServer craneDAL = ServerFactray.getServer<ITaskCraneServer>();
         ITaskCarrierServer carrierDAL = ServerFactray.getServer<ITaskCarrierServer>();
-        GK.WCS.DAL.ISequenceIdServer sequenceIdServer = ServerFactray.getServer<GK.WCS.DAL.ISequenceIdServer>();
         ITaskServer taskServer;
         ITaskCompleteServer completeServer = null;
         CarrierConnect connect = null;
@@ -54,7 +57,7 @@ namespace GK.WCS.Controller {
                     if (complete == null)
                     {
                         complete = new TaskComplete();
-                        complete.id = sequenceIdServer.getId();
+                        complete.id = WCSDalUtil.getID();
                         complete.wmsTaskId = task.id;
                         complete.boxCode = task.boxCode;
                         complete.taskType = task.taskType;

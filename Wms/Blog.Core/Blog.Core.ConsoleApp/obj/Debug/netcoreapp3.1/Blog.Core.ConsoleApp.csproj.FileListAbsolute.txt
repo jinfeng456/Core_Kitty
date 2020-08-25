@@ -22,3 +22,4 @@ E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcorea
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.dll
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.pdb
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.genruntimeconfig.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.ConsoleApp\obj\Debug\netcoreapp3.1\Blog.Core.ConsoleApp.csprojAssemblyReference.cache

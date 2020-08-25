@@ -1,9 +1,9 @@
-﻿using GK.DAL.inter;
-using GK.WCS.Entity;
+﻿using Common.DAL.inter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WCS.Entity;
 
 namespace GK.WCS.DAL
 {

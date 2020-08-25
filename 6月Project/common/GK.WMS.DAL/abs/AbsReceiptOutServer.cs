@@ -1,5 +1,4 @@
-﻿using GK.Common.dto;
-using GK.DAL.inter;
+﻿
 using GK.WMS.DAL.abs;
 using GK.WMS.Entity;
 using HY.WCS.DAL.dto;
@@ -12,6 +11,8 @@ using Dapper;
 using static Dapper.SqlMapper;
 using GK.WMS.Entity.dto;
 using GK.WMS.Entity.wms;
+using WMS.Entity;
+using Common.dto;
 
 namespace GK.WMS.DAL
 {

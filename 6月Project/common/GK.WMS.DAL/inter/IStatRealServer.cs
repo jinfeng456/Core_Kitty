@@ -1,5 +1,5 @@
-using GK.Common.dto;
-using GK.DAL.inter;
+using Common.DAL.inter;
+using Common.dto;
 using GK.WMS.Entity;
 using HY.WCS.DAL.dto;
 using System;

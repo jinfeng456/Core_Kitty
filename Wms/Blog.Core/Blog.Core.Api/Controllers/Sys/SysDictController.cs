@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Blog.Core.Common.HttpContextUser;
 using Blog.Core.IServices;
@@ -41,12 +42,16 @@ namespace Blog.Core.Controllers
         [HttpPost, Route("FindPage")]
         public async Task<BaseResult> FindPage([FromBody]SysDictDto dto)
         {
-            if (string.IsNullOrEmpty(dto.label) || string.IsNullOrWhiteSpace(dto.label))
+            Expression<Func<SysDict, bool>> whereExpression = (a) => true;
+            if (dto.label.IsNotEmptyOrNull())
             {
-                dto.label = "";
+                whereExpression = ExpressionHelp.And(whereExpression, a => (a.label != null && a.label.Contains(dto.label)));
             }
-            // && (a.dictClassId != null && a.dictClassId.Equals(dto.dictClassId))
-            var data = await _sysDictServices.QueryPage(a => (a.label != null && a.label.Contains(dto.label)), dto.pageNum, dto.pageSize, " createTime desc ");
+            if (dto.dictClassId > 0)
+            {
+                whereExpression = ExpressionHelp.And(whereExpression, a => a.dictClassId == dto.dictClassId);
+            }
+            var data = await _sysDictServices.QueryPage(whereExpression, dto.pageNum, dto.pageSize, " createTime desc ");
             return BaseResult.Ok(data);
 
         }

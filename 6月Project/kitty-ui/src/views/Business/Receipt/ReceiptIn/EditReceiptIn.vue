@@ -359,7 +359,7 @@ export default {
     dataFormRules () {
   debugger
       const dataFormRules = {
-        receiptNo: [{ required: true, message: this.getKey("action.pselect"), trigger: 'blur' }],
+       // receiptNo: [{ required: true, message: this.getKey("action.pselect"), trigger: 'blur' }],
 //         areaId: [{ required: true, message: this.getKey("action.pselect"), trigger: 'blur' }],
 //         //fromCorpName: [{ required: true, message: this.getKey("action.pselect"), trigger: 'blur' }],
 //         //supplierCustCode: [{ required: true, message: this.getKey("action.pselect"), trigger: 'blur' }],

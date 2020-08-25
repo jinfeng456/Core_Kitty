@@ -1,0 +1,51 @@
+﻿
+using System;
+using System.Data;
+using Dapper;
+using System.Collections.Generic;
+using GK.WMS.Entity;
+using System.Linq;
+using GK.WMS.DAL;
+using GK.WMS.Entity.wms;
+using GK.Engine.WMS.wms;
+using Engine.WMS;
+using WMS.DAL;
+using WMS.Entity;
+
+namespace GK.Engine.WMS {
+
+    public class InEngine: InEngineBase
+    {
+        ISequenceIdServer sequenceIdServer = WMSDalFactray.getDal<ISequenceIdServer>();
+
+        public WhReceiptIn whReceiptIn = null;
+        long stockId = 0;
+        long locId = 0;
+        long areaId = 0;
+        public string boxCode;
+        List<CraneStatus> statusList = null;
+
+        public override int getBussType(IDbConnection connection, IDbTransaction transaction,CoreStockDetail detail)
+        {
+
+            WhReceiptIn inreceipt = getReceiptIn(connection, transaction, (long)detail.receiptlnId);
+            return inreceipt.inType;
+        }
+
+        public WhReceiptIn getReceiptIn(IDbConnection Connection, IDbTransaction transaction, long receiptDetailId)
+        {
+            string sql = @"select a.* from  Wh_Receipt_in  a join Wh_Receipt_in_detail d on a.id=d.receipt_Id   where d.id=@receiptDetailId";
+            List<WhReceiptIn> list = Connection.Query<WhReceiptIn>(sql, new
+            {
+                receiptDetailId = receiptDetailId
+            }, transaction).ToList();
+            if (list.Count == 1)
+            {
+                return list[0];
+            }
+
+            return null;
+        }
+    }
+  
+}

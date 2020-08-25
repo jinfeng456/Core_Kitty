@@ -1,12 +1,11 @@
 ﻿
 using System.Collections.Generic;
 using System.Linq;
-
 using System.Data.SqlClient;
 using System;
 using System.Data;
-using GK.WCS.Entity;
-using GK.DAL.inter;
+using Common.DAL.inter;
+using WCS.Entity;
 
 namespace GK.WCS.DAL
 {

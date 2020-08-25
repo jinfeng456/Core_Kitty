@@ -1,5 +1,4 @@
-﻿using GK.Common.Entity;
-using GK.WMS.Entity.dto;
+﻿using GK.WMS.Entity.dto;
 using GK.WMS.Entity.wms;
 using System;
 using System.Collections.Generic;

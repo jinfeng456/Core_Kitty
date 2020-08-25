@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using CMNetLib.Robots.Crane;
-using GK.WCS.Crane;
-using GK.WCS.Entity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using WCS.Crane;
+using WCS.Entity;
 
 namespace GK.WCS.Client.Station {
     public class HttpCraneUtil {
 
 
-       public static GkDYGCraneStatus loadData(int  CraneId) {
+       public static GkCraneStatus loadData(int  CraneId) {
             JObject data = HttpUtil.getObject("Crane/craneStates/" + CraneId);
             if(data == null) {
                 return null;
             }
-            GkDYGCraneStatus GkDYGCraneStatus = JsonConvert.DeserializeObject<GkDYGCraneStatus>(data.ToString());
-            return GkDYGCraneStatus;
+            GkCraneStatus GkCraneStatus = JsonConvert.DeserializeObject<GkCraneStatus>(data.ToString());
+            return GkCraneStatus;
         }
 
         ///Crane/IsAutoRunning/craneId/

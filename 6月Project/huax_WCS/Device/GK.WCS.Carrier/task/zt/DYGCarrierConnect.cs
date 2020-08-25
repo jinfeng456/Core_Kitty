@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GK.WCS.Common;
-
-using GK.WCS.Common.Util;
-using GK.WCS.Entity;
+using WCS.Carrier;
 
 namespace GK.WCS.Carrier {
     public abstract class DYGCarrierConnect : CarrierConnect

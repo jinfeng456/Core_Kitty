@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using GK.WCS.Common.task;
-using GK.WCS.Common.Util;
-using GK.WCS.Entity;
-using GK.WCS.DAL;
-using GK.DAL.inter;
 using GK.Engine.WCS;
-using GK.WCS.Crane;
+using WCS.Common.task;
+using WCS.Common.Util;
+using WCS.Crane;
+using WCS.DAL;
+using WCS.Entity;
 
 namespace GK.WCS.Open.http.server {
 
@@ -19,10 +17,10 @@ namespace GK.WCS.Open.http.server {
             int craneId = int.Parse(param[0]);
            
             CraneSynchro reader = TaskPool.get<CraneSynchro>(craneId);
-            GkDYGCraneStatus rs= (GkDYGCraneStatus)reader.getCraneStatus();
+            GkCraneStatus rs= (GkCraneStatus)reader.getCraneStatus();
             if (rs==null)
             {
-                return new GkDYGCraneStatus(0);
+                return new GkCraneStatus(0);
             }
             return rs;
         }
@@ -124,7 +122,7 @@ namespace GK.WCS.Open.http.server {
         {
             int craneId = int.Parse(param[0]);
             CraneSynchro reader = TaskPool.get<CraneSynchro>(craneId);
-            GkDYGCraneStatus rs = (GkDYGCraneStatus)reader.getCraneStatus();
+            GkCraneStatus rs = (GkCraneStatus)reader.getCraneStatus();
             if (rs!=null)
             {
                 return rs.getError();

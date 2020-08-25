@@ -76,7 +76,6 @@
     <Compile Include="abs\AbsReceiptPkServer.cs" />
     <Compile Include="abs\AbsStockServer.cs" />
     <Compile Include="abs\AbsSysAuthorityServer.cs" />
-    <Compile Include="abs\AbsSequenceIdServer.cs" />
     <Compile Include="abs\AbsTaskServer.cs" />
     <Compile Include="abs\AbsWMSBaseServer.cs" />
     <Compile Include="inter\IAuditServer.cs" />
@@ -95,7 +94,6 @@
     <Compile Include="inter\IReceiptInServer.cs" />
     <Compile Include="inter\IReceiptOutServer.cs" />
     <Compile Include="inter\IReceiptPkServer.cs" />
-    <Compile Include="inter\ISequenceIdServer.cs" />
     <Compile Include="inter\IStockServer.cs" />
     <Compile Include="inter\ICoreStockServer.cs" />
     <Compile Include="inter\ISysAuthorityServer.cs" />
@@ -109,7 +107,6 @@
     <Compile Include="oracle\StatServer.cs" />
     <Compile Include="oracle\StockServer.cs" />
     <Compile Include="oracle\SysAuthorityServer.cs" />
-    <Compile Include="oracle\SequenceIdServer.cs" />
     <Compile Include="oracle\TaskServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sqlserver\AuditServer.cs" />
@@ -128,17 +125,20 @@
     <Compile Include="sqlserver\ReceiptInServer.cs" />
     <Compile Include="sqlserver\ReceiptOutServer.cs" />
     <Compile Include="sqlserver\ReceiptPkServer.cs" />
-    <Compile Include="sqlserver\SequenceIdServer.cs" />
     <Compile Include="sqlserver\StockServer.cs" />
     <Compile Include="sqlserver\CoreStockServer.cs" />
     <Compile Include="sqlserver\SysAuthorityServer.cs" />
     <Compile Include="sqlserver\TaskServer.cs" />
     <Compile Include="util\CookieHelper.cs" />
-    <Compile Include="util\SysUtil.cs" />
-    <Compile Include="WMSDalFactray.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< .mine
     <ProjectReference Include="..\..\..\common\GK.Common\GK.Common.csproj">
+||||||| .r1169
+    <ProjectReference Include="..\..\..\common\GK.Common\Common.csproj">
+=======
+    <ProjectReference Include="..\..\..\common\Common\Common.csproj">
+>>>>>>> .r1198
       <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
       <Name>GK.Common</Name>
     </ProjectReference>

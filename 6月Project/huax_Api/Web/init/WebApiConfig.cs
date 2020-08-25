@@ -20,8 +20,6 @@ namespace Web
     {
         public static void Register(HttpConfiguration config)
         {
-
-
             #region 跨域配置
             //
             //config.EnableCors(new EnableCorsAttribute("http://localhost,http://127.0.0.1,http://192.168.111.100", "*", "*"));

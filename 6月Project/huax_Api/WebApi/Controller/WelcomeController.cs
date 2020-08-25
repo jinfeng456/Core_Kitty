@@ -4,13 +4,9 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Http;
 using System.Web.Security;
-using HY.WCS.DAL;
 using Web.Authorize;
 using HY.WCS.DAL.dto;
 using WebApi.util;
-using GK.WMS.DAL;
-using GK.Common.dto;
-using GK.WMS.Entity;
 
 namespace WebApi
 {

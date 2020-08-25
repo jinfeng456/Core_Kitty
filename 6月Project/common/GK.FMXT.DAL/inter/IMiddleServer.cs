@@ -1,5 +1,4 @@
-﻿using GK.Common.dto;
-using GK.DAL.inter;
+﻿using Common.DAL.inter;
 using GK.WMS.Entity;
 using HY.WCS.DAL.dto;
 using System;
@@ -8,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
+using WMS.Entity;
 
 namespace GK.Fmxt.DAL
 {

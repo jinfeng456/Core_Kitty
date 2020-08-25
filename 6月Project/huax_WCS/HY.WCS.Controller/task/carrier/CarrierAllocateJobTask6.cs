@@ -16,6 +16,7 @@ using GK.WMS.DAL;
 using GK.WCS.Carrier.enumerate;
 using static GK.WCS.Carrier.enumerate.CarrierPoint;
 using System.Threading;
+using WCS.Carrier.dto;
 
 namespace GK.WCS.Controller {
     public class CarrierAllocateJobTask6 : CarrierAllocateJobTask {
@@ -38,7 +39,7 @@ namespace GK.WCS.Controller {
         }
         public override void excute() {
             OutPointAssign();
-            int dirR = CarrierDirection.dirR;
+            int dirR = CarrierDirectionR.dirR;
             if (dirR == 2)
             {
                 if (outPointApply(outPoint))

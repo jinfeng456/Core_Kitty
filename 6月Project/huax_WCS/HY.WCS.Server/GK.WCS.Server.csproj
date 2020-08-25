@@ -67,10 +67,6 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GK.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\common\UsingDlls\GK.Common.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\common\UsingDlls\Newtonsoft.Json.dll</HintPath>
@@ -164,7 +160,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\common\GK.WCS.Common\WCS.Common.csproj">
+    <ProjectReference Include="..\..\..\common\WCS.Common\WCS.Common.csproj">
       <Project>{c345f915-22ea-454e-8552-c4cb4c67b7b1}</Project>
       <Name>WCS.Common</Name>
     </ProjectReference>

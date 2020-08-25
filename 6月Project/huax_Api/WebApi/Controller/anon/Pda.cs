@@ -1,13 +1,14 @@
-﻿using GK.BACK.DAL;
-using GK.Common.dto;
+﻿using Common;
+using GK.BACK.DAL;
 using GK.Fmxt.DAL;
 using GK.FMXT.DAL;
-using GK.Mongon.DAL;
 using GK.WMS.DAL;
 using GK.WMS.Entity;
 using GK.WMS.Entity.wms;
+using HY.WCS.DAL.dto;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Mongon.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.UI;
 using System.Windows.Forms;
+using WebApi.util;
+using WMS.DAL;
+using WMS.Entity;
 
 namespace WebApi.Controller
 {
@@ -31,6 +36,8 @@ namespace WebApi.Controller
         IItemServer itemServer = WMSDalFactray.getDal<IItemServer>();
         IMiddleServer middleServer = FmxtDalFactray.getDal<IMiddleServer>();
         IBatchServer batchServer = WMSDalFactray.getDal<IBatchServer>();
+        private ISysAuthorityServer authorityServer = WMSDalFactray.getDal<ISysAuthorityServer>();
+
         //采购入库界面显示
         [HttpGet, Route("inDetail")]
         public BaseResult inDetail()
@@ -296,7 +303,58 @@ namespace WebApi.Controller
             receiptPkServer.updatePkCountById(dto.detailId, dto.countInput);
             return new BaseResult("ok");
         }
+
+
+
+        #region PDA用户登录
+        /// <summary>
+        /// PDA用户登录
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, Route("login")]
+        public BaseResult login([FromBody] UserDto user)
+        {
+            AuthenticatioToken token = new AuthenticatioToken();
+            List<SysUser> listByName = authorityServer.GetUser(user.account);
+            try
+            {
+                if (listByName == null || listByName.Count == 0)
+                {
+                    return BaseResult.Error("账号不存在！",500);
+                }
+                List<SysUser> listByNamePwd = authorityServer.GetUser(user.account, GKMD5.MD5Encrypt(user.password));
+                if (listByNamePwd == null || listByNamePwd.Count == 0)
+                {
+                    return BaseResult.Error("密码不正确！",500);
+                }
+                if (listByName[0].userstatus == 0)
+                {
+                    return BaseResult.Error("账号已锁定！",500);
+                }
+                token.token = user.account;
+                return BaseResult.Ok(token);
+            }
+            catch (Exception ex)
+            {
+                return BaseResult.Error("PDA用户登录ss," + ex.Message,500);
+            }
+
+        }
+
+
+        /// <summary>
+        /// PDA用户登出
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, Route("logout")]
+        public BaseResult logout([FromBody] UserDto user)
+        {
+            return BaseResult.Ok("");
+        }
+        #endregion                  
     }
+
+
     public class stockInfoDto
     {
         public long detailId;

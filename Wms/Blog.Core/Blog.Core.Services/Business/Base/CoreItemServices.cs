@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Core.Common;
+using Blog.Core.Controllers;
 using Blog.Core.IRepository;
 using Blog.Core.IRepository.UnitOfWork;
 using Blog.Core.IServices;
+using Blog.Core.Model;
 using Blog.Core.Model.Models;
 using Blog.Core.Services.BASE;
 namespace Blog.Core.Services
@@ -27,6 +29,7 @@ namespace Blog.Core.Services
             base.BaseDal = dal;
         }
 
+
         public bool ImportList(List<CoreItem> coreItemList, out string message)
         {
             if (!Check(coreItemList, out message))
@@ -36,7 +39,7 @@ namespace Blog.Core.Services
             foreach (var model in coreItemList)
             {
                 var coreItem = dal.Query(a => a.code == model.code);
-                if (coreItem != null)
+                if (coreItem != null && coreItem.Result.Count > 0)
                 {
                     message = "该物料编码已存在";
                     return false;
@@ -53,7 +56,7 @@ namespace Blog.Core.Services
 
                 message = "Excel模板不对";
                 return false;
-            }         
+            }
         }
 
 

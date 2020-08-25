@@ -1,6 +1,4 @@
 ﻿using GK.WCS.DAL.abs;
-using GK.DAL.inter;
-using GK.WCS.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data;

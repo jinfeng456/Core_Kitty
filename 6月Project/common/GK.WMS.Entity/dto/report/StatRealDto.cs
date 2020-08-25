@@ -1,10 +1,10 @@
-using GK.Common.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GK.Common.dto;
+using Common.dto;
+
 namespace GK.WMS.Entity
 {
     ///<summary>

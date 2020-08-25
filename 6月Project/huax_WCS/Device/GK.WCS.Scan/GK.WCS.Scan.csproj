@@ -34,12 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GK.WCS.Common">
-      <HintPath>..\..\..\common\UsingDlls\GK.WCS.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="GK.WCS.DALBase">
-      <HintPath>..\..\..\common\UsingDlls\GK.WCS.DALBase.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -55,6 +49,12 @@
     <Compile Include="task\DateLogicReader.cs" />
     <Compile Include="task\DateLogicConnectTask.cs" />
     <Compile Include="task\DateLogicConnectTaskReal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\common\WCS.Common\WCS.Common.csproj">
+      <Project>{c345f915-22ea-454e-8552-c4cb4c67b7b1}</Project>
+      <Name>WCS.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,6 +1,4 @@
 ﻿using Dapper;
-using GK.Common.dto;
-using GK.DAL.inter;
 using GK.Fmxt.DAL;
 using GK.WMS.DAL.abs;
 using GK.WMS.Entity;
@@ -10,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using WMS.Entity;
 
 namespace GK.Fmxt.DAL
 {

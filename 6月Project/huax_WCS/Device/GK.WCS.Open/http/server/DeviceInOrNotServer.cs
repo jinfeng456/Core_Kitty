@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using GK.WCS.DAL;
-using GK.DAL.inter;
 using GK.WCS.DAL.inter;
+using WCS.DAL;
 
 namespace GK.WCS.Open.http.server {
 

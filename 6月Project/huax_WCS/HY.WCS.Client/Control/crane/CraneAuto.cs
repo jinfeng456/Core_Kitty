@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using GK.WCS.Client.Station;
 using CMNetLib.Robots.Crane;
-using GK.WCS.Entity;
 using GK.WCS.DAL;
 using GK.WCS.Client.Control;
 using GK.WCS.Client;
-using GK.WCS.Crane;
+using WCS.Crane;
 
 namespace GK.WCS.Client.Control
 {
@@ -28,7 +27,7 @@ namespace GK.WCS.Client.Control
 
         }
 
-        public void ShowInfo(GkDYGCraneStatus taskStatus,int craneId) {
+        public void ShowInfo(GkCraneStatus taskStatus,int craneId) {
             if(CraneId == craneId) {
                 return;
             }

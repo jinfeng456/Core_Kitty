@@ -1,5 +1,4 @@
-using GK.Common.dto;
-using GK.Common.Entity;
+using Common.dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;

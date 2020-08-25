@@ -179,13 +179,29 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< .mine
     <ProjectReference Include="..\..\..\common\GK.Common\GK.Common.csproj">
+||||||| .r1169
+    <ProjectReference Include="..\..\..\common\GK.Common\Common.csproj">
+=======
+    <ProjectReference Include="..\..\..\common\Common\Common.csproj">
+>>>>>>> .r1198
       <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
       <Name>GK.Common</Name>
     </ProjectReference>
+<<<<<<< .mine
     <ProjectReference Include="..\..\..\common\GK.Mongo\GK.Mongo.csproj">
+||||||| .r1169
+    <ProjectReference Include="..\..\..\common\GK.Mongo\Mongo.csproj">
+=======
+    <ProjectReference Include="..\..\..\common\Mongo\Mongo.csproj">
+>>>>>>> .r1198
       <Project>{69214443-15ad-4662-a442-934a25af416a}</Project>
       <Name>GK.Mongo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\WMS.DAL\WMS.DAL.csproj">
+      <Project>{28eb467e-b8ec-45cf-8c01-3fe44c96d9f9}</Project>
+      <Name>WMS.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\common\GK.Adapter\GK.Adapter.csproj">
       <Project>{1d143521-2360-483a-a705-3c321ca32a3a}</Project>

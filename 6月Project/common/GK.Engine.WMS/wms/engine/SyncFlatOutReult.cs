@@ -1,7 +1,5 @@
 ﻿using Dapper;
-using GK.Common.trans;
 using GK.Engine.WMS.wms;
-using GK.Mongon;
 using GK.WMS.DAL;
 using GK.WMS.Entity;
 using GK.WMS.Entity.wms;
@@ -10,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using WMS.DAL;
 
 namespace GK.Engine.WMS
 {

@@ -1,5 +1,4 @@
-﻿using GK.DAL.inter;
-using GK.WCS.Entity;
+﻿using Common.DAL.inter;
 using System;
 namespace GK.WCS.DAL
 {

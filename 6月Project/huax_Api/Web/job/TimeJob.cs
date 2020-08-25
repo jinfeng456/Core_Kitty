@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GK.Adaper;
-using GK.Common.entity;
-using GK.Mongon.DAL;
 using GK.WMS.DAL;
 using GK.WMS.Entity;
 using GK.WMS.Entity.wms;
@@ -13,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using Quartz;
 using Quartz.Impl;
 using WebApi;
+using WMS.DAL;
 
 namespace Web.job {
   

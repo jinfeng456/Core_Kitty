@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using GK.WCS.DAL;
-using GK.WCS.Entity;
-using GK.WCS.Common;
 using GK.Engine.WMS;
 using GK.Engine.WMS.wms;
+using WCS.Common;
+using WCS.Entity;
+using WCS.DAL;
 
 namespace GK.WCS.Controller {
     public class WcsFinishComTask : ZtTask {

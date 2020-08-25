@@ -4,9 +4,10 @@ using System.Data;
 using System.Linq;
 using Dapper;
 using GK.BACK.DAL;
-using GK.WCS.Common;
 using GK.WCS.DAL;
-using GK.WCS.Entity;
+using WCS.Common;
+using WCS.DAL;
+using WCS.Entity;
 
 namespace GK.WCS.Controller {
 
@@ -17,10 +18,10 @@ namespace GK.WCS.Controller {
         public WCSBackTask(){
             time = 15000;
         }
-        GK.WCS.DAL.ITaskCraneServer taskCraneServer= ServerFactray.getServer<GK.WCS.DAL.ITaskCraneServer>();
-        GK.WCS.DAL.ITaskCarrierServer taskCarrierServer= ServerFactray.getServer<GK.WCS.DAL.ITaskCarrierServer>();
-        GK.WCS.DAL.ITaskCompleteServer taskCompleteServer = ServerFactray.getServer<GK.WCS.DAL.ITaskCompleteServer>();
-        GK.WCS.DAL.ITaskRelyServer taskRelyServer = ServerFactray.getServer<GK.WCS.DAL.ITaskRelyServer>();
+        ITaskCraneServer taskCraneServer= ServerFactray.getServer<ITaskCraneServer>();
+        ITaskCarrierServer taskCarrierServer= ServerFactray.getServer<ITaskCarrierServer>();
+        ITaskCompleteServer taskCompleteServer = ServerFactray.getServer<ITaskCompleteServer>();
+        ITaskRelyServer taskRelyServer = ServerFactray.getServer<ITaskRelyServer>();
         IDbConnection connection = BackDBUtils.CreateBACKConnection(BackDalFactray.prefixal);
 
         public override void excute() {

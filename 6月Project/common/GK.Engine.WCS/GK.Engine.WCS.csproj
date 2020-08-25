@@ -37,9 +37,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GK.Common">
-      <HintPath>..\UsingDlls\GK.Common.dll</HintPath>
-    </Reference>
     <Reference Include="GK.WCS.DALBase">
       <HintPath>..\UsingDlls\GK.WCS.DALBase.dll</HintPath>
     </Reference>
@@ -70,7 +67,25 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< .mine
     <ProjectReference Include="..\..\..\common\GK.WCS.Entity\GK.WCS.Entity.csproj">
+||||||| .r1169
+    <ProjectReference Include="..\..\..\common\Engine.WCS\Engine.WCS.csproj">
+      <Project>{2ee55595-ca2f-4522-94d0-c011d4dd2d27}</Project>
+      <Name>Engine.WCS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\GK.WCS.Entity\WCS.Entity.csproj">
+=======
+    <ProjectReference Include="..\..\..\common\Common\Common.csproj">
+      <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\Engine.WCS\Engine.WCS.csproj">
+      <Project>{2ee55595-ca2f-4522-94d0-c011d4dd2d27}</Project>
+      <Name>Engine.WCS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\WCS.Entity\WCS.Entity.csproj">
+>>>>>>> .r1198
       <Project>{af5cfa9b-0662-4ab4-ae9b-12f58816235c}</Project>
       <Name>GK.WCS.Entity</Name>
     </ProjectReference>

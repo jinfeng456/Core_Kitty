@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Linq;
-
 using GK.WCS.Client.Station;
-
 using System.Collections.Generic;
 using CMNetLib.Robots.Crane;
-
 using GK.WCS.Open.http.server;
 using GK.WCS.DAL;
 using GK.WCS.Client.Control;
-using GK.WCS.Crane;
+using WCS.Crane;
 //using GK.WCS.Client.ClientServiceReference;
 
 namespace GK.WCS.Client.Control
@@ -28,7 +25,7 @@ namespace GK.WCS.Client.Control
            
         }
 
-        public void ShowInfo(GkDYGCraneStatus taskStatus,int CraneId) {
+        public void ShowInfo(GkCraneStatus taskStatus,int CraneId) {
             this.Invoke(new Action(() => {
                 this.CraneId = CraneId;
                 Name = "TaskInfo";
@@ -60,7 +57,7 @@ namespace GK.WCS.Client.Control
         }
 
 
-        bool taskCheck(GkDYGCraneStatus carrierData) {
+        bool taskCheck(GkCraneStatus carrierData) {
             if(carrierData == null) {
                 info("当前堆垛机不在线！");
                 return false;

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5D6149DE-13F5-40EE-91DD-8810464617D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GK.WMS.DAL</RootNamespace>
+    <AssemblyName>GK.WMS.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GK.WCS.DALBase">
+      <HintPath>..\UsingDlls\GK.WCS.DALBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess">
+      <HintPath>..\UsingDlls\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="abs\AbsAuditServer.cs" />
+    <Compile Include="abs\AbsBatchServer.cs" />
+    <Compile Include="abs\AbCoreSupplierServer.cs" />
+    <Compile Include="abs\AbsStatMonthServer.cs" />
+    <Compile Include="abs\AbsStatRealServer.cs" />
+    <Compile Include="abs\AbsSysCodeServer.cs" />
+    <Compile Include="abs\AbsWhSoInServer.cs" />
+    <Compile Include="abs\AbsWhSoOutProduceServer.cs" />
+    <Compile Include="abs\AbsWhSoOutServer.cs" />
+    <Compile Include="abs\AbsCoreTaskServer.cs" />
+    <Compile Include="abs\AbsCoreWhLocServer.cs" />
+    <Compile Include="abs\AbsItemServer.cs" />
+    <Compile Include="abs\AbsCoreStockServer.cs" />
+    <Compile Include="abs\AbsStatServer.cs" />
+    <Compile Include="abs\AbsReceiptInServer.cs" />
+    <Compile Include="abs\AbsReceiptOutServer.cs" />
+    <Compile Include="abs\AbsReceiptPkServer.cs" />
+    <Compile Include="abs\AbsStockServer.cs" />
+    <Compile Include="abs\AbsSysAuthorityServer.cs" />
+    <Compile Include="abs\AbsSequenceIdServer.cs" />
+    <Compile Include="abs\AbsTaskServer.cs" />
+    <Compile Include="abs\AbsWMSBaseServer.cs" />
+    <Compile Include="inter\IAuditServer.cs" />
+    <Compile Include="inter\IBatchServer.cs" />
+    <Compile Include="inter\ICoreSupplierServer.cs" />
+    <Compile Include="inter\IStatMonthServer.cs" />
+    <Compile Include="inter\IStatRealServer.cs" />
+    <Compile Include="inter\ISysCodeServer.cs" />
+    <Compile Include="inter\IWhSoInServer.cs" />
+    <Compile Include="inter\IWhSoOutProduceServer.cs" />
+    <Compile Include="inter\IWhSoOutServer.cs" />
+    <Compile Include="inter\ICoreTaskServer.cs" />
+    <Compile Include="inter\ICoreWhLocServer.cs" />
+    <Compile Include="inter\IItemServer.cs" />
+    <Compile Include="inter\IStatServer.cs" />
+    <Compile Include="inter\IReceiptInServer.cs" />
+    <Compile Include="inter\IReceiptOutServer.cs" />
+    <Compile Include="inter\IReceiptPkServer.cs" />
+    <Compile Include="inter\ISequenceIdServer.cs" />
+    <Compile Include="inter\IStockServer.cs" />
+    <Compile Include="inter\ICoreStockServer.cs" />
+    <Compile Include="inter\ISysAuthorityServer.cs" />
+    <Compile Include="inter\ITaskServer.cs" />
+    <Compile Include="oracle\CoreSupplierCorpServer.cs" />
+    <Compile Include="oracle\CoreWhLocServer.cs" />
+    <Compile Include="oracle\ItemServer.cs" />
+    <Compile Include="oracle\ReceiptInServer.cs" />
+    <Compile Include="oracle\ReceiptOutServer.cs" />
+    <Compile Include="oracle\ReceiptPkServer.cs" />
+    <Compile Include="oracle\StatServer.cs" />
+    <Compile Include="oracle\StockServer.cs" />
+    <Compile Include="oracle\SysAuthorityServer.cs" />
+    <Compile Include="oracle\SequenceIdServer.cs" />
+    <Compile Include="oracle\TaskServer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sqlserver\AuditServer.cs" />
+    <Compile Include="sqlserver\BatchServer.cs" />
+    <Compile Include="sqlserver\CoreSupplierCorpServer.cs" />
+    <Compile Include="sqlserver\StatMonthServer.cs" />
+    <Compile Include="sqlserver\StatRealServer.cs" />
+    <Compile Include="sqlserver\SysCodeServer.cs" />
+    <Compile Include="sqlserver\WhSoInServer.cs" />
+    <Compile Include="sqlserver\WhSoOutProduceServer.cs" />
+    <Compile Include="sqlserver\WhSoOutServer.cs" />
+    <Compile Include="sqlserver\CoreTaskServer.cs" />
+    <Compile Include="sqlserver\CoreWhLocServer.cs" />
+    <Compile Include="sqlserver\ItemServer.cs" />
+    <Compile Include="sqlserver\StatServer.cs" />
+    <Compile Include="sqlserver\ReceiptInServer.cs" />
+    <Compile Include="sqlserver\ReceiptOutServer.cs" />
+    <Compile Include="sqlserver\ReceiptPkServer.cs" />
+    <Compile Include="sqlserver\SequenceIdServer.cs" />
+    <Compile Include="sqlserver\StockServer.cs" />
+    <Compile Include="sqlserver\CoreStockServer.cs" />
+    <Compile Include="sqlserver\SysAuthorityServer.cs" />
+    <Compile Include="sqlserver\TaskServer.cs" />
+    <Compile Include="util\CookieHelper.cs" />
+    <Compile Include="util\SysUtil.cs" />
+    <Compile Include="WMSDalFactray.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\GK.Common\Common.csproj">
+      <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\WMS.DAL\WMS.DAL.csproj">
+      <Project>{28eb467e-b8ec-45cf-8c01-3fe44c96d9f9}</Project>
+      <Name>WMS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\WMS.Entity\WMS.Entity.csproj">
+      <Project>{b2821d57-8ca8-4781-90e2-2c0b643d3ccb}</Project>
+      <Name>WMS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GK.WMS.Entity\GK.WMS.Entity.csproj">
+      <Project>{c7e8e16e-ecdb-4e86-b90e-46690b15ea7e}</Project>
+      <Name>GK.WMS.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+  </Target>
+</Project>

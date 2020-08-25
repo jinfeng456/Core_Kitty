@@ -9,7 +9,7 @@
             服务器接口，因为是模板生成，所以首字母是大写的，自己可以重构下
             </summary>
         </member>
-        <member name="M:Blog.Core.Api.Controllers.CoreClassifyController.FindPage(Blog.Core.Controllers.CoreClassifyDto)">
+        <member name="M:Blog.Core.Api.Controllers.CoreClassifyController.FindPage">
             <summary>
             查询物料分类
             </summary>

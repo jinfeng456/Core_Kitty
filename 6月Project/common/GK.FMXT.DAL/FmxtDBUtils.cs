@@ -1,4 +1,4 @@
-﻿using GK.Common;
+﻿using Common;
 using Oracle.DataAccess.Client;
 using System;
 using System.Collections.Generic;

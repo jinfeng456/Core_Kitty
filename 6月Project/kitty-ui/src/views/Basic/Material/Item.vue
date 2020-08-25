@@ -8,16 +8,16 @@
                :size="size">
         <el-form-item>
           <el-input v-model="filters.name"
-                    :placeholder="$t('item.please enter')"></el-input>
+                    :placeholder="$t('item.please enter')" style="width: 175px;"></el-input>
         </el-form-item>
         <el-form-item>
           <el-select v-model="filters.classifyId"
                      placeholder="请选择物料类别"
-                     style="width: 100%;"
+                     style="width: 175px;"
                      clearable>
             <el-option v-for="item in classTypes"
                        :key="item.id"
-                       :label="item.name+item.areaId"
+                       :label="item.name"
                        :value="item.id">
             </el-option>
 
@@ -27,7 +27,7 @@
         <el-form-item>
           <el-select v-model="filters.coreItemType"
                      placeholder="请选择物料类型"
-                     style="width: 100%;"
+                     style="width: 175px;"
                      clearable>
             <el-option v-for="item in dicts.coreItemType"
                        :key="item.value"
@@ -72,11 +72,11 @@
                :size="size">
         <el-form-item>
           <el-input v-model="filters.code"
-                    :placeholder="$t('item.please code')"></el-input>
+                    :placeholder="$t('item.please code')" style="width: 175px;"></el-input>
         </el-form-item>
         <el-form-item>
           <el-input v-model="filters.modelSpecs"
-                    placeholder="请输入规格型号"></el-input>
+                    placeholder="请输入规格型号" style="width: 175px;"></el-input>
         </el-form-item>
         <el-form-item>
           <kt-button icon="fa fa-search"
@@ -326,13 +326,14 @@ export default {
 		},
     //导出的方法
 		exportExcel() {
+        this.filters.pageSize=-1
         require.ensure([], () => {
-              this.$api.item.GetExportList(this.filters).then((res) => {
+              this.$api.item.findPage(this.filters).then((res) => {
               // Excel的表格第一行的标题
               const tHeader = ['名称', '类别名称', '物料类型', '编码','规格型号','包装规格'];
               // index、nickName、name是tableData里对象的属性
               const filterVal = ['name', 'classifyName', 'coreItemTypeName', 'code','modelSpecs','packageSpecs'];
-              const list = res.data;  //把data里的tableData存到list
+              const list = res.data.content;  //把data里的tableData存到list
               const data = this.formatJson(filterVal, list);
               export_json_to_excel(tHeader, data, '物料信息导出');
           })
@@ -349,12 +350,12 @@ export default {
     //下载模板
     exportExample() {
         require.ensure([], () => {
-              this.$api.item.GetExportList(this.filters).then((res) => {
+              this.$api.item.findPage(this.filters).then((res) => {
               // Excel的表格第一行的标题
               const tHeader = ['名称', '类别名称', '物料类型', '编码','规格型号','包装规格'];
               // index、nickName、name是tableData里对象的属性
               const filterVal = [];
-              const list = res.data;  //把data里的tableData存到list
+              const list = res.data.content;  //把data里的tableData存到list
               const data = this.formatJson(filterVal, list);
               export_json_to_excel(tHeader, data, '物料信息导出');
           })

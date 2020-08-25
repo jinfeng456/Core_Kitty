@@ -8,7 +8,17 @@ using System.Linq;
 using GK.WMS.DAL;
 using GK.WMS.Entity.wms;
 using GK.Engine.WMS.wms;
+<<<<<<< .mine
 using GK.Mongon;
+||||||| .r1169
+using GK.Mongon;
+using GK.WMS.Entity.wms.Device;
+using Engine.WMS;
+=======
+using Engine.WMS;
+>>>>>>> .r1198
+using WMS.DAL;
+using WMS.Entity;
 
 namespace GK.Engine.WMS {
     public class InEngine:WmsBaseEngine {

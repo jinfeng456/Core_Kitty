@@ -1,6 +1,5 @@
 ﻿
-using GK.Common;
-using GK.Common.dto;
+using Common.dto;
 using GK.Engine.WMS.wms;
 using GK.WMS.DAL;
 using GK.WMS.Entity;
@@ -13,6 +12,8 @@ using System.IO;
 using System.Web.Http;
 using Web.Authorize;
 using WebApi.util;
+using WMS.DAL;
+using WMS.Entity;
 
 namespace WebApi
 {

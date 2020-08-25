@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GK.Common.entity;
 using GK.FMXT.DAL;
 using GK.FMXT.DAL.Entity;
-using GK.Mongon.DAL;
 using GK.WMS.DAL;
 using GK.WMS.Entity;
 using Quartz;
 using Quartz.Impl;
+using WMS.DAL;
 
 namespace Web.job
 {

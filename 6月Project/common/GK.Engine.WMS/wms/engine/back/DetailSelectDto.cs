@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WMS.Entity;
 
 namespace GK.Engine.WMS.wms.stockOut {
    public class DetailSelectDto :IComparable<DetailSelectDto>{

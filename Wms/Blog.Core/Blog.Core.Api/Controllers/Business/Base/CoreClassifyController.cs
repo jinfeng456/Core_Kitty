@@ -43,15 +43,11 @@ namespace Blog.Core.Api.Controllers
         /// <returns></returns>
         // GET: api/User
         [HttpPost, Route("FindPage")]
-        public async Task<BaseResult> FindPage([FromBody]CoreClassifyDto dto)
+        public async Task<BaseResult> FindPage()
         {
-            dto.pageNum = 1;
-            dto.pageSize = 1000;
-            if (string.IsNullOrEmpty(dto.name) || string.IsNullOrWhiteSpace(dto.name))
-            {
-                dto.name = "";
-            }
-            var data = await _coreClassifyServices.QueryPage(a => (a.name != null && a.name.Contains(dto.name)), dto.pageNum, dto.pageSize, " id desc ");
+            int pageNum = 1;
+            int pageSize = 1000;
+            var data = await _coreClassifyServices.QueryPage(null, pageNum, pageSize, " id desc ");
             return BaseResult.Ok(data);
         }
     }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using GK.WCS.Entity;
 using GK.WCS.Open.http.server;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using WCS.Entity;
 
 namespace GK.WCS.Client.Station {
     public class HttpCarrierUtil {

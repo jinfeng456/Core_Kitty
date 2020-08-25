@@ -8,11 +8,9 @@ using CMNetLib.Robots.CarrierChain;
 using GK.WCS.Client;
 using GK.WCS.Client.Control;
 using GK.WCS.Client.Station;
-using GK.WCS.Common.core.dto;
-using GK.WCS.Client.Control;
 using GK.WCS.Carrier;
 using GK.WCS.Open.http.server;
-using GK.WCS.Carrier.dto;
+using WCS.Carrier.dto;
 
 namespace GK.WCS.Client.Frm {
     public  class CarrierBase:Form {

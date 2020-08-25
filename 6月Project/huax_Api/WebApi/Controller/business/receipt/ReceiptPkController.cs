@@ -1,6 +1,5 @@
 ﻿
-using GK.Common;
-using GK.Common.dto;
+using Common.dto;
 using GK.Engine.WMS;
 using GK.Engine.WMS.wms;
 using GK.WMS.DAL;
@@ -11,6 +10,7 @@ using Microsoft.AspNet.SignalR.Infrastructure;
 using System.Collections.Generic;
 using System.Web.Http;
 using Web.Authorize;
+using WMS.DAL;
 
 namespace WebApi
 {

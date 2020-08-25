@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
 using GK.WCS.Client.Station;
-using GK.WCS.Common.dto;
+using WCS.Common.dto;
 
 namespace GK.WCS.Client.Device {
     public partial class StatTaskFrm: Form

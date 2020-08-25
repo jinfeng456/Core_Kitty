@@ -3,16 +3,11 @@ using System.Web;
 using System.Web.Http;
 using Web.Authorize;
 using System.Collections.Generic;
-using GK.Common.dto;
-using GK.Mongon.DAL;
-using GK.Mongon;
-using HY.WMS.DAL.dto;
-using GK.Common.entity;
-using GK.Mongo.Dto;
 using GK.FMXT.DAL;
 using GK.FMXT.DAL.dto;
 using GK.FMXT.DAL.Entity;
 using GK.WMS.Entity.wms;
+using Common.dto;
 
 namespace WebApi
 {

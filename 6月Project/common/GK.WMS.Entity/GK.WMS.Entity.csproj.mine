@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C7E8E16E-ECDB-4E86-B90E-46690B15EA7E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GK.WMS.Entity</RootNamespace>
+    <AssemblyName>GK.WMS.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="dto\ClassifyDto.cs" />
+    <Compile Include="dto\CoreClassifyAreaDto.cs" />
+    <Compile Include="dto\CoreItemDto.cs" />
+    <Compile Include="dto\corewh\CoreCorpItemDto.cs" />
+    <Compile Include="dto\corewh\CoreSupplierCorpDto.cs" />
+    <Compile Include="dto\corewh\CoreWhLocDto.cs" />
+    <Compile Include="dto\corewh\CoreWhAreaDto.cs" />
+    <Compile Include="dto\corewh\CoreWhDto.cs" />
+    <Compile Include="dto\DapingDto.cs" />
+    <Compile Include="dto\middle\CodeInfoDto.cs" />
+    <Compile Include="dto\Param\CoreStockParam.cs" />
+    <Compile Include="dto\Param\WhReceiptOutQuery.cs" />
+    <Compile Include="dto\Param\WhSoOutParam.cs" />
+    <Compile Include="dto\Param\WhSoProduceParam.cs" />
+    <Compile Include="dto\print\InPrint.cs" />
+    <Compile Include="dto\print\OutPrint.cs" />
+    <Compile Include="dto\purchase\WhSoInDetailAddDto.cs" />
+    <Compile Include="dto\purchase\SynchronizeDto.cs" />
+    <Compile Include="dto\purchase\WhSolnDetailDto.cs" />
+    <Compile Include="dto\purchase\WhSoInDto.cs" />
+    <Compile Include="dto\purchase\WhSoOutProduceDetailDto.cs" />
+    <Compile Include="dto\purchase\WhSoOutProduceDto.cs" />
+    <Compile Include="dto\receipt\ReceiptInFlatDto.cs" />
+    <Compile Include="dto\receipt\ReceiptInReportDto.cs" />
+    <Compile Include="dto\receipt\ReceiptOutReportDto.cs" />
+    <Compile Include="dto\receipt\ReceiptInAddDto.cs" />
+    <Compile Include="dto\receipt\ReceiptAddDto.cs" />
+    <Compile Include="dto\receipt\ReceiptOutdetailDto.cs" />
+    <Compile Include="dto\receipt\ReceiptindetailDto.cs" />
+    <Compile Include="dto\receipt\ReceiptinDto.cs" />
+    <Compile Include="dto\receipt\ReceiptPkDto.cs" />
+    <Compile Include="dto\receipt\WhReceiptOutAllDto.cs" />
+    <Compile Include="dto\receipt\BatchReportDto.cs" />
+    <Compile Include="dto\report\StatMonthDto.cs" />
+    <Compile Include="dto\report\StatRealDto.cs" />
+    <Compile Include="dto\stat\StatStockDetailDto.cs" />
+    <Compile Include="dto\sys\DictClassDto.cs" />
+    <Compile Include="dto\HistoryDto.cs" />
+    <Compile Include="dto\LocDto.cs" />
+    <Compile Include="dto\PlcBanch.cs" />
+    <Compile Include="dto\PriorityDto.cs" />
+    <Compile Include="dto\receipt\ReceiptDto.cs" />
+    <Compile Include="dto\StockInfogqDto.cs" />
+    <Compile Include="dto\sys\DictRes.cs" />
+    <Compile Include="dto\sys\LogDto.cs" />
+    <Compile Include="dto\sys\RoleDto.cs" />
+    <Compile Include="dto\sys\MenuDto.cs" />
+    <Compile Include="dto\sys\DictsDto.cs" />
+    <Compile Include="dto\MaterialClassification.cs" />
+    <Compile Include="dto\sys\SysCodeDto.cs" />
+    <Compile Include="dto\sys\UserDto.cs" />
+    <Compile Include="dto\sys\UserRolesDto.cs" />
+    <Compile Include="dto\core\CoreStockDto.cs" />
+    <Compile Include="dto\core\CoreTaskDto.cs" />
+    <Compile Include="dto\whso\WhSoOutDto.cs" />
+    <Compile Include="dto\wh\BatchDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="wms\core\CoreClassify.cs" />
+    <Compile Include="wms\core\CoreClassifyArea.cs" />
+    <Compile Include="wms\core\CoreItem.cs" />
+    <Compile Include="wms\core\CoreStock.cs" />
+    <Compile Include="wms\core\CoreStockDetail.cs" />
+    <Compile Include="wms\core\CoreCorpItem.cs" />
+    <Compile Include="wms\core\CoreTaskParam.cs" />
+    <Compile Include="wms\core\CoreTask.cs" />
+    <Compile Include="wms\core\CoreSupplierCorp.cs" />
+    <Compile Include="wms\core\CoreWh.cs" />
+    <Compile Include="wms\core\CoreWhArea.cs" />
+    <Compile Include="wms\core\CoreWhLoc.cs" />
+    <Compile Include="wms\middle\CoreCodeInfo.cs" />
+    <Compile Include="wms\middle\Export.cs" />
+    <Compile Include="wms\purchase\WhSolnDetail.cs" />
+    <Compile Include="wms\purchase\WhSoIn.cs" />
+    <Compile Include="wms\purchase\WhSoOutProduce.cs" />
+    <Compile Include="wms\purchase\WhSoOutProduceDetail.cs" />
+    <Compile Include="wms\receipt\AbsReceipt.cs" />
+    <Compile Include="wms\receipt\AbsReceiptDetail.cs" />
+    <Compile Include="wms\receipt\WhReceiptAll.cs" />
+    <Compile Include="wms\receipt\WhReceiptOut.cs" />
+    <Compile Include="wms\receipt\WhReceiptInDetail.cs" />
+    <Compile Include="wms\receipt\WhReceiptIn.cs" />
+    <Compile Include="wms\receipt\WhReceiptOutDetail.cs" />
+    <Compile Include="wms\receipt\WhReceiptPk.cs" />
+    <Compile Include="wms\receipt\WhReceiptPkDetail.cs" />
+    <Compile Include="wms\report\StatMonth.cs" />
+    <Compile Include="wms\report\StatReal.cs" />
+    <Compile Include="wms\so\WhSoOut.cs" />
+    <Compile Include="wms\so\WhSoOutDetail.cs" />
+    <Compile Include="wms\so\WhSoOutReceipt.cs" />
+    <Compile Include="wms\stat\StatStockDetail.cs" />
+    <Compile Include="wms\sync\LogCodeDetail.cs" />
+    <Compile Include="wms\sys\SysCode.cs" />
+    <Compile Include="wms\sys\SysDictQuery.cs" />
+    <Compile Include="wms\sys\SysDictClass.cs" />
+    <Compile Include="wms\sys\SysMenu.cs" />
+    <Compile Include="wms\sys\SysMenuRole.cs" />
+    <Compile Include="wms\sys\SysRole.cs" />
+    <Compile Include="wms\sys\SysRoleMenu.cs" />
+    <Compile Include="wms\sys\SysDict.cs" />
+    <Compile Include="wms\sys\SysUser.cs" />
+    <Compile Include="wms\sys\SysUserQuery.cs" />
+    <Compile Include="wms\sys\SysUserRole.cs" />
+    <Compile Include="wms\sync\InfBatch.cs" />
+    <Compile Include="dto\Param\WhAuditParam.cs" />
+    <Compile Include="wms\wh\WhAudit.cs" />
+    <Compile Include="wms\wh\WhBatch.cs" />
+    <Compile Include="wms\WmsEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\GK.WMS.Entity.csproj.CopyComplete" />
+    <None Include="obj\Debug\GK.WMS.Entity.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\GK.WMS.Entity.csprojAssemblyReference.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\GK.WMS.Entity.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\GK.WMS.Entity.dll" />
+    <Content Include="obj\Debug\GK.WMS.Entity.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dto\anon\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\GK.Common\GK.Common.csproj">
+      <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
+      <Name>GK.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

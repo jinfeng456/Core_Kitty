@@ -1,4 +1,4 @@
-﻿using GK.DAL.inter;
+﻿using Common.DAL.inter;
 using System;
 using System.Collections.Generic;
 using System.Linq;

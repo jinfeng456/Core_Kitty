@@ -5,9 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CMNetLib.ModBus;
-using GK.WCS.Common.Util;
 using GK.WCS.Carrier;
-using GK.WCS.Common;
+using WCS.Common;
 
 namespace GK.WCS.MechineHand
 {

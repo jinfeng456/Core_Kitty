@@ -1,6 +1,5 @@
-﻿using GK.Common.dto;
-using GK.DAL.inter;
-using GK.WCS.Entity;
+﻿using Common.DAL.inter;
+using Common.dto;
 using System;
 using System.Collections.Generic;
 using System.Data;

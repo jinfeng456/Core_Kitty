@@ -45,17 +45,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine.WCS", "..\..\common\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine.WMS", "..\..\common\Engine.WMS\Engine.WMS.csproj", "{221A2A2D-25DB-45AE-A156-6EFB97506111}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\common\GK.Common\Common.csproj", "{6903C1B8-6B86-4B1D-89EF-EBD5B8F64D8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\common\Common\Common.csproj", "{6903C1B8-6B86-4B1D-89EF-EBD5B8F64D8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo", "..\..\common\GK.Mongo\Mongo.csproj", "{69214443-15AD-4662-A442-934A25AF416A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo", "..\..\common\Mongo\Mongo.csproj", "{69214443-15AD-4662-A442-934A25AF416A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Common", "..\..\common\GK.WCS.Common\WCS.Common.csproj", "{C345F915-22EA-454E-8552-C4CB4C67B7B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Common", "..\..\common\WCS.Common\WCS.Common.csproj", "{C345F915-22EA-454E-8552-C4CB4C67B7B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Crane", "..\..\common\GK.WCS.Crane\WCS.Crane.csproj", "{6B107E66-510C-40D8-9E52-F0DBBD86069E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Crane", "..\..\common\WCS.Crane\WCS.Crane.csproj", "{6B107E66-510C-40D8-9E52-F0DBBD86069E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.DAL", "..\..\common\GK.WCS.DALBase\WCS.DAL.csproj", "{FE84B517-DAD9-4C32-9949-EB22FAF6511C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.DAL", "..\..\common\WCS.DAL\WCS.DAL.csproj", "{FE84B517-DAD9-4C32-9949-EB22FAF6511C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Entity", "..\..\common\GK.WCS.Entity\WCS.Entity.csproj", "{AF5CFA9B-0662-4AB4-AE9B-12F58816235C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCS.Entity", "..\..\common\WCS.Entity\WCS.Entity.csproj", "{AF5CFA9B-0662-4AB4-AE9B-12F58816235C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMS.DAL", "..\..\common\WMS.DAL\WMS.DAL.csproj", "{28EB467E-B8EC-45CF-8C01-3FE44C96D9F9}"
 EndProject

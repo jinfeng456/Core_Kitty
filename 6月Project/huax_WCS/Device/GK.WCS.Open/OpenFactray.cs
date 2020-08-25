@@ -1,9 +1,8 @@
 ﻿
 using ConsoleApplication2.HttpServer;
 using GK.Engine.WMS.wms;
-using GK.WCS.Common;
-
 using System.ServiceModel;
+using WCS.Common;
 
 namespace GK.WCS.Open  {
 

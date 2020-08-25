@@ -1,21 +1,22 @@
 ﻿using System;
-using GK.WCS.Common.task;
 using GK.WCS.Carrier;
 using GK.WCS.Scan;
-using GK.WCS.Common.core.dto;
-using GK.WCS.Common;
 using GK.WCS.DAL;
-using GK.WCS.Entity;
-using GK.WCS.Carrier.dto;
 using log4net.Repository.Hierarchy;
 using System.Collections.Generic;
 using GK.Engine.WMS.wms;
 using System.Threading.Tasks;
 using GK.WMS.Entity;
 using GK.WMS.DAL;
-using GK.WCS.Carrier.enumerate;
-using static GK.WCS.Carrier.enumerate.CarrierPoint;
 using System.Threading;
+using WCS.Carrier.dto;
+using WCS.DAL;
+using WMS.DAL;
+using WCS.Common.task;
+using WCS.Carrier.enumerate;
+using WCS.Entity;
+using WCS.Common;
+using WCS.Carrier;
 
 namespace GK.WCS.Controller {
     public class CarrierAllocateJobTask3 : CarrierAllocateJobTask {
@@ -24,7 +25,6 @@ namespace GK.WCS.Controller {
         ITaskCraneServer taskCraneServer = ServerFactray.getServer<ITaskCraneServer>();
         ITaskCompleteServer taskCompleteServer = ServerFactray.getServer<ITaskCompleteServer>();
         ITaskServer taskServer = WMSDalFactray.getDal<ITaskServer>();
-        GK.WCS.DAL.ISequenceIdServer sequenceIdServer = ServerFactray.getServer<GK.WCS.DAL.ISequenceIdServer>();
 
         CarrierSynchro carrierSynchro;
         Wms2WcsTask wms2WcsTask;

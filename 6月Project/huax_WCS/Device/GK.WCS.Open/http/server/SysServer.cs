@@ -1,9 +1,9 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using GK.WCS.Common;
-using GK.WCS.Common.dto;
-using GK.WCS.Common.task;
+using WCS.Common;
+using WCS.Common.dto;
+using WCS.Common.task;
 
 namespace GK.WCS.Open.http.server {
    public class SysServer:BaseServer {

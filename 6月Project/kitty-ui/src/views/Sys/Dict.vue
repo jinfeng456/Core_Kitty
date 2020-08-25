@@ -9,7 +9,7 @@
 					<el-form-item  prop="dictClassId">
 					<el-select v-model="filters.dictClassId"  placeholder="请选择字典类型" style="width: 100%;"  clearable> 
 							<el-option v-for="item in dictypes" :key="item.id"
-								:label="item.dictRemark" :value="item.id" >
+								:label="item.dictRemark+item.dictClassName" :value="item.id" >
 							</el-option>
 					</el-select>
 					</el-form-item>	

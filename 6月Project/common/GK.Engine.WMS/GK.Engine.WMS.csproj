@@ -77,22 +77,52 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< .mine
     <ProjectReference Include="..\..\..\common\GK.Common\GK.Common.csproj">
       <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
       <Name>GK.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\common\GK.Mongo\GK.Mongo.csproj">
+||||||| .r1169
+    <ProjectReference Include="..\..\..\common\Engine.WMS\Engine.WMS.csproj">
+      <Project>{221a2a2d-25db-45ae-a156-6efb97506111}</Project>
+      <Name>Engine.WMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\GK.Common\Common.csproj">
+      <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\GK.Mongo\Mongo.csproj">
+=======
+    <ProjectReference Include="..\..\..\common\Common\Common.csproj">
+      <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\Engine.WMS\Engine.WMS.csproj">
+      <Project>{221a2a2d-25db-45ae-a156-6efb97506111}</Project>
+      <Name>Engine.WMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\Mongo\Mongo.csproj">
+>>>>>>> .r1198
       <Project>{69214443-15ad-4662-a442-934a25af416a}</Project>
       <Name>GK.Mongo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\common\GK.WMS.DAL\GK.WMS.DAL.csproj">
-      <Project>{5d6149de-13f5-40ee-91dd-8810464617d6}</Project>
-      <Name>GK.WMS.DAL</Name>
+<<<<<<< .mine
+||||||| .r1169
+    <ProjectReference Include="..\..\..\common\WMS.Entity\WMS.Entity.csproj">
+      <Project>{b2821d57-8ca8-4781-90e2-2c0b643d3ccb}</Project>
+      <Name>WMS.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\common\GK.WMS.Entity\GK.WMS.Entity.csproj">
-      <Project>{c7e8e16e-ecdb-4e86-b90e-46690b15ea7e}</Project>
-      <Name>GK.WMS.Entity</Name>
+=======
+    <ProjectReference Include="..\..\..\common\WMS.DAL\WMS.DAL.csproj">
+      <Project>{28eb467e-b8ec-45cf-8c01-3fe44c96d9f9}</Project>
+      <Name>WMS.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\common\WMS.Entity\WMS.Entity.csproj">
+      <Project>{b2821d57-8ca8-4781-90e2-2c0b643d3ccb}</Project>
+      <Name>WMS.Entity</Name>
+    </ProjectReference>
+>>>>>>> .r1198
     <ProjectReference Include="..\GK.FMXT.DAL\GK.Fmxt.DAL.csproj">
       <Project>{cad90649-789a-4385-84a4-63bdd9f67b0e}</Project>
       <Name>GK.Fmxt.DAL</Name>
@@ -100,6 +130,14 @@
     <ProjectReference Include="..\GK.FMXT.DAL\GK.Fmxt.DAL.csproj">
       <Project>{de872abf-72e0-4cc5-8d3e-4e77b3df9715}</Project>
       <Name>GK.Fmxt.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GK.WMS.DAL\GK.WMS.DAL.csproj">
+      <Project>{5d6149de-13f5-40ee-91dd-8810464617d6}</Project>
+      <Name>GK.WMS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GK.WMS.Entity\GK.WMS.Entity.csproj">
+      <Project>{c7e8e16e-ecdb-4e86-b90e-46690b15ea7e}</Project>
+      <Name>GK.WMS.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

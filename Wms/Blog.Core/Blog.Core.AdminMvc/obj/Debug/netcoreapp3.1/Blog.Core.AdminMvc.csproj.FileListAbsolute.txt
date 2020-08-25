@@ -37,3 +37,4 @@ E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.dll
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.pdb
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.genruntimeconfig.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.AdminMvc\obj\Debug\netcoreapp3.1\Blog.Core.AdminMvc.csprojAssemblyReference.cache

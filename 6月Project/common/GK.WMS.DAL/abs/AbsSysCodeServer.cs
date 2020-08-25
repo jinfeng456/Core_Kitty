@@ -1,15 +1,16 @@
 using System.Text;
 using Dapper;
-using GK.Common;
 using System.Data.SqlClient;
 using HY.WCS.DAL.dto;
 using System.Configuration;
 using System.ComponentModel;
 using WebApi.util;
 using GK.WMS.Entity;
-using GK.Common.dto;
 using System.Collections.Generic;
 using System.Linq;
+using WMS.DAL;
+using WMS.Entity;
+using Common.dto;
 
 namespace GK.WMS.DAL.abs
 {

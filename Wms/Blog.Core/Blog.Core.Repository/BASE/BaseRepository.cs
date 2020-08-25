@@ -452,13 +452,21 @@ namespace Blog.Core.Repository.Base
         {
             RefAsync<int> totalCount = 0;
             List<TResult> list;
-            if (whereLambda == null)
+            //这里处理查询全部的逻辑 intPageSize=-1 时候查询全部
+            if (intPageSize != -1)
             {
-                list = await _db.Queryable(joinExpression).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+                if (whereLambda == null)
+                {
+                    list = await _db.Queryable(joinExpression).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+                }
+                else
+                {
+                    list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+                }
             }
             else
             {
-                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToListAsync(); 
             }
             int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
             return new PageModel<TResult>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
@@ -471,13 +479,21 @@ namespace Blog.Core.Repository.Base
         {
             RefAsync<int> totalCount = 0;
             List<TResult> list;
-            if (whereLambda == null)
+            //这里处理查询全部的逻辑 intPageSize=-1 时候查询全部
+            if (intPageSize != -1)
             {
-                list = await _db.Queryable(joinExpression).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+                if (whereLambda == null)
+                {
+                    list = await _db.Queryable(joinExpression).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+                }
+                else
+                {
+                    list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+                }
             }
             else
             {
-                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToPageListAsync(intPageIndex, intPageSize, totalCount);
+                list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToListAsync(); 
             }
             int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
             return new PageModel<TResult>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };

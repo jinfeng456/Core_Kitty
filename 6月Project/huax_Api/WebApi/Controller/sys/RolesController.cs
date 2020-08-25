@@ -11,6 +11,7 @@ using System.Data;
 using GK.WMS.Entity;
 using GK.WMS.DAL;
 using HY.WCS.DAL.dto;
+using WMS.DAL;
 
 namespace WebApi
 {

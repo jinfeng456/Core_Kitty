@@ -4,6 +4,8 @@ using HY.WCS.DAL.dto;
 using System.Collections.Generic;
 using System.Web.Http;
 using Web.Authorize;
+using WMS.DAL;
+
 namespace WebApi
 {	
 	/// <summary>

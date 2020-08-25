@@ -1,8 +1,6 @@
 ﻿using CMFrameWork.Common;
 using CMNetLib.Robots.Crane;
 using GK.WCS.Client.Station;
-using GK.WCS.Crane;
-using GK.WCS.Crane.enumerate;
 using HY.WCS.Client.Station;
 using System;
 using System.Collections.Generic;
@@ -12,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WCS.Crane;
 
 namespace HY.WCS.Client.Frm.Device
 {
@@ -46,7 +45,7 @@ namespace HY.WCS.Client.Frm.Device
         {
             try
             {
-                GkDYGCraneStatus craneData = HttpCraneUtil.loadData(CraneId);
+                GkCraneStatus craneData = HttpCraneUtil.loadData(CraneId);
                 if (craneData == null)
                 {
                     return;
@@ -61,7 +60,7 @@ namespace HY.WCS.Client.Frm.Device
             }
         }
 
-        private void ShowStatus(GkDYGCraneStatus craneData)
+        private void ShowStatus(GkCraneStatus craneData)
         {
             if (craneData.craneState == 1)
             {
@@ -114,7 +113,7 @@ namespace HY.WCS.Client.Frm.Device
             LabMsg6.Text = list[3].ToString();
         }
 
-        private void ShowInfo(GkDYGCraneStatus craneData, int craneId)
+        private void ShowInfo(GkCraneStatus craneData, int craneId)
         {
             TxtTaskNo.Text = craneData.finishTaskNo.ToString();
             TxtTaskStatus.Text = craneData.finishFlag.ToString();

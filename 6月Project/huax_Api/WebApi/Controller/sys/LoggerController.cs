@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Web;
 using System.Web.Http;
-
 using Web.Authorize;
-
 using System.Collections.Generic;
-using GK.Common.dto;
-using GK.Mongon.DAL;
-using GK.Mongon;
 using HY.WMS.DAL.dto;
-using GK.Common.entity;
-using GK.Mongo.Dto;
+using Common.entity;
+using Common.dto;
+using Mongo.Dto;
+using Mongon;
+using Mongon.DAL;
 
 namespace WebApi
 {

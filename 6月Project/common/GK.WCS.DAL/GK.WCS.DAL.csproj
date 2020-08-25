@@ -37,18 +37,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GK.Common">
-      <HintPath>..\UsingDlls\GK.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="GK.WCS.Common">
-      <HintPath>..\UsingDlls\GK.WCS.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="GK.WCS.Crane">
-      <HintPath>..\UsingDlls\GK.WCS.Crane.dll</HintPath>
-    </Reference>
-    <Reference Include="GK.WCS.DALBase">
-      <HintPath>..\UsingDlls\GK.WCS.DALBase.dll</HintPath>
-    </Reference>
     <Reference Include="Oracle.DataAccess">
       <HintPath>..\UsingDlls\Oracle.DataAccess.dll</HintPath>
     </Reference>
@@ -63,52 +51,57 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="abs\AbsDeviceInOrNotServer.cs" />
-    <Compile Include="abs\AbsSequenceIdServer.cs" />
-    <Compile Include="abs\AbsTaskCarrierServer.cs" />
     <Compile Include="abs\AbsPhysicalLocationServer.cs" />
     <Compile Include="abs\AbsTaskCompleteServer.cs" />
-    <Compile Include="abs\AbsTaskCraneServer.cs" />
     <Compile Include="abs\AbsTaskMechineStatus.cs" />
     <Compile Include="abs\AbsTaskRelyServer.cs" />
-    <Compile Include="abs\AbsWCSBaseServer.cs" />
     <Compile Include="inter\IDeviceInOrOutServer.cs" />
     <Compile Include="inter\IRTConfigServer.cs" />
-    <Compile Include="inter\ISequenceIdServer.cs" />
-    <Compile Include="inter\ITaskCraneServer.cs" />
     <Compile Include="inter\IPhysicalLocationServer.cs" />
     <Compile Include="inter\INoTaskControlServer.cs" />
     <Compile Include="inter\IMechineStatusServer.cs" />
-    <Compile Include="inter\ITaskCarrierServer.cs" />
     <Compile Include="inter\ITaskCompleteServer.cs" />
     <Compile Include="inter\ITaskRelyServer.cs" />
-    <Compile Include="oracle\SequenceIdServer.cs" />
     <Compile Include="oracle\TaskCompleteServer.cs" />
-    <Compile Include="oracle\TaskCraneServer.cs" />
-    <Compile Include="oracle\TaskCarrierServer.cs" />
     <Compile Include="oracle\PhysicalLocationServer.cs" />
     <Compile Include="oracle\TaskRelyServer.cs" />
     <Compile Include="sqlserver\PhysicalLocationServer.cs" />
-    <Compile Include="sqlserver\SequenceIdServer.cs" />
-    <Compile Include="sqlserver\TaskCarrierServer.cs" />
     <Compile Include="sqlserver\TaskCompleteServer.cs" />
-    <Compile Include="sqlserver\TaskCraneServer.cs" />
     <Compile Include="sqlserver\MechineStatusServer.cs" />
     <Compile Include="sqlserver\TaskRelyServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< .mine
     <ProjectReference Include="..\..\..\common\GK.WCS.Entity\GK.WCS.Entity.csproj">
+||||||| .r1169
+    <ProjectReference Include="..\..\..\common\GK.WCS.Entity\WCS.Entity.csproj">
+=======
+    <None Include="nuget.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\common\Common\Common.csproj">
+      <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\WCS.DAL\WCS.DAL.csproj">
+      <Project>{fe84b517-dad9-4c32-9949-eb22faf6511c}</Project>
+      <Name>WCS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\common\WCS.Entity\WCS.Entity.csproj">
+>>>>>>> .r1198
       <Project>{af5cfa9b-0662-4ab4-ae9b-12f58816235c}</Project>
       <Name>GK.WCS.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GK.WMS.Entity\GK.WMS.Entity.csproj">
-      <Project>{C7E8E16E-ECDB-4E86-B90E-46690B15EA7E}</Project>
-      <Name>GK.WMS.Entity</Name>
+    <ProjectReference Include="..\..\..\common\WMS.DAL\WMS.DAL.csproj">
+      <Project>{28eb467e-b8ec-45cf-8c01-3fe44c96d9f9}</Project>
+      <Name>WMS.DAL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="nuget.config" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\..\common\WMS.Entity\WMS.Entity.csproj">
+      <Project>{b2821d57-8ca8-4781-90e2-2c0b643d3ccb}</Project>
+      <Name>WMS.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

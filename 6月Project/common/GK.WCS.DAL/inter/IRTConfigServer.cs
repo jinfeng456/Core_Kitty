@@ -1,5 +1,4 @@
-﻿using GK.WCS.Entity;
-using System;
+﻿using System;
 namespace GK.WCS.DAL
 {
     public interface IRTConfigServer

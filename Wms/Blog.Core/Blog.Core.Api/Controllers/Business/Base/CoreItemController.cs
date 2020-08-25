@@ -39,18 +39,35 @@ namespace Blog.Core.Controllers
         [HttpPost, Route("FindPage")]
         public async Task<BaseResult> FindPage([FromBody]CoreItemDto dto)
         {
-            Expression<Func<CoreItem, CoreClassify, bool>> whereExpression = null;
-            if (!string.IsNullOrEmpty(dto.name) && !string.IsNullOrWhiteSpace(dto.name))
+            Expression<Func<CoreItem, CoreClassify, SysDict, bool>> whereExpression = (ci, cc, sd) => true;
+            if (dto.name.IsNotEmptyOrNull())
             {
-                whereExpression = (ci, cc) => (ci.name != null && ci.name.Contains(dto.name));
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.name != null && ci.name.Contains(dto.name));
             }
-            var data = await _coreItemServices.QueryMuchPage<CoreItem, CoreClassify, CoreItemDto>(
-               (ci, cc) => new object[] {
-                    JoinType.Left, ci.classifyId == cc.id
+            if (dto.modelSpecs.IsNotEmptyOrNull())
+            {
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.modelSpecs != null && ci.modelSpecs.Contains(dto.modelSpecs));
+            }
+            if (dto.classifyId > 0)
+            {
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.classifyId != null && ci.classifyId == dto.classifyId);
+            }
+            if (dto.coreItemType > 0)
+            {
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.coreItemType != null && ci.coreItemType == dto.coreItemType);
+            }
+            if (dto.code.IsNotEmptyOrNull())
+            {
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.code != null && ci.code.Contains(dto.code));
+            }
+            var data = await _coreItemServices.QueryMuchPage<CoreItem, CoreClassify, SysDict, CoreItemDto>(
+               (ci, cc, sd) => new object[] {
+                    JoinType.Left, ci.classifyId == cc.id,
+                    JoinType.Left, ci.coreItemType == sd.value && sd.dtype=="coreItemType"
                },
-               (ci, cc) => new CoreItemDto
+               (ci, cc, sd) => new CoreItemDto
                {
-                   id =ci.id,
+                   id = ci.id,
                    name = ci.name,
                    code = ci.code,
                    classifyId = ci.classifyId,
@@ -58,12 +75,15 @@ namespace Blog.Core.Controllers
                    coreItemType = ci.coreItemType,
                    modelSpecs = ci.modelSpecs,
                    packageSpecs = ci.packageSpecs,
-                   info = cc.info
+                   info = cc.info,
+                   classifyName = cc.name,
+                   coreItemTypeName = sd.label
                },
                whereExpression, dto.pageNum, dto.pageSize
                );
             return BaseResult.Ok(data);
         }
+
 
         [HttpPost, Route("findAll")]
         public async Task<BaseResult> FindAll()

@@ -1,15 +1,16 @@
 ﻿using CMFrameWork.Common;
 using CMNetLib.Robots.Crane;
 using GK.WCS.Client.Station;
-using GK.WCS.Crane;
+
 using GK.WCS.DAL;
-using GK.WCS.Entity;
 using HY.WCS.Client.Station;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using WCS.Crane;
+using WCS.DAL;
 
 namespace GK.WCS.Client.Device
 {
@@ -65,7 +66,7 @@ namespace GK.WCS.Client.Device
             try
             {
                 lblCraneName.Text = cId + @"号堆垛机";
-                GkDYGCraneStatus craneData = HttpCraneUtil.loadData(cId);
+                GkCraneStatus craneData = HttpCraneUtil.loadData(cId);
                 List<string> list = HttpCraneUtil.GetErrorList(cId);
                 this.Invoke(new Action(() =>
                 {
@@ -93,7 +94,7 @@ namespace GK.WCS.Client.Device
 
 
 
-        private void SetUiValue(GkDYGCraneStatus craneData)
+        private void SetUiValue(GkCraneStatus craneData)
         {
             if (craneData==null)
             {

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using CMNetLib.Robots.CarrierChain;
-using GK.WCS.Common;
-using GK.WCS.Common.task;
+using WCS.Common;
+using WCS.Common.task;
 
 namespace GK.WCS.MechineHand
 {

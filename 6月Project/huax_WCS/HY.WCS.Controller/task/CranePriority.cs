@@ -2,7 +2,7 @@
 
 using GK.Engine.WMS;
 using GK.Engine.WMS.wms;
-using GK.WCS.Common;
+using WCS.Common;
 //using GK.Common.Engine;
 
 namespace GK.WCS.Controller {

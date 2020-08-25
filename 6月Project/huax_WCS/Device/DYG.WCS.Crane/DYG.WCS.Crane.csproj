@@ -8,8 +8,8 @@
     <ProjectGuid>{8034FE39-57C3-4AB4-ADA5-1570F529BCC4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GK.WCS.Crane</RootNamespace>
-    <AssemblyName>GK.WCS.Crane</AssemblyName>
+    <RootNamespace>DYG.WCS.Crane</RootNamespace>
+    <AssemblyName>DYG.WCS.Crane</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -47,25 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dto\GkDYGCraneStatus.cs" />
+    <Compile Include="CraneConnectReal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="synchro\CraneSynchroDYG.cs" />
     <Compile Include="synchro\CraneSynchroReal.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\common\GK.Common\Common.csproj">
+    <ProjectReference Include="..\..\..\..\common\Common\Common.csproj">
       <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\common\GK.WCS.Common\WCS.Common.csproj">
+    <ProjectReference Include="..\..\..\..\common\WCS.Common\WCS.Common.csproj">
       <Project>{c345f915-22ea-454e-8552-c4cb4c67b7b1}</Project>
       <Name>WCS.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\common\GK.WCS.Crane\WCS.Crane.csproj">
+    <ProjectReference Include="..\..\..\..\common\WCS.Crane\WCS.Crane.csproj">
       <Project>{6b107e66-510c-40d8-9e52-f0dbbd86069e}</Project>
       <Name>WCS.Crane</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\common\GK.WCS.Entity\WCS.Entity.csproj">
+    <ProjectReference Include="..\..\..\..\common\WCS.Entity\WCS.Entity.csproj">
       <Project>{af5cfa9b-0662-4ab4-ae9b-12f58816235c}</Project>
       <Name>WCS.Entity</Name>
     </ProjectReference>

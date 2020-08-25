@@ -5,13 +5,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using Dapper;
-
 using static Dapper.SqlMapper;
-using GK.Common.dto;
-using GK.Common;
-using GK.DAL.inter;
-using GK.DAL.dialect;
-using GK.Common;
+using Common.DAL.inter;
+using Common.DAL.abs;
+using Common;
+using WMS.DAL;
 
 namespace GK.WMS.DAL.abs
 {//

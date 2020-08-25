@@ -1,6 +1,5 @@
-﻿using Dapper;
-using GK.Common.dto;
-using GK.DAL.inter;
+﻿using Common.dto;
+using Dapper;
 using GK.WMS.DAL.abs;
 using GK.WMS.Entity;
 using HY.WCS.DAL.dto;
@@ -9,6 +8,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using WMS.DAL;
+using WMS.Entity;
 
 namespace GK.WMS.DAL
 {

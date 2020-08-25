@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using Web.Authorize;
 using WebApi.util;
+using WMS.DAL;
 
 namespace WebApi
 {	

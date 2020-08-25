@@ -1,10 +1,11 @@
 ﻿using Dapper;
 using GK.WCS.DAL;
-using GK.WCS.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WCS.DAL.abs;
+using WCS.Entity;
 
 namespace GK.WCS.DAL.abs
 {

@@ -2,13 +2,11 @@
 using System.Windows.Forms;
 using CMFrameWork.Common;
 using System.Collections.Generic;
-using GK.WCS.Common.Util;
-using GK.WCS.Common;
 using GK.WCS.DAL;
-using GK.WCS.Entity;
 using GK.WCS.Carrier;
 using GK.WCS.Client.Station;
-
+using WCS.Entity;
+using WCS.Common;
 
 namespace GK.WCS.Client.Device {
     public partial class TaskViewFrm: Form

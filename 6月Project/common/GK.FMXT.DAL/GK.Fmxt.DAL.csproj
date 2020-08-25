@@ -72,11 +72,23 @@
     <Compile Include="sqlserver\MiddleServer.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< .mine
     <ProjectReference Include="..\..\..\common\GK.Common\GK.Common.csproj">
+||||||| .r1169
+    <ProjectReference Include="..\..\..\common\GK.Common\Common.csproj">
+=======
+    <ProjectReference Include="..\..\..\common\Common\Common.csproj">
+>>>>>>> .r1198
       <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
       <Name>GK.Common</Name>
     </ProjectReference>
+<<<<<<< .mine
     <ProjectReference Include="..\..\..\common\GK.Mongo\GK.Mongo.csproj">
+||||||| .r1169
+    <ProjectReference Include="..\..\..\common\GK.Mongo\Mongo.csproj">
+=======
+    <ProjectReference Include="..\..\..\common\Mongo\Mongo.csproj">
+>>>>>>> .r1198
       <Project>{69214443-15ad-4662-a442-934a25af416a}</Project>
       <Name>GK.Mongo</Name>
     </ProjectReference>

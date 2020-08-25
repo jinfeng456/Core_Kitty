@@ -1,5 +1,5 @@
-﻿using GK.Common.entity;
-using GK.Mongon.DAL;
+﻿using Common.entity;
+using Mongon.DAL;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

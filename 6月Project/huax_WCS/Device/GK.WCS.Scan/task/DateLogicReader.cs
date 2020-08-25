@@ -1,8 +1,7 @@
 ﻿using System;
-
-using GK.WCS.Common;
 using System.Net.Sockets;
 using System.Text;
+using WCS.Common;
 
 namespace GK.WCS.Scan{
     //扫码枪读取

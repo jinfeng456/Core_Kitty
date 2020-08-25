@@ -41,18 +41,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\UsingDlls\CMNetLib.dll</HintPath>
     </Reference>
-    <Reference Include="GK.Common">
-      <HintPath>..\..\..\common\UsingDlls\GK.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="GK.WCS.Common">
-      <HintPath>..\..\..\common\UsingDlls\GK.WCS.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="GK.WCS.Crane">
-      <HintPath>..\..\..\common\UsingDlls\GK.WCS.Crane.dll</HintPath>
-    </Reference>
-    <Reference Include="GK.WCS.DALBase">
-      <HintPath>..\..\..\common\UsingDlls\GK.WCS.DALBase.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\common\UsingDlls\Newtonsoft.Json.dll</HintPath>
@@ -96,11 +84,31 @@
     <Folder Include="http\dto\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\common\GK.WCS.DALBase\WCS.DAL.csproj">
+    <ProjectReference Include="..\..\..\..\common\Common\Common.csproj">
+      <Project>{6903c1b8-6b86-4b1d-89ef-ebd5b8f64d8f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\Mongo\Mongo.csproj">
+      <Project>{69214443-15ad-4662-a442-934a25af416a}</Project>
+      <Name>Mongo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\WCS.Carrier\WCS.Carrier.csproj">
+      <Project>{982da469-d188-4e97-b64f-02d95c3f3ef6}</Project>
+      <Name>WCS.Carrier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\WCS.Common\WCS.Common.csproj">
+      <Project>{c345f915-22ea-454e-8552-c4cb4c67b7b1}</Project>
+      <Name>WCS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\WCS.Crane\WCS.Crane.csproj">
+      <Project>{6b107e66-510c-40d8-9e52-f0dbbd86069e}</Project>
+      <Name>WCS.Crane</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\common\WCS.DAL\WCS.DAL.csproj">
       <Project>{fe84b517-dad9-4c32-9949-eb22faf6511c}</Project>
       <Name>WCS.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\common\GK.WCS.Entity\WCS.Entity.csproj">
+    <ProjectReference Include="..\..\..\..\common\WCS.Entity\WCS.Entity.csproj">
       <Project>{af5cfa9b-0662-4ab4-ae9b-12f58816235c}</Project>
       <Name>WCS.Entity</Name>
     </ProjectReference>

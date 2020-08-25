@@ -1,10 +1,8 @@
-﻿
-
-
-using GK.WCS.Carrier;
-using GK.WCS.Carrier.dto;
-using GK.WCS.Common.task;
+﻿using GK.WCS.Carrier;
 using System.Collections.Generic;
+using WCS.Carrier;
+using WCS.Carrier.dto;
+using WCS.Common.task;
 
 namespace GK.WCS.Carrier
 {
@@ -39,11 +37,11 @@ namespace GK.WCS.Carrier
         protected CarrierConnect connect2 = null;
         protected CarrierConnect connect3 = null;
 
-        public CarrierSynchro2(int plcId)
+        public CarrierSynchro2()
         {
 
-            connect2 = TaskPool.get<CarrierConnect>(plcId);
-            connect3 = TaskPool.get<CarrierConnect>(plcId);
+            connect2 = TaskPool.get<CarrierConnect>(2);
+            connect3 = TaskPool.get<CarrierConnect>(3);
             time = 300;
         }
 

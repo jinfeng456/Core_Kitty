@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Security;
 
 using Web.Authorize;
+using WMS.DAL;
 
 namespace WebApi
 {

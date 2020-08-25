@@ -1,12 +1,12 @@
 ﻿
 using System.Collections.Generic;
-
-using GK.WCS.Entity;
-using GK.WCS.Common;
 using GK.WCS.Carrier;
-using GK.WCS.Common.task;
-using GK.WCS.Carrier.dto;
-using GK.WCS.Crane;
+using WCS.Carrier;
+using WCS.Carrier.dto;
+using WCS.Common;
+using WCS.Common.task;
+using WCS.Crane;
+using WCS.Entity;
 
 namespace GK.WCS.Controller
 {
@@ -17,6 +17,8 @@ namespace GK.WCS.Controller
 
         protected CarrierSynchro carrierSynchro = null;
         private int workedPoint = 1;
+        CarrierDirection carrierDirectionL = null;
+        CarrierDirection carrierDirectionR = null;
         public CraneSimpleForkTask(int id) : base(id)
         {
 
@@ -25,6 +27,8 @@ namespace GK.WCS.Controller
         {
             base.onlyOneTime();
             //carrierSynchro = (CarrierSynchro)TaskPool.get<CarrierSynchro>();
+            carrierDirectionL = TaskPool.get<CarrierDirectionL>();
+            carrierDirectionR = TaskPool.get<CarrierDirectionR>();
         }
         public override TaskCrane analyseTaskModel(GkCraneStatusBase gcs)
         {
@@ -87,7 +91,7 @@ namespace GK.WCS.Controller
                     isin = true;
                 }
             }
-            if (CarrierDirection.dirL == 1)
+            if (carrierDirectionL.dir == 1)
             {
                 int point = inOutPointL();
                 CarrierSignalStatus ssIn1 = carrierSynchro.getSignalStatus(point);
@@ -97,7 +101,7 @@ namespace GK.WCS.Controller
                 }
             }
 
-            if (CarrierDirection.dirR == 1)
+            if (carrierDirectionR.dir == 1)
             {
                 int point = inOutPointR();
                 CarrierSignalStatus ssIn1 = carrierSynchro.getSignalStatus(point);
@@ -132,12 +136,12 @@ namespace GK.WCS.Controller
 
                     int p = ft.toId;
 
-                    if (p == inOutPointR() && CarrierDirection.dirR != 2)
+                    if (p == inOutPointR() && carrierDirectionR.dir != 2)
                     {
                         removeList.Add(ft);
                         continue;
                     }
-                    if (p == inOutPointL() && CarrierDirection.dirL != 2)
+                    if (p == inOutPointL() && carrierDirectionL.dir != 2)
                     {
                         removeList.Add(ft);
                         continue;
