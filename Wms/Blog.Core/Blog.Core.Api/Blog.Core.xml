@@ -60,7 +60,7 @@
             <summary>
             导入物料
             </summary>
-            <param name="CoreItem"></param>
+            <param name="coreItemList"></param>
             <returns></returns>
         </member>
         <member name="M:Blog.Core.Controllers.DbFirstController.#ctor(SqlSugar.ISqlSugarClient,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">

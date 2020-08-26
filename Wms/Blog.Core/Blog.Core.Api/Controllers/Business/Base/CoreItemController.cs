@@ -156,7 +156,7 @@ namespace Blog.Core.Controllers
         /// <summary>
         /// 导入物料
         /// </summary>
-        /// <param name="CoreItem"></param>
+        /// <param name="coreItemList"></param>
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("ImportList")]
