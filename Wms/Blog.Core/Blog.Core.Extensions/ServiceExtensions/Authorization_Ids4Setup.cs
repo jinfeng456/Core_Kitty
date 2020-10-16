@@ -40,7 +40,7 @@ namespace Blog.Core.Extensions
 
             #region 参数
             //读取配置文件
-            var symmetricKeyAsBase64 = AppSecretConfig.Audience_Secret_String;
+            var symmetricKeyAsBase64 = AppSecretConfig.InitAudience_Secret();
             var keyByteArray = Encoding.ASCII.GetBytes(symmetricKeyAsBase64);
             var signingKey = new SymmetricSecurityKey(keyByteArray);
             var Issuer = Appsettings.app(new string[] { "Audience", "Issuer" });
