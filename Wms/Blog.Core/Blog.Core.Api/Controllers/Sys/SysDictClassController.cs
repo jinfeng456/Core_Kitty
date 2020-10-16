@@ -42,7 +42,7 @@ namespace Blog.Core.Controllers
             {
                 dto.dictClassName = "";
             }
-            var data = await _sysDictClassServices.QueryPage(a => (a.dictClassName != null && a.dictClassName.Contains(dto.dictClassName)), dto.pageNum, dto.pageSize, " createTime desc ");
+            var data = await _sysDictClassServices.QueryPage(a => (a.DictClassName != null && a.DictClassName.Contains(dto.dictClassName)), dto.pageNum, dto.pageSize, " createTime desc ");
             return BaseResult.Ok(data);
         }
 
@@ -58,16 +58,16 @@ namespace Blog.Core.Controllers
             if (model.id == 0)
             {
                 model.id = await _sysDictClassServices.GetId();
-                model.createTime = DateTime.Now;
-                model.createBy = _user.Name;
-                model.lastUpdateBy = _user.Name;
-                model.lastUpdateTime = DateTime.Now;
+                model.CreateTime = DateTime.Now;
+                model.CreateBy = _user.Name;
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
                 return BaseResult.Ok(await _sysDictClassServices.Add(model));
             }
             else
             {
-                model.lastUpdateBy = _user.Name;
-                model.lastUpdateTime = DateTime.Now;
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
                 return BaseResult.Ok(await _sysDictClassServices.Update(model));
             }
         }

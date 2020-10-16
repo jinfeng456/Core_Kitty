@@ -11,7 +11,7 @@ namespace Blog.Core.Common.AppConfig
         public static string Audience_Secret_String => InitAudience_Secret();
 
 
-        private static string InitAudience_Secret()
+        public static string InitAudience_Secret()
         {
             var securityString = DifDBConnOfSecurity(Audience_Secret_File);
             if (!string.IsNullOrEmpty(Audience_Secret_File)&& !string.IsNullOrEmpty(securityString))

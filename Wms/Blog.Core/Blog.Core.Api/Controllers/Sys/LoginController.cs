@@ -154,7 +154,7 @@ namespace Blog.Core.Controllers
             }
             pass = MD5Helper.MD5Encrypt32(pass);
 
-            var user = await _sysUserServices.Query(d => d.name == name && d.passwords == pass && d.delFlag == 0);
+            var user = await _sysUserServices.Query(d => d.Name == name && d.Passwords == pass && d.DelFlag == 0);
             if (user.Count > 0)
             {
                 //var userRoles = ""; //Admin

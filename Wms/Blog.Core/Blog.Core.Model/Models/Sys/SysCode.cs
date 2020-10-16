@@ -13,32 +13,32 @@ namespace Blog.Core.Model.Models
 		 /// <summary>
         /// 表描述
         /// </summary>
-		public string tableDescription { get; set; }
+		public string TableDescription { get; set; }
 	
 		 /// <summary>
         /// 表名
         /// </summary>
-		public string tableName { get; set; }
+		public string TableName { get; set; }
 	
 		 /// <summary>
         /// 前缀
         /// </summary>
-		public string serialPrefix { get; set; }
+		public string SerialPrefix { get; set; }
 	
 		 /// <summary>
         /// 单据类型
         /// </summary>
-		public int? businessType { get; set; }
+		public int? BusinessType { get; set; }
 	
 		 /// <summary>
         /// 数目
         /// </summary>
-		public int? codeNumber { get; set; }
+		public int? CodeNumber { get; set; }
 	
 		 /// <summary>
         /// 记录当前日期
         /// </summary>
-		public DateTime? codeDate { get; set; }
+		public DateTime? CodeDate { get; set; }
 	 
 	 }
 }	 

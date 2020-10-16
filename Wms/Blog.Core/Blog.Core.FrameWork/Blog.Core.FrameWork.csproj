@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Blog.Core.FrameWork.Entity\Blog.Core.FrameWork.tt">
+    <None Update="Blog.Core.FrameWork.Controllers\Blog.Core.FrameWork.Controllers.tt">
+      <LastGenOutput>Blog.Core.FrameWork.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Blog.Core.FrameWork.Entity\Blog.Core.FrameWork.Dto.tt">
+      <LastGenOutput>Blog.Core.FrameWork.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Blog.Core.FrameWork.Entity\Blog.Core.FrameWork.Entity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Blog.Core.FrameWork.cs</LastGenOutput>
     </None>

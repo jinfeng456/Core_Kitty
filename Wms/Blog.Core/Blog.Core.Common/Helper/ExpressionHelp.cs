@@ -40,7 +40,7 @@ namespace Blog.Core
         {
             return first.Compose(second, Expression.And);
         }
-        public static Expression<Func<T1, T2,T3, bool>> And<T1, T2, T3>(this Expression<Func<T1, T2, T3, bool>> first, Expression<Func<T1, T2, T3, bool>> second)
+        public static Expression<Func<T1, T2, T3, bool>> And<T1, T2, T3>(this Expression<Func<T1, T2, T3, bool>> first, Expression<Func<T1, T2, T3, bool>> second)
         {
             return first.Compose(second, Expression.And);
         }

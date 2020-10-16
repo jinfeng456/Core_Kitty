@@ -35,19 +35,13 @@ namespace Blog.Core.Model.Models
 	 ///<summary>
 	 ///<#=tableName#>
 	 ///</summary>
-	 [Table("<#=tableName#>")]	
 	 public class <#=tableName#>
 	 {
 	 <# foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, tableName)){#>
-
-		 /// <summary>
+	/// <summary>
         /// <#= column.Remark == "" ? column.ColumnName : column.Remark.Replace("\r\n"," ") #>
         /// </summary>
-		<# 
-		 if(column.IsPrimaryKey) 
-		 {#>[Key]
-		<#}#><# if(!column.IsNullable) {#>[Required]
-		<# }#>public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
+		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
 	<#
 	 }
 	 #> 

@@ -95,8 +95,8 @@ export default {
 			columns : [		
 				{prop:"label", label:"dict.name", minWidth:100},	
 				{prop:"value", label:"dict.dictValue", minWidth:100},
-				{prop:"dictClassName", label:"dict.dictType", minWidth:90},
-				{prop:"sort", label:"dict.sort", minWidth:80},
+				{prop:"dtype", label:"dict.dictType", minWidth:120},
+				{prop:"sort", label:"dict.sort", minWidth:50},
 				{prop:"descriptions", label:"dict.description", minWidth:120},
 				{prop:"remarks", label:"dict.remark", minWidth:120},
 				{prop:"createBy", label:"public.createName", minWidth:120},

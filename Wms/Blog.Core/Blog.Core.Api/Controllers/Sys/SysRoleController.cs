@@ -46,7 +46,7 @@ namespace Blog.Core.Controllers
                 dto.name = "";
             }
 
-            var data = await _sysRoleServices.QueryPage(a => (a.name != null && a.name.Contains(dto.name)), dto.pageNum, dto.pageSize, " id desc ");
+            var data = await _sysRoleServices.QueryPage(a => (a.Name != null && a.Name.Contains(dto.name)), dto.pageNum, dto.pageSize, " id desc ");
 
             return BaseResult.Ok(data);
 
@@ -63,27 +63,27 @@ namespace Blog.Core.Controllers
         {
             if (model.id == 0)
             {
-                List<SysRole> modelList = await _sysRoleServices.Query(a => a.name == model.name);
+                List<SysRole> modelList = await _sysRoleServices.Query(a => a.Name == model.Name);
                 if (modelList != null && modelList.Count > 0)
                 {
                     return BaseResult.Error("角色已存在!");
                 }
                 model.id = await _sysRoleServices.GetId();
-                model.createTime = DateTime.Now;
-                model.createBy = _user.Name;
-                model.lastUpdateBy = _user.Name;
-                model.lastUpdateTime = DateTime.Now;
+                model.CreateTime = DateTime.Now;
+                model.CreateBy = _user.Name;
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
                 return BaseResult.Ok(await _sysRoleServices.Add(model));
             }
             else
             {
                 //限制了管理员的权限不允许修改，开发中先注释
-                if (model.name.Equals("admin"))
+                if (model.Name.Equals("admin"))
                 {
                     return BaseResult.Error("超级管理员不允许修改!");
                 }
-                model.lastUpdateBy = _user.Name;
-                model.lastUpdateTime = DateTime.Now;
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
                 return BaseResult.Ok(await _sysRoleServices.Update(model));
             }
         }
@@ -93,7 +93,7 @@ namespace Blog.Core.Controllers
         [HttpPost, Route("Delete")]
         public async Task<BaseResult> Delete([FromBody]List<SysRole> modelList)
         {
-            if (modelList.Exists(a => a.name == "admin"))
+            if (modelList.Exists(a => a.Name == "admin"))
             {
                 return BaseResult.Error("超级管理员不允许删除!");
             }
