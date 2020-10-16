@@ -30,15 +30,15 @@ namespace Blog.Core.Services
             {
                 return 0;
             }
-            int roleId = modelList[0].roleId;
-            await dal.Delete(a => a.roleId == roleId);
+            int roleId = modelList[0].RoleId;
+            await dal.Delete(a => a.RoleId == roleId);
             foreach (var model in modelList)
             {
                 model.id = await dal.GetId();
-                model.createTime = DateTime.Now;
-                model.createBy = userDal.Name;
-                model.lastUpdateBy = userDal.Name;
-                model.lastUpdateTime = DateTime.Now;
+                model.CreateTime = DateTime.Now;
+                model.CreateBy = userDal.Name;
+                model.LastUpdateBy = userDal.Name;
+                model.LastUpdateTime = DateTime.Now;
             }
             return await dal.Add(modelList);
 

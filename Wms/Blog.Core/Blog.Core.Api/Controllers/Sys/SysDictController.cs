@@ -45,11 +45,11 @@ namespace Blog.Core.Controllers
             Expression<Func<SysDict, bool>> whereExpression = (a) => true;
             if (dto.label.IsNotEmptyOrNull())
             {
-                whereExpression = ExpressionHelp.And(whereExpression, a => (a.label != null && a.label.Contains(dto.label)));
+                whereExpression = ExpressionHelp.And(whereExpression, a => (a.Label != null && a.Label.Contains(dto.label)));
             }
             if (dto.dictClassId > 0)
             {
-                whereExpression = ExpressionHelp.And(whereExpression, a => a.dictClassId == dto.dictClassId);
+                whereExpression = ExpressionHelp.And(whereExpression, a => a.DictClassId == dto.dictClassId);
             }
             var data = await _sysDictServices.QueryPage(whereExpression, dto.pageNum, dto.pageSize, " createTime desc ");
             return BaseResult.Ok(data);
@@ -67,25 +67,25 @@ namespace Blog.Core.Controllers
         {
             if (model.id == 0)
             {
-                if (model.dictClassId != 0)
+                if (model.DictClassId != 0)
                 {
-                    model.dtype = (await _sysDictClassServices.QueryById(model.dictClassId)).dictClassName;
+                    model.Dtype = (await _sysDictClassServices.QueryById(model.DictClassId)).DictClassName;
                 }
                 model.id = await _sysDictServices.GetId();
-                model.createTime = DateTime.Now;
-                model.createBy = _user.Name;
-                model.lastUpdateBy = _user.Name;
-                model.lastUpdateTime = DateTime.Now;
+                model.CreateTime = DateTime.Now;
+                model.CreateBy = _user.Name;
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
                 return BaseResult.Ok(await _sysDictServices.Add(model));
             }
             else
             {
-                if (model.dictClassId != 0)
+                if (model.DictClassId != 0)
                 {
-                    model.dtype = (await _sysDictClassServices.QueryById(model.dictClassId)).dictClassName;
+                    model.Dtype = (await _sysDictClassServices.QueryById(model.DictClassId)).DictClassName;
                 }
-                model.lastUpdateBy = _user.Name;
-                model.lastUpdateTime = DateTime.Now;
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
                 return BaseResult.Ok(await _sysDictServices.Update(model));
             }
         }

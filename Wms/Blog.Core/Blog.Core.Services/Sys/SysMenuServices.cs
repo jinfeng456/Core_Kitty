@@ -36,16 +36,16 @@ namespace Blog.Core.Services
             List<SysMenu> menus = await FindByUser(userName);
             foreach (var menu in menus)
             {
-                if (menu.parentId == 0)
+                if (menu.ParentId == 0)
                 {
-                    menu.level = 0;
+                    menu.Level = 0;
                     if (!Exists(sysMenus, menu))
                     {
                         sysMenus.Add(menu);
                     }
                 }
             }
-            sysMenus.Sort((a, b) => a.orderNum.CompareTo(b.orderNum));
+            sysMenus.Sort((a, b) => a.OrderNum.CompareTo(b.OrderNum));
             FindChildren(sysMenus, menus, menuType);
             return sysMenus;
         }
@@ -57,23 +57,23 @@ namespace Blog.Core.Services
                 List<SysMenu> children = new List<SysMenu>();
                 foreach (var menu in menus)
                 {
-                    if (menuType == 1 && menu.dtype == 2)
+                    if (menuType == 1 && menu.Dtype == 2)
                     {
                         // 如果是获取类型不需要按钮，且菜单类型是按钮的，直接过滤掉
                         continue;
                     }
-                    if (sysMenu.id.Equals(menu.parentId))
+                    if (sysMenu.id.Equals(menu.ParentId))
                     {
-                        menu.parentName = sysMenu.name;
-                        menu.level = sysMenu.level + 1;
+                        menu.ParentName = sysMenu.Name;
+                        menu.Level = sysMenu.Level + 1;
                         if (!Exists(children, menu))
                         {
                             children.Add(menu);
                         }
                     }
                 }
-                sysMenu.children = children;
-                children.Sort((a, b) => a.orderNum.CompareTo(b.orderNum));
+                sysMenu.Children = children;
+                children.Sort((a, b) => a.OrderNum.CompareTo(b.OrderNum));
                 FindChildren(children, menus, menuType);
             }
         }

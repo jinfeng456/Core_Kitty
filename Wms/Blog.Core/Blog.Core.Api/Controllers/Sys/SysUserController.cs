@@ -50,7 +50,7 @@ namespace Blog.Core.Controllers
             {
                 dto.name = "";
             }
-            var data = await _sysUserServices.QueryPage(a => (a.name != null && a.name.Contains(dto.name)), dto.pageNum, dto.pageSize, " id desc ");
+            var data = await _sysUserServices.QueryPage(a => (a.Name != null && a.Name.Contains(dto.name)), dto.pageNum, dto.pageSize, " id desc ");
 
             return BaseResult.Ok(data);
 
@@ -74,28 +74,28 @@ namespace Blog.Core.Controllers
             if (model.id == 0)
             {
                 model.id = await _sysUserServices.GetId();
-                model.createTime = DateTime.Now;
-                model.createBy = _user.Name;
-                model.lastUpdateBy = _user.Name;
-                model.lastUpdateTime = DateTime.Now;
+                model.CreateTime = DateTime.Now;
+                model.CreateBy = _user.Name;
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
                 return BaseResult.Ok(await _sysUserServices.Add(model));
             }
             else
             {
-                model.lastUpdateBy = model.name;
-                model.lastUpdateTime = DateTime.Now;
+                model.LastUpdateBy = model.Name;
+                model.LastUpdateTime = DateTime.Now;
                 await _sysUserServices.Update(model);
-                await _sysUserRoleServices.Delete(a => a.userIds == model.id);
-                foreach (var item in model.userRoles)
+                await _sysUserRoleServices.Delete(a => a.UserIds == model.id);
+                foreach (var item in model.UserRoles)
                 {
                     item.id = await _sysUserRoleServices.GetId();
-                    item.createTime = DateTime.Now;
-                    item.createBy = model.name;
-                    item.lastUpdateBy = model.name;
-                    item.lastUpdateTime = DateTime.Now;
-                    item.userIds = model.id;
+                    item.CreateTime = DateTime.Now;
+                    item.CreateBy = model.Name;
+                    item.LastUpdateBy = model.Name;
+                    item.LastUpdateTime = DateTime.Now;
+                    item.UserIds = model.id;
                 }
-                await _sysUserRoleServices.Add(model.userRoles);
+                await _sysUserRoleServices.Add(model.UserRoles);
             }
             return BaseResult.Ok("ok");
         }
@@ -125,9 +125,9 @@ namespace Blog.Core.Controllers
             List<SysMenu> sysMenus = await _sysMenuServices.FindByUser(name);
             foreach (var sysMenu in sysMenus)
             {
-                if (!string.IsNullOrEmpty(sysMenu.perms))
+                if (!string.IsNullOrEmpty(sysMenu.Perms))
                 {
-                    perms.Add(sysMenu.perms);
+                    perms.Add(sysMenu.Perms);
                 }
             }
             return BaseResult.Ok(perms);

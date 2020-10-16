@@ -10,32 +10,32 @@ namespace Blog.Core.Model.Models
         /// <summary>
         /// 角色id
         /// </summary>
-        public int roleId { get; set; }
+        public int RoleId { get; set; }
 
         /// <summary>
         /// 菜单id
         /// </summary>
-        public int menuId { get; set; }
+        public int MenuId { get; set; }
 
         /// <summary>
         /// 创建人
         /// </summary>
-        public string createBy { get; set; }
+        public string CreateBy { get; set; }
 
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime? createTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
         /// <summary>
         /// 最后更新人
         /// </summary>
-        public string lastUpdateBy { get; set; }
+        public string LastUpdateBy { get; set; }
 
         /// <summary>
         /// 最后跟新时间
         /// </summary>
-        public DateTime? lastUpdateTime { get; set; }
+        public DateTime? LastUpdateTime { get; set; }
 
     }
 }

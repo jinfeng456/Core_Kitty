@@ -1,0 +1,136 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension="/" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ include file="$(ProjectDir)DbHelper.ttinclude"  #>
+<#@ include file="$(ProjectDir)ModelAuto.ttinclude"	#>
+<# var manager = new Manager(Host, GenerationEnvironment, true); #>
+<# 
+	var OutputPath1 =Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Host.TemplateFile+"..")+"..")+"..");
+	OutputPath1=Path.Combine(OutputPath1,"Blog.Core.Api","Controllers_New");
+	if (!Directory.Exists(OutputPath1))
+	{
+	    Directory.CreateDirectory(OutputPath1);
+	}
+#>
+<# foreach (var item in DbHelper.GetDbTablesNew(config.ConnectionString, config.DbDatabase,config.TableName))
+   {
+		 var tableName=item.ToString();
+		manager.StartBlock(tableName+"Controller.cs",OutputPath1);//文件名
+	   #>
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Blog.Core.Common.HttpContextUser;
+using Blog.Core.IServices;
+using Blog.Core.Model;
+using Blog.Core.Model.Models;
+using Blog.Core.Model.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+namespace Blog.Core.Controllers
+{
+	 ///<summary>
+	 ///<#=tableName#>
+	 ///</summary>
+	 public class <#=tableName#>Controller : ControllerBase
+	 {
+		readonly I<#=tableName#>Services _<#=ToCamel(tableName)#>Services;
+        readonly IUser _user;
+		public <#=tableName#>Controller(I<#=tableName#>Services <#=ToCamel(tableName)#>Services, IUser user)
+        {
+            _<#=ToCamel(tableName)#>Services = <#=ToCamel(tableName)#>Services;
+            _user = user;
+        }
+
+		/// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        // GET: api/User
+        [HttpPost, Route("FindPage")]
+        public async Task<BaseResult> FindPage([FromBody]<#=tableName#>Dto dto)
+        {
+            if (string.IsNullOrEmpty(dto.dictClassName) || string.IsNullOrWhiteSpace(dto.dictClassName))
+            {
+                dto.dictClassName = "";
+            }
+            var data = await _<#=ToCamel(tableName)#>Services.QueryPage(a => (a.DictClassName != null && a.DictClassName.Contains(dto.dictClassName)), dto.pageNum, dto.pageSize, " createTime desc ");
+            return BaseResult.Ok(data);
+        }
+
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        // POST: api/User
+        [HttpPost, Route("Save")]
+        public async Task<BaseResult> Save([FromBody]<#=tableName#> model)
+        {
+            if (model.id == 0)
+            {
+                model.id = await _<#=ToCamel(tableName)#>Services.GetId();
+                model.CreateTime = DateTime.Now;
+                model.CreateBy = _user.Name;
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
+                return BaseResult.Ok(await _<#=ToCamel(tableName)#>Services.Add(model));
+            }
+            else
+            {
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
+                return BaseResult.Ok(await _<#=ToCamel(tableName)#>Services.Update(model));
+            }
+        }
+
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="modelList"></param>
+        /// <returns></returns>
+        [HttpPost, Route("Delete")]
+        public async Task<BaseResult> Delete([FromBody]List<<#=tableName#>> modelList)
+        {
+            foreach (var model in modelList)
+            {
+                await _<#=ToCamel(tableName)#>Services.Delete(model);
+            }
+            return BaseResult.Ok("ok");
+        }
+
+        /// <summary>
+        /// 查询全部
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, Route("GetAllList")]
+        public async Task<BaseResult> GetAllList()
+        {
+            return BaseResult.Ok(await _<#=ToCamel(tableName)#>Services.Query());
+        }
+	 }
+}	 
+<#
+   manager.EndBlock(); 
+   }
+  manager.Process(true);
+   #>
+
+   <#+
+     string ToCamel(string tableName)
+     {
+        return tableName.Substring(0,1).ToLower()+tableName.Substring(1, tableName.Length - 1);
+     }
+    #>

@@ -1,42 +1,38 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 namespace Blog.Core.Model.Models
 {
 
-	 public class SysUserRole: BaseEntity
+	public class SysUserRole: BaseEntity
 	{
-	 
-
 		 /// <summary>
         /// user_ids
         /// </summary>
-		public long? userIds { get; set; }
+		public long? UserIds { get; set; }
 	
 		 /// <summary>
         /// role_id
         /// </summary>
-		public long? roleId { get; set; }
+		public long? RoleId { get; set; }
 	
 		 /// <summary>
         /// create_by
         /// </summary>
-		public string createBy { get; set; }
+		public string CreateBy { get; set; }
 	
 		 /// <summary>
         /// create_time
         /// </summary>
-		public DateTime? createTime { get; set; }
+		public DateTime? CreateTime { get; set; }
 	
 		 /// <summary>
         /// last_update_by
         /// </summary>
-		public string lastUpdateBy { get; set; }
+		public string LastUpdateBy { get; set; }
 	
 		 /// <summary>
         /// last_update_time
         /// </summary>
-		public DateTime? lastUpdateTime { get; set; }
+		public DateTime? LastUpdateTime { get; set; }
 	 
 	 }
 }	 

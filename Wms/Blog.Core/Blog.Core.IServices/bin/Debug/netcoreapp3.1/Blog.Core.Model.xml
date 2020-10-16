@@ -713,92 +713,92 @@
             sysCode
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysCode.tableDescription">
+        <member name="P:Blog.Core.Model.Models.SysCode.TableDescription">
             <summary>
             表描述
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysCode.tableName">
+        <member name="P:Blog.Core.Model.Models.SysCode.TableName">
             <summary>
             表名
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysCode.serialPrefix">
+        <member name="P:Blog.Core.Model.Models.SysCode.SerialPrefix">
             <summary>
             前缀
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysCode.businessType">
+        <member name="P:Blog.Core.Model.Models.SysCode.BusinessType">
             <summary>
             单据类型
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysCode.codeNumber">
+        <member name="P:Blog.Core.Model.Models.SysCode.CodeNumber">
             <summary>
             数目
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysCode.codeDate">
+        <member name="P:Blog.Core.Model.Models.SysCode.CodeDate">
             <summary>
             记录当前日期
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.value">
+        <member name="P:Blog.Core.Model.Models.SysDict.Value">
             <summary>
             字典值
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.label">
+        <member name="P:Blog.Core.Model.Models.SysDict.Label">
             <summary>
             label
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.dtype">
+        <member name="P:Blog.Core.Model.Models.SysDict.Dtype">
             <summary>
             类型
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.descriptions">
+        <member name="P:Blog.Core.Model.Models.SysDict.Descriptions">
             <summary>
             描述信息
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.sort">
+        <member name="P:Blog.Core.Model.Models.SysDict.Sort">
             <summary>
             排序
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.createBy">
+        <member name="P:Blog.Core.Model.Models.SysDict.CreateBy">
             <summary>
             创建人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.createTime">
+        <member name="P:Blog.Core.Model.Models.SysDict.CreateTime">
             <summary>
             创建时间 
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.lastUpdateBy">
+        <member name="P:Blog.Core.Model.Models.SysDict.LastUpdateBy">
             <summary>
             最后更新人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.lastUpdateTime">
+        <member name="P:Blog.Core.Model.Models.SysDict.LastUpdateTime">
             <summary>
             最后更新时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.remarks">
+        <member name="P:Blog.Core.Model.Models.SysDict.Remarks">
             <summary>
             备注
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.delFlag">
+        <member name="P:Blog.Core.Model.Models.SysDict.DelFlag">
             <summary>
             删除标记0.未删除 1.删除
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDict.dictClassId">
+        <member name="P:Blog.Core.Model.Models.SysDict.DictClassId">
             <summary>
             字典分类id
             </summary>
@@ -808,32 +808,32 @@
             sys_dict_class
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDictClass.dictClassName">
+        <member name="P:Blog.Core.Model.Models.SysDictClass.DictClassName">
             <summary>
             字典分类名称
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDictClass.dictRemark">
+        <member name="P:Blog.Core.Model.Models.SysDictClass.DictRemark">
             <summary>
             字典备注
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDictClass.createBy">
+        <member name="P:Blog.Core.Model.Models.SysDictClass.CreateBy">
             <summary>
             创建人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDictClass.createTime">
+        <member name="P:Blog.Core.Model.Models.SysDictClass.CreateTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDictClass.lastUpdateBy">
+        <member name="P:Blog.Core.Model.Models.SysDictClass.LastUpdateBy">
             <summary>
             最后更新人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysDictClass.lastUpdateTime">
+        <member name="P:Blog.Core.Model.Models.SysDictClass.LastUpdateTime">
             <summary>
             最后更新时间
             </summary>
@@ -843,227 +843,227 @@
             sys_menu
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.name">
+        <member name="P:Blog.Core.Model.Models.SysMenu.Name">
             <summary>
             菜单名称
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.parentId">
+        <member name="P:Blog.Core.Model.Models.SysMenu.ParentId">
             <summary>
             上级菜单
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.url">
+        <member name="P:Blog.Core.Model.Models.SysMenu.Url">
             <summary>
             菜单URL
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.perms">
+        <member name="P:Blog.Core.Model.Models.SysMenu.Perms">
             <summary>
             参数类型
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.dtype">
+        <member name="P:Blog.Core.Model.Models.SysMenu.Dtype">
             <summary>
             操作数据 类型 1.添加  2.编辑
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.icon">
+        <member name="P:Blog.Core.Model.Models.SysMenu.Icon">
             <summary>
             图标
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.orderNum">
+        <member name="P:Blog.Core.Model.Models.SysMenu.OrderNum">
             <summary>
             排序号
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.createBy">
+        <member name="P:Blog.Core.Model.Models.SysMenu.CreateBy">
             <summary>
             创建人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.createTime">
+        <member name="P:Blog.Core.Model.Models.SysMenu.CreateTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.lastUpdateBy">
+        <member name="P:Blog.Core.Model.Models.SysMenu.LastUpdateBy">
             <summary>
             最后更新人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.lastUpdateTime">
+        <member name="P:Blog.Core.Model.Models.SysMenu.LastUpdateTime">
             <summary>
             最后更新时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysMenu.delFlag">
+        <member name="P:Blog.Core.Model.Models.SysMenu.DelFlag">
             <summary>
             删除标记0.未删除 1.删除
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRole.name">
+        <member name="P:Blog.Core.Model.Models.SysRole.Name">
             <summary>
             角色名称
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRole.remark">
+        <member name="P:Blog.Core.Model.Models.SysRole.Remark">
             <summary>
             备注
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRole.createBy">
+        <member name="P:Blog.Core.Model.Models.SysRole.CreateBy">
             <summary>
             创建人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRole.createTime">
+        <member name="P:Blog.Core.Model.Models.SysRole.CreateTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRole.lastUpdateBy">
+        <member name="P:Blog.Core.Model.Models.SysRole.LastUpdateBy">
             <summary>
             最后更新人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRole.lastUpdateTime">
+        <member name="P:Blog.Core.Model.Models.SysRole.LastUpdateTime">
             <summary>
             最后更新时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRole.delFlag">
+        <member name="P:Blog.Core.Model.Models.SysRole.DelFlag">
             <summary>
             删除标记0.未删除 1.删除
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRoleMenu.roleId">
+        <member name="P:Blog.Core.Model.Models.SysRoleMenu.RoleId">
             <summary>
             角色id
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRoleMenu.menuId">
+        <member name="P:Blog.Core.Model.Models.SysRoleMenu.MenuId">
             <summary>
             菜单id
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRoleMenu.createBy">
+        <member name="P:Blog.Core.Model.Models.SysRoleMenu.CreateBy">
             <summary>
             创建人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRoleMenu.createTime">
+        <member name="P:Blog.Core.Model.Models.SysRoleMenu.CreateTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRoleMenu.lastUpdateBy">
+        <member name="P:Blog.Core.Model.Models.SysRoleMenu.LastUpdateBy">
             <summary>
             最后更新人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysRoleMenu.lastUpdateTime">
+        <member name="P:Blog.Core.Model.Models.SysRoleMenu.LastUpdateTime">
             <summary>
             最后跟新时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.name">
+        <member name="P:Blog.Core.Model.Models.SysUser.Name">
             <summary>
             登录名
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.passwords">
+        <member name="P:Blog.Core.Model.Models.SysUser.Passwords">
             <summary>
             密码
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.salt">
+        <member name="P:Blog.Core.Model.Models.SysUser.Salt">
             <summary>
             salt
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.email">
+        <member name="P:Blog.Core.Model.Models.SysUser.Email">
             <summary>
             电子邮件
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.mobile">
+        <member name="P:Blog.Core.Model.Models.SysUser.Mobile">
             <summary>
             手机
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.userstatus">
+        <member name="P:Blog.Core.Model.Models.SysUser.Userstatus">
             <summary>
             用户状态 1.在用 0.禁用
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.deptId">
+        <member name="P:Blog.Core.Model.Models.SysUser.DeptId">
             <summary>
             部门id
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.createBy">
+        <member name="P:Blog.Core.Model.Models.SysUser.CreateBy">
             <summary>
             创建人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.createTime">
+        <member name="P:Blog.Core.Model.Models.SysUser.CreateTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.lastUpdateBy">
+        <member name="P:Blog.Core.Model.Models.SysUser.LastUpdateBy">
             <summary>
             最后更新人
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.lastUpdateTime">
+        <member name="P:Blog.Core.Model.Models.SysUser.LastUpdateTime">
             <summary>
             最后更新时间
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.delFlag">
+        <member name="P:Blog.Core.Model.Models.SysUser.DelFlag">
             <summary>
             删除标记 1.已删除 0.未删除
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.code">
+        <member name="P:Blog.Core.Model.Models.SysUser.Code">
             <summary>
             编号
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUser.auditPassword">
+        <member name="P:Blog.Core.Model.Models.SysUser.AuditPassword">
             <summary>
             审核密码
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUserRole.userIds">
+        <member name="P:Blog.Core.Model.Models.SysUserRole.UserIds">
             <summary>
             user_ids
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUserRole.roleId">
+        <member name="P:Blog.Core.Model.Models.SysUserRole.RoleId">
             <summary>
             role_id
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUserRole.createBy">
+        <member name="P:Blog.Core.Model.Models.SysUserRole.CreateBy">
             <summary>
             create_by
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUserRole.createTime">
+        <member name="P:Blog.Core.Model.Models.SysUserRole.CreateTime">
             <summary>
             create_time
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUserRole.lastUpdateBy">
+        <member name="P:Blog.Core.Model.Models.SysUserRole.LastUpdateBy">
             <summary>
             last_update_by
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysUserRole.lastUpdateTime">
+        <member name="P:Blog.Core.Model.Models.SysUserRole.LastUpdateTime">
             <summary>
             last_update_time
             </summary>

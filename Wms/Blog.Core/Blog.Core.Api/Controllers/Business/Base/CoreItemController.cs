@@ -63,7 +63,7 @@ namespace Blog.Core.Controllers
             var data = await _coreItemServices.QueryMuchPage<CoreItem, CoreClassify, SysDict, CoreItemDto>(
                (ci, cc, sd) => new object[] {
                     JoinType.Left, ci.classifyId == cc.id,
-                    JoinType.Left, ci.coreItemType == sd.value && sd.dtype=="coreItemType"
+                    JoinType.Left, ci.coreItemType == sd.Value && sd.Dtype=="coreItemType"
                },
                (ci, cc, sd) => new CoreItemDto
                {
@@ -77,7 +77,7 @@ namespace Blog.Core.Controllers
                    packageSpecs = ci.packageSpecs,
                    info = cc.info,
                    classifyName = cc.name,
-                   coreItemTypeName = sd.label
+                   coreItemTypeName = sd.Label
                },
                whereExpression, dto.pageNum, dto.pageSize
                );

@@ -12,65 +12,65 @@ namespace Blog.Core.Model.Models
         /// 字典值
         /// </summary>
         [Required]
-        public int? value { get; set; }
+        public int? Value { get; set; }
 
         /// <summary>
         /// label
         /// </summary>
         [Required]
-        public string label { get; set; }
+        public string Label { get; set; }
 
         /// <summary>
         /// 类型
         /// </summary>
-        public string dtype { get; set; }
+        public string Dtype { get; set; }
 
         /// <summary>
         /// 描述信息
         /// </summary>
         //[Required]
-        public string descriptions { get; set; }
+        public string Descriptions { get; set; }
 
         /// <summary>
         /// 排序
         /// </summary>
         [Required]
-        public decimal sort { get; set; }
+        public decimal Sort { get; set; }
 
         /// <summary>
         /// 创建人
         /// </summary>
-        public string createBy { get; set; }
+        public string CreateBy { get; set; }
 
         /// <summary>
         /// 创建时间 
         /// </summary>
-        public DateTime? createTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
         /// <summary>
         /// 最后更新人
         /// </summary>
-        public string lastUpdateBy { get; set; }
+        public string LastUpdateBy { get; set; }
 
         /// <summary>
         /// 最后更新时间
         /// </summary>
-        public DateTime? lastUpdateTime { get; set; }
+        public DateTime? LastUpdateTime { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
-        public string remarks { get; set; }
+        public string Remarks { get; set; }
 
         /// <summary>
         /// 删除标记0.未删除 1.删除
         /// </summary>
-        public byte? delFlag { get; set; }
+        public byte? DelFlag { get; set; }
 
         /// <summary>
         /// 字典分类id
         /// </summary>
-        public int? dictClassId { get; set; }
+        public int? DictClassId { get; set; }
 
     }
 }
