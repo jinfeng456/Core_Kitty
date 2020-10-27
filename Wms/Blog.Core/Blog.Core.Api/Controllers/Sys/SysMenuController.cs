@@ -5,7 +5,6 @@ using Blog.Core.Common.HttpContextUser;
 using Blog.Core.IServices;
 using Blog.Core.Model;
 using Blog.Core.Model.Models;
-using Blog.Core.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,8 +20,6 @@ namespace Blog.Core.Controllers
     {
         readonly ISysMenuServices _sysMenuServices;
         readonly IUser _user;
-
-
         public SysMenuController(ISysMenuServices sysMenuServices, IUser user)
         {
             _sysMenuServices = sysMenuServices;
@@ -55,8 +52,6 @@ namespace Blog.Core.Controllers
                 return BaseResult.Ok(await _sysMenuServices.Update(model));
             }
         }
-
-
         
         [HttpPost, Route("Delete")]
         public async Task<BaseResult> Delete([FromBody]List<SysMenu> modelList)

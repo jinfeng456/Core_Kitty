@@ -47,7 +47,7 @@ namespace Blog.Core.Controllers
             return new MessageModel<PageModel<TasksQz>>()
             {
                 msg = "获取成功",
-                success = data.dataCount >= 0,
+                success = data.totalSize >= 0,
                 response = data
             };
 

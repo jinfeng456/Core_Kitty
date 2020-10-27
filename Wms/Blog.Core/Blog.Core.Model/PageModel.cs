@@ -14,20 +14,11 @@ namespace Blog.Core.Model
         /// <summary>
         /// 总页数
         /// </summary>
-        public int pageCount { get; set; } = 6;
-        /// <summary>
-        /// 数据总数
-        /// </summary>
-        public int dataCount { get; set; } = 0;
+        public int pageCount { get; set; } = 6;      
         /// <summary>
         /// 每页大小
         /// </summary>
         public int PageSize { set; get; }
-        /// <summary>
-        /// 返回数据
-        /// </summary>
-        public List<T> data { get; set; }
-
 
         public long totalSize { get; set; }
         public List<T> content { get; set; }

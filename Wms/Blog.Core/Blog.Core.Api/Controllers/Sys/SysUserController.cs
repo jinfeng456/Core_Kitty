@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Blog.Core.AuthHelper.OverWrite;
-using Blog.Core.Common.Helper;
 using Blog.Core.Common.HttpContextUser;
 using Blog.Core.IServices;
 using Blog.Core.Model;

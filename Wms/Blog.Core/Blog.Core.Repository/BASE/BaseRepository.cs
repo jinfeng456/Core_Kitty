@@ -441,7 +441,7 @@ namespace Blog.Core.Repository.Base
              .ToListAsync();
             }
             int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
-            return new PageModel<TEntity>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
+            return new PageModel<TEntity>() {pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, totalSize = totalCount, content = list };
         }
 
         /// <summary> 
@@ -479,7 +479,7 @@ namespace Blog.Core.Repository.Base
                 list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToListAsync();
             }
             int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
-            return new PageModel<TResult>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
+            return new PageModel<TResult>() { pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, totalSize = totalCount, content = list };
         }
 
         public async Task<PageModel<TResult>> QueryMuchPage<T, T2, TResult>(
@@ -506,7 +506,7 @@ namespace Blog.Core.Repository.Base
                 list = await _db.Queryable(joinExpression).Where(whereLambda).Select(selectExpression).ToListAsync();
             }
             int pageCount = (Math.Ceiling(totalCount.ObjToDecimal() / intPageSize.ObjToDecimal())).ObjToInt();
-            return new PageModel<TResult>() { dataCount = totalCount, pageCount = pageCount, page = intPageIndex, PageSize = intPageSize, data = list, totalSize = totalCount, content = list };
+            return new PageModel<TResult>() { pageCount = pageCount, page = intPageIndex, PageSize = intPageSize,totalSize = totalCount, content = list };
         }
 
         /// <summary> 

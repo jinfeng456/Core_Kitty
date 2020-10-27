@@ -66,9 +66,7 @@ namespace Blog.Core.Controllers
         [HttpGet]
         public MessageModel<List<LogInfo>> Get()
         {
-
             _hubContext.Clients.All.SendAsync("ReceiveUpdate", LogLock.GetLogData()).Wait();
-
             return new MessageModel<List<LogInfo>>()
             {
                 msg = "获取成功",

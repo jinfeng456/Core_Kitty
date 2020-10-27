@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Blog.Core.Model.Models
 {
-	 ///<summary>
-	 ///sys_dict_class
-	 ///</summary>
-	 [Table("sys_dict_class")]	
+	///<summary>
+	///SysDictClass
+	///</summary>
+	[Table("SysDictClass")]	
 	 public class SysDictClass : BaseEntity
 	{
 	 

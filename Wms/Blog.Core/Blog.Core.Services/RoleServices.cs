@@ -39,15 +39,13 @@ namespace Blog.Core.Services
                 var id = await base.Add(role);
                 model = await base.QueryById(id);
             }
-
             return model;
-
         }
 
         [Caching(AbsoluteExpiration = 30)]
         public async Task<string> GetRoleNameByRid(int rid)
         {
-            return ((await base.QueryById(rid))?.Name);
+            return (await base.QueryById(rid))?.Name;
         }
     }
 }

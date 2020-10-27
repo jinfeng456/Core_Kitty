@@ -805,7 +805,7 @@
         </member>
         <member name="T:Blog.Core.Model.Models.SysDictClass">
             <summary>
-            sys_dict_class
+            SysDictClass
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.SysDictClass.DictClassName">
@@ -1228,19 +1228,9 @@
             总页数
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.PageModel`1.dataCount">
-            <summary>
-            数据总数
-            </summary>
-        </member>
         <member name="P:Blog.Core.Model.PageModel`1.PageSize">
             <summary>
             每页大小
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.PageModel`1.data">
-            <summary>
-            返回数据
             </summary>
         </member>
         <member name="F:Blog.Core.Model.ResponseEnum.NoPermissions">

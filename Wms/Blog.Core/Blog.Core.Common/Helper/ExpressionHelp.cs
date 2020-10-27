@@ -32,11 +32,12 @@ namespace Blog.Core
         /// <param name="first"></param>
         /// <param name="second"></param>
         /// <returns></returns>
-        public static Expression<Func<T1, T2, bool>> And<T1, T2>(this Expression<Func<T1, T2, bool>> first, Expression<Func<T1, T2, bool>> second)
+        
+        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
         {
             return first.Compose(second, Expression.And);
         }
-        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
+        public static Expression<Func<T1, T2, bool>> And<T1, T2>(this Expression<Func<T1, T2, bool>> first, Expression<Func<T1, T2, bool>> second)
         {
             return first.Compose(second, Expression.And);
         }
