@@ -22,27 +22,7 @@
           <kt-button icon="fa fa-edit" :label="$t('action.edit')" :perms="permsEdit" :size="size" @click="handleEdit(scope.$index, scope.row)" />
           <kt-button icon="fa fa-trash" :label="$t('action.delete')" :perms="permsDelete" :size="size" type="danger" @click="handleDelete(scope.$index, scope.row)" />
         </template>
-      </el-table-column>
-      <!-- 显示恢复启用 -->
-      <!-- <el-table-column :label="$t('action.operation')" width="185" fixed="right" v-if="showDetail" header-align="center" align="center">
-      <template slot-scope="scope">
-          <kt-button icon="fa fa-edit" :label="$t('Inquiry.restore')" :perms="permsRestore" :size="size" @click="handleRestore(scope.$index, scope.row)" />
-          <kt-button icon="fa fa-trash" :label="$t('Inquiry.Disable')" :perms="permsDisable" :size="size" type="danger" @click="handleDisable(scope.$index, scope.row)" />
-        </template>
-      </el-table-column> -->
-      <!-- 显示查看明细和出库 -->
-      <el-table-column :label="$t('action.operation')" width="185" fixed="right" v-if="showDetailandOut" header-align="center" align="center">
-      <template slot-scope="scope">
-          <kt-button icon="fa fa-edit" :label="$t('action.showDetail')" :perms="permsShowDetail" :size="size" @click="handleShowDetail(scope.$index, scope.row)" />
-          <!-- <kt-button icon="fa fa-trash" :label="$t('action.out')" :perms="permsOut" :size="size" type="danger" @click="handleOut(scope.$index, scope.row)" /> -->
-        </template>
-      </el-table-column>
-      <!-- 查看明细 -->
-      <el-table-column :label="$t('action.operation')" width="185" fixed="right" v-if="showDetail" header-align="center" align="center">
-      <template slot-scope="scope">
-          <kt-button icon="fa fa-edit" :label="$t('action.showDetail')" :perms="permsShowDetail" :size="size" @click="handleShowDetail(scope.$index, scope.row)" />
-        </template>
-      </el-table-column>
+      </el-table-column>  
     </el-table>
     <!--分页栏-->
     <div class="toolbar" style="padding:10px;">

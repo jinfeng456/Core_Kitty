@@ -34,7 +34,6 @@
 
 <script>
 import PopupTreeInput from "@/components/PopupTreeInput"
-import MtTable from "@/views/Core/MtTable"
 import KtButton from "@/views/Core/KtButton"
 import TableColumnFilterDialog from "@/views/Core/TableColumnFilterDialog"
 import { format } from "@/utils/datetime"
@@ -43,7 +42,6 @@ import XLSX from "xlsx";
 export default {
   components: {
     PopupTreeInput,
-    MtTable,
     KtButton,
     TableColumnFilterDialog
   },

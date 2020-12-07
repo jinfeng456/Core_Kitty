@@ -12,20 +12,20 @@
 		</el-form>
 	</div>
 	<!--表格内容栏-->
-	<kt-table-list :height="388" 
+	<kt-table2 :height="388" 
 		:data="pageResult" :columns="columns" :showOperation="false" 
 		@findPage="findPage" >
-	</kt-table-list>
+	</kt-table2>
   </div>
 </template>
 
 <script>
-import KtTableList from "@/views/Core/KtTableList"
+import KtTable2 from "@/views/Core/KtTable2"
 import KtButton from "@/views/Core/KtButton"
 import { format } from "@/utils/datetime"
 export default {
 	components:{
-			KtTableList,
+			KtTable2,
 			KtButton
 	},
 	data() {

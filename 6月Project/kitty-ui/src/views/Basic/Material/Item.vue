@@ -95,19 +95,11 @@
       </el-form>
     </div>
     <!--表格内容栏-->
-    <mt-table :height="350"
-              permsRestore="material:item:restore"
-              permsDisable="material:item:Disable"
-              permsDelete="material:item:delete"
-              permsEdit="material:item:edit"
-              :data="pageResult"
-              :columns="filterColumns"
-              @findPage="findPage"
-              @handleRestore="handleRestore"
-              @handleEdit="handleEdit"
-              @handleDisable="handleDisable"
-              @handleDelete="handleDelete" :pageRequest="this.pageRequest">
-    </mt-table>
+  
+    <kt-table2 :height="350" permsDelete="material:item:delete" :myButtons="myButtons"
+		:data="pageResult" :columns="columns" 
+		@findPage="findPage" @handleEdit="handleEdit" @handleRestore="handleRestore" @handleDisable="handleDisable" @handleDelete="handleDelete" :pageRequest="this.pageRequest">
+	  </kt-table2>
 
     <!-- EXCEL导入 -->
     <upload-file :key="componentKey" :UpLoadFileVisible="UpLoadFileVisible" @ImportExcelData="ImportExcelData" @cancel="cancel" :PercentageValue="this.percentageValue"></upload-file>
@@ -196,7 +188,7 @@
 
 <script>
 import PopupTreeInput from "@/components/PopupTreeInput"
-import MtTable from "@/views/Core/MtTable"
+import KtTable2 from "@/views/Core/KtTable2"
 import KtButton from "@/views/Core/KtButton"
 import TableColumnFilterDialog from "@/views/Core/TableColumnFilterDialog"
 import { format } from "@/utils/datetime"
@@ -206,7 +198,7 @@ import XLSX from "xlsx";
 export default {
   components: {
     PopupTreeInput,
-    MtTable,
+    KtTable2,
     KtButton,
     TableColumnFilterDialog,
     UploadFile
@@ -219,6 +211,32 @@ export default {
       filters: {
         name: ''
       },
+      myButtons:[{
+				name:"handleEdit",
+				perms:"sys:sysCode:edit",
+				label:"action.edit",
+				icon:"fa fa-edit"
+			},{
+				name:"handleDelete",
+				perms:"sys:sysCode:delete",
+				label:"action.delete",
+				type:"danger",
+				icon:"fa fa-trash"
+      }
+      // ,{
+			// 	name:"handleRestore",
+			// 	perms:"material:item:restore",
+			// 	label:"恢复",
+			// 	type:"danger",
+			// 	icon:"fa fa-trash"
+			// },{
+			// 	name:"handleDisable",
+			// 	perms:"material:item:Disable",
+			// 	label:"禁用",
+			// 	type:"danger",
+			// 	icon:"fa fa-trash"
+      // }
+      ],
       percentageValue:0,
       columns: [],
       filterColumns: [],
