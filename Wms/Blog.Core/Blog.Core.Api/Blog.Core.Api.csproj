@@ -81,6 +81,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="JS\" />
 	  <Folder Include="Log\" />
 	</ItemGroup>
 

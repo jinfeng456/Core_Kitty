@@ -52,6 +52,29 @@ namespace Blog.Core.IRepository
 }
 
 <# 
+		manager.StartBlock("I"+tableName+"Repository"+".cs",OutputPath1);//文件名
+#>
+//-----------------------------------------代码开始--------------------------------------------------------
+using Blog.Core.IRepository.Base;
+using Blog.Core.Model.Models;
+namespace Blog.Core.IRepository
+{	
+	/// <summary>
+	/// I<#=tableName#>Repository
+	/// </summary>	
+	public interface I<#=tableName#>Repository : IBaseRepository<<#=tableName#>>
+    {
+
+       
+    }
+}
+//----------------------------------------代码结束------------------------------------------------------
+<# 
+		manager.EndBlock(); 
+		manager.Process(true);
+#>
+
+<# 
     } else{ 
 
 	#>

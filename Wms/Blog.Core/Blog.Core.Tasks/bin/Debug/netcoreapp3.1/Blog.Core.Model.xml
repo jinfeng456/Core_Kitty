@@ -1203,6 +1203,46 @@
             修改时间
             </summary>
         </member>
+        <member name="T:Blog.Core.Model.Models.SysCodeDto">
+            <summary>
+            SysCode
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.SysCodeDto.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.SysCodeDto.TableDescription">
+            <summary>
+            TableDescription
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.SysCodeDto.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.SysCodeDto.SerialPrefix">
+            <summary>
+            SerialPrefix
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.SysCodeDto.BusinessType">
+            <summary>
+            BusinessType
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.SysCodeDto.CodeNumber">
+            <summary>
+            CodeNumber
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.SysCodeDto.CodeDate">
+            <summary>
+            CodeDate
+            </summary>
+        </member>
         <member name="P:Blog.Core.Model.BaseEntity.id">
             <summary>
             ID

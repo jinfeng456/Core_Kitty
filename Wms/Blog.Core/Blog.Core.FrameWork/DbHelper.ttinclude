@@ -1,10 +1,10 @@
 <#+
 	public class config
 	{
-        //public static readonly string ConnectionString = File.Exists(@"C:\my-file\dbCountPswSolsticeALDDD.txt") ? File.ReadAllText(@"C:\my-file\dbCountPswSolsticeALDDD.txt").Trim(): "Server=192.168.10.112;Database=wms;User ID=sa;Password=root1234!;Trusted_Connection=False;";
         public static readonly string ConnectionString="Data Source=.;Initial Catalog=DB_WMS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static readonly string DbDatabase = "";
-        public static readonly string TableName = "";
+        public static readonly string TableName = "SysCode";
+        //SysUser
 	}
 #>
 <#+ 

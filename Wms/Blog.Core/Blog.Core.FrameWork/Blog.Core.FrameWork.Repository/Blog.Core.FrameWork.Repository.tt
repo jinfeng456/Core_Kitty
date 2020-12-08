@@ -58,6 +58,33 @@ namespace Blog.Core.Repository
 }
 
 <# 
+		manager.StartBlock(tableName+"Repository"+".cs",OutputPath1);//文件名
+#>
+//-----------------------------------------代码开始--------------------------------------------------------
+using Blog.Core.Repository.Base;
+using Blog.Core.Model.Models;
+using Blog.Core.IRepository;
+using Blog.Core.IRepository.UnitOfWork;
+namespace Blog.Core.Repository
+{	
+	/// <summary>
+	/// <#=tableName#>Repository
+	/// </summary>	
+	public class <#=tableName#>Repository : BaseRepository<<#=tableName#>>, I<#=tableName#>Repository
+    {
+	    public <#=tableName#>Repository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+       
+    }
+}
+//----------------------------------------代码结束------------------------------------------------------
+<# 
+		manager.EndBlock(); 
+		manager.Process(true);
+#>
+
+<# 
     } else{ 
 
 	#>

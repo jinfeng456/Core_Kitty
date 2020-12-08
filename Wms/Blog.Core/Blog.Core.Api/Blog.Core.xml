@@ -211,6 +211,38 @@
             <param name="password"></param>
             <returns></returns>
         </member>
+        <member name="T:Blog.Core.Controllers.SysCodeController">
+            <summary>
+            SysCode
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Controllers.SysCodeController.FindPage(Blog.Core.Model.Models.SysCodeDto)">
+            <summary>
+            查询
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Controllers.SysCodeController.Save(Blog.Core.Model.Models.SysCode)">
+            <summary>
+            添加
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Controllers.SysCodeController.Delete(System.Collections.Generic.List{Blog.Core.Model.Models.SysCode})">
+            <summary>
+            删除
+            </summary>
+            <param name="modelList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Controllers.SysCodeController.GetAllList">
+            <summary>
+            查询全部
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Blog.Core.Controllers.SysDictClassController">
             <summary>
             字典分类管理

@@ -56,6 +56,30 @@ namespace Blog.Core.IServices
 }
 
 <# 
+		manager.StartBlock("I"+tableName+"Services"+".cs",OutputPath1);//文件名
+#>
+//-----------------------------------------代码开始--------------------------------------------------------
+using Blog.Core.IServices.BASE;
+using Blog.Core.Model.Models;
+
+namespace Blog.Core.IServices
+{	
+	/// <summary>
+	/// I<#=tableName#>Services
+	/// </summary>	
+	public interface I<#=tableName#>Services :IBaseServices<<#=tableName#>>
+    {
+
+       
+    }
+}
+//----------------------------------------代码结束------------------------------------------------------
+<# 
+		manager.EndBlock(); 
+		manager.Process(true);
+#>
+
+<# 
     } else{ 
 
 	#>

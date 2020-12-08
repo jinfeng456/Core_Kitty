@@ -1,0 +1,98 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension="/" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ include file="$(ProjectDir)DbHelper.ttinclude"  #>
+<#@ include file="$(ProjectDir)ModelAuto.ttinclude"	#>
+<# var manager = new Manager(Host, GenerationEnvironment, true); #>
+<# 
+	var OutputPath1 =Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Host.TemplateFile+"..")+"..")+"..");
+	OutputPath1=Path.Combine(OutputPath1,"Blog.Core.Api","JS");
+	if (!Directory.Exists(OutputPath1))
+	{
+	    Directory.CreateDirectory(OutputPath1);
+	}
+#>
+<# foreach (var item in DbHelper.GetDbTablesNew(config.ConnectionString, config.DbDatabase,config.TableName))
+   {
+		 var tableName=FieldToModel(item.ToString());
+		manager.StartBlock(tableName+".js",OutputPath1);//文件名
+	   #>
+
+//-----------------------------------------------代码开始-----------------------------------------------------------
+import axios from '@/http/axios'
+
+// 保存
+export const save = (data) => {
+    return axios({
+        url: '/<#=tableName#>/save',
+        method: 'post',
+        data
+    })
+}
+// 删除
+export const batchDelete = (data) => {
+    return axios({
+        url: '/<#=tableName#>/delete',
+        method: 'post',
+        data
+    })
+}
+// 分页查询
+export const findPage = (data) => {
+    return axios({
+        url: '/<#=tableName#>/findPage',
+        method: 'post',
+        data
+    })
+}
+
+export const getAllList = () => {
+    return axios({
+        url: '/<#=tableName#>/getAllList',
+        method: 'post'
+    })
+}
+
+//-----------------------------------------------代码结束-----------------------------------------------------------
+<#
+   manager.EndBlock(); 
+   }
+  manager.Process(true);
+   #>
+
+   <#+
+	string FieldToModel(String className)
+        {
+            StringBuilder tableName = new StringBuilder();
+            for (int i = 0; i < className.Length; i++)
+            {
+                if (className[i].ToString() == "_")
+                {
+                    i++;
+                    tableName.Append(className[i].ToString().ToUpper());
+                }
+                else
+                {
+				    if(i==0)
+					{
+						tableName.Append(className[i].ToString().ToLower());
+					}
+					else
+					{
+						tableName.Append(className[i].ToString());
+					}
+                }
+            }
+            return tableName.ToString();
+        }
+    #>

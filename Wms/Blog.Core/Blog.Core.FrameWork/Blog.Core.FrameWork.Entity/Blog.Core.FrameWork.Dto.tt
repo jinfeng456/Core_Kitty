@@ -28,6 +28,7 @@
 		manager.StartBlock(tableName+"Dto.cs",OutputPath1);//文件名
 	   #>
 using Blog.Core.Model.ViewModels.Base;
+using System;
 namespace Blog.Core.Model.Models
 {
 	 ///<summary>
