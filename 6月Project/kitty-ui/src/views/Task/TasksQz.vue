@@ -236,7 +236,7 @@ export default {
 			let para = { jobId: row[0].id };
 			this.$api.tasksQz.startJob(para).then(res => {
 				debugger
-				if (format.isEmt(res)) {
+				if (isEmt(res)) {
 				this.listLoading = false;
 				return;
 				}
@@ -279,7 +279,7 @@ export default {
 			//NProgress.start();
 			let para = { jobId: row[0].id };
 			this.$api.tasksQz.stopJob(para).then(res => {
-				if (format.isEmt(res)) {
+				if (isEmt(res)) {
 				this.listLoading = false;
 				return;
 				}
@@ -321,7 +321,7 @@ export default {
 			//NProgress.start();
 			let para = { jobId: row[0].id };
 			this.$api.tasksQz.reCovery(para).then(res => {
-				if (format.isEmt(res)) {
+				if (isEmt(res)) {
 				this.listLoading = false;
 				return;
 				}
