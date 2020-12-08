@@ -29,5 +29,6 @@ export default {
   dictClass,
   classify,
   item,
-  exports
+  exports,
+  sysCode
 };

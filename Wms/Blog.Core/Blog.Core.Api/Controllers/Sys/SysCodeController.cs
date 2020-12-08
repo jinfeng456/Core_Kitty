@@ -5,12 +5,15 @@ using Blog.Core.Common.HttpContextUser;
 using Blog.Core.IServices;
 using Blog.Core.Model;
 using Blog.Core.Model.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace Blog.Core.Controllers
 {
     ///<summary>
     ///SysCode
     ///</summary>
+    [Route("SysCode")]
+    [Authorize]
     public class SysCodeController : ControllerBase
 	 {
 		readonly ISysCodeServices _sysCodeServices;
@@ -49,7 +52,7 @@ namespace Blog.Core.Controllers
         {
             if (model.id == 0)
             {
-                model.id = await _sysCodeServices.GetId();
+                model.id = await _sysCodeServices.GetId(); 
                 return BaseResult.Ok(await _sysCodeServices.Add(model));
             }
             else

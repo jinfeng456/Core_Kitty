@@ -44,7 +44,6 @@ namespace Blog.Core
             services.AddSingleton(new LogLock(Env.ContentRootPath));
 
             Permissions.IsUseIds4 = Appsettings.app(new string[] { "Startup", "IdentityServer4", "Enabled" }).ObjToBool();
-
             services.AddMemoryCacheSetup();
             services.AddSqlsugarSetup();
             services.AddDbSetup();

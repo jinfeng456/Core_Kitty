@@ -136,6 +136,15 @@ export default {
 	foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, tableName))
 	{
 #>
+<#
+				if(column.ColumnName=="Id")
+				{
+#>
+				<#=FieldToModel(column.ColumnName)#>: 0,
+<#
+				   continue;
+				}
+#>
 				<#=FieldToModel(column.ColumnName)#>: null,
 <#
 	}
@@ -170,6 +179,15 @@ export default {
 <#
 	foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, tableName))
 	{
+#>
+<#
+				if(column.ColumnName=="Id")
+				{
+#>
+				<#=FieldToModel(column.ColumnName)#>: 0,
+<#
+				   continue;
+				}
 #>
 				<#=FieldToModel(column.ColumnName)#>: null,
 <#
@@ -323,6 +341,15 @@ export default {
 	foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, tableName))
 	{
 #>
+<#
+				if(column.ColumnName=="Id")
+				{
+#>
+				<#=FieldToModel(column.ColumnName)#>: 0,
+<#
+				   continue;
+				}
+#>
 				<#=FieldToModel(column.ColumnName)#>: null,
 <#
 	}
@@ -357,6 +384,15 @@ export default {
 <#
 	foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, tableName))
 	{
+#>
+<#
+				if(column.ColumnName=="Id")
+				{
+#>
+				<#=FieldToModel(column.ColumnName)#>: 0,
+<#
+				   continue;
+				}
 #>
 				<#=FieldToModel(column.ColumnName)#>: null,
 <#
@@ -529,6 +565,15 @@ export default {
 	foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, row["TABLE_NAME"].ToString()))
 	{
 #>
+<#
+				if(column.ColumnName=="Id")
+				{
+#>
+				<#=FieldToModel(column.ColumnName)#>: 0,
+<#
+				   continue;
+				}
+#>
 				<#=FieldToModel(column.ColumnName)#>: null,
 <#
 	}
@@ -563,6 +608,15 @@ export default {
 <#
 	foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, row["TABLE_NAME"].ToString()))
 	{
+#>
+<#
+				if(column.ColumnName=="Id")
+				{
+#>
+				<#=FieldToModel(column.ColumnName)#>: 0,
+<#
+				   continue;
+				}
 #>
 				<#=FieldToModel(column.ColumnName)#>: null,
 <#

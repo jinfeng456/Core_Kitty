@@ -37,11 +37,15 @@ using Blog.Core.Model.Models;
 using Blog.Core.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Blog.Core.Controllers
 {
 	 ///<summary>
 	 ///<#=tableName#>
 	 ///</summary>
+     [Route("<#=tableName#>")]
+     [Authorize]
 	 public class <#=tableName#>Controller : ControllerBase
 	 {
 		readonly I<#=tableName#>Services _<#=ToCamel(tableName)#>Services;

@@ -1208,11 +1208,6 @@
             SysCode
             </summary>
         </member>
-        <member name="P:Blog.Core.Model.Models.SysCodeDto.Id">
-            <summary>
-            Id
-            </summary>
-        </member>
         <member name="P:Blog.Core.Model.Models.SysCodeDto.TableDescription">
             <summary>
             TableDescription

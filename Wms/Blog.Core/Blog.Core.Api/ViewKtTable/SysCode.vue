@@ -1,10 +1,11 @@
+//-----------------------------------------代码开始--------------------------------------------------------
 <template>
  <div class="container" >
 	<!--工具栏-->
 	<div class="toolbar" style="float:left;padding-top:10px;padding-left:15px;">
 		<el-form :inline="true" :model="filters" :size="size">
 			<el-form-item>
-				<el-input v-model="filters.tableName" placeholder="表名"></el-input>
+				<el-input v-model="filters.label" placeholder="名称"></el-input>
 			</el-form-item>
 			<el-form-item>
 				<kt-button :label="$t('action.search')" perms="sys:sysCode:view" type="primary" @click="findPage(null)"/>
@@ -15,19 +16,19 @@
 		</el-form>
 	</div>
 	<!--表格内容栏-->
-	<kt-table2 :height="350" permsDelete="sys:sysCode:delete" :myButtons="myButtons"
+	<kt-table :height="388" permsEdit = "sys:sysCode:edit" permsDelete="sys:sysCode:delete"
 		:data="pageResult" :columns="columns" 
 		@findPage="findPage" @handleEdit="handleEdit" @handleDelete="handleDelete" :pageRequest="this.pageRequest">
-	</kt-table2>
+	</kt-table>
 	<!--新增编辑界面-->
 	<el-dialog :title="operation?'新增':'编辑'" width="40%" :visible.sync="editDialogVisible" :close-on-click-modal="false">
-		<el-form :model="dataForm" label-width="80px" :rules="dataFormRules" ref="dataForm" :size="size">
+		<el-form :model="dataForm" label-width="90px" :rules="dataFormRules" ref="dataForm" :size="size">
 	
-			<!-- <el-form-item label = "主键" prop="id" >
+			<el-form-item label = "" prop="id" >
 				<el-input v-model="dataForm.id" auto-complete="off"></el-input>
-			</el-form-item> -->
+			</el-form-item>
 	
-			<el-form-item label = "表描述" prop="tableDescription" >
+			<el-form-item label = "" prop="tableDescription" >
 				<el-input v-model="dataForm.tableDescription" auto-complete="off"></el-input>
 			</el-form-item>
 	
@@ -35,21 +36,21 @@
 				<el-input v-model="dataForm.tableName" auto-complete="off"></el-input>
 			</el-form-item>
 	
-			<el-form-item label = "前缀" prop="serialPrefix" >
+			<el-form-item label = "" prop="serialPrefix" >
 				<el-input v-model="dataForm.serialPrefix" auto-complete="off"></el-input>
 			</el-form-item>
 	
-			<el-form-item label = "单据类型" prop="businessType" >
+			<el-form-item label = "" prop="businessType" >
 				<el-input v-model="dataForm.businessType" auto-complete="off"></el-input>
 			</el-form-item>
 	
-			<!-- <el-form-item label = "数目" prop="codeNumber" >
+			<el-form-item label = "" prop="codeNumber" >
 				<el-input v-model="dataForm.codeNumber" auto-complete="off"></el-input>
-			</el-form-item> -->
+			</el-form-item>
 	
-			<!-- <el-form-item label = "日期" prop="codeDate" >
+			<el-form-item label = "" prop="codeDate" >
 				<el-input v-model="dataForm.codeDate" auto-complete="off"></el-input>
-			</el-form-item> -->
+			</el-form-item>
 		</el-form>
 		<div slot = "footer" class="dialog-footer">
 			<el-button :size="size" @click.native="editDialogVisible = false">{{$t('action.cancel')}}</el-button>
@@ -60,43 +61,32 @@
 </template>
 
 <script>
-import KtTable2 from "@/views/Core/KtTable2"
+import KtTable from "@/views/Core/KtTable"
 import KtButton from "@/views/Core/KtButton"
 import { format } from "@/utils/datetime"
 export default {
 	components:{
-			KtTable2,
+			KtTable,
 			KtButton
 	},
-	data() {
+	data(){
 		return {
 			size: 'small',
 			filters:{
-				tableName: ''
+				label: ''
 			},
 			columns: [
-				//{ prop: "id", label: "主键", minWidth: 100},
-				{ prop: "tableDescription", label: "表描述", minWidth: 100},
+				{ prop: "id", label: "", minWidth: 100},
+				{ prop: "tableDescription", label: "", minWidth: 100},
 				{ prop: "tableName", label: "表名", minWidth: 100},
-				{ prop: "serialPrefix", label: "前缀", minWidth: 100},
-				{ prop: "businessType", label: "单据类型", minWidth: 100},
-				// { prop: "codeNumber", label: "数目", minWidth: 100},
-				// { prop: "codeDate", label: "日期", minWidth: 100},
+				{ prop: "serialPrefix", label: "", minWidth: 100},
+				{ prop: "businessType", label: "", minWidth: 100},
+				{ prop: "codeNumber", label: "", minWidth: 100},
+				{ prop: "codeDate", label: "", minWidth: 100},
 			],
 			pageRequest: { pageNum: 1, pageSize: 8 },
 			pageResult: { },
-			myButtons:[{
-				name:"handleEdit",
-				perms:"sys:sysCode:edit",
-				label:"action.edit",
-				icon:"fa fa-edit"
-			},{
-				name:"handleDelete",
-				perms:"sys:sysCode:delete",
-				label:"action.delete",
-				type:"danger",
-				icon:"fa fa-trash"
-			}],
+
 			operation: false, // true:新增, false:编辑
 			editDialogVisible: false, // 新增编辑界面是否显示
 			editLoading: false,
@@ -120,10 +110,12 @@ export default {
 	methods: {
 		// 获取分页数据
 		findPage: function(data){
-			if(data!==null){
-				this.filters.pageNum=data.pageRequest.pageNum		
-			}else{
+			if (data !== null){
+				this.filters.pageNum=data.pageRequest.pageNum				
+			}
+			else{
 				this.filters.pageNum=1
+				this.pageRequest.pageNum=1
 			}
 			this.filters.pageSize=this.pageRequest.pageSize
 			this.$api.sysCode.findPage(this.filters).then((res) => {
@@ -192,6 +184,5 @@ export default {
 
 <style scoped>
 
-</style> 
-
-	
+</style>
+//----------------------------------------代码结束------------------------------------------------------

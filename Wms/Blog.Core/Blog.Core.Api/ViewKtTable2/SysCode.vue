@@ -108,7 +108,7 @@ export default {
 			},
 			// 新增编辑界面数据
 			dataForm:{
-				id: null,
+				id: 0,
 				tableDescription: null,
 				tableName: null,
 				serialPrefix: null,
@@ -142,7 +142,7 @@ export default {
 			this.editDialogVisible = true
 			this.operation = true
 			this.dataForm = {
-				id: null,
+				id: 0,
 				tableDescription: null,
 				tableName: null,
 				serialPrefix: null,

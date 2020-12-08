@@ -8,10 +8,6 @@ namespace Blog.Core.Model.Models
 	 ///</summary>
 	 public class SysCodeDto : PageDto
 	 {
-	 	/// <summary>
-        /// Id
-        /// </summary>
-		public int Id { get; set; }
 		/// <summary>
         /// TableDescription
         /// </summary>
