@@ -8,4 +8,8 @@
     <ProjectReference Include="..\Blog.Core.Model\Blog.Core.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IRepositories_New\" />
+  </ItemGroup>
+
 </Project>

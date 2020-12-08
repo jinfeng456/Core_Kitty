@@ -14,6 +14,7 @@ import * as classify from "./moudules/Basic/Matertial/classify";
 import * as item from "./moudules/Basic/Matertial/item";
 import * as exports from "./moudules/file/exports";
 import * as sysCode from "./moudules/sys/sysCode";
+import * as tasksQz from "./moudules/task/tasksQz";
 
 
 // 默认全部导出
@@ -30,5 +31,6 @@ export default {
   classify,
   item,
   exports,
-  sysCode
+  sysCode,
+  tasksQz
 };

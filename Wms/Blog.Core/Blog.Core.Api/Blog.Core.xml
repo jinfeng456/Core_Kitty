@@ -376,43 +376,53 @@
             首页
             </summary>
         </member>
-        <member name="M:Blog.Core.Controllers.TasksQzController.Get(System.Int32,System.String)">
+        <member name="T:Blog.Core.Controllers.TasksQzController1">
             <summary>
-            分页获取
+            TasksQz
             </summary>
-            <param name="page"></param>
-            <param name="key"></param>
+        </member>
+        <member name="M:Blog.Core.Controllers.TasksQzController1.FindPage(Blog.Core.Model.Models.TasksQzDto)">
+            <summary>
+            查询
+            </summary>
+            <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Controllers.TasksQzController.Post(Blog.Core.Model.Models.TasksQz)">
+        <member name="M:Blog.Core.Controllers.TasksQzController1.Save(Blog.Core.Model.Models.TasksQz)">
             <summary>
-            添加计划任务
+            添加
             </summary>
-            <param name="tasksQz"></param>
+            <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Controllers.TasksQzController.Put(Blog.Core.Model.Models.TasksQz)">
+        <member name="M:Blog.Core.Controllers.TasksQzController1.Delete(System.Collections.Generic.List{Blog.Core.Model.Models.TasksQz})">
             <summary>
-            修改计划任务
+            删除
             </summary>
-            <param name="tasksQz"></param>
+            <param name="modelList"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Controllers.TasksQzController.StartJob(System.Int32)">
+        <member name="M:Blog.Core.Controllers.TasksQzController1.GetAllList">
+            <summary>
+            查询全部
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Controllers.TasksQzController1.StartJob(System.Int32)">
             <summary>
             启动计划任务
             </summary>
             <param name="jobId"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Controllers.TasksQzController.StopJob(System.Int32)">
+        <member name="M:Blog.Core.Controllers.TasksQzController1.StopJob(System.Int32)">
             <summary>
             停止一个计划任务
             </summary>
             <param name="jobId"></param>
             <returns></returns>        
         </member>
-        <member name="M:Blog.Core.Controllers.TasksQzController.ReCovery(System.Int32)">
+        <member name="M:Blog.Core.Controllers.TasksQzController1.ReCovery(System.Int32)">
             <summary>
             重启一个计划任务
             </summary>

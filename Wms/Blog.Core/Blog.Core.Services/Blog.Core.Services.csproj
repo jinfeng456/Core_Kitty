@@ -22,4 +22,8 @@
 		<ProjectReference Include="..\Blog.Core.IServices\Blog.Core.IServices.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Services_New\" />
+	</ItemGroup>
+
 </Project>

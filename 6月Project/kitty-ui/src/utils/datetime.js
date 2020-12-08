@@ -57,3 +57,12 @@ export function formatWithDay (datetime, dateSeprator, timeSeprator) {
     return timeFormat;
   }
 }
+
+export function isEmt(obj) {
+      if(typeof obj == "undefined" || obj == null || obj == ""){
+          return true;
+      }else{
+          return false;
+      }
+  }
+

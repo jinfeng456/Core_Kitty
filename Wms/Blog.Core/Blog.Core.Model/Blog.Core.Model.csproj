@@ -22,4 +22,9 @@
 		<ProjectReference Include="..\Blog.Core.Common\Blog.Core.Common.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Models_New\" />
+	  <Folder Include="ViewModels_New\" />
+	</ItemGroup>
+
 </Project>

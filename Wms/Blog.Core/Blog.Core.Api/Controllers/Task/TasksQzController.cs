@@ -1,100 +1,97 @@
-﻿using System;
-using System.Linq.Expressions;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Blog.Core.Common.HttpContextUser;
 using Blog.Core.IServices;
 using Blog.Core.Model;
 using Blog.Core.Model.Models;
-using Blog.Core.Tasks;
+using Blog.Core.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Blog.Core.Tasks;
 
 namespace Blog.Core.Controllers
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
-    [Authorize(Permissions.Name)]
-    public class TasksQzController : ControllerBase
-    {
-        private readonly ITasksQzServices _tasksQzServices;
+	 ///<summary>
+	 ///TasksQz
+	 ///</summary>
+     [Route("TasksQz")]
+     [Authorize]
+	 public class TasksQzController1 : ControllerBase
+	 {
+		readonly ITasksQzServices _tasksQzServices;
         private readonly ISchedulerCenter _schedulerCenter;
-
-        public TasksQzController(ITasksQzServices tasksQzServices, ISchedulerCenter schedulerCenter)
+        readonly IUser _user;
+		public TasksQzController1(ITasksQzServices tasksQzServices, IUser user, ISchedulerCenter schedulerCenter)
         {
             _tasksQzServices = tasksQzServices;
             _schedulerCenter = schedulerCenter;
+            _user = user;
+        }
+
+		/// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        // GET: api/User
+        [HttpPost, Route("FindPage")]
+        public async Task<BaseResult> FindPage([FromBody]TasksQzDto dto)
+        {
+            if (string.IsNullOrEmpty(dto.Name) || string.IsNullOrWhiteSpace(dto.Name))
+            {
+                dto.Name = "";
+            }
+            var data = await _tasksQzServices.QueryPage(a => (a.Name != null && a.Name.Contains(dto.Name)), dto.pageNum, dto.pageSize, " createTime desc ");
+            return BaseResult.Ok(data);
         }
 
         /// <summary>
-        /// 分页获取
+        /// 添加
         /// </summary>
-        /// <param name="page"></param>
-        /// <param name="key"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
-        // GET: api/Buttons/5
-        [HttpGet]
-        public async Task<MessageModel<PageModel<TasksQz>>> Get(int page = 1, string key = "")
+        // POST: api/User
+        [HttpPost, Route("Save")]
+        public async Task<BaseResult> Save([FromBody]TasksQz model)
         {
-            if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
+            if (model.Id == 0)
             {
-                key = "";
+                model.Id = await _tasksQzServices.GetId();
+                model.CreateTime = DateTime.Now; 
+                return BaseResult.Ok(await _tasksQzServices.Add(model));
             }
-            int intPageSize = 50;
-
-            Expression<Func<TasksQz, bool>> whereExpression = a => a.IsDeleted != true && (a.Name != null && a.Name.Contains(key));
-
-            var data = await _tasksQzServices.QueryPage(whereExpression, page, intPageSize, " Id desc ");
-
-            return new MessageModel<PageModel<TasksQz>>()
-            {
-                msg = "获取成功",
-                success = data.totalSize >= 0,
-                response = data
-            };
-
-        }
-
-        /// <summary>
-        /// 添加计划任务
-        /// </summary>
-        /// <param name="tasksQz"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<MessageModel<string>> Post([FromBody] TasksQz tasksQz)
-        {
-            var data = new MessageModel<string>();
-
-            var id = (await _tasksQzServices.Add(tasksQz));
-            data.success = id > 0;
-            if (data.success)
-            {
-                data.response = id.ObjToString();
-                data.msg = "添加成功";
+            else
+            {       
+                return BaseResult.Ok(await _tasksQzServices.Update(model));
             }
-
-            return data;
         }
 
 
         /// <summary>
-        /// 修改计划任务
+        /// 删除
         /// </summary>
-        /// <param name="tasksQz"></param>
+        /// <param name="modelList"></param>
         /// <returns></returns>
-        [HttpPut]
-        public async Task<MessageModel<string>> Put([FromBody] TasksQz tasksQz)
+        [HttpPost, Route("Delete")]
+        public async Task<BaseResult> Delete([FromBody]List<TasksQz> modelList)
         {
-            var data = new MessageModel<string>();
-            if (tasksQz != null && tasksQz.Id > 0)
+            foreach (var model in modelList)
             {
-                data.success = await _tasksQzServices.Update(tasksQz);
-                if (data.success)
-                {
-                    data.msg = "更新成功";
-                    data.response = tasksQz?.Id.ObjToString();
-                }
+                await _tasksQzServices.Delete(model);
             }
+            return BaseResult.Ok("ok");
+        }
 
-            return data;
+        /// <summary>
+        /// 查询全部
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, Route("GetAllList")]
+        public async Task<BaseResult> GetAllList()
+        {
+            return BaseResult.Ok(await _tasksQzServices.Query());
         }
 
         /// <summary>
@@ -102,7 +99,7 @@ namespace Blog.Core.Controllers
         /// </summary>
         /// <param name="jobId"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet, Route("StartJob")] ///{jobId?}
         public async Task<MessageModel<string>> StartJob(int jobId)
         {
             var data = new MessageModel<string>();
@@ -130,7 +127,7 @@ namespace Blog.Core.Controllers
         /// </summary>
         /// <param name="jobId"></param>
         /// <returns></returns>        
-        [HttpGet]
+        [HttpGet, Route("StopJob")]
         public async Task<MessageModel<string>> StopJob(int jobId)
         {
             var data = new MessageModel<string>();
@@ -158,7 +155,7 @@ namespace Blog.Core.Controllers
         /// </summary>
         /// <param name="jobId"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet, Route("ReCovery")]
         public async Task<MessageModel<string>> ReCovery(int jobId)
         {
             var data = new MessageModel<string>();
@@ -182,4 +179,4 @@ namespace Blog.Core.Controllers
 
         }
     }
-}
+}	 

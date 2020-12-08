@@ -74,6 +74,6 @@ namespace Blog.Core.Model.Models
         /// 创建时间
         /// </summary>
         [SugarColumn(IsNullable = true)]
-        public DateTime CreateTime { get; set; } = DateTime.Now;
+        public DateTime? CreateTime { get; set; } = DateTime.Now;
     }
 }

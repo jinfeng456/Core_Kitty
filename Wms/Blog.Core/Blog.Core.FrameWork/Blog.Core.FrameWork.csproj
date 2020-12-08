@@ -38,7 +38,7 @@
       <LastGenOutput>Blog.Core.FrameWork.Services.cs</LastGenOutput>
     </None>
     <None Update="Blog.Core.FrameWork.View\viewQuery.tt">
-      <LastGenOutput>viewKtTable2.cs</LastGenOutput>
+      <LastGenOutput>viewQuery.cs</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
     <None Update="Blog.Core.FrameWork.View\viewKtTable2.tt">
@@ -53,6 +53,34 @@
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Blog.Core.FrameWork.IRepository\Blog.Core.FrameWork.IRepository.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Blog.Core.FrameWork.IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Blog.Core.FrameWork.IServices\Blog.Core.FrameWork.IServices.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Blog.Core.FrameWork.IServices.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Blog.Core.FrameWork.Repository\Blog.Core.FrameWork.Repository.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Blog.Core.FrameWork.Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Blog.Core.FrameWork.Services\Blog.Core.FrameWork.Services.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Blog.Core.FrameWork.Services.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Blog.Core.FrameWork.View\viewKtTable2.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>viewKtTable2.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

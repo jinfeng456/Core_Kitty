@@ -3,7 +3,7 @@
 	{
         public static readonly string ConnectionString="Data Source=.;Initial Catalog=DB_WMS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static readonly string DbDatabase = "";
-        public static readonly string TableName = "SysCode";
+        public static readonly string TableName = "TasksQz";
         //SysUser
 	}
 #>

@@ -82,9 +82,9 @@ namespace Blog.Core.Controllers
         [HttpPost, Route("Save")]
         public async Task<BaseResult> Save([FromBody]<#=tableName#> model)
         {
-            if (model.id == 0)
+            if (model.Id == 0)
             {
-                model.id = await _<#=ToCamel(tableName)#>Services.GetId();
+                model.Id = await _<#=ToCamel(tableName)#>Services.GetId();
                 model.CreateTime = DateTime.Now;
                 model.CreateBy = _user.Name;
                 model.LastUpdateBy = _user.Name;

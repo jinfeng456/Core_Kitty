@@ -81,8 +81,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Controllers_New\" />
 	  <Folder Include="JS\" />
 	  <Folder Include="Log\" />
+	  <Folder Include="ViewKtTable\" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

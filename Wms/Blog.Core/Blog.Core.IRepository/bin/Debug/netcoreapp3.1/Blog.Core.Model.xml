@@ -1238,6 +1238,86 @@
             CodeDate
             </summary>
         </member>
+        <member name="T:Blog.Core.Model.Models.TasksQzDto">
+            <summary>
+            TasksQz
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.Name">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.JobGroup">
+            <summary>
+            任务分组
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.Cron">
+            <summary>
+            时间表达式
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.AssemblyName">
+            <summary>
+            程序集名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.ClassName">
+            <summary>
+            任务所在类
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.Remark">
+            <summary>
+            任务描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.RunTimes">
+            <summary>
+            执行次数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.BeginTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.TriggerType">
+            <summary>
+            触发器类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.IntervalSecond">
+            <summary>
+            执行间隔时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.IsStart">
+            <summary>
+            是否启动
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.JobParams">
+            <summary>
+            执行传参
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.IsDeleted">
+            <summary>
+            IsDeleted
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQzDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
         <member name="P:Blog.Core.Model.BaseEntity.id">
             <summary>
             ID

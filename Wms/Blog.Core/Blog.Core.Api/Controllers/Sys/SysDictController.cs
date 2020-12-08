@@ -113,6 +113,6 @@ namespace Blog.Core.Controllers
         public async Task<BaseResult> GetAllDicts()
         {
             return BaseResult.Ok(await _sysDictServices.Query());
-        }
+        }  
     }
 }

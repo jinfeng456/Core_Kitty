@@ -20,4 +20,8 @@
 		<ProjectReference Include="..\Blog.Core.IRepository\Blog.Core.IRepository.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Repositories_New\" />
+	</ItemGroup>
+
 </Project>
