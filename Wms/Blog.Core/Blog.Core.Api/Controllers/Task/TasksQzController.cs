@@ -13,24 +13,24 @@ using Blog.Core.Tasks;
 
 namespace Blog.Core.Controllers
 {
-	 ///<summary>
-	 ///TasksQz
-	 ///</summary>
-     [Route("TasksQz")]
-     [Authorize]
-	 public class TasksQzController1 : ControllerBase
-	 {
-		readonly ITasksQzServices _tasksQzServices;
+    ///<summary>
+    ///TasksQz
+    ///</summary>
+    [Route("TasksQz")]
+    [Authorize]
+    public class TasksQzController1 : ControllerBase
+    {
+        readonly ITasksQzServices _tasksQzServices;
         private readonly ISchedulerCenter _schedulerCenter;
         readonly IUser _user;
-		public TasksQzController1(ITasksQzServices tasksQzServices, IUser user, ISchedulerCenter schedulerCenter)
+        public TasksQzController1(ITasksQzServices tasksQzServices, IUser user, ISchedulerCenter schedulerCenter)
         {
             _tasksQzServices = tasksQzServices;
             _schedulerCenter = schedulerCenter;
             _user = user;
         }
 
-		/// <summary>
+        /// <summary>
         /// 查询
         /// </summary>
         /// <param name="dto"></param>
@@ -59,11 +59,11 @@ namespace Blog.Core.Controllers
             if (model.Id == 0)
             {
                 model.Id = await _tasksQzServices.GetId();
-                model.CreateTime = DateTime.Now; 
+                model.CreateTime = DateTime.Now;
                 return BaseResult.Ok(await _tasksQzServices.Add(model));
             }
             else
-            {       
+            {
                 return BaseResult.Ok(await _tasksQzServices.Update(model));
             }
         }
@@ -105,22 +105,23 @@ namespace Blog.Core.Controllers
             var data = new MessageModel<string>();
 
             var model = await _tasksQzServices.QueryById(jobId);
-            if (model != null)
+            if (model == null)
             {
-                var ResuleModel = await _schedulerCenter.AddScheduleJobAsync(model);
-                if (ResuleModel.success)
-                {
-                    model.IsStart = true;
-                    data.success = await _tasksQzServices.Update(model);
-                }
-                if (data.success)
-                {
-                    data.msg = "启动成功";
-                    data.response = jobId.ObjToString();
-                }
+                return data;
+            }
+            var ResuleModel = await _schedulerCenter.AddScheduleJobAsync(model);
+            if (!ResuleModel.success)
+            {
+                return ResuleModel;
+            }
+            model.IsStart = true;
+            data.success = await _tasksQzServices.Update(model);
+            if (data.success)
+            {
+                data.msg = "启动成功";
+                data.response = jobId.ObjToString();
             }
             return data;
-
         }
         /// <summary>
         /// 停止一个计划任务
@@ -179,4 +180,4 @@ namespace Blog.Core.Controllers
 
         }
     }
-}	 
+}

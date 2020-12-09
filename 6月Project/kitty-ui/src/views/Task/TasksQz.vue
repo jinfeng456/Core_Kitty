@@ -221,8 +221,9 @@ export default {
       	},
 		//开启job
 		handleStartJob() {
+			debugger
 		let row = this.selection.selections;
-		if (row.length!=1) {
+		if (row == undefined || row.length!=1) {
 			this.$message({
 			message: "请选择要操作的一行数据！",
 			type: "error"
@@ -264,7 +265,7 @@ export default {
 		//暂停job
 		handleStopJob() {
 		let row = this.selection.selections;
-		if (row.length!=1) {
+		if (row == undefined || row.length!=1) {
 			this.$message({
 			message: "请选择要操作的一行数据！",
 			type: "error"
@@ -305,7 +306,7 @@ export default {
 		//重启job
 		handleReCoveryJob() {
 		let row = this.selection.selections;
-		if (row.length!=1) {
+		if (row == undefined || row.length!=1) {
 			this.$message({
 			message: "请选择要操作的一行数据！",
 			type: "error"
