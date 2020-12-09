@@ -102,6 +102,8 @@
 import KtTable2 from "@/views/Core/KtTable2"
 import KtButton from "@/views/Core/KtButton"
 import { format } from "@/utils/datetime"
+import { isEmt } from "@/utils/datetime"
+
 export default {
 	components:{
 			KtTable2,
@@ -121,16 +123,16 @@ export default {
 				{ prop: "name", label: "名称", minWidth: 100},				
 				{ prop: "cron", label: "Cron表达式", minWidth: 120},
 				{ prop: "intervalSecond", label: "循环s", minWidth: 100},
-				{ prop: "assemblyName", label: "程序集", minWidth: 100},
+				{ prop: "assemblyName", label: "程序集", minWidth: 130},
 				//{ prop: "className", label: "任务所在类", minWidth: 100},
 				//{ prop: "remark", label: "任务描述", minWidth: 100},
 				{ prop: "runTimes", label: "运行次数", minWidth: 100},
-				{ prop: "beginTime", label: "开始时间", minWidth: 100},
-				{ prop: "endTime", label: "结束时间", minWidth: 100},
+				{ prop: "beginTime", label: "开始时间", minWidth: 100, formatter:this.dateFormat},
+				{ prop: "endTime", label: "结束时间", minWidth: 100, formatter:this.dateFormat},
 				{ prop: "isStart", label: "状态", minWidth: 100,formatter:this.statusFormat},
 				//{ prop: "jobParams", label: "执行传参", minWidth: 100},
 				//{ prop: "isDeleted", label: "是否删除", minWidth: 100},
-				{ prop: "createTime", label: "创建时间", minWidth: 100},
+				{ prop: "createTime", label: "创建时间", minWidth: 100, formatter:this.dateFormat},
 			],
 			pageRequest: { pageNum: 1, pageSize: 8 },
 			pageResult: { },
@@ -243,19 +245,18 @@ export default {
 				this.listLoading = false;
 				//NProgress.done();
 				debugger
-				if (res.data.success) {
+				if (res.success) {
 				this.$message({
 					message: "启动成功",
 					type: "success"
 				});
 				} else {
 				this.$message({
-					message: res.data.msg,
+					message: res.msg,
 					type: "error"
 				});
 				}
-
-				this.getTasks();
+				this.findPage(null);
 			});
 			})
 			.catch(() => {});
@@ -285,19 +286,18 @@ export default {
 				}
 				this.listLoading = false;
 				//NProgress.done();
-				if (res.data.success) {
+				if (res.success) {
 				this.$message({
 					message: "暂停成功",
 					type: "success"
 				});
 				} else {
 				this.$message({
-					message: res.data.msg,
+					message: res.msg,
 					type: "error"
 				});
 				}
-
-				this.getTasks();
+				this.findPage(null);
 			});
 			})
 			.catch(() => {});
@@ -327,19 +327,18 @@ export default {
 				}
 				this.listLoading = false;
 				//NProgress.done();
-				if (res.data.success) {
+				if (res.success) {
 				this.$message({
 					message: "重启成功",
 					type: "success"
 				});
 				} else {
 				this.$message({
-					message: res.data.msg,
+					message: res.msg,
 					type: "error"
 				});
 				}
-
-				this.getTasks();
+				this.findPage(null);
 			});
 			})
 			.catch(() => {});
