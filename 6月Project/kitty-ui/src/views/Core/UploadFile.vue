@@ -53,6 +53,10 @@ export default {
     PercentageValue: {
       type:Number,
       default: 0
+    },
+    second: {
+      type:Number,
+      default: 0
     }
   },
   data () {
@@ -70,6 +74,7 @@ export default {
       //UpLoadFileVisible: false, // 新增编辑界面是否显示
       editLoading: false,
       dicts:this.$store.state.dict.dicts,
+      clock:null,
       // 新增编辑界面数据
       dataForm: {
         id: 0,
@@ -117,10 +122,25 @@ export default {
           };
           // 读取文件 成功后执行上面的回调函数
           fileReader.readAsBinaryString(file);
+           //当倒计时小于0时清除定时器
+          window.clearInterval(this.clock); //关闭
       },
+    sendCode(xd = 10) { 
+      this.clock = window.setInterval(() => {
+        var pval = parseInt(this.PercentageValue + 1 * (100 / xd));
+        pval = pval > 98 ? 99 : pval;
+        this.PercentageValue = pval;
+      }, 1000);
+    },
     //新增
-    submitForm: function () {
-      	this.editLoading = true
+    submitForm: function () {    
+        this.editLoading = true;
+        if(this.tableData.length>2000){
+                      this.$message({ message: "导入数据不能超过2000条!", type: 'error' })
+                      this.editLoading = false
+                      return;
+                  }           
+        this.sendCode(this.second);
         this.$emit('ImportExcelData', this.tableData)
         this.editLoading = false
     }, 
@@ -136,9 +156,6 @@ export default {
     }, 
   },
   created () {
-    //this.findDeptTree()
-    //this.initColumns()
-    //this.findClassTypes()
   }
 }
 </script>

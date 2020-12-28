@@ -100,7 +100,7 @@ export default {
 				{prop:"descriptions", label:"dict.description", minWidth:120},
 				{prop:"remarks", label:"dict.remark", minWidth:120},
 				{prop:"createBy", label:"public.createName", minWidth:120},
-				{prop:"createTime", label:"public.createTime", minWidth:120, formatter:this.dateFormat}
+				{prop:"createTime", label:"public.createTime", minWidth:130, formatter:this.dateFormat}
 				// {prop:"lastUpdateBy", label:"更新人", minWidth:100},
 				// {prop:"lastUpdateTime", label:"更新时间", minWidth:120, formatter:this.dateFormat}
 			],

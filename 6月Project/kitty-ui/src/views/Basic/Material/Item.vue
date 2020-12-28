@@ -102,7 +102,7 @@
 	  </kt-table2>
 
     <!-- EXCEL导入 -->
-    <upload-file :key="componentKey" :UpLoadFileVisible="UpLoadFileVisible" @ImportExcelData="ImportExcelData" @cancel="cancel" :PercentageValue="this.percentageValue"></upload-file>
+    <upload-file :key="componentKey"  :second="importSecond" :UpLoadFileVisible="UpLoadFileVisible" @ImportExcelData="ImportExcelData" @cancel="cancel" :PercentageValue="this.percentageValue"></upload-file>
 
     <!--新增编辑界面-->
     <el-dialog :title="operation?'物料 —— 新增':'物料 —— 编辑'"
@@ -237,7 +237,9 @@ export default {
 			// 	icon:"fa fa-trash"
       // }
       ],
+      clock: null,
       percentageValue:0,
+      importSecond:60,
       columns: [],
       filterColumns: [],
       pageRequest: { pageNum: 1, pageSize: 10 },
@@ -309,34 +311,19 @@ export default {
                       obj.modelSpecs = item["规格型号"];
                       obj.packageSpecs = item["包装规格"];
                       arr.push(obj);
-                      this.percentageValue= Math.round(this.percentageValue+100/excelData.length)
-                      // this.$api.item.save(obj).then((res) => {
-                      //     if(res.code==200){
-                      //       debugger
-                      //         this.percentageValue= this.percentageValue+100/excelData.length
-                      //     }
-                      //     else
-                      //     {
-                      //         this.percentageValue=0
-                      //     }
-                      // })
                   });
-                  this.$api.item.ImportList(arr).then((res) => {
+                          
+                  this.$api.item.ImportList(arr).then((res) => { 
+                        this.UpLoadFileVisible = false
+                        this.percentageValue=0                  
                         if(res.code==200){
-                            this.$message({ message: this.getKey('action.operateSucess'), type: 'success' })
-                            this.UpLoadFileVisible = false
-                            this.findPage(null)
-                            this.percentageValue=0
+                            this.$message({ message: this.getKey('action.operateSucess'), type: 'success' })                                             
+                            this.findPage(null)                                        
                         }
                         else{
-                            this.$message({ message: this.getKey('action.operateFail') + res.msg, type: 'error' })
-                            this.UpLoadFileVisible = false
-                            this.percentageValue=0
+                            this.$message({ message: this.getKey('action.operateFail') + res.msg, type: 'error' })         
                         }
-
                  })
-
-
     },
     cancel:function(){
       this.UpLoadFileVisible=false;
@@ -526,7 +513,7 @@ export default {
       this.columns = [
         //{ prop: "id", label: "ID", minWidth: 50 },
         { prop: "code", label: "item.code", minWidth: 100 },
-        { prop: "name", label: "item.name", minWidth: 100 },
+        { prop: "name", label: "item.name", minWidth: 120 },
         { prop: "modelSpecs", label: "规格型号", minWidth: 100 },
         { prop: "coreItemType", label: "物料类型", minWidth: 100, formatter:this.selectionFormats },
         { prop: "classifyId", label: "item.classifyId", minWidth: 100, formatter: this.selectionFormat },

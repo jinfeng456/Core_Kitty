@@ -1,11 +1,7 @@
-using Blog.Core.Controllers;
 using Blog.Core.IServices;
 using Blog.Core.Model;
-using Blog.Core.Model.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Blog.Core.Api.Controllers
@@ -23,18 +19,6 @@ namespace Blog.Core.Api.Controllers
         {
             _coreClassifyServices = CoreClassifyServices;
         }
-        //[HttpPost, Route("FindPage")]
-        //public async Task<BaseResult> FindPage([FromBody]CoreClassifyDto dto)
-
-        //{
-        //    if (string.IsNullOrEmpty(dto.name) || string.IsNullOrWhiteSpace(dto.name))
-        //    {
-        //        dto.name = "";
-        //    }
-        //    Expression<Func<CoreClassify, bool>> whereExpression = a => (a.name != null && a.name.Contains(dto.name));
-        //    var data = await _coreClassifyServices.QueryPage(whereExpression, dto.pageNum, dto.pageSize, " id desc ");
-        //    return BaseResult.Ok(data);
-        //}
 
         /// <summary>
         /// 查询物料分类

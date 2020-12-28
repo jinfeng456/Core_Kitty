@@ -46,14 +46,14 @@
             <summary>
             物料恢复
             </summary>
-            <param name="CoreItem"></param>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:Blog.Core.Controllers.CoreItemController.Disable(Blog.Core.Model.Models.CoreItem)">
             <summary>
             物料禁用
             </summary>
-            <param name="CoreItem"></param>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:Blog.Core.Controllers.CoreItemController.ImportList(System.Collections.Generic.List{Blog.Core.Model.Models.CoreItem})">

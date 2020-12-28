@@ -1,10 +1,8 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 namespace Blog.Core.Model.Models
 {
 
-	 public class SysRole: BaseEntity
+	public class SysRole: BaseEntity
 	{
 	 
 	

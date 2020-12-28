@@ -129,7 +129,7 @@ namespace Blog.Core.Controllers
         /// <summary>
         /// 物料恢复
         /// </summary>
-        /// <param name="CoreItem"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("Restore")]
@@ -142,7 +142,7 @@ namespace Blog.Core.Controllers
         /// <summary>
         /// 物料禁用
         /// </summary>
-        /// <param name="CoreItem"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("Disable")]
