@@ -102,7 +102,7 @@
 	  </kt-table2>
 
     <!-- EXCEL导入 -->
-    <upload-file :key="componentKey"  :second="importSecond" :UpLoadFileVisible="UpLoadFileVisible" @ImportExcelData="ImportExcelData" @cancel="cancel" :PercentageValue="this.percentageValue"></upload-file>
+    <upload-file  :second="1" :UpLoadFileVisible="UpLoadFileVisible" @ImportExcelData="ImportExcelData" @cancel="cancel"></upload-file>
 
     <!--新增编辑界面-->
     <el-dialog :title="operation?'物料 —— 新增':'物料 —— 编辑'"
@@ -238,14 +238,11 @@ export default {
       // }
       ],
       clock: null,
-      percentageValue:0,
-      importSecond:60,
       columns: [],
       filterColumns: [],
       pageRequest: { pageNum: 1, pageSize: 10 },
       pageResult: {},
       tableData:[],
-      componentKey: 0,
       operation: false, // true:新增, false:编辑
       dialogVisible: false, // 新增编辑界面是否显示
       UpLoadFileVisible:false,
@@ -281,9 +278,10 @@ export default {
       if(data!==null){
 				this.filters.pageNum=data.pageRequest.pageNum		
 			}else{
-				this.filters.pageNum=1
+        this.filters.pageNum=1
+        this.pageRequest.pageNum=1
 			}
-			this.filters.pageSize=this.pageRequest.pageSize
+      this.filters.pageSize=this.pageRequest.pageSize
       this.$api.item.findPage(this.filters).then((res) => {
         this.pageResult = res.data
       }).then(data != null ? data.callback : '')
@@ -296,7 +294,6 @@ export default {
       })
     },
     importExcel(){
-      this.componentKey += 1;
       this.UpLoadFileVisible = true
     },
     ImportExcelData(excelData){
@@ -313,22 +310,20 @@ export default {
                       arr.push(obj);
                   });
                           
-                  this.$api.item.ImportList(arr).then((res) => { 
-                        this.UpLoadFileVisible = false
-                        this.percentageValue=0                  
-                        if(res.code==200){
+                  this.$api.item.ImportList(arr).then((res) => {                       
+                        if(res.code==200){    
                             this.$message({ message: this.getKey('action.operateSucess'), type: 'success' })                                             
                             this.findPage(null)                                        
                         }
                         else{
                             this.$message({ message: this.getKey('action.operateFail') + res.msg, type: 'error' })         
                         }
+                        this.UpLoadFileVisible=false 
                  })
     },
-    cancel:function(){
-      this.UpLoadFileVisible=false;
-      this.percentageValue=0
-		},
+    cancel(){
+      this.UpLoadFileVisible=false
+    },
     //导出的方法
 		exportExcel() {
         this.filters.pageSize=-1

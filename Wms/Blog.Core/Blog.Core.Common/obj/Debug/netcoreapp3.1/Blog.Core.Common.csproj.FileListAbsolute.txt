@@ -23,3 +23,4 @@ E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\B
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.AssemblyInfo.cs
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.dll
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.csprojAssemblyReference.cache

@@ -1,7 +1,7 @@
 <template>
   <div class="page-container"> 
     <!--上传界面-->
-    <el-dialog :title="operation?'Excel导入':'Excel导入'"
+    <el-dialog title="Excel导入"
                width="40%"
                :visible.sync="UpLoadFileVisible"
                :close-on-click-modal="false" :before-close="cancel">
@@ -13,6 +13,7 @@
           @change="handleImport"
           accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
           application/vnd.ms-excel"
+          ref="pathClear"
       />
       <div slot="footer"
            class="dialog-footer">
@@ -33,26 +34,17 @@
 </template>
 
 <script>
-import PopupTreeInput from "@/components/PopupTreeInput"
 import KtButton from "@/views/Core/KtButton"
-import TableColumnFilterDialog from "@/views/Core/TableColumnFilterDialog"
-import { format } from "@/utils/datetime"
 import { export_json_to_excel } from "@/excel/Export2Excel"
 import XLSX from "xlsx";
 export default {
   components: {
-    PopupTreeInput,
-    KtButton,
-    TableColumnFilterDialog
+    KtButton
   },
   props: {
     UpLoadFileVisible:  {  // 是否显示操作组件
       type: Boolean,
       default: false
-    },
-    PercentageValue: {
-      type:Number,
-      default: 0
     },
     second: {
       type:Number,
@@ -65,33 +57,10 @@ export default {
       filters: {
         name: ''
       },
-      columns: [],
-      filterColumns: [],
-      pageRequest: { pageNum: 1, pageSize: 10 },
-      pageResult: {},
-      isShow:true,
-      operation: false, // true:新增, false:编辑
-      //UpLoadFileVisible: false, // 新增编辑界面是否显示
+      PercentageValue:0,
       editLoading: false,
-      dicts:this.$store.state.dict.dicts,
       clock:null,
-      // 新增编辑界面数据
-      dataForm: {
-        id: 0,
-        //classifyId: ,
-        code: '',
-        name: '',
-        active: 0
-      },
-      classTypes: [],
       tableData:[]
-    }
-  },
-  computed: {
-    dataFormRules () {
-      const dataFormRules = {        name: [{ required: true, message: this.getKey("user.userInput"), trigger: 'blur' }]
-      };
-      return dataFormRules;
     }
   },
   methods: {   
@@ -122,19 +91,23 @@ export default {
           };
           // 读取文件 成功后执行上面的回调函数
           fileReader.readAsBinaryString(file);
-           //当倒计时小于0时清除定时器
-          window.clearInterval(this.clock); //关闭
+           
       },
     sendCode(xd = 10) { 
       this.clock = window.setInterval(() => {
         var pval = parseInt(this.PercentageValue + 1 * (100 / xd));
         pval = pval > 98 ? 99 : pval;
         this.PercentageValue = pval;
-      }, 1000);
+      }, 1000);  
     },
-    //新增
+    //上传提交
     submitForm: function () {    
         this.editLoading = true;
+        if(this.$refs.pathClear.value==''){
+            this.$message({ message: "请选择文件!", type: 'error' })
+                      this.editLoading = false
+                      return;
+        }
         if(this.tableData.length>2000){
                       this.$message({ message: "导入数据不能超过2000条!", type: 'error' })
                       this.editLoading = false
@@ -144,18 +117,26 @@ export default {
         this.$emit('ImportExcelData', this.tableData)
         this.editLoading = false
     }, 
+    //上传取消
     cancel: function () {
         this.$emit('cancel')
     }, 
-    // 时间格式化
-    dateFormat: function (row, column, cellValue, index) {
-      return format(row[column.property])
-    },
     getKey: function (arg) {
       return this.$t(arg)
     }, 
   },
   created () {
+    //当倒计时小于0时清除定时器
+    window.clearInterval(this.clock); //关闭
+  },
+  watch: {
+    UpLoadFileVisible (val, oldVal) {
+      if (val== false) {
+        window.clearInterval(this.clock); //关闭
+        this.PercentageValue=0;
+        this.$refs.pathClear.value ='' ;
+      }
+    }
   }
 }
 </script>

@@ -160,7 +160,8 @@ export default {
       if(data!==null){
 				this.filters.pageNum=data.pageRequest.pageNum		
 			}else{
-				this.filters.pageNum=1
+        this.filters.pageNum=1
+        this.pageRequest.pageNum=1
 			}
 			this.filters.pageSize=this.pageRequest.pageSize
       this.$api.log.findPage(this.filters).then((res) => {

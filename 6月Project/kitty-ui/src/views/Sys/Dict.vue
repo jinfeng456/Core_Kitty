@@ -125,6 +125,7 @@ export default {
 				this.filters.pageNum=data.pageRequest.pageNum		
 			}else{
 				this.filters.pageNum=1
+				this.pageRequest.pageNum=1
 			}
 			this.filters.pageSize=this.pageRequest.pageSize		
 			this.$api.dict.findPage(this.filters).then((res) => {
