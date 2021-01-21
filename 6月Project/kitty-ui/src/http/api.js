@@ -15,7 +15,7 @@ import * as item from "./moudules/Basic/Matertial/item";
 import * as exports from "./moudules/file/exports";
 import * as sysCode from "./moudules/sys/sysCode";
 import * as tasksQz from "./moudules/task/tasksQz";
-
+import * as generate from "./moudules/generate/generate";
 
 // 默认全部导出
 export default {
@@ -32,5 +32,6 @@ export default {
   item,
   exports,
   sysCode,
-  tasksQz
+  tasksQz,
+  generate
 };

@@ -63,7 +63,7 @@
             <param name="coreItemList"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Controllers.DbFirstController.#ctor(SqlSugar.ISqlSugarClient,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:Blog.Core.Controllers.DbFirstController.#ctor(SqlSugar.ISqlSugarClient,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Blog.Core.IServices.ITableServices)">
             <summary>
             构造函数
             </summary>
@@ -89,6 +89,18 @@
             </summary>
             <param name="ConnID">数据库链接名称</param>
             <param name="tableNames">需要生成的表名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Controllers.DbFirstController.GetDatabase">
+            <summary>
+            获取当前数据库
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Controllers.DbFirstController.GetTableNames">
+            <summary>
+            查询全部表
+            </summary>
             <returns></returns>
         </member>
         <member name="M:Blog.Core.Controllers.MigrateController.DataMigrateFromOld2New">

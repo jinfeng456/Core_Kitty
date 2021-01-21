@@ -3124,7 +3124,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Model.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },

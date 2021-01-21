@@ -8,7 +8,27 @@ namespace Blog.Core.Model.Seed
 {
     public class FrameSeed
     {
+        /// <summary>
+        /// 生成JS层
+        /// </summary>
+        /// <param name="sqlSugarClient">sqlsugar实例</param>
+        /// <param name="ConnId">数据库链接ID</param>
+        /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
+        /// <param name="isMuti"></param>
+        /// <returns></returns>
+        public static bool CreateJS(SqlSugarClient sqlSugarClient, string ConnId = null, bool isMuti = false, string[] tableNames = null)
+        {
+            try
+            {
+                Create_JS_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Api.JS", "Web.Api.JS", tableNames, "", isMuti);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
+        }
         /// <summary>
         /// 生成Controller层
         /// </summary>
@@ -22,7 +42,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Controller_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"G:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Api.Controllers", "Blog.Core.Api.Controllers", tableNames, "", isMuti);
+                Create_Controller_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Api.Controllers", "Web.Api.Controllers", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -45,7 +65,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"G:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Model", "Blog.Core.Model.Models", tableNames, "", isMuti);
+                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Model", "Web.Model.Models", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -68,7 +88,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_IRepository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"G:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.IRepository", "Blog.Core.IRepository", tableNames, "", isMuti);
+                Create_IRepository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.IRepository", "Web.IRepository", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -93,7 +113,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_IServices_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"G:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.IServices", "Blog.Core.IServices", tableNames, "", isMuti);
+                Create_IServices_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.IServices", "Web.IServices", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -118,7 +138,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Repository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"G:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Repository", "Blog.Core.Repository", tableNames, "", isMuti);
+                Create_Repository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Repository", "Web.Repository", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -143,7 +163,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Services_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"G:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Services", "Blog.Core.Services", tableNames, "", isMuti);
+                Create_Services_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Services", "Web.Services", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -153,12 +173,89 @@ namespace Blog.Core.Model.Seed
 
         }
 
+        #region 根据数据库生产JS
+        /// <summary>
+        /// 功能描述:根据数据库表生产JS
+        /// 作　　者:Web
+        /// </summary>
+        /// <param name="sqlSugarClient"></param>
+        /// <param name="ConnId">数据库链接ID</param>
+        /// <param name="strPath">实体类存放路径</param>
+        /// <param name="strNameSpace">命名空间</param>
+        /// <param name="lstTableNames">生产指定的表</param>
+        /// <param name="strInterface">实现接口</param>
+        /// <param name="isMuti"></param>
+        /// <param name="blnSerializable">是否序列化</param>
+        private static void Create_JS_ClassFileByDBTalbe(
+          SqlSugarClient sqlSugarClient,
+          string ConnId,
+          string strPath,
+          string strNameSpace,
+          string[] lstTableNames,
+          string strInterface,
+          bool isMuti = false,
+          bool blnSerializable = false)
+        {
+            var IDbFirst = sqlSugarClient.DbFirst;
+            if (lstTableNames != null && lstTableNames.Length > 0)
+            {
+                IDbFirst = IDbFirst.Where(lstTableNames);
+            }
+            var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
+
+                 .SettingClassTemplate(p => p =
+@"import axios from '@/http/axios'
+// 保存
+export const save = (data) => {
+    return axios({
+        url: '/Lower{ClassName}/save',
+        method: 'post',
+        data
+    })
+}
+// 删除
+export const batchDelete = (data) => {
+    return axios({
+        url: '/Lower{ClassName}/delete',
+        method: 'post',
+        data
+    })
+}
+// 分页查询
+export const findPage = (data) => {
+    return axios({
+        url: '/Lower{ClassName}/findPage',
+        method: 'post',
+        data
+    })
+}
+
+export const getAllList = () => {
+    return axios({
+        url: '/Lower{ClassName}/getAllList',
+        method: 'post'
+    })
+}")
+
+                  .ToClassStringList(strNameSpace);
+
+            Dictionary<string, string> newdic = new Dictionary<string, string>();
+            //循环处理 首字母小写 并插入新的 Dictionary
+            foreach (KeyValuePair<string, string> item in ls)
+            {
+                string camelName = item.Key.First().ToString().ToLower() + item.Key.Substring(1);
+                string newkey = "_" + camelName;
+                string newvalue = item.Value.Replace("_" + item.Key, newkey).Replace("Lower" + item.Key, camelName);
+                newdic.Add(item.Key, newvalue);
+            }
+            CreateFilesByClassStringList(newdic, strPath, "{0}", ".js");
+        }
+        #endregion
 
         #region 根据数据库表生产Controller层
-
         /// <summary>
         /// 功能描述:根据数据库表生产Controller层
-        /// 作　　者:Blog.Core
+        /// 作　　者:Web
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -186,120 +283,97 @@ namespace Blog.Core.Model.Seed
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                  .SettingClassTemplate(p => p =
-@"using Blog.Core.IServices;
-using Blog.Core.Model;
-using Blog.Core.Model.Models;
+@"using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Web.Common.HttpContextUser;
+using Web.IServices;
+using Web.Model;
+using Web.Model.Models;
+using Web.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace " + strNameSpace + @"
 {
-	[Route(""api/[controller]/[action]"")]
-	[ApiController]
-    [Authorize(Permissions.Name)]
+	[Route(""{ClassName}"")]
+    [Authorize]
      public class {ClassName}Controller : ControllerBase
-        {
-             /// <summary>
-             /// 服务器接口，因为是模板生成，所以首字母是大写的，自己可以重构下
-             /// </summary>
-            private readonly I{ClassName}Services _{ClassName}Services;
-    
-            public {ClassName}Controller(I{ClassName}Services {ClassName}Services)
+    {
+         private readonly I{ClassName}Services _{ClassName}Services;
+         readonly IUser _user;
+         public {ClassName}Controller(I{ClassName}Services Lower{ClassName}Services, IUser user)
+         {
+            _{ClassName}Services = Lower{ClassName}Services;
+            _user = user;
+         }
+            
+         /// <summary>
+         /// 查询
+         /// </summary>
+         /// <param name=""dto""></param>
+         /// <returns></returns>
+         ///  Post: {ClassName}
+         [HttpPost, Route(""FindPage"")]  
+         public async Task<BaseResult> FindPage([FromBody]{ClassName}Dto dto)
+         {
+            if (string.IsNullOrEmpty(dto.dictClassName) || string.IsNullOrWhiteSpace(dto.dictClassName))
             {
-                _{ClassName}Services = {ClassName}Services;
+                dto.dictClassName = """";
             }
-    
-            [HttpGet]
-            public async Task<MessageModel<PageModel<{ClassName}>>> Get(int page = 1, string key = """",int intPageSize = 50)
+            var data = await _{ClassName}Services.QueryPage(a => (a.DictClassName != null && a.DictClassName.Contains(dto.dictClassName)), dto.pageNum, dto.pageSize, "" createTime desc "");
+            return BaseResult.Ok(data);
+         } 
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name=""model""></param>
+        /// <returns></returns>
+        ///  POST: {ClassName}
+        [HttpPost, Route(""Save"")]
+        public async Task<BaseResult> Save([FromBody]{ClassName} model)
+        {
+            if (model.Id == 0)
             {
-                if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
-                {
-                    key = """";
-                }
-    
-                Expression<Func<{ClassName}, bool>> whereExpression = a => a.id > 0;
-    
-                return new MessageModel<PageModel<{ClassName}>>()
-                {
-                    msg = ""获取成功"",
-                    success = true,
-                    response = await _{ClassName}Services.QueryPage(whereExpression, page, intPageSize)
-                };
-
-    }
-
-    [HttpGet(""{id}"")]
-    public async Task<MessageModel<{ClassName}>> Get(int id = 0)
-    {
-        return new MessageModel<{ClassName}>()
-        {
-            msg = ""获取成功"",
-            success = true,
-            response = await _{ClassName}Services.QueryById(id)
-        };
-    }
-
-    [HttpPost]
-    public async Task<MessageModel<string>> Post([FromBody] {ClassName} request)
-    {
-        var data = new MessageModel<string>();
-
-        var id = await _{ClassName}Services.Add(request);
-        data.success = id > 0;
-
-        if (data.success)
-        {
-            data.response = id.ObjToString();
-            data.msg = ""添加成功"";
-        }
-
-        return data;
-    }
-
-    [HttpPut]
-    public async Task<MessageModel<string>> Put([FromBody] {ClassName} request)
-    {
-        var data = new MessageModel<string>();
-        if (request.id > 0)
-        {
-            data.success = await _{ClassName}Services.Update(request);
-            if (data.success)
+                model.Id = await _{ClassName}Services.GetId();
+                model.CreateTime = DateTime.Now;
+                model.CreateBy = _user.Name;
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
+                return BaseResult.Ok(await _{ClassName}Services.Add(model));                   
+            }
+            else
             {
-                data.msg = ""更新成功"";
-                data.response = request?.id.ObjToString();
+                model.LastUpdateBy = _user.Name;
+                model.LastUpdateTime = DateTime.Now;
+                return BaseResult.Ok(await _{ClassName}Services.Update(model));
             }
         }
-
-        return data;
-    }
-
-    [HttpDelete(""{id}"")]
-    public async Task<MessageModel<string>> Delete(int id = 0)
-    {
-        var data = new MessageModel<string>();
-        if (id > 0)
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name=""modelList""></param>
+        /// <returns></returns>
+        [HttpPost, Route(""Delete"")]
+        public async Task<BaseResult> Delete([FromBody]List<{ClassName}> modelList)
         {
-            var detail = await _{ClassName}Services.QueryById(id);
-
-            detail.IsDeleted = true;
-
-                if (detail != null)
-                {
-                    data.success = await _{ClassName}Services.Update(detail);
-                    if (data.success)
-                    {
-                        data.msg = ""删除成功"";
-                        data.response = detail?.id.ObjToString();
-                    }
-                }
+            foreach (var model in modelList)
+            {
+                await _{ClassName}Services.Delete(model);
+            }
+            return BaseResult.Ok(""ok"");
         }
-
-        return data;
-    }
-}
+        /// <summary>
+        /// 查询全部
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, Route(""GetAllList"")]
+        public async Task<BaseResult> GetAllList()
+        {
+            return BaseResult.Ok(await _{ClassName}Services.Query());
+        }
+    }   
 }")
 
                   .ToClassStringList(strNameSpace);
@@ -308,8 +382,9 @@ namespace " + strNameSpace + @"
             //循环处理 首字母小写 并插入新的 Dictionary
             foreach (KeyValuePair<string, string> item in ls)
             {
-                string newkey = "_" + item.Key.First().ToString().ToLower() + item.Key.Substring(1);
-                string newvalue = item.Value.Replace("_" + item.Key, newkey);
+                string camelName = item.Key.First().ToString().ToLower() + item.Key.Substring(1);
+                string newkey = "_" + camelName;
+                string newvalue = item.Value.Replace("_" + item.Key, newkey).Replace("Lower" + item.Key, camelName);
                 newdic.Add(item.Key, newvalue);
             }
             CreateFilesByClassStringList(newdic, strPath, "{0}Controller");
@@ -321,7 +396,7 @@ namespace " + strNameSpace + @"
 
         /// <summary>
         /// 功能描述:根据数据库表生产Model层
-        /// 作　　者:Blog.Core
+        /// 作　　者:Web
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -387,7 +462,7 @@ namespace " + strNameSpace + @"
 
         /// <summary>
         /// 功能描述:根据数据库表生产IRepository层
-        /// 作　　者:Blog.Core
+        /// 作　　者:Web
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -421,8 +496,8 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                  .SettingClassTemplate(p => p =
-@"using Blog.Core.IRepository.Base;
-using Blog.Core.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
+@"using Web.IRepository.Base;
+using Web.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
 
 namespace " + strNameSpace + @"
 {
@@ -444,7 +519,7 @@ namespace " + strNameSpace + @"
 
         /// <summary>
         /// 功能描述:根据数据库表生产IServices层
-        /// 作　　者:Blog.Core
+        /// 作　　者:Web
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -477,8 +552,8 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                   .SettingClassTemplate(p => p =
-@"using Blog.Core.IServices.BASE;
-using Blog.Core.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
+@"using Web.IServices.BASE;
+using Web.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
 
 namespace " + strNameSpace + @"
 {	
@@ -501,7 +576,7 @@ namespace " + strNameSpace + @"
 
         /// <summary>
         /// 功能描述:根据数据库表生产 Repository 层
-        /// 作　　者:Blog.Core
+        /// 作　　者:Web
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -534,10 +609,10 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                   .SettingClassTemplate(p => p =
-@"using Blog.Core.IRepository" + (isMuti ? "." + ConnId + "" : "") + @";
-using Blog.Core.IRepository.UnitOfWork;
-using Blog.Core.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
-using Blog.Core.Repository.Base;
+@"using Web.IRepository" + (isMuti ? "." + ConnId + "" : "") + @";
+using Web.IRepository.UnitOfWork;
+using Web.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
+using Web.Repository.Base;
 
 namespace " + strNameSpace + @"
 {
@@ -563,7 +638,7 @@ namespace " + strNameSpace + @"
 
         /// <summary>
         /// 功能描述:根据数据库表生产 Services 层
-        /// 作　　者:Blog.Core
+        /// 作　　者:Web
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -596,10 +671,10 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                   .SettingClassTemplate(p => p =
-@"using Blog.Core.IRepository" + (isMuti ? "." + ConnId + "" : "") + @";
-using Blog.Core.IServices" + (isMuti ? "." + ConnId + "" : "") + @";
-using Blog.Core.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
-using Blog.Core.Services.BASE;
+@"using Web.IRepository" + (isMuti ? "." + ConnId + "" : "") + @";
+using Web.IServices" + (isMuti ? "." + ConnId + "" : "") + @";
+using Web.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
+using Web.Services.BASE;
 
 namespace " + strNameSpace + @"
 {
@@ -627,18 +702,35 @@ namespace " + strNameSpace + @"
         /// <param name="ls">类文件字符串list</param>
         /// <param name="strPath">生成路径</param>
         /// <param name="fileNameTp">文件名格式模板</param>
-        private static void CreateFilesByClassStringList(Dictionary<string, string> ls, string strPath, string fileNameTp)
+        /// <param name="fileType">文件名类型</param>
+        private static void CreateFilesByClassStringList(Dictionary<string, string> ls, string strPath, string fileNameTp, string fileType = ".cs")
         {
-
-            foreach (var item in ls)
+            if (fileType == ".js")
             {
-                var fileName = $"{string.Format(fileNameTp, item.Key)}.cs";
-                var fileFullPath = Path.Combine(strPath, fileName);
-                if (!Directory.Exists(strPath))
+                foreach (var item in ls)
                 {
-                    Directory.CreateDirectory(strPath);
+                    string camelName = item.Key.First().ToString().ToLower() + item.Key.Substring(1);
+                    var fileName = $"{string.Format(fileNameTp, camelName)}" + fileType;
+                    var fileFullPath = Path.Combine(strPath, fileName);
+                    if (!Directory.Exists(strPath))
+                    {
+                        Directory.CreateDirectory(strPath);
+                    }
+                    File.WriteAllText(fileFullPath, item.Value);
                 }
-                File.WriteAllText(fileFullPath, item.Value);
+            }
+            else
+            {
+                foreach (var item in ls)
+                {
+                    var fileName = $"{string.Format(fileNameTp, item.Key)}" + fileType;
+                    var fileFullPath = Path.Combine(strPath, fileName);
+                    if (!Directory.Exists(strPath))
+                    {
+                        Directory.CreateDirectory(strPath);
+                    }
+                    File.WriteAllText(fileFullPath, item.Value);
+                }
             }
         }
         #endregion

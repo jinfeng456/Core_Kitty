@@ -1,12 +1,14 @@
-﻿using Blog.Core.Common;
-using Blog.Core.Common.DB;
-using Blog.Core.Model;
-using Blog.Core.Model.Seed;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using SqlSugar;
 using System.Linq;
+using System.Threading.Tasks;
+using Blog.Core.Model;
+using Blog.Core.Common.DB;
+using Blog.Core.Common;
+using Blog.Core.IServices;
+using Blog.Core.Model.Seed;
 
 namespace Blog.Core.Controllers
 {
@@ -17,12 +19,15 @@ namespace Blog.Core.Controllers
     {
         private readonly SqlSugarClient _sqlSugarClient;
         private readonly IWebHostEnvironment Env;
+        private readonly ITableServices _tableServices;
+
 
         /// <summary>
         /// 构造函数
         /// </summary>
-        public DbFirstController(ISqlSugarClient sqlSugarClient, IWebHostEnvironment env)
+        public DbFirstController(ISqlSugarClient sqlSugarClient, IWebHostEnvironment env, ITableServices tableServices)
         {
+            _tableServices = tableServices;
             _sqlSugarClient = sqlSugarClient as SqlSugarClient;
             Env = env;
         }
@@ -109,7 +114,9 @@ namespace Blog.Core.Controllers
             var data = new MessageModel<string>() { success = true, msg = "" };
             if (Env.IsDevelopment())
             {
+
                 _sqlSugarClient.ChangeDatabase(ConnID.ToLower());
+                data.response += $"JS生成：{FrameSeed.CreateJS(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
                 data.response += $"Controller层生成：{FrameSeed.CreateControllers(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
                 data.response += $"库{ConnID}-Model层生成：{FrameSeed.CreateModels(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
                 data.response += $"库{ConnID}-IRepositorys层生成：{FrameSeed.CreateIRepositorys(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
@@ -126,6 +133,26 @@ namespace Blog.Core.Controllers
             }
 
             return data;
+        }
+
+        /// <summary>
+        /// 获取当前数据库
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public BaseResult GetDatabase()
+        {
+            return BaseResult.Ok(MainDb.CurrentDbConnId.ToLower());
+        }
+
+        /// <summary>
+        /// 查询全部表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<BaseResult> GetTableNames()
+        {
+            return BaseResult.Ok( await _tableServices.FindTables());
         }
 
 
