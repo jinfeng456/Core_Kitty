@@ -118,6 +118,7 @@ namespace Blog.Core.Controllers
                 _sqlSugarClient.ChangeDatabase(ConnID.ToLower());
                 data.response += $"JS生成：{FrameSeed.CreateJS(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
                 data.response += $"Controller层生成：{FrameSeed.CreateControllers(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
+                data.response += $"库{ConnID}-Dto层生成：{FrameSeed.CreateDto(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
                 data.response += $"库{ConnID}-Model层生成：{FrameSeed.CreateModels(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
                 data.response += $"库{ConnID}-IRepositorys层生成：{FrameSeed.CreateIRepositorys(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
                 data.response += $"库{ConnID}-IServices层生成：{FrameSeed.CreateIServices(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";

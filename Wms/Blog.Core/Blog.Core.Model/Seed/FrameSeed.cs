@@ -20,7 +20,7 @@ namespace Blog.Core.Model.Seed
         {
             try
             {
-                Create_JS_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Api.JS", "Web.Api.JS", tableNames, "", isMuti);
+                Create_JS_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Api.JS", "Blog.Core.Api.JS", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -42,7 +42,30 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Controller_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Api.Controllers", "Web.Api.Controllers", tableNames, "", isMuti);
+                Create_Controller_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Api.Controllers", "Blog.Core.Api.Controllers", tableNames, "", isMuti);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// 生成Model层
+        /// </summary>
+        /// <param name="sqlSugarClient">sqlsugar实例</param>
+        /// <param name="ConnId">数据库链接ID</param>
+        /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
+        /// <param name="isMuti"></param>
+        /// <returns></returns>
+        public static bool CreateDto(SqlSugarClient sqlSugarClient, string ConnId, bool isMuti = false, string[] tableNames = null)
+        {
+
+            try
+            {
+                Create_Dto_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Dto", "Blog.Core.Model.ViewModels", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -65,7 +88,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Model", "Web.Model.Models", tableNames, "", isMuti);
+                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Model", "Blog.Core.Model.Models", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -88,7 +111,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_IRepository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.IRepository", "Web.IRepository", tableNames, "", isMuti);
+                Create_IRepository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.IRepository", "Blog.Core.IRepository", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -113,7 +136,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_IServices_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.IServices", "Web.IServices", tableNames, "", isMuti);
+                Create_IServices_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.IServices", "Blog.Core.IServices", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -138,7 +161,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Repository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Repository", "Web.Repository", tableNames, "", isMuti);
+                Create_Repository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Repository", "Blog.Core.Repository", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -163,7 +186,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Services_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Web.Services", "Web.Services", tableNames, "", isMuti);
+                Create_Services_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Services", "Blog.Core.Services", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -176,7 +199,7 @@ namespace Blog.Core.Model.Seed
         #region 根据数据库生产JS
         /// <summary>
         /// 功能描述:根据数据库表生产JS
-        /// 作　　者:Web
+        /// 作　　者:Blog.Core
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -252,10 +275,11 @@ export const getAllList = () => {
         }
         #endregion
 
+
         #region 根据数据库表生产Controller层
         /// <summary>
         /// 功能描述:根据数据库表生产Controller层
-        /// 作　　者:Web
+        /// 作　　者:Blog.Core
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -286,11 +310,11 @@ export const getAllList = () => {
 @"using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Web.Common.HttpContextUser;
-using Web.IServices;
-using Web.Model;
-using Web.Model.Models;
-using Web.Model.ViewModels;
+using Blog.Core.Common.HttpContextUser;
+using Blog.Core.IServices;
+using Blog.Core.Model;
+using Blog.Core.Model.Models;
+using Blog.Core.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -390,13 +414,72 @@ namespace " + strNameSpace + @"
             CreateFilesByClassStringList(newdic, strPath, "{0}Controller");
         }
         #endregion
+        #region 根据数据库表生产Dto层
 
+        /// <summary>
+        /// 功能描述:根据数据库表生产Model层
+        /// 作　　者:Blog.Core
+        /// </summary>
+        /// <param name="sqlSugarClient"></param>
+        /// <param name="ConnId">数据库链接ID</param>
+        /// <param name="strPath">实体类存放路径</param>
+        /// <param name="strNameSpace">命名空间</param>
+        /// <param name="lstTableNames">生产指定的表</param>
+        /// <param name="strInterface">实现接口</param>
+        /// <param name="isMuti"></param>
+        /// <param name="blnSerializable">是否序列化</param>
+        private static void Create_Dto_ClassFileByDBTalbe(
+          SqlSugarClient sqlSugarClient,
+          string ConnId,
+          string strPath,
+          string strNameSpace,
+          string[] lstTableNames,
+          string strInterface,
+          bool isMuti = false,
+          bool blnSerializable = false)
+        {
+            //多库文件分离
+            if (isMuti)
+            {
+                strPath = strPath + @"\ViewModels\" + ConnId;
+                strNameSpace = strNameSpace + "." + ConnId;
+            }
+
+            var IDbFirst = sqlSugarClient.DbFirst;
+            if (lstTableNames != null && lstTableNames.Length > 0)
+            {
+                IDbFirst = IDbFirst.Where(lstTableNames);
+            }
+            var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
+
+                  .SettingClassTemplate(p => p =
+@"{using}
+
+namespace " + strNameSpace + @"
+{
+{ClassDescription}
+    public class {ClassName}Dto" + (string.IsNullOrEmpty(strInterface) ? "" : (" : " + strInterface)) + @"
+    {
+        {PropertyName}
+    }
+}")
+                  .SettingPropertyDescriptionTemplate(p => p = @"           //{PropertyDescription}")
+                  .SettingPropertyTemplate(p => p =
+@"{SugarColumn}
+           public {PropertyType} {PropertyName} { get; set; }")
+
+                   //.SettingConstructorTemplate(p => p = "              this._{PropertyName} ={DefaultValue};")
+
+                   .ToClassStringList(strNameSpace);
+            CreateFilesByClassStringList(ls, strPath, "{0}Dto");
+        }
+        #endregion
 
         #region 根据数据库表生产Model层
 
         /// <summary>
         /// 功能描述:根据数据库表生产Model层
-        /// 作　　者:Web
+        /// 作　　者:Blog.Core
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -445,7 +528,7 @@ namespace " + strNameSpace + @"
         {PropertyName}
     }
 }")
-                  .SettingPropertyDescriptionTemplate(p => p = string.Empty)
+                  .SettingPropertyDescriptionTemplate(p => p = @"           //{PropertyDescription}")
                   .SettingPropertyTemplate(p => p =
 @"{SugarColumn}
            public {PropertyType} {PropertyName} { get; set; }")
@@ -462,7 +545,7 @@ namespace " + strNameSpace + @"
 
         /// <summary>
         /// 功能描述:根据数据库表生产IRepository层
-        /// 作　　者:Web
+        /// 作　　者:Blog.Core
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -496,8 +579,8 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                  .SettingClassTemplate(p => p =
-@"using Web.IRepository.Base;
-using Web.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
+@"using Blog.Core.IRepository.Base;
+using Blog.Core.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
 
 namespace " + strNameSpace + @"
 {
@@ -519,7 +602,7 @@ namespace " + strNameSpace + @"
 
         /// <summary>
         /// 功能描述:根据数据库表生产IServices层
-        /// 作　　者:Web
+        /// 作　　者:Blog.Core
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -552,8 +635,8 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                   .SettingClassTemplate(p => p =
-@"using Web.IServices.BASE;
-using Web.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
+@"using Blog.Core.IServices.BASE;
+using Blog.Core.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
 
 namespace " + strNameSpace + @"
 {	
@@ -571,12 +654,11 @@ namespace " + strNameSpace + @"
         #endregion
 
 
-
         #region 根据数据库表生产 Repository 层
 
         /// <summary>
         /// 功能描述:根据数据库表生产 Repository 层
-        /// 作　　者:Web
+        /// 作　　者:Blog.Core
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -609,10 +691,10 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                   .SettingClassTemplate(p => p =
-@"using Web.IRepository" + (isMuti ? "." + ConnId + "" : "") + @";
-using Web.IRepository.UnitOfWork;
-using Web.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
-using Web.Repository.Base;
+@"using Blog.Core.IRepository" + (isMuti ? "." + ConnId + "" : "") + @";
+using Blog.Core.IRepository.UnitOfWork;
+using Blog.Core.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
+using Blog.Core.Repository.Base;
 
 namespace " + strNameSpace + @"
 {
@@ -638,7 +720,7 @@ namespace " + strNameSpace + @"
 
         /// <summary>
         /// 功能描述:根据数据库表生产 Services 层
-        /// 作　　者:Web
+        /// 作　　者:Blog.Core
         /// </summary>
         /// <param name="sqlSugarClient"></param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -671,10 +753,10 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                   .SettingClassTemplate(p => p =
-@"using Web.IRepository" + (isMuti ? "." + ConnId + "" : "") + @";
-using Web.IServices" + (isMuti ? "." + ConnId + "" : "") + @";
-using Web.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
-using Web.Services.BASE;
+@"using Blog.Core.IRepository" + (isMuti ? "." + ConnId + "" : "") + @";
+using Blog.Core.IServices" + (isMuti ? "." + ConnId + "" : "") + @";
+using Blog.Core.Model.Models" + (isMuti ? "." + ConnId + "" : "") + @";
+using Blog.Core.Services.BASE;
 
 namespace " + strNameSpace + @"
 {
@@ -714,9 +796,12 @@ namespace " + strNameSpace + @"
                     var fileFullPath = Path.Combine(strPath, fileName);
                     if (!Directory.Exists(strPath))
                     {
-                        Directory.CreateDirectory(strPath);
+                        Directory.CreateDirectory(strPath);         
                     }
-                    File.WriteAllText(fileFullPath, item.Value);
+                    if (!File.Exists(fileFullPath))
+                    {
+                        File.WriteAllText(fileFullPath, item.Value);
+                    }
                 }
             }
             else
@@ -727,9 +812,12 @@ namespace " + strNameSpace + @"
                     var fileFullPath = Path.Combine(strPath, fileName);
                     if (!Directory.Exists(strPath))
                     {
-                        Directory.CreateDirectory(strPath);
+                        Directory.CreateDirectory(strPath);              
                     }
-                    File.WriteAllText(fileFullPath, item.Value);
+                    if (!File.Exists(fileFullPath))
+                    {
+                        File.WriteAllText(fileFullPath, item.Value);
+                    }
                 }
             }
         }

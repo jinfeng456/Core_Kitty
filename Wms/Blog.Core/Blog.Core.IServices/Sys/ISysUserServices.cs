@@ -3,6 +3,7 @@
 
 using Blog.Core.IServices.BASE;
 using Blog.Core.Model.Models;
+using Blog.Core.Model.ViewModels;
 
 namespace Blog.Core.IServices
 {	
