@@ -1402,7 +1402,7 @@
         </member>
         <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateDto(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
             <summary>
-            生成Model层
+            生成Dto层
             </summary>
             <param name="sqlSugarClient">sqlsugar实例</param>
             <param name="ConnId">数据库链接ID</param>

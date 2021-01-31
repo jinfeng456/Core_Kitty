@@ -36,35 +36,35 @@ namespace Blog.Core.Controllers
         /// <returns></returns>
         // GET: api/User
         [HttpPost, Route("FindPage")]
-        public async Task<BaseResult> FindPage([FromBody]CoreItemDto dto)
+        public async Task<BaseResult> FindPage([FromBody] CoreItemDto dto)
         {
             Expression<Func<CoreItem, CoreClassify, SysDict, bool>> whereExpression = (ci, cc, sd) => true;
             if (dto.name.IsNotEmptyOrNull())
             {
-                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.name != null && ci.name.Contains(dto.name));
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.name.Contains(dto.name));
             }
             if (dto.modelSpecs.IsNotEmptyOrNull())
             {
-                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.modelSpecs != null && ci.modelSpecs.Contains(dto.modelSpecs));
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.modelSpecs.Contains(dto.modelSpecs));
             }
             if (dto.classifyId > 0)
             {
-                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.classifyId != null && ci.classifyId == dto.classifyId);
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.classifyId == dto.classifyId);
             }
             if (dto.coreItemType > 0)
             {
-                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.coreItemType != null && ci.coreItemType == dto.coreItemType);
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.coreItemType == dto.coreItemType);
             }
             if (dto.code.IsNotEmptyOrNull())
             {
-                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.code != null && ci.code.Contains(dto.code));
+                whereExpression = ExpressionHelp.And(whereExpression, (ci, cc, sd) => ci.code.Contains(dto.code));
             }
-            var data = await _coreItemServices.QueryMuchPage<CoreItem, CoreClassify, SysDict, CoreItemDto>(
+            var data = await _coreItemServices.QueryMuchPage(
                (ci, cc, sd) => new object[] {
                     JoinType.Left, ci.classifyId == cc.id,
                     JoinType.Left, ci.coreItemType == sd.Value && sd.Dtype=="coreItemType"
                },
-               (ci, cc, sd) => new CoreItemDto
+               (ci, cc, sd) => new
                {
                    id = ci.id,
                    name = ci.name,
@@ -97,7 +97,7 @@ namespace Blog.Core.Controllers
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("Save")]
-        public async Task<BaseResult> Save([FromBody]CoreItem model)
+        public async Task<BaseResult> Save([FromBody] CoreItem model)
         {
             if (model.id == 0)
             {
@@ -117,7 +117,7 @@ namespace Blog.Core.Controllers
         /// <param name="modelList"></param>
         /// <returns></returns>
         [HttpPost, Route("Delete")]
-        public async Task<BaseResult> Delete([FromBody]List<CoreItem> modelList)
+        public async Task<BaseResult> Delete([FromBody] List<CoreItem> modelList)
         {
             foreach (var model in modelList)
             {
@@ -133,7 +133,7 @@ namespace Blog.Core.Controllers
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("Restore")]
-        public async Task<BaseResult> Restore([FromBody]CoreItem model)
+        public async Task<BaseResult> Restore([FromBody] CoreItem model)
         {
             return BaseResult.Ok(await _coreItemServices.Update(model));
         }
@@ -146,7 +146,7 @@ namespace Blog.Core.Controllers
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("Disable")]
-        public async Task<BaseResult> Disable([FromBody]CoreItem model)
+        public async Task<BaseResult> Disable([FromBody] CoreItem model)
         {
             return BaseResult.Ok(await _coreItemServices.Update(model));
         }
@@ -159,7 +159,7 @@ namespace Blog.Core.Controllers
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("ImportList")]
-        public async Task<BaseResult> ImportList([FromBody]List<CoreItem> coreItemList)
+        public async Task<BaseResult> ImportList([FromBody] List<CoreItem> coreItemList)
         {
             RefAsync<string> message = string.Empty;
             bool result = await _coreItemServices.ImportList(coreItemList, message);

@@ -3236,10 +3236,7 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.IServices.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       },
       "Blog.Core.Model/1.0.0": {
         "type": "project",
@@ -3253,10 +3250,7 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Model.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       }
     }
   },

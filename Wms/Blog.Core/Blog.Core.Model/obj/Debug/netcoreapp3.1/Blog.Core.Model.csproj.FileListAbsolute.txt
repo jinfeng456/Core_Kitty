@@ -37,3 +37,16 @@ E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Bl
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.csproj.CopyComplete
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.dll
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.pdb
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Model.deps.json
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Model.dll
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Common.dll
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.csprojAssemblyReference.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.AssemblyInfoInputs.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.AssemblyInfo.cs
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.csproj.CoreCompileInputs.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.csproj.CopyComplete
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.dll
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Model\obj\Debug\netcoreapp3.1\Blog.Core.Model.pdb
