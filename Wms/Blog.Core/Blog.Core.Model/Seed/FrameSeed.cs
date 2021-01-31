@@ -29,6 +29,7 @@ namespace Blog.Core.Model.Seed
             }
 
         }
+        
         /// <summary>
         /// 生成Controller层
         /// </summary>
@@ -53,7 +54,7 @@ namespace Blog.Core.Model.Seed
         }
 
         /// <summary>
-        /// 生成Model层
+        /// 生成Dto层
         /// </summary>
         /// <param name="sqlSugarClient">sqlsugar实例</param>
         /// <param name="ConnId">数据库链接ID</param>
@@ -194,7 +195,7 @@ namespace Blog.Core.Model.Seed
                 return false;
             }
 
-        }
+        } 
 
         #region 根据数据库生产JS
         /// <summary>
@@ -274,7 +275,6 @@ export const getAllList = () => {
             CreateFilesByClassStringList(newdic, strPath, "{0}", ".js");
         }
         #endregion
-
 
         #region 根据数据库表生产Controller层
         /// <summary>
@@ -414,6 +414,7 @@ namespace " + strNameSpace + @"
             CreateFilesByClassStringList(newdic, strPath, "{0}Controller");
         }
         #endregion
+
         #region 根据数据库表生产Dto层
 
         /// <summary>
