@@ -505,11 +505,11 @@ namespace " + strNameSpace + @"
                 strPath = strPath + @"\Models\" + ConnId;
                 strNameSpace = strNameSpace + "." + ConnId;
             }
-
+           
             var IDbFirst = sqlSugarClient.DbFirst;
             if (lstTableNames != null && lstTableNames.Length > 0)
             {
-                IDbFirst = IDbFirst.Where(lstTableNames);
+               IDbFirst = IDbFirst.Where(lstTableNames);
             }
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
@@ -820,6 +820,13 @@ namespace " + strNameSpace + @"
                     }
                 }
             }
+        }
+        #endregion
+
+        #region 公用获取#columns
+        private string GetColumns()
+        {
+
         }
         #endregion
     }
