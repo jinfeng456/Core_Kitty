@@ -1380,6 +1380,17 @@
             <param name="WebRootPath"></param>
             <returns></returns>
         </member>
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateView(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[],System.String)">
+            <summary>
+            生成ViewQueryS层
+            </summary>
+            <param name="sqlSugarClient">sqlsugar实例</param>
+            <param name="ConnId">数据库链接ID</param>
+            <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
+            <param name="isMuti"></param>
+            <param name="templete"></param>
+            <returns></returns>
+        </member>
         <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateJS(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
             <summary>
             生成JS层
@@ -1459,6 +1470,21 @@
             <param name="isMuti"></param>
             <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
             <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.Create_View_ClassFileByDBTalbe(SqlSugar.SqlSugarClient,System.String,System.String,System.String,System.String[],System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            功能描述:根据数据库表生产ViewQuery
+            作　　者:Blog.Core
+            </summary>
+            <param name="sqlSugarClient"></param>
+            <param name="ConnId">数据库链接ID</param>
+            <param name="strPath">实体类存放路径</param>
+            <param name="strNameSpace">命名空间</param>
+            <param name="lstTableNames">生产指定的表</param>
+            <param name="strInterface">实现接口</param>
+            <param name="isMuti"></param>
+            <param name="blnSerializable">是否序列化</param>
+            <param name="templete">vue模板</param>
         </member>
         <member name="M:Blog.Core.Model.Seed.FrameSeed.Create_JS_ClassFileByDBTalbe(SqlSugar.SqlSugarClient,System.String,System.String,System.String,System.String[],System.String,System.Boolean,System.Boolean)">
             <summary>
@@ -1576,6 +1602,30 @@
             <param name="strPath">生成路径</param>
             <param name="fileNameTp">文件名格式模板</param>
             <param name="fileType">文件名类型</param>
+        </member>
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.GetColumns(System.String,SqlSugar.SqlSugarClient)">
+            <summary>
+            获取#columns
+            </summary>
+            <param name="tableName"></param>
+            <param name="sqlSugarClient"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.GetDataForm(System.String,SqlSugar.SqlSugarClient)">
+            <summary>
+            获取#dataForm
+            </summary>
+            <param name="tableName"></param>
+            <param name="sqlSugarClient"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.GetElform(System.String,SqlSugar.SqlSugarClient)">
+            <summary>
+            获取#elform
+            </summary>
+            <param name="tableName"></param>
+            <param name="sqlSugarClient"></param>
+            <returns></returns>
         </member>
         <member name="M:Blog.Core.Model.Seed.MyContext.GetMainConnectionDb">
             <summary>
@@ -1960,6 +2010,11 @@
         <member name="P:Blog.Core.Model.ViewModels.TopgbViewModels.btitle">
             <summary>博客标题
             
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.ViewModels.CoreItemDto">
+            <summary>
+            物料信息表
             </summary>
         </member>
     </members>

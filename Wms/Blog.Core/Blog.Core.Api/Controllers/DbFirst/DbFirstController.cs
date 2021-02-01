@@ -104,9 +104,10 @@ namespace Blog.Core.Controllers
         /// </summary>
         /// <param name="ConnID">数据库链接名称</param>
         /// <param name="tableNames">需要生成的表名</param>
+        /// <param name="templete">view模板</param>
         /// <returns></returns>
         [HttpPost]
-        public MessageModel<string> GetAllFrameFilesByTableNames([FromBody]string[] tableNames, [FromQuery]string ConnID = null)
+        public MessageModel<string> GetAllFrameFilesByTableNames([FromBody]string[] tableNames, [FromQuery]string ConnID = null, [FromQuery]string templete = "")
         {
             ConnID = ConnID == null ? MainDb.CurrentDbConnId.ToLower() : ConnID;
 
@@ -116,6 +117,7 @@ namespace Blog.Core.Controllers
             {
 
                 _sqlSugarClient.ChangeDatabase(ConnID.ToLower());
+                data.response += $"View生成：{FrameSeed.CreateView(_sqlSugarClient, ConnID, isMuti, tableNames, templete)} || ";
                 data.response += $"JS生成：{FrameSeed.CreateJS(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
                 data.response += $"Controller层生成：{FrameSeed.CreateControllers(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
                 data.response += $"库{ConnID}-Dto层生成：{FrameSeed.CreateDto(_sqlSugarClient, ConnID, isMuti, tableNames)} || ";
@@ -153,7 +155,7 @@ namespace Blog.Core.Controllers
         [HttpGet]
         public async Task<BaseResult> GetTableNames()
         {
-            return BaseResult.Ok( await _tableServices.FindTables());
+            return BaseResult.Ok(await _tableServices.FindTables());
         }
 
 

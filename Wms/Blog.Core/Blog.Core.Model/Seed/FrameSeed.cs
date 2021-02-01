@@ -1,13 +1,43 @@
+using Blog.Core.Common.Helper;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Blog.Core.Model.Seed
 {
     public class FrameSeed
     {
+
+
+        /// <summary>
+        /// 生成ViewQueryS层
+        /// </summary>
+        /// <param name="sqlSugarClient">sqlsugar实例</param>
+        /// <param name="ConnId">数据库链接ID</param>
+        /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
+        /// <param name="isMuti"></param>
+        /// <param name="templete"></param>
+        /// <returns></returns>
+        public static bool CreateView(SqlSugarClient sqlSugarClient, string ConnId = null, bool isMuti = false, string[] tableNames = null, string templete = "")
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(templete))
+                {
+                    return true;
+                }
+                Create_View_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目代码\Core_Kitty\6月Project\kitty-ui\src\views\Test", "Blog.Core.Api.View", tableNames, "", isMuti, false, templete);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
         /// <summary>
         /// 生成JS层
         /// </summary>
@@ -20,7 +50,7 @@ namespace Blog.Core.Model.Seed
         {
             try
             {
-                Create_JS_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Api.JS", "Blog.Core.Api.JS", tableNames, "", isMuti);
+                Create_JS_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目代码\Core_Kitty\6月Project\kitty-ui\src\http\moudules\test", "Blog.Core.Api.JS", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -29,7 +59,7 @@ namespace Blog.Core.Model.Seed
             }
 
         }
-        
+
         /// <summary>
         /// 生成Controller层
         /// </summary>
@@ -40,10 +70,11 @@ namespace Blog.Core.Model.Seed
         /// <returns></returns>
         public static bool CreateControllers(SqlSugarClient sqlSugarClient, string ConnId = null, bool isMuti = false, string[] tableNames = null)
         {
-
             try
             {
-                Create_Controller_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Api.Controllers", "Blog.Core.Api.Controllers", tableNames, "", isMuti);
+                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..");
+                currentPath = Path.Combine(currentPath, "Controllers_New");
+                Create_Controller_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Api.Controllers", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -66,7 +97,9 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Dto_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Dto", "Blog.Core.Model.ViewModels", tableNames, "", isMuti);
+                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
+                currentPath = Path.Combine(currentPath, "Blog.Core.Model", "ViewModels_New");
+                Create_Dto_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Model.ViewModels", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -89,7 +122,9 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Model", "Blog.Core.Model.Models", tableNames, "", isMuti);
+                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
+                currentPath = Path.Combine(currentPath, "Blog.Core.Model", "Models_New");
+                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Model.Models", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -112,7 +147,9 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_IRepository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.IRepository", "Blog.Core.IRepository", tableNames, "", isMuti);
+                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
+                currentPath = Path.Combine(currentPath, "Blog.Core.IRepository", "IRepositories_New");
+                Create_IRepository_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.IRepository", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -137,7 +174,9 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_IServices_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.IServices", "Blog.Core.IServices", tableNames, "", isMuti);
+                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
+                currentPath = Path.Combine(currentPath, "Blog.Core.IServices", "IServices_New");
+                Create_IServices_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.IServices", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -162,7 +201,9 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Repository_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Repository", "Blog.Core.Repository", tableNames, "", isMuti);
+                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
+                currentPath = Path.Combine(currentPath, "Blog.Core.Repository", "Repository_New");
+                Create_Repository_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Repository", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -187,7 +228,9 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Services_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目源码\2020-5\DbFirst 生成文件\Blog.Core.Services", "Blog.Core.Services", tableNames, "", isMuti);
+                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
+                currentPath = Path.Combine(currentPath, "Blog.Core.Services", "Services_New");
+                Create_Services_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Services", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -195,7 +238,61 @@ namespace Blog.Core.Model.Seed
                 return false;
             }
 
-        } 
+        }
+
+        #region 根据数据库生产ViewQuery
+        /// <summary>
+        /// 功能描述:根据数据库表生产ViewQuery
+        /// 作　　者:Blog.Core
+        /// </summary>
+        /// <param name="sqlSugarClient"></param>
+        /// <param name="ConnId">数据库链接ID</param>
+        /// <param name="strPath">实体类存放路径</param>
+        /// <param name="strNameSpace">命名空间</param>
+        /// <param name="lstTableNames">生产指定的表</param>
+        /// <param name="strInterface">实现接口</param>
+        /// <param name="isMuti"></param>
+        /// <param name="blnSerializable">是否序列化</param>
+        /// <param name="templete">vue模板</param>
+        private static void Create_View_ClassFileByDBTalbe(
+          SqlSugarClient sqlSugarClient,
+          string ConnId,
+          string strPath,
+          string strNameSpace,
+          string[] lstTableNames,
+          string strInterface,
+          bool isMuti = false,
+          bool blnSerializable = false,
+          string templete = "")
+        {
+            var IDbFirst = sqlSugarClient.DbFirst;
+            var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..");
+            string html = FileHelper.ReadFile(Path.Combine(currentPath, "Html", templete));
+            if (lstTableNames != null && lstTableNames.Length > 0)
+            {
+                IDbFirst = IDbFirst.Where(lstTableNames);
+            }
+            var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
+
+                 .SettingClassTemplate(p => p = html)
+
+                  .ToClassStringList(strNameSpace);
+
+            Dictionary<string, string> newdic = new Dictionary<string, string>();
+            //循环处理 首字母小写 并插入新的 Dictionary
+            foreach (KeyValuePair<string, string> item in ls)
+            {
+                var columns = GetColumns(item.Key.ToString(), sqlSugarClient);
+                var dataForm = GetDataForm(item.Key.ToString(), sqlSugarClient);
+                var elform = GetElform(item.Key.ToString(), sqlSugarClient);
+                string camelName = item.Key.First().ToString().ToLower() + item.Key.Substring(1);
+                string newkey = "_" + camelName;
+                string newvalue = item.Value.Replace("#LowerClassName", camelName).Replace("#columns", columns).Replace("#dataForm", dataForm).Replace("#elform", elform);
+                newdic.Add(item.Key, newvalue);
+            }
+            CreateFilesByClassStringList(newdic, strPath, "{0}", ".vue");
+        }
+        #endregion
 
         #region 根据数据库生产JS
         /// <summary>
@@ -506,11 +603,11 @@ namespace " + strNameSpace + @"
                 strPath = strPath + @"\Models\" + ConnId;
                 strNameSpace = strNameSpace + "." + ConnId;
             }
-           
+
             var IDbFirst = sqlSugarClient.DbFirst;
             if (lstTableNames != null && lstTableNames.Length > 0)
             {
-               IDbFirst = IDbFirst.Where(lstTableNames);
+                IDbFirst = IDbFirst.Where(lstTableNames);
             }
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
@@ -540,7 +637,6 @@ namespace " + strNameSpace + @"
             CreateFilesByClassStringList(ls, strPath, "{0}");
         }
         #endregion
-
 
         #region 根据数据库表生产IRepository层
 
@@ -598,7 +694,6 @@ namespace " + strNameSpace + @"
         }
         #endregion
 
-
         #region 根据数据库表生产IServices层
 
         /// <summary>
@@ -653,7 +748,6 @@ namespace " + strNameSpace + @"
             CreateFilesByClassStringList(ls, strPath, "I{0}Services");
         }
         #endregion
-
 
         #region 根据数据库表生产 Repository 层
 
@@ -716,7 +810,6 @@ namespace " + strNameSpace + @"
         }
         #endregion
 
-
         #region 根据数据库表生产 Services 层
 
         /// <summary>
@@ -777,7 +870,6 @@ namespace " + strNameSpace + @"
         }
         #endregion
 
-
         #region 根据模板内容批量生成文件
         /// <summary>
         /// 根据模板内容批量生成文件
@@ -797,7 +889,7 @@ namespace " + strNameSpace + @"
                     var fileFullPath = Path.Combine(strPath, fileName);
                     if (!Directory.Exists(strPath))
                     {
-                        Directory.CreateDirectory(strPath);         
+                        Directory.CreateDirectory(strPath);
                     }
                     if (!File.Exists(fileFullPath))
                     {
@@ -813,7 +905,7 @@ namespace " + strNameSpace + @"
                     var fileFullPath = Path.Combine(strPath, fileName);
                     if (!Directory.Exists(strPath))
                     {
-                        Directory.CreateDirectory(strPath);              
+                        Directory.CreateDirectory(strPath);
                     }
                     if (!File.Exists(fileFullPath))
                     {
@@ -824,11 +916,67 @@ namespace " + strNameSpace + @"
         }
         #endregion
 
-        #region 公用获取#columns
-        //private string GetColumns()
-        //{
+        #region 公用属性
+        /// <summary>
+        /// 获取#columns
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="sqlSugarClient"></param>
+        /// <returns></returns>
+        private static string GetColumns(string tableName, SqlSugarClient sqlSugarClient)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var col in sqlSugarClient.DbMaintenance.GetColumnInfosByTableName(tableName))
+            {
+                var camelColumn = col.DbColumnName.First().ToString().ToLower() + col.DbColumnName.Substring(1);
+                sb.Append("{ prop: \"" + camelColumn + "\", label: \"" + col.ColumnDescription + "\", minWidth: 100},\n\t\t\t\t");
+            }
+            return sb.ToString();
+        }
 
-        //}
+        /// <summary>
+        /// 获取#dataForm
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="sqlSugarClient"></param>
+        /// <returns></returns>
+        private static string GetDataForm(string tableName, SqlSugarClient sqlSugarClient)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var col in sqlSugarClient.DbMaintenance.GetColumnInfosByTableName(tableName))
+            {
+                var camelColumn = col.DbColumnName.First().ToString().ToLower() + col.DbColumnName.Substring(1);
+                if (camelColumn == "id")
+                {
+                    sb.Append(camelColumn + ":0, \n\t\t\t\t");
+                }
+                else
+                {
+                    sb.Append(camelColumn + ":null, \n\t\t\t\t");
+                }
+            }
+            return sb.ToString();
+        }
+
+
+        /// <summary>
+        /// 获取#elform
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="sqlSugarClient"></param>
+        /// <returns></returns>
+        private static string GetElform(string tableName, SqlSugarClient sqlSugarClient)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var col in sqlSugarClient.DbMaintenance.GetColumnInfosByTableName(tableName))
+            {
+                var camelColumn = col.DbColumnName.First().ToString().ToLower() + col.DbColumnName.Substring(1);
+                sb.Append("<el-form-item label=\"" + col.ColumnDescription + "\" prop=\"" + camelColumn + "\"> \n \t\t\t\t");
+                sb.Append("<el-input v-model=\"dataForm." + camelColumn + "\" auto-complete=\"off\"></el-input> \n\t\t\t");
+                sb.Append("</el-form-item> \n\t\t\t");
+            }
+            return sb.ToString();
+        }
         #endregion
     }
 }

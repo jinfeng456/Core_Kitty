@@ -61,6 +61,9 @@ E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.csproj.CopyComplete
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.dll
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.pdb
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.AssemblyInfoInputs.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.AssemblyInfo.cs
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.csproj.CoreCompileInputs.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\bin\Debug\netcoreapp3.1\Blog.Core.Extensions.deps.json
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\bin\Debug\netcoreapp3.1\Blog.Core.Extensions.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\bin\Debug\netcoreapp3.1\Blog.Core.Extensions.pdb
@@ -76,9 +79,6 @@ E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\bin\Debug\netcoreapp3.1\Blo
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.csprojAssemblyReference.cache
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.AssemblyInfoInputs.cache
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.AssemblyInfo.cs
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.csproj.CoreCompileInputs.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.csproj.CopyComplete
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Extensions\obj\Debug\netcoreapp3.1\Blog.Core.Extensions.pdb

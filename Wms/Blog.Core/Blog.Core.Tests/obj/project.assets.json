@@ -4177,7 +4177,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Common.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.Extensions/1.0.0": {
         "type": "project",
@@ -4206,7 +4209,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Extensions.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.IRepository/1.0.0": {
         "type": "project",
@@ -4219,7 +4225,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.IRepository.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.IServices/1.0.0": {
         "type": "project",
@@ -4232,7 +4241,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.IServices.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.Model/1.0.0": {
         "type": "project",
@@ -4246,7 +4258,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Model.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.Repository/1.0.0": {
         "type": "project",
@@ -4260,7 +4275,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Repository.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.Services/1.0.0": {
         "type": "project",
@@ -4276,7 +4294,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Services.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.Tasks/1.0.0": {
         "type": "project",
@@ -4290,7 +4311,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Tasks.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -12351,6 +12375,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

@@ -5,9 +5,9 @@ import axios from '../../axios'
  */
 
 // 保存
-export const generate = (data,params) => {
+export const generate = (data,params,templete) => {
     return axios({
-        url: '/api/DbFirst/GetAllFrameFilesByTableNames?ConnID='+params,
+        url: '/api/DbFirst/GetAllFrameFilesByTableNames?ConnID='+params+"&templete="+templete,
         method: 'post',
         data
     })
