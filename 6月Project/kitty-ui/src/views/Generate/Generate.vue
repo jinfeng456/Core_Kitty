@@ -13,6 +13,14 @@
 					</el-option>
 				</el-select>
 			</el-form-item>
+			<el-form-item label="模板" prop="templete" >
+				<el-select v-model="dataForm.templete" :placeholder="$t('action.select')"
+					 style="width: 100%;" clearable="">
+					<el-option v-for="item in templetes" :key="item"
+						:label="item" :value="item">
+					</el-option>
+				</el-select>
+			</el-form-item>
 		</el-form>
 		<div slot="footer" class="dialog-footer">
 			<el-button :size="size" type="primary" @click.native="handleAdd" :loading="editLoading">{{$t('action.submit')}}</el-button>
@@ -35,8 +43,10 @@ export default {
 			tableList:[],
 			dataForm: {
 				tableName: [],
-				dataBase:''
+				dataBase:'',
+				templete:''
 			},
+			templetes:["viewQuery.html","viewKtTable.html","viewKtTable2.html"],
 			tableNames:[],
 			editLoading:false,
 			dataFormRules: {
@@ -56,7 +66,7 @@ export default {
 				if (valid) {
 					this.$confirm('确认提交吗？', '提示', {}).then(() => {	
 						this.editLoading=true;
-						this.$api.generate.generate(this.dataForm.tableName,this.dataForm.dataBase).then((res) => {
+						this.$api.generate.generate(this.dataForm.tableName,this.dataForm.dataBase,this.dataForm.templete).then((res) => {
 							if(res.status=200){
 								this.$message({ message: '操作成功', type: 'success' })
 							}	

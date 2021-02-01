@@ -150,7 +150,6 @@ G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\obj\De
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.genruntimeconfig.cache
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Log4net.config
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Api.exe
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\appsettings.json
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Dockerfile
@@ -598,3 +597,4 @@ E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.pdb
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.genruntimeconfig.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
