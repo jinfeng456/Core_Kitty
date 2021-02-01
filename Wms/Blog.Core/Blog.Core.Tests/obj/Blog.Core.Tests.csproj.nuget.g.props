@@ -5,10 +5,13 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Administrator\.nuget\packages\;C:\Microsoft\Xamarin\NuGet\;C:\Program Files\dotnet\sdk\NuGetFallbackFolder</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\jinfeng\.nuget\packages\;D:\Microsoft\Xamarin\NuGet\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.5.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">5.8.1</NuGetToolVersion>
   </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="$([MSBuild]::EnsureTrailingSlash($(NuGetPackageFolders)))" />
+  </ItemGroup>
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
@@ -18,9 +21,9 @@
     <Import Project="$(NuGetPackageRoot)xunit.core\2.4.1\build\xunit.core.props" Condition="Exists('$(NuGetPackageRoot)xunit.core\2.4.1\build\xunit.core.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Pkgxunit_analyzers Condition=" '$(Pkgxunit_analyzers)' == '' ">C:\Users\Administrator\.nuget\packages\xunit.analyzers\0.10.0</Pkgxunit_analyzers>
-    <PkgWebApiClient_JIT Condition=" '$(PkgWebApiClient_JIT)' == '' ">C:\Users\Administrator\.nuget\packages\webapiclient.jit\1.1.3</PkgWebApiClient_JIT>
-    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\Administrator\.nuget\packages\microsoft.extensions.apidescription.server\3.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
-    <PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets Condition=" '$(PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets)' == '' ">C:\Users\Administrator\.nuget\packages\microsoft.visualstudio.azure.containers.tools.targets\1.9.10</PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets>
+    <Pkgxunit_analyzers Condition=" '$(Pkgxunit_analyzers)' == '' ">C:\Users\jinfeng\.nuget\packages\xunit.analyzers\0.10.0</Pkgxunit_analyzers>
+    <PkgWebApiClient_JIT Condition=" '$(PkgWebApiClient_JIT)' == '' ">C:\Users\jinfeng\.nuget\packages\webapiclient.jit\1.1.3</PkgWebApiClient_JIT>
+    <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\jinfeng\.nuget\packages\microsoft.extensions.apidescription.server\3.0.0</PkgMicrosoft_Extensions_ApiDescription_Server>
+    <PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets Condition=" '$(PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets)' == '' ">C:\Users\jinfeng\.nuget\packages\microsoft.visualstudio.azure.containers.tools.targets\1.9.10</PkgMicrosoft_VisualStudio_Azure_Containers_Tools_Targets>
   </PropertyGroup>
 </Project>

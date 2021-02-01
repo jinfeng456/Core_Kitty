@@ -18,7 +18,6 @@ E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\B
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\bin\Debug\netcoreapp3.1\Blog.Core.Common.deps.json
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\bin\Debug\netcoreapp3.1\Blog.Core.Common.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.csprojAssemblyReference.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.AssemblyInfoInputs.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.AssemblyInfo.cs
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Common\obj\Debug\netcoreapp3.1\Blog.Core.Common.csproj.CoreCompileInputs.cache
