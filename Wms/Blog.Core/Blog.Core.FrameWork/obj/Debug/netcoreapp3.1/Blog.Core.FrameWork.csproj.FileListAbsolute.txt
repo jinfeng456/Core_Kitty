@@ -15,3 +15,9 @@ E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreap
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.dll
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.pdb
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.csprojAssemblyReference.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.csprojAssemblyReference.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.AssemblyInfoInputs.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.AssemblyInfo.cs
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.csproj.CoreCompileInputs.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.dll
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.FrameWork\obj\Debug\netcoreapp3.1\Blog.Core.FrameWork.pdb

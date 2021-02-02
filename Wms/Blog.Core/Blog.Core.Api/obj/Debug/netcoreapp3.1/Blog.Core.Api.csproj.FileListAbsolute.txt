@@ -447,6 +447,13 @@ E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\stat
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.dll
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.pdb
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.genruntimeconfig.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.csprojAssemblyReference.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.AssemblyInfoInputs.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.AssemblyInfo.cs
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.csproj.CoreCompileInputs.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.MvcApplicationPartsAssemblyInfo.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.MvcApplicationPartsAssemblyInfo.cs
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Log4net.config
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Api.exe
@@ -583,12 +590,6 @@ E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Tasks.pdb
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.csprojAssemblyReference.cache
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.AssemblyInfoInputs.cache
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.AssemblyInfo.cs
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.csproj.CoreCompileInputs.cache
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.MvcApplicationPartsAssemblyInfo.cs
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.MvcApplicationPartsAssemblyInfo.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\staticwebassets\Blog.Core.Api.StaticWebAssets.Manifest.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\staticwebassets\Blog.Core.Api.StaticWebAssets.xml
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\scopedcss\bundle\Blog.Core.Api.styles.css
@@ -597,4 +598,3 @@ E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.pdb
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.genruntimeconfig.cache
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json

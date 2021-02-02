@@ -21,13 +21,13 @@ E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.csproj.CopyComplete
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.dll
 E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.pdb
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Services.deps.json
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Services.dll
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Services.pdb
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.csprojAssemblyReference.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.AssemblyInfoInputs.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.AssemblyInfo.cs
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.csproj.CoreCompileInputs.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Services.deps.json
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Services.dll
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Blog.Core.Services.pdb
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.csproj.CopyComplete
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Services\obj\Debug\netcoreapp3.1\Blog.Core.Services.pdb

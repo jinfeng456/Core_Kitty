@@ -43,6 +43,10 @@ E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csproj.CopyComplete
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.dll
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.pdb
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csprojAssemblyReference.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.AssemblyInfoInputs.cache
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.AssemblyInfo.cs
+E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csproj.CoreCompileInputs.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.IServices.deps.json
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.IServices.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.IServices.pdb
@@ -51,10 +55,6 @@ E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csprojAssemblyReference.cache
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.AssemblyInfoInputs.cache
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.AssemblyInfo.cs
-E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csproj.CoreCompileInputs.cache
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.csproj.CopyComplete
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IServices\obj\Debug\netcoreapp3.1\Blog.Core.IServices.pdb
