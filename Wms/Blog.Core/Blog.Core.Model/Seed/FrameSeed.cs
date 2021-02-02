@@ -21,7 +21,7 @@ namespace Blog.Core.Model.Seed
         /// <param name="isMuti"></param>
         /// <param name="templete"></param>
         /// <returns></returns>
-        public static bool CreateView(SqlSugarClient sqlSugarClient, string ConnId = null, bool isMuti = false, string[] tableNames = null, string templete = "")
+        public static bool CreateView(SqlSugarClient sqlSugarClient,string path, string ConnId = null, bool isMuti = false, string[] tableNames = null, string templete = "")
         {
             try
             {
@@ -29,7 +29,7 @@ namespace Blog.Core.Model.Seed
                 {
                     return true;
                 }
-                Create_View_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目代码\Core_Kitty\6月Project\kitty-ui\src\views\Test", "Blog.Core.Api.View", tableNames, "", isMuti, false, templete);
+                Create_View_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Api.View", tableNames, "", isMuti, false, templete);
                 return true;
             }
             catch (Exception)
@@ -46,11 +46,11 @@ namespace Blog.Core.Model.Seed
         /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
         /// <param name="isMuti"></param>
         /// <returns></returns>
-        public static bool CreateJS(SqlSugarClient sqlSugarClient, string ConnId = null, bool isMuti = false, string[] tableNames = null)
+        public static bool CreateJS(SqlSugarClient sqlSugarClient, string path, string ConnId = null, bool isMuti = false, string[] tableNames = null)
         {
             try
             {
-                Create_JS_ClassFileByDBTalbe(sqlSugarClient, ConnId, $@"E:\项目代码\Core_Kitty\6月Project\kitty-ui\src\http\moudules\test", "Blog.Core.Api.JS", tableNames, "", isMuti);
+                Create_JS_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Api.JS", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -68,13 +68,11 @@ namespace Blog.Core.Model.Seed
         /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
         /// <param name="isMuti"></param>
         /// <returns></returns>
-        public static bool CreateControllers(SqlSugarClient sqlSugarClient, string ConnId = null, bool isMuti = false, string[] tableNames = null)
+        public static bool CreateControllers(SqlSugarClient sqlSugarClient, string path, string ConnId = null, bool isMuti = false, string[] tableNames = null)
         {
             try
-            {
-                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..");
-                currentPath = Path.Combine(currentPath, "Controllers_New");
-                Create_Controller_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Api.Controllers", tableNames, "", isMuti);
+            {        
+                Create_Controller_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Api.Controllers", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -92,14 +90,12 @@ namespace Blog.Core.Model.Seed
         /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
         /// <param name="isMuti"></param>
         /// <returns></returns>
-        public static bool CreateDto(SqlSugarClient sqlSugarClient, string ConnId, bool isMuti = false, string[] tableNames = null)
+        public static bool CreateDto(SqlSugarClient sqlSugarClient, string path, string ConnId, bool isMuti = false, string[] tableNames = null)
         {
 
             try
             {
-                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
-                currentPath = Path.Combine(currentPath, "Blog.Core.Model", "ViewModels_New");
-                Create_Dto_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Model.ViewModels", tableNames, "", isMuti);
+                Create_Dto_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Model.ViewModels", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -117,14 +113,12 @@ namespace Blog.Core.Model.Seed
         /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
         /// <param name="isMuti"></param>
         /// <returns></returns>
-        public static bool CreateModels(SqlSugarClient sqlSugarClient, string ConnId, bool isMuti = false, string[] tableNames = null)
+        public static bool CreateModels(SqlSugarClient sqlSugarClient, string path, string ConnId, bool isMuti = false, string[] tableNames = null)
         {
 
             try
             {
-                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
-                currentPath = Path.Combine(currentPath, "Blog.Core.Model", "Models_New");
-                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Model.Models", tableNames, "", isMuti);
+                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Model.Models", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -142,14 +136,12 @@ namespace Blog.Core.Model.Seed
         /// <param name="isMuti"></param>
         /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
         /// <returns></returns>
-        public static bool CreateIRepositorys(SqlSugarClient sqlSugarClient, string ConnId, bool isMuti = false, string[] tableNames = null)
+        public static bool CreateIRepositorys(SqlSugarClient sqlSugarClient, string path, string ConnId, bool isMuti = false, string[] tableNames = null)
         {
 
             try
             {
-                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
-                currentPath = Path.Combine(currentPath, "Blog.Core.IRepository", "IRepositories_New");
-                Create_IRepository_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.IRepository", tableNames, "", isMuti);
+                Create_IRepository_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.IRepository", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -169,14 +161,12 @@ namespace Blog.Core.Model.Seed
         /// <param name="isMuti"></param>
         /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
         /// <returns></returns>
-        public static bool CreateIServices(SqlSugarClient sqlSugarClient, string ConnId, bool isMuti = false, string[] tableNames = null)
+        public static bool CreateIServices(SqlSugarClient sqlSugarClient, string path, string ConnId, bool isMuti = false, string[] tableNames = null)
         {
 
             try
             {
-                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
-                currentPath = Path.Combine(currentPath, "Blog.Core.IServices", "IServices_New");
-                Create_IServices_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.IServices", tableNames, "", isMuti);
+                Create_IServices_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.IServices", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -196,14 +186,12 @@ namespace Blog.Core.Model.Seed
         /// <param name="isMuti"></param>
         /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
         /// <returns></returns>
-        public static bool CreateRepository(SqlSugarClient sqlSugarClient, string ConnId, bool isMuti = false, string[] tableNames = null)
+        public static bool CreateRepository(SqlSugarClient sqlSugarClient, string path, string ConnId, bool isMuti = false, string[] tableNames = null)
         {
 
             try
             {
-                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
-                currentPath = Path.Combine(currentPath, "Blog.Core.Repository", "Repository_New");
-                Create_Repository_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Repository", tableNames, "", isMuti);
+                Create_Repository_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Repository", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
@@ -223,14 +211,12 @@ namespace Blog.Core.Model.Seed
         /// <param name="isMuti"></param>
         /// <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
         /// <returns></returns>
-        public static bool CreateServices(SqlSugarClient sqlSugarClient, string ConnId, bool isMuti = false, string[] tableNames = null)
+        public static bool CreateServices(SqlSugarClient sqlSugarClient, string path, string ConnId, bool isMuti = false, string[] tableNames = null)
         {
 
             try
             {
-                var currentPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "..") + "..") + "..") + "..") + "..");
-                currentPath = Path.Combine(currentPath, "Blog.Core.Services", "Services_New");
-                Create_Services_ClassFileByDBTalbe(sqlSugarClient, ConnId, currentPath, "Blog.Core.Services", tableNames, "", isMuti);
+                Create_Services_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Services", tableNames, "", isMuti);
                 return true;
             }
             catch (Exception)
