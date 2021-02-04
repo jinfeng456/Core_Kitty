@@ -1,0 +1,34 @@
+{
+  "RECORDS": [
+    {
+      "Id": "1",
+      "Name": "admin",
+      "Remark": "超级管理员",
+      "CreateBy": "admin",
+      "CreateTime": "14/8/2018 11:11:11",
+      "LastUpdateBy": "admin",
+      "LastUpdateTime": "23/9/2018 19:07:18",
+      "DelFlag": "0"
+    },
+    {
+      "Id": "2",
+      "Name": "dev",
+      "Remark": "开发人员",
+      "CreateBy": "admin",
+      "CreateTime": "14/8/2018 11:11:11",
+      "LastUpdateBy": "admin",
+      "LastUpdateTime": "14/8/2018 11:11:11",
+      "DelFlag": "0"
+    },
+    {
+      "Id": "3",
+      "Name": "test",
+      "Remark": "测试",
+      "CreateBy": "admin",
+      "CreateTime": "14/8/2018 11:11:11",
+      "LastUpdateBy": "admin",
+      "LastUpdateTime": "11/5/2020 00:00:00",
+      "DelFlag": "0"
+    }
+  ]
+}

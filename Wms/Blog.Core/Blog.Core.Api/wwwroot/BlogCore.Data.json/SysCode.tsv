@@ -1,0 +1,175 @@
+{
+  "RECORDS": [
+    {
+      "Id": "1",
+      "TableDescription": "退货出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "TH",
+      "BusinessType": "202",
+      "CodeNumber": "1",
+      "CodeDate": "16/7/2020 00:00:00"
+    },
+    {
+      "Id": "2",
+      "TableDescription": "返工出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "FG",
+      "BusinessType": "204",
+      "CodeNumber": "6",
+      "CodeDate": "9/7/2020 00:00:00"
+    },
+    {
+      "Id": "3",
+      "TableDescription": "赠品出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "ZP",
+      "BusinessType": "208",
+      "CodeNumber": "5",
+      "CodeDate": "9/7/2020 00:00:00"
+    },
+    {
+      "Id": "4",
+      "TableDescription": "损坏出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "SH",
+      "BusinessType": "210",
+      "CodeNumber": "5",
+      "CodeDate": "28/6/2020 00:00:00"
+    },
+    {
+      "Id": "5",
+      "TableDescription": "报废出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "BF",
+      "BusinessType": "211",
+      "CodeNumber": "5",
+      "CodeDate": "28/6/2020 00:00:00"
+    },
+    {
+      "Id": "6",
+      "TableDescription": "销毁出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "XH",
+      "BusinessType": "205",
+      "CodeNumber": "5",
+      "CodeDate": "28/6/2020 00:00:00"
+    },
+    {
+      "Id": "7",
+      "TableDescription": "批次出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "PC",
+      "BusinessType": "1",
+      "CodeNumber": "5",
+      "CodeDate": "28/6/2020 00:00:00"
+    },
+    {
+      "Id": "8",
+      "TableDescription": "销售出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "XS",
+      "BusinessType": "201",
+      "CodeNumber": "9",
+      "CodeDate": "15/7/2020 00:00:00"
+    },
+    {
+      "Id": "9",
+      "TableDescription": "调拨出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "DB",
+      "BusinessType": "203",
+      "CodeNumber": "2",
+      "CodeDate": "15/7/2020 00:00:00"
+    },
+    {
+      "Id": "10",
+      "TableDescription": "直调出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "ZD",
+      "BusinessType": "4",
+      "CodeNumber": "1",
+      "CodeDate": "9/7/2020 00:00:00"
+    },
+    {
+      "Id": "11",
+      "TableDescription": "生产出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "SC",
+      "BusinessType": "5",
+      "CodeNumber": "1",
+      "CodeDate": "14/7/2020 00:00:00"
+    },
+    {
+      "Id": "12",
+      "TableDescription": "其他出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "QT",
+      "BusinessType": "299",
+      "CodeNumber": "1",
+      "CodeDate": "15/7/2020 00:00:00"
+    },
+    {
+      "Id": "13",
+      "TableDescription": "抽检出库",
+      "TableName": "Wh_Receipt_out",
+      "SerialPrefix": "CJ",
+      "BusinessType": "206",
+      "CodeNumber": "1",
+      "CodeDate": "15/7/2020 00:00:00"
+    },
+    {
+      "Id": "14",
+      "TableDescription": "生产入库",
+      "TableName": "Wh_Receipt_in",
+      "SerialPrefix": "SS",
+      "BusinessType": "103",
+      "CodeNumber": "2",
+      "CodeDate": "15/7/2020 00:00:00"
+    },
+    {
+      "Id": "15",
+      "TableDescription": "采购入库",
+      "TableName": "Wh_Receipt_in",
+      "SerialPrefix": "CG",
+      "BusinessType": "101",
+      "CodeNumber": "1",
+      "CodeDate": "16/7/2020 00:00:00"
+    },
+    {
+      "Id": "16",
+      "TableDescription": "赠品入库",
+      "TableName": "Wh_Receipt_in",
+      "SerialPrefix": "ZP",
+      "BusinessType": "105",
+      "CodeNumber": "1",
+      "CodeDate": "15/7/2020 00:00:00"
+    },
+    {
+      "Id": "17",
+      "TableDescription": "调拨入库",
+      "TableName": "Wh_Receipt_in",
+      "SerialPrefix": "DB",
+      "BusinessType": "104",
+      "CodeNumber": "1",
+      "CodeDate": "15/7/2020 00:00:00"
+    },
+    {
+      "Id": "18",
+      "TableDescription": "其他入库",
+      "TableName": "Wh_Receipt_in",
+      "SerialPrefix": "QT",
+      "BusinessType": "199",
+      "CodeNumber": "1",
+      "CodeDate": "15/7/2020 00:00:00"
+    },
+    {
+      "Id": "19",
+      "TableDescription": "召回入库",
+      "TableName": "Wh_Receipt_in",
+      "SerialPrefix": "ZH",
+      "BusinessType": "102",
+      "CodeNumber": "2",
+      "CodeDate": "15/7/2020 00:00:00"
+    }
+  ]
+}

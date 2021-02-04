@@ -21,15 +21,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="Controllers_New\**" />
 		<Compile Remove="Extensions\**" />
 		<Compile Remove="Hubs\**" />
 		<Compile Remove="Middlewares\**" />
+		<Content Remove="Controllers_New\**" />
 		<Content Remove="Extensions\**" />
 		<Content Remove="Hubs\**" />
 		<Content Remove="Middlewares\**" />
+		<EmbeddedResource Remove="Controllers_New\**" />
 		<EmbeddedResource Remove="Extensions\**" />
 		<EmbeddedResource Remove="Hubs\**" />
 		<EmbeddedResource Remove="Middlewares\**" />
+		<None Remove="Controllers_New\**" />
 		<None Remove="Extensions\**" />
 		<None Remove="Hubs\**" />
 		<None Remove="Middlewares\**" />
@@ -81,7 +85,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Controllers_New\" />
 	  <Folder Include="JS\" />
 	  <Folder Include="Log\" />
 	  <Folder Include="ViewKtTable\" />

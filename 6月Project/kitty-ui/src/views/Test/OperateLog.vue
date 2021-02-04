@@ -4,10 +4,10 @@
 	<div class="toolbar" style="float:left;padding-top:10px;padding-left:15px;">
 		<el-form :inline="true" :model="filters" :size="size">
 			<el-form-item>
-				<el-input v-model="filters.label" placeholder="名称"></el-input>
+				<el-input v-model="filters.area" placeholder="区域名称"></el-input>
 			</el-form-item>
 			<el-form-item>
-				<kt-button :label="$t('action.search')" perms="sys:coreItem:view" type="primary" @click="findPage(null)"/>
+				<kt-button :label="$t('action.search')" perms="sys:operateLog:view" type="primary" @click="findPage(null)"/>
 			</el-form-item>			
 		</el-form>
 	</div>
@@ -32,17 +32,19 @@ export default {
 		return {
 			size: 'small',
 			filters:{
-				label: ''
+				area: ''
 			},
 			columns: [
 				{ prop: "id", label: "主键", minWidth: 100},
-				{ prop: "classifyId", label: "物料类别", minWidth: 100},
-				{ prop: "code", label: "物料编码", minWidth: 100},
-				{ prop: "name", label: "物料名称", minWidth: 100},
-				{ prop: "active", label: "是否启用", minWidth: 100},
-				{ prop: "coreItemType", label: "物料类型", minWidth: 100},
-				{ prop: "modelSpecs", label: "物料规格", minWidth: 100},
-				{ prop: "packageSpecs", label: "包装规格", minWidth: 100},
+				{ prop: "isDeleted", label: "是否删除", minWidth: 100},
+				{ prop: "area", label: "区域名", minWidth: 100},
+				{ prop: "controller", label: "区域控制器名", minWidth: 120},
+				{ prop: "action", label: "Action名称", minWidth: 110},
+				{ prop: "ipAddress", label: "IP地址", minWidth: 100},
+				{ prop: "description", label: "描述", minWidth: 100},
+				{ prop: "logTime", label: "登录时间", minWidth: 130,formatter:this.dateFormat},
+				{ prop: "loginName", label: "登录名称", minWidth: 100},
+				{ prop: "userId", label: "用户ID", minWidth: 100},
 				
 			],
 			pageRequest: { pageNum: 1, pageSize: 8 },
@@ -63,7 +65,7 @@ export default {
 				this.pageRequest.pageNum=1
 			}
 			this.filters.pageSize=this.pageRequest.pageSize
-			this.$api.coreItem.findPage(this.filters).then((res) => {
+			this.$api.operateLog.findPage(this.filters).then((res) => {
 				this.pageResult = res.data
 			}).then(data != null ? data.callback : '')
 		},

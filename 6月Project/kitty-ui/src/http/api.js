@@ -16,6 +16,7 @@ import * as exports from "./moudules/file/exports";
 import * as sysCode from "./moudules/sys/sysCode";
 import * as tasksQz from "./moudules/task/tasksQz";
 import * as generate from "./moudules/generate/generate";
+import * as operateLog from "./moudules/test/operateLog";
 
 // 默认全部导出
 export default {
@@ -33,5 +34,6 @@ export default {
   exports,
   sysCode,
   tasksQz,
-  generate
+  generate,
+  operateLog
 };

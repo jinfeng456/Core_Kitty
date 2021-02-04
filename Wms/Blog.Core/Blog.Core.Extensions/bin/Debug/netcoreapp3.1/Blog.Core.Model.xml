@@ -1380,7 +1380,7 @@
             <param name="WebRootPath"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateView(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[],System.String)">
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateView(SqlSugar.SqlSugarClient,System.String,System.String,System.Boolean,System.String[],System.String)">
             <summary>
             生成ViewQueryS层
             </summary>
@@ -1391,7 +1391,7 @@
             <param name="templete"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateJS(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateJS(SqlSugar.SqlSugarClient,System.String,System.String,System.Boolean,System.String[])">
             <summary>
             生成JS层
             </summary>
@@ -1401,7 +1401,7 @@
             <param name="isMuti"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateControllers(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateControllers(SqlSugar.SqlSugarClient,System.String,System.String,System.Boolean,System.String[])">
             <summary>
             生成Controller层
             </summary>
@@ -1411,7 +1411,7 @@
             <param name="isMuti"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateDto(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateDto(SqlSugar.SqlSugarClient,System.String,System.String,System.Boolean,System.String[])">
             <summary>
             生成Dto层
             </summary>
@@ -1421,7 +1421,7 @@
             <param name="isMuti"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateModels(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateModels(SqlSugar.SqlSugarClient,System.String,System.String,System.Boolean,System.String[])">
             <summary>
             生成Model层
             </summary>
@@ -1431,7 +1431,7 @@
             <param name="isMuti"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateIRepositorys(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateIRepositorys(SqlSugar.SqlSugarClient,System.String,System.String,System.Boolean,System.String[])">
             <summary>
             生成IRepository层
             </summary>
@@ -1441,7 +1441,7 @@
             <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateIServices(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateIServices(SqlSugar.SqlSugarClient,System.String,System.String,System.Boolean,System.String[])">
             <summary>
             生成 IService 层
             </summary>
@@ -1451,7 +1451,7 @@
             <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateRepository(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateRepository(SqlSugar.SqlSugarClient,System.String,System.String,System.Boolean,System.String[])">
             <summary>
             生成 Repository 层
             </summary>
@@ -1461,7 +1461,7 @@
             <param name="tableNames">数据库表名数组，默认空，生成所有表</param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateServices(SqlSugar.SqlSugarClient,System.String,System.Boolean,System.String[])">
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.CreateServices(SqlSugar.SqlSugarClient,System.String,System.String,System.Boolean,System.String[])">
             <summary>
             生成 Service 层
             </summary>
@@ -1602,6 +1602,22 @@
             <param name="strPath">生成路径</param>
             <param name="fileNameTp">文件名格式模板</param>
             <param name="fileType">文件名类型</param>
+        </member>
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.GetModel(System.String,SqlSugar.SqlSugarClient)">
+            <summary>
+            获取#PropertyName
+            </summary>
+            <param name="tableName"></param>
+            <param name="sqlSugarClient"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.GetDto(System.String,SqlSugar.SqlSugarClient)">
+            <summary>
+            获取#PropertyName
+            </summary>
+            <param name="tableName"></param>
+            <param name="sqlSugarClient"></param>
+            <returns></returns>
         </member>
         <member name="M:Blog.Core.Model.Seed.FrameSeed.GetColumns(System.String,SqlSugar.SqlSugarClient)">
             <summary>
@@ -2015,6 +2031,11 @@
         <member name="T:Blog.Core.Model.ViewModels.CoreItemDto">
             <summary>
             物料信息表
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.ViewModels.OperateLogDto">
+            <summary>
+            
             </summary>
         </member>
     </members>

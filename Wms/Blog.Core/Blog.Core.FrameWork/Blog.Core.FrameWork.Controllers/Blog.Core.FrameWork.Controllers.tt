@@ -38,6 +38,7 @@ using Blog.Core.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq.Expressions;
 
 namespace Blog.Core.Controllers
 {
@@ -65,11 +66,12 @@ namespace Blog.Core.Controllers
         [HttpPost, Route("FindPage")]
         public async Task<BaseResult> FindPage([FromBody]<#=tableName#>Dto dto)
         {
-            if (string.IsNullOrEmpty(dto.dictClassName) || string.IsNullOrWhiteSpace(dto.dictClassName))
+            Expression<Func<<#=tableName#>, bool>> whereExpression = a => true;
+            if (dto.name.IsNotEmptyOrNull())
             {
-                dto.dictClassName = "";
+                whereExpression = ExpressionHelp.And(whereExpression, a => a.name.Contains(dto.name));
             }
-            var data = await _<#=ToCamel(tableName)#>Services.QueryPage(a => (a.DictClassName != null && a.DictClassName.Contains(dto.dictClassName)), dto.pageNum, dto.pageSize, " createTime desc ");
+            var data = await _<#=ToCamel(tableName)#>Services.QueryPage(whereExpression, dto.pageNum, dto.pageSize, " createTime desc ");
             return BaseResult.Ok(data);
         }
 

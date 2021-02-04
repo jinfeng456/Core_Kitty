@@ -16,6 +16,35 @@
             <param name="dto">物料分类</param>
             <returns></returns>
         </member>
+        <member name="M:Blog.Core.Api.Controllers.OperateLogController.FindPage(Blog.Core.Model.ViewModels.OperateLogDto)">
+            <summary>
+            查询
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+             Post: OperateLog
+        </member>
+        <member name="M:Blog.Core.Api.Controllers.OperateLogController.Save(Blog.Core.Model.Models.OperateLog)">
+            <summary>
+            添加
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+             POST: OperateLog
+        </member>
+        <member name="M:Blog.Core.Api.Controllers.OperateLogController.Delete(System.Collections.Generic.List{Blog.Core.Model.Models.OperateLog})">
+            <summary>
+            删除
+            </summary>
+            <param name="modelList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Api.Controllers.OperateLogController.GetAllList">
+            <summary>
+            查询全部
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Blog.Core.Controllers.CoreItemController">
             <summary>
             物料管理
@@ -63,25 +92,10 @@
             <param name="coreItemList"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Controllers.DbFirstController.#ctor(SqlSugar.ISqlSugarClient,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Blog.Core.IServices.ITableServices)">
+        <member name="M:Blog.Core.Controllers.DbFirstController.#ctor(SqlSugar.ISqlSugarClient,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Blog.Core.IServices.ITableServices,Blog.Core.IServices.ISysMenuServices,Blog.Core.IServices.ISysRoleMenuServices,Blog.Core.Common.HttpContextUser.IUser)">
             <summary>
             构造函数
             </summary>
-        </member>
-        <member name="M:Blog.Core.Controllers.DbFirstController.GetFrameFiles">
-            <summary>
-            获取 整体框架 文件
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Blog.Core.Controllers.DbFirstController.GetFrameFilesByTableNames(System.String[],System.String)">
-            <summary>
-            根据数据库表名 生成整体框架
-            仅针对通过CodeFirst生成表的情况
-            </summary>
-            <param name="ConnID">数据库链接名称</param>
-            <param name="tableNames">需要生成的表名</param>
-            <returns></returns>
         </member>
         <member name="M:Blog.Core.Controllers.DbFirstController.GetAllFrameFilesByTableNames(System.String[],System.String,System.String)">
             <summary>

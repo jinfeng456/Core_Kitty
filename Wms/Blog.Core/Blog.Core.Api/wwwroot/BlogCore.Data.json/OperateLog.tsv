@@ -1,0 +1,28 @@
+{
+  "RECORDS": [
+    {
+      "Id": "218101",
+      "IsDeleted": "",
+      "Area": "33",
+      "Controller": "",
+      "Action": "",
+      "IpAddress": "",
+      "Description": "",
+      "LogTime": "2/2/2021 14:57:39.687",
+      "LoginName": "",
+      "UserId": "1"
+    },
+    {
+      "Id": "218102",
+      "IsDeleted": "",
+      "Area": "",
+      "Controller": "",
+      "Action": "",
+      "IpAddress": "",
+      "Description": "",
+      "LogTime": "2/2/2021 14:58:06.233",
+      "LoginName": "",
+      "UserId": "1"
+    }
+  ]
+}

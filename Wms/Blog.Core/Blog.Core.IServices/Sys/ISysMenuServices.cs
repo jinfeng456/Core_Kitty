@@ -16,6 +16,7 @@ namespace Blog.Core.IServices
         Task<List<SysMenu>>  FindTree(string userName, int menuType);
         Task<List<SysMenu>> FindRoleMenus(long roleId);
         Task<List<SysMenu>> FindByUser(string name);
+        Task<bool> AddPermission(string[] tableNames = null);
     }
 }
 

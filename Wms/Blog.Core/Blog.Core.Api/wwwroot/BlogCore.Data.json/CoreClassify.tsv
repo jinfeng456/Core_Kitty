@@ -1,0 +1,68 @@
+{
+  "RECORDS": [
+    {
+      "id": "11111",
+      "name": "医用",
+      "info": "易损",
+      "stockWidth": "36",
+      "stockHigh": "34",
+      "stockDeep": "22"
+    },
+    {
+      "id": "27201",
+      "name": "胶囊",
+      "info": "胶囊状",
+      "stockWidth": "200",
+      "stockHigh": "200",
+      "stockDeep": "100"
+    },
+    {
+      "id": "32401",
+      "name": "药片",
+      "info": "片转，无包裹",
+      "stockWidth": "20",
+      "stockHigh": "20",
+      "stockDeep": "20"
+    },
+    {
+      "id": "69501",
+      "name": "冲剂",
+      "info": "粉末状",
+      "stockWidth": "8",
+      "stockHigh": "9",
+      "stockDeep": "9"
+    },
+    {
+      "id": "69708",
+      "name": "普通片剂",
+      "info": "同步测试",
+      "stockWidth": "12",
+      "stockHigh": "12",
+      "stockDeep": "12"
+    },
+    {
+      "id": "123456",
+      "name": "化学品",
+      "info": "易燃易爆",
+      "stockWidth": "40",
+      "stockHigh": "40",
+      "stockDeep": "40"
+    },
+    {
+      "id": "164268",
+      "name": "辅料",
+      "info": "",
+      "stockWidth": "0",
+      "stockHigh": "0",
+      "stockDeep": "0"
+    },
+    {
+      "id": "164269",
+      "name": "原料",
+      "info": "",
+      "stockWidth": "0",
+      "stockHigh": "0",
+      "stockDeep": "0"
+    }
+  ]
+}

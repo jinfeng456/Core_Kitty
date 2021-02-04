@@ -21,7 +21,7 @@ namespace Blog.Core.Model.Seed
         /// <param name="isMuti"></param>
         /// <param name="templete"></param>
         /// <returns></returns>
-        public static bool CreateView(SqlSugarClient sqlSugarClient,string path, string ConnId = null, bool isMuti = false, string[] tableNames = null, string templete = "")
+        public static bool CreateView(SqlSugarClient sqlSugarClient, string path, string ConnId = null, bool isMuti = false, string[] tableNames = null, string templete = "")
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Blog.Core.Model.Seed
         public static bool CreateControllers(SqlSugarClient sqlSugarClient, string path, string ConnId = null, bool isMuti = false, string[] tableNames = null)
         {
             try
-            {        
+            {
                 Create_Controller_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Api.Controllers", tableNames, "", isMuti);
                 return true;
             }
@@ -95,7 +95,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Dto_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Model.ViewModels", tableNames, "", isMuti);
+                Create_Dto_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Model.ViewModels", tableNames, "PageDto", isMuti);
                 return true;
             }
             catch (Exception)
@@ -118,7 +118,7 @@ namespace Blog.Core.Model.Seed
 
             try
             {
-                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Model.Models", tableNames, "", isMuti);
+                Create_Model_ClassFileByDBTalbe(sqlSugarClient, ConnId, path, "Blog.Core.Model.Models", tableNames, "BaseEntity", isMuti);
                 return true;
             }
             catch (Exception)
@@ -225,6 +225,8 @@ namespace Blog.Core.Model.Seed
             }
 
         }
+
+
 
         #region 根据数据库生产ViewQuery
         /// <summary>
@@ -401,6 +403,7 @@ using Blog.Core.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq.Expressions;
 
 namespace " + strNameSpace + @"
 {
@@ -425,11 +428,12 @@ namespace " + strNameSpace + @"
          [HttpPost, Route(""FindPage"")]  
          public async Task<BaseResult> FindPage([FromBody]{ClassName}Dto dto)
          {
-            if (string.IsNullOrEmpty(dto.dictClassName) || string.IsNullOrWhiteSpace(dto.dictClassName))
+            Expression<Func<{ClassName}, bool>> whereExpression = a => true;
+            if (dto.name.IsNotEmptyOrNull())
             {
-                dto.dictClassName = """";
+                whereExpression = ExpressionHelp.And(whereExpression, a => a.name.Contains(dto.name));
             }
-            var data = await _{ClassName}Services.QueryPage(a => (a.DictClassName != null && a.DictClassName.Contains(dto.dictClassName)), dto.pageNum, dto.pageSize, "" createTime desc "");
+            var data = await _{ClassName}Services.QueryPage(whereExpression, dto.pageNum, dto.pageSize, "" createTime desc "");
             return BaseResult.Ok(data);
          } 
         /// <summary>
@@ -537,25 +541,27 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                   .SettingClassTemplate(p => p =
-@"{using}
-
+@"using Blog.Core.Model.ViewModels.Base;
+using SqlSugar;
+using System;
 namespace " + strNameSpace + @"
 {
 {ClassDescription}
     public class {ClassName}Dto" + (string.IsNullOrEmpty(strInterface) ? "" : (" : " + strInterface)) + @"
     {
-        {PropertyName}
+        #PropertyName
     }
 }")
-                  .SettingPropertyDescriptionTemplate(p => p = @"           //{PropertyDescription}")
-                  .SettingPropertyTemplate(p => p =
-@"{SugarColumn}
-           public {PropertyType} {PropertyName} { get; set; }")
-
-                   //.SettingConstructorTemplate(p => p = "              this._{PropertyName} ={DefaultValue};")
-
                    .ToClassStringList(strNameSpace);
-            CreateFilesByClassStringList(ls, strPath, "{0}Dto");
+            Dictionary<string, string> newdic = new Dictionary<string, string>();
+            //循环处理 首字母小写 并插入新的 Dictionary
+            foreach (KeyValuePair<string, string> item in ls)
+            {
+                string modelHtml = GetDto(item.Key.ToString(), sqlSugarClient);
+                string newvalue = item.Value.Replace("#PropertyName", modelHtml);
+                newdic.Add(item.Key, newvalue);
+            }
+            CreateFilesByClassStringList(newdic, strPath, "{0}Dto");
         }
         #endregion
 
@@ -598,29 +604,26 @@ namespace " + strNameSpace + @"
             var ls = IDbFirst.IsCreateDefaultValue().IsCreateAttribute()
 
                   .SettingClassTemplate(p => p =
-@"{using}
-
+@"using SqlSugar;
+using System;
 namespace " + strNameSpace + @"
 {
 {ClassDescription}
-    [SugarTable( ""{ClassName}"", """ + ConnId + @""")]" + (blnSerializable ? "\n    [Serializable]" : "") + @"
     public class {ClassName}" + (string.IsNullOrEmpty(strInterface) ? "" : (" : " + strInterface)) + @"
     {
-        public {ClassName}()
-        {
-        }
-        {PropertyName}
+        #PropertyName
     }
 }")
-                  .SettingPropertyDescriptionTemplate(p => p = @"           //{PropertyDescription}")
-                  .SettingPropertyTemplate(p => p =
-@"{SugarColumn}
-           public {PropertyType} {PropertyName} { get; set; }")
-
-                   //.SettingConstructorTemplate(p => p = "              this._{PropertyName} ={DefaultValue};")
-
                    .ToClassStringList(strNameSpace);
-            CreateFilesByClassStringList(ls, strPath, "{0}");
+            Dictionary<string, string> newdic = new Dictionary<string, string>();
+            //循环处理 首字母小写 并插入新的 Dictionary
+            foreach (KeyValuePair<string, string> item in ls)
+            {
+                string modelHtml = GetModel(item.Key.ToString(), sqlSugarClient);
+                string newvalue = item.Value.Replace("#PropertyName", modelHtml);
+                newdic.Add(item.Key, newvalue);
+            }
+            CreateFilesByClassStringList(newdic, strPath, "{0}");
         }
         #endregion
 
@@ -903,6 +906,48 @@ namespace " + strNameSpace + @"
         #endregion
 
         #region 公用属性
+
+        /// <summary>
+        /// 获取#PropertyName
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="sqlSugarClient"></param>
+        /// <returns></returns>
+        private static string GetModel(string tableName, SqlSugarClient sqlSugarClient)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var col in sqlSugarClient.DbMaintenance.GetColumnInfosByTableName(tableName))
+            {
+                var dateType = SqlToCsharpHelper.SqlToCsharp(col.DataType);
+                sb.Append("///<summary>\n\t\t///");
+                sb.Append(col.ColumnDescription + "\n\t\t");
+                sb.Append("///<summary>\n\t\t");
+                sb.Append("[SugarColumn(ColumnDataType = \"" + col.DataType + "\", Length = " + col.Length + ", IsNullable = " + col.IsNullable + ")]\n\t\t");
+                sb.Append("public " + dateType + (col.IsNullable && dateType != "string" ? "?" : string.Empty) + " " + col.DbColumnName + " {get;set;}\n\t\t");
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 获取#PropertyName
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="sqlSugarClient"></param>
+        /// <returns></returns>
+        private static string GetDto(string tableName, SqlSugarClient sqlSugarClient)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var col in sqlSugarClient.DbMaintenance.GetColumnInfosByTableName(tableName))
+            {
+                var dateType = SqlToCsharpHelper.SqlToCsharp(col.DataType);
+                sb.Append("///<summary>\n\t\t///");
+                sb.Append(col.ColumnDescription + "\n\t\t");
+                sb.Append("///<summary>\n\t\t");
+                sb.Append("public " + dateType + (col.IsNullable && dateType != "string" ? "?" : string.Empty) + " " + col.DbColumnName + " {get;set;}\n\t\t");
+            }
+            return sb.ToString();
+        }
+
         /// <summary>
         /// 获取#columns
         /// </summary>
