@@ -31,7 +31,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
               "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Extensions\\Blog.Core.Extensions.csproj": {
                 "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Extensions\\Blog.Core.Extensions.csproj"
@@ -53,7 +52,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
@@ -82,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -113,7 +111,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -125,7 +122,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.SignalR": {
               "target": "Package",
@@ -187,11 +183,14 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -222,7 +221,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
               "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj": {
                 "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IRepository\\Blog.Core.IRepository.csproj"
@@ -244,7 +242,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "AspNetCoreRateLimit": {
               "target": "Package",
@@ -314,11 +311,14 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -349,7 +349,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
               "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
                 "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj"
@@ -365,7 +364,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -377,11 +375,14 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -412,7 +413,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
               "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj": {
                 "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Model\\Blog.Core.Model.csproj"
@@ -428,7 +428,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -440,11 +439,14 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -475,7 +477,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
               "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj": {
                 "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.Common\\Blog.Core.Common.csproj"
@@ -491,7 +492,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "sqlSugarCore": {
               "target": "Package",
@@ -509,11 +509,14 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -544,7 +547,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
               "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj": {
                 "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj"
@@ -560,7 +562,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Quartz": {
               "target": "Package",
@@ -578,11 +579,14 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1611,6 +1611,14 @@
             <param name="sqlSugarClient"></param>
             <returns></returns>
         </member>
+        <member name="M:Blog.Core.Model.Seed.FrameSeed.GetDto(System.String,SqlSugar.SqlSugarClient)">
+            <summary>
+            获取#PropertyName
+            </summary>
+            <param name="tableName"></param>
+            <param name="sqlSugarClient"></param>
+            <returns></returns>
+        </member>
         <member name="M:Blog.Core.Model.Seed.FrameSeed.GetColumns(System.String,SqlSugar.SqlSugarClient)">
             <summary>
             获取#columns

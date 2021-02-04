@@ -3220,7 +3220,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Common.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.IServices/1.0.0": {
         "type": "project",
@@ -3233,7 +3236,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.IServices.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.Model/1.0.0": {
         "type": "project",
@@ -3247,7 +3253,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Model.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -9957,7 +9966,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj": {
               "projectPath": "E:\\项目代码\\Core_Kitty\\Wms\\Blog.Core\\Blog.Core.IServices\\Blog.Core.IServices.csproj"
@@ -9973,7 +9981,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Quartz": {
             "target": "Package",
@@ -9991,11 +9998,14 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,10 +1,13 @@
 ﻿using Blog.Core.Common;
 using Blog.Core.Common.DB;
 using Blog.Core.Common.Helper;
+using Blog.Core.Model.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Blog.Core.Model.Seed
@@ -94,120 +97,144 @@ namespace Blog.Core.Model.Seed
                 Console.WriteLine();
 
 
-                //if (Appsettings.app(new string[] { "AppSettings", "SeedDBDataEnabled" }).ObjToBool())
-                //{
-                //    Console.WriteLine($"Seeding database data (The Db Id:{MyContext.ConnId})...");
+                if (Appsettings.app(new string[] { "AppSettings", "SeedDBDataEnabled" }).ObjToBool())
+                {
+                    Console.WriteLine($"Seeding database data (The Db Id:{MyContext.ConnId})...");
 
-                //    #region SysCode
-                //    if (!await myContext.Db.Queryable<SysCode>().AnyAsync())
-                //    {
-                //        myContext.GetEntityDB<SysCode>().InsertRange(JsonHelper.ParseFormByJson<List<SysCode>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysCode"), Encoding.UTF8)));
-                //        Console.WriteLine("Table:SysCode created success!");
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Table:SysCode already exists...");
-                //    }
-                //    #endregion
+                    #region SysCode
+                    if (!await myContext.Db.Queryable<SysCode>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<SysCode>().InsertRange(JsonHelper.ParseFormByJson<List<SysCode>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysCode"), Encoding.UTF8)));
+                        Console.WriteLine("Table:SysCode created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:SysCode already exists...");
+                    }
+                    #endregion
 
-                //    #region SysDict
-                //    if (!await myContext.Db.Queryable<SysDict>().AnyAsync())
-                //    {
-                //        myContext.GetEntityDB<SysDict>().InsertRange(JsonHelper.ParseFormByJson<List<SysDict>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysDict"), Encoding.UTF8)));
-                //        Console.WriteLine("Table:SysDict created success!");
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Table:SysDict already exists...");
-                //    }
-                //    #endregion
+                    #region SysDict
+                    if (!await myContext.Db.Queryable<SysDict>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<SysDict>().InsertRange(JsonHelper.ParseFormByJson<List<SysDict>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysDict"), Encoding.UTF8)));
+                        Console.WriteLine("Table:SysDict created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:SysDict already exists...");
+                    }
+                    #endregion
 
-                //    #region SysDictClass
-                //    if (!await myContext.Db.Queryable<SysDictClass>().AnyAsync())
-                //    {
-                //        myContext.GetEntityDB<SysDictClass>().InsertRange(JsonHelper.ParseFormByJson<List<SysDictClass>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysDictClass"), Encoding.UTF8)));
-                //        Console.WriteLine("Table:SysDictClass created success!");
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Table:SysDictClass already exists...");
-                //    }
-                //    #endregion
+                    #region SysDictClass
+                    if (!await myContext.Db.Queryable<SysDictClass>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<SysDictClass>().InsertRange(JsonHelper.ParseFormByJson<List<SysDictClass>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysDictClass"), Encoding.UTF8)));
+                        Console.WriteLine("Table:SysDictClass created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:SysDictClass already exists...");
+                    }
+                    #endregion
 
-                //    #region SysLog
-                //    if (!await myContext.Db.Queryable<SysLog>().AnyAsync())
-                //    {
-                //        myContext.GetEntityDB<SysLog>().InsertRange(JsonHelper.ParseFormByJson<List<SysLog>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysLog"), Encoding.UTF8)));
-                //        Console.WriteLine("Table:SysLog created success!");
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Table:SysLog already exists...");
-                //    }
-                //    #endregion
+                    #region SysMenu
+                    if (!await myContext.Db.Queryable<SysMenu>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<SysMenu>().InsertRange(JsonHelper.ParseFormByJson<List<SysMenu>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysMenu"), Encoding.UTF8)));
+                        Console.WriteLine("Table:SysMenu created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:SysMenu already exists...");
+                    }
+                    #endregion
 
-                //    #region SysMenu
-                //    if (!await myContext.Db.Queryable<SysMenu>().AnyAsync())
-                //    {
-                //        myContext.GetEntityDB<SysMenu>().InsertRange(JsonHelper.ParseFormByJson<List<SysMenu>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysMenu"), Encoding.UTF8)));
-                //        Console.WriteLine("Table:SysMenu created success!");
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Table:SysMenu already exists...");
-                //    }
-                //    #endregion
+                    #region SysRole
+                    if (!await myContext.Db.Queryable<SysRole>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<SysRole>().InsertRange(JsonHelper.ParseFormByJson<List<SysRole>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysRole"), Encoding.UTF8)));
+                        Console.WriteLine("Table:SysRole created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:SysRole already exists...");
+                    }
+                    #endregion
 
-                //    #region SysRole
-                //    if (!await myContext.Db.Queryable<SysRole>().AnyAsync())
-                //    {
-                //        myContext.GetEntityDB<SysRole>().InsertRange(JsonHelper.ParseFormByJson<List<SysRole>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysRole"), Encoding.UTF8)));
-                //        Console.WriteLine("Table:SysRole created success!");
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Table:SysRole already exists...");
-                //    }
-                //    #endregion
+                    #region SysRoleMenu
+                    if (!await myContext.Db.Queryable<SysRoleMenu>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<SysRoleMenu>().InsertRange(JsonHelper.ParseFormByJson<List<SysRoleMenu>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysRoleMenu"), Encoding.UTF8)));
+                        Console.WriteLine("Table:SysRoleMenu created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:SysRoleMenu already exists...");
+                    }
+                    #endregion
 
-                //    #region SysRoleMenu
-                //    if (!await myContext.Db.Queryable<SysRoleMenu>().AnyAsync())
-                //    {
-                //        myContext.GetEntityDB<SysRoleMenu>().InsertRange(JsonHelper.ParseFormByJson<List<SysRoleMenu>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysRoleMenu"), Encoding.UTF8)));
-                //        Console.WriteLine("Table:SysRoleMenu created success!");
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Table:SysRoleMenu already exists...");
-                //    }
-                //    #endregion
+                    #region SysUser
+                    if (!await myContext.Db.Queryable<SysUser>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<SysUser>().InsertRange(JsonHelper.ParseFormByJson<List<SysUser>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysUser"), Encoding.UTF8)));
+                        Console.WriteLine("Table:SysUser created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:SysUser already exists...");
+                    }
+                    #endregion
 
-                //    #region SysUser
-                //    if (!await myContext.Db.Queryable<SysUser>().AnyAsync())
-                //    {
-                //        myContext.GetEntityDB<SysUser>().InsertRange(JsonHelper.ParseFormByJson<List<SysUser>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysUser"), Encoding.UTF8)));
-                //        Console.WriteLine("Table:SysUser created success!");
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Table:SysUser already exists...");
-                //    }
-                //    #endregion
+                    #region SysUserRole
+                    if (!await myContext.Db.Queryable<SysUserRole>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<SysUserRole>().InsertRange(JsonHelper.ParseFormByJson<List<SysUserRole>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysUserRole"), Encoding.UTF8)));
+                        Console.WriteLine("Table:SysUserRole created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:SysUserRole already exists...");
+                    }
+                    #endregion
 
-                //    #region SysUserRole
-                //    if (!await myContext.Db.Queryable<SysUserRole>().AnyAsync())
-                //    {
-                //        myContext.GetEntityDB<SysUserRole>().InsertRange(JsonHelper.ParseFormByJson<List<SysUserRole>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysUserRole"), Encoding.UTF8)));
-                //        Console.WriteLine("Table:SysUserRole created success!");
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Table:SysUserRole already exists...");
-                //    }
-                //    #endregion
+                    #region TasksQz
+                    if (!await myContext.Db.Queryable<TasksQz>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<TasksQz>().InsertRange(JsonHelper.ParseFormByJson<List<TasksQz>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "TasksQz"), Encoding.UTF8)));
+                        Console.WriteLine("Table:TasksQz created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:TasksQz already exists...");
+                    }
+                    #endregion
 
-                //    ConsoleHelper.WriteSuccessLine($"Done seeding database!");
-                //}
+                    #region CoreItem
+                    if (!await myContext.Db.Queryable<CoreItem>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<CoreItem>().InsertRange(JsonHelper.ParseFormByJson<List<CoreItem>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "CoreItem"), Encoding.UTF8)));
+                        Console.WriteLine("Table:CoreItem created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:CoreItem already exists...");
+                    }
+                    #endregion
+
+                    #region CoreClassify
+                    if (!await myContext.Db.Queryable<CoreClassify>().AnyAsync())
+                    {
+                        myContext.GetEntityDB<CoreClassify>().InsertRange(JsonHelper.ParseFormByJson<List<CoreClassify>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "CoreClassify"), Encoding.UTF8)));
+                        Console.WriteLine("Table:CoreClassify created success!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table:CoreClassify already exists...");
+                    }
+                    #endregion
+
+                    ConsoleHelper.WriteSuccessLine($"Done seeding database!");
+                }
 
                 Console.WriteLine();
 

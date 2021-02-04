@@ -597,4 +597,4 @@ E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.pdb
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\Blog.Core.Api.genruntimeconfig.cache
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\obj\Debug\netcoreapp3.1\scopedcss\bundle\Blog.Core.Api.styles.css
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
