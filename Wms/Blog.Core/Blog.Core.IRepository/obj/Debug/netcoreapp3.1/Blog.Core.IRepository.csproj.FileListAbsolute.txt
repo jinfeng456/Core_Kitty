@@ -13,21 +13,6 @@ G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepositor
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csproj.CopyComplete
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.dll
 G:\项目源码\2020-5\老张的哲学  Blog.Core\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.deps.json
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.dll
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Common.dll
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Model.dll
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csprojAssemblyReference.cache
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csproj.CoreCompileInputs.cache
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.AssemblyInfoInputs.cache
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.AssemblyInfo.cs
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csproj.CopyComplete
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.dll
-E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.deps.json
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.dll
 E:\WMS项目\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb
@@ -58,3 +43,18 @@ E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Bl
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csproj.CopyComplete
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.dll
 E:\WMS\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csproj.CoreCompileInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.AssemblyInfoInputs.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.AssemblyInfo.cs
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.deps.json
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Common.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Model.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Model.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Model.xml
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\bin\Debug\netcoreapp3.1\Blog.Core.Common.pdb
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csprojAssemblyReference.cache
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.csproj.CopyComplete
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.dll
+E:\项目代码\Core_Kitty\Wms\Blog.Core\Blog.Core.IRepository\obj\Debug\netcoreapp3.1\Blog.Core.IRepository.pdb

@@ -1094,12 +1094,12 @@
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.Cron">
             <summary>
-            任务运行时间表达式
+            时间表达式
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.AssemblyName">
             <summary>
-            任务所在DLL对应的程序集名称
+            程序集名称
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.ClassName">
@@ -1129,12 +1129,12 @@
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.TriggerType">
             <summary>
-            触发器类型（0、simple 1、cron）
+            触发器类型
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.IntervalSecond">
             <summary>
-            执行间隔时间, 秒为单位
+            执行间隔时间
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.IsStart">
@@ -1145,6 +1145,11 @@
         <member name="P:Blog.Core.Model.Models.TasksQz.JobParams">
             <summary>
             执行传参
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQz.IsDeleted">
+            <summary>
+            IsDeleted
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.CreateTime">
@@ -1210,121 +1215,6 @@
         <member name="P:Blog.Core.Model.Models.UserRole.ModifyTime">
             <summary>
             修改时间
-            </summary>
-        </member>
-        <member name="T:Blog.Core.Model.Models.SysCodeDto">
-            <summary>
-            SysCode
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.SysCodeDto.TableDescription">
-            <summary>
-            TableDescription
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.SysCodeDto.TableName">
-            <summary>
-            表名
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.SysCodeDto.SerialPrefix">
-            <summary>
-            SerialPrefix
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.SysCodeDto.BusinessType">
-            <summary>
-            BusinessType
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.SysCodeDto.CodeNumber">
-            <summary>
-            CodeNumber
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.SysCodeDto.CodeDate">
-            <summary>
-            CodeDate
-            </summary>
-        </member>
-        <member name="T:Blog.Core.Model.Models.TasksQzDto">
-            <summary>
-            TasksQz
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.Name">
-            <summary>
-            任务名称
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.JobGroup">
-            <summary>
-            任务分组
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.Cron">
-            <summary>
-            时间表达式
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.AssemblyName">
-            <summary>
-            程序集名称
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.ClassName">
-            <summary>
-            任务所在类
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.Remark">
-            <summary>
-            任务描述
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.RunTimes">
-            <summary>
-            执行次数
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.BeginTime">
-            <summary>
-            开始时间
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.EndTime">
-            <summary>
-            结束时间
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.TriggerType">
-            <summary>
-            触发器类型
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.IntervalSecond">
-            <summary>
-            执行间隔时间
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.IsStart">
-            <summary>
-            是否启动
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.JobParams">
-            <summary>
-            执行传参
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.IsDeleted">
-            <summary>
-            IsDeleted
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Model.Models.TasksQzDto.CreateTime">
-            <summary>
-            创建时间
             </summary>
         </member>
         <member name="P:Blog.Core.Model.BaseEntity.id">
@@ -1988,6 +1878,121 @@
             菜单展示model
             </summary>
         </member>
+        <member name="T:Blog.Core.Model.ViewModels.SysCodeDto">
+            <summary>
+            SysCode
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.SysCodeDto.TableDescription">
+            <summary>
+            TableDescription
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.SysCodeDto.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.SysCodeDto.SerialPrefix">
+            <summary>
+            SerialPrefix
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.SysCodeDto.BusinessType">
+            <summary>
+            BusinessType
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.SysCodeDto.CodeNumber">
+            <summary>
+            CodeNumber
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.SysCodeDto.CodeDate">
+            <summary>
+            CodeDate
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.ViewModels.TasksQzDto">
+            <summary>
+            TasksQz
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.Name">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.JobGroup">
+            <summary>
+            任务分组
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.Cron">
+            <summary>
+            时间表达式
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.AssemblyName">
+            <summary>
+            程序集名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.ClassName">
+            <summary>
+            任务所在类
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.Remark">
+            <summary>
+            任务描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.RunTimes">
+            <summary>
+            执行次数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.BeginTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.TriggerType">
+            <summary>
+            触发器类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.IntervalSecond">
+            <summary>
+            执行间隔时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.IsStart">
+            <summary>
+            是否启动
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.JobParams">
+            <summary>
+            执行传参
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.IsDeleted">
+            <summary>
+            IsDeleted
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ViewModels.TasksQzDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
         <member name="T:Blog.Core.Model.ViewModels.TestRestSharpGetDto">
             <summary>
             用来测试 RestSharp Get 请求
@@ -2026,11 +2031,6 @@
         <member name="P:Blog.Core.Model.ViewModels.TopgbViewModels.btitle">
             <summary>博客标题
             
-            </summary>
-        </member>
-        <member name="T:Blog.Core.Model.ViewModels.CoreItemDto">
-            <summary>
-            物料信息表
             </summary>
         </member>
         <member name="T:Blog.Core.Model.ViewModels.OperateLogDto">

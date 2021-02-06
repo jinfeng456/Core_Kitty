@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-using System.Text;
 using SqlSugar;
 
 
@@ -11,16 +8,21 @@ namespace Blog.Core.Model.Models
     ///</summary>
     [SugarTable( "CoreClassify")]
     public class CoreClassify : BaseEntity
-    {       
+    {
 
-           public string name { get; set; }
+        [SugarColumn(ColumnDataType = "nvarchar", Length = 255, IsNullable = true)]
+        public string name { get; set; }
 
-           public string info { get; set; }
+        [SugarColumn(ColumnDataType = "nvarchar", Length = 255, IsNullable = true)]
+        public string info { get; set; }
 
-           public int? stockWidth { get; set; }
+        [SugarColumn(ColumnDataType = "int", IsNullable = true)]
+        public int? stockWidth { get; set; }
 
-           public int? stockHigh { get; set; }
+        [SugarColumn(ColumnDataType = "int", IsNullable = true)]
+        public int? stockHigh { get; set; }
 
-           public int? stockDeep { get; set; }
+        [SugarColumn(ColumnDataType = "int", IsNullable = true)]
+        public int? stockDeep { get; set; }
     }
 }

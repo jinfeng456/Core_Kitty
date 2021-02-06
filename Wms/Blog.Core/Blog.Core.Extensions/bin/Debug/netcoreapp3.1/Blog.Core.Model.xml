@@ -1094,12 +1094,12 @@
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.Cron">
             <summary>
-            任务运行时间表达式
+            时间表达式
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.AssemblyName">
             <summary>
-            任务所在DLL对应的程序集名称
+            程序集名称
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.ClassName">
@@ -1129,12 +1129,12 @@
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.TriggerType">
             <summary>
-            触发器类型（0、simple 1、cron）
+            触发器类型
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.IntervalSecond">
             <summary>
-            执行间隔时间, 秒为单位
+            执行间隔时间
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.IsStart">
@@ -1145,6 +1145,11 @@
         <member name="P:Blog.Core.Model.Models.TasksQz.JobParams">
             <summary>
             执行传参
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Models.TasksQz.IsDeleted">
+            <summary>
+            IsDeleted
             </summary>
         </member>
         <member name="P:Blog.Core.Model.Models.TasksQz.CreateTime">

@@ -140,7 +140,7 @@ namespace Blog.Core.Model.Seed
                     #region SysMenu
                     if (!await myContext.Db.Queryable<SysMenu>().AnyAsync())
                     {
-                        myContext.GetEntityDB<SysMenu>().InsertRange(JsonHelper.ParseFormByJson<List<SysMenu>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysMenu"), Encoding.UTF8)));
+                        myContext.GetEntityDB<SysMenu>().InsertRange(JsonHelper.DeserializeJsonToObject<List<SysMenu>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysMenu"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:SysMenu created success!");
                     }
                     else
@@ -241,7 +241,7 @@ namespace Blog.Core.Model.Seed
             }
             catch (Exception ex)
             {
-                throw new Exception("1、如果使用的是Mysql，生成的数据库字段字符集可能不是utf8的，手动修改下，或者尝试方案：删掉数据库，在连接字符串后加上CharSet=UTF8mb4，重新生成数据库. \n 2、其他错误：" + ex.Message);
+                throw new Exception(ex.Message+"1、如果使用的是Mysql，生成的数据库字段字符集可能不是utf8的，手动修改下，或者尝试方案：删掉数据库，在连接字符串后加上CharSet=UTF8mb4，重新生成数据库. \n 2、其他错误：" + ex.Message);
             }
         }
     }

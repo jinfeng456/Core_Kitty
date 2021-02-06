@@ -918,11 +918,15 @@ namespace " + strNameSpace + @"
             StringBuilder sb = new StringBuilder();
             foreach (var col in sqlSugarClient.DbMaintenance.GetColumnInfosByTableName(tableName))
             {
+                if (col.DbColumnName.ToLower()=="id")
+                {
+                    continue;
+                }
                 var dateType = SqlToCsharpHelper.SqlToCsharp(col.DataType);
                 sb.Append("///<summary>\n\t\t///");
                 sb.Append(col.ColumnDescription + "\n\t\t");
-                sb.Append("///<summary>\n\t\t");
-                sb.Append("[SugarColumn(ColumnDataType = \"" + col.DataType + "\", Length = " + col.Length + ", IsNullable = " + col.IsNullable + ")]\n\t\t");
+                sb.Append("///</summary>\n\t\t");
+                sb.Append("[SugarColumn(ColumnDataType = \"" + col.DataType + "\", Length = " + col.Length + ", IsNullable = " + col.IsNullable.ToString().ToLower() + ")]\n\t\t");
                 sb.Append("public " + dateType + (col.IsNullable && dateType != "string" ? "?" : string.Empty) + " " + col.DbColumnName + " {get;set;}\n\t\t");
             }
             return sb.ToString();
@@ -939,6 +943,10 @@ namespace " + strNameSpace + @"
             StringBuilder sb = new StringBuilder();
             foreach (var col in sqlSugarClient.DbMaintenance.GetColumnInfosByTableName(tableName))
             {
+                if (col.DbColumnName.ToLower() == "id")
+                {
+                    continue;
+                }
                 var dateType = SqlToCsharpHelper.SqlToCsharp(col.DataType);
                 sb.Append("///<summary>\n\t\t///");
                 sb.Append(col.ColumnDescription + "\n\t\t");

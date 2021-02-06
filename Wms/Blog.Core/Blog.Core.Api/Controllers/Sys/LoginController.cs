@@ -151,7 +151,7 @@ namespace Blog.Core.Controllers
             {
                 return BaseResult.Error("用户名或密码不能为空");
             }
-            pass = MD5Helper.MD5Encrypt32(pass);
+            pass = MD5Helper.MD5Encrypt32(pass).ToLower();
 
             var user = await _sysUserServices.Query(d => d.Name == name && d.Passwords == pass && d.DelFlag == 0);
             if (user.Count > 0)
