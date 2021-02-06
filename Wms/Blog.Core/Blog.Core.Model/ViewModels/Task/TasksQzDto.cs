@@ -1,6 +1,6 @@
 using Blog.Core.Model.ViewModels.Base;
 using System;
-namespace Blog.Core.Model.Models
+namespace Blog.Core.Model.ViewModels
 {
 	 ///<summary>
 	 ///TasksQz

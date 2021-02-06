@@ -1,6 +1,6 @@
 ﻿using Blog.Core.Model.ViewModels.Base;
 
-namespace Blog.Core.Controllers
+namespace Blog.Core.Model.ViewModels
 {
     public class CoreClassifyDto : PageDto
     {    

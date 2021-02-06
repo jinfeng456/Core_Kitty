@@ -50,7 +50,7 @@
             物料管理
             </summary>
         </member>
-        <member name="M:Blog.Core.Controllers.CoreItemController.FindPage(Blog.Core.Controllers.CoreItemDto)">
+        <member name="M:Blog.Core.Controllers.CoreItemController.FindPage(Blog.Core.Model.ViewModels.CoreItemDto)">
             <summary>
             查询物料信息
             </summary>
@@ -243,7 +243,7 @@
             SysCode
             </summary>
         </member>
-        <member name="M:Blog.Core.Controllers.SysCodeController.FindPage(Blog.Core.Model.Models.SysCodeDto)">
+        <member name="M:Blog.Core.Controllers.SysCodeController.FindPage(Blog.Core.Model.ViewModels.SysCodeDto)">
             <summary>
             查询
             </summary>
@@ -408,7 +408,7 @@
             TasksQz
             </summary>
         </member>
-        <member name="M:Blog.Core.Controllers.TasksQzController1.FindPage(Blog.Core.Model.Models.TasksQzDto)">
+        <member name="M:Blog.Core.Controllers.TasksQzController1.FindPage(Blog.Core.Model.ViewModels.TasksQzDto)">
             <summary>
             查询
             </summary>

@@ -7,7 +7,7 @@
       "CreateBy": "",
       "CreateTime": "",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "22/6/2020 09:46:55.657"
+      "LastUpdateTime": "2020/6/22 09:46:55.657"
     },
     {
       "Id": "3",
@@ -23,252 +23,252 @@
       "DictClassName": "sex",
       "DictRemark": "性别",
       "CreateBy": "",
-      "CreateTime": "7/5/2020 00:00:00",
+      "CreateTime": "2020/5/7 00:00:00",
       "LastUpdateBy": "",
-      "LastUpdateTime": "7/5/2020 00:00:00"
+      "LastUpdateTime": "2020/5/7 00:00:00"
     },
     {
       "Id": "23201",
       "DictClassName": "taskStatus",
       "DictRemark": "wms任务状态",
       "CreateBy": "",
-      "CreateTime": "8/5/2020 00:00:00",
+      "CreateTime": "2020/5/8 00:00:00",
       "LastUpdateBy": "",
-      "LastUpdateTime": "8/5/2020 00:00:00"
+      "LastUpdateTime": "2020/5/8 00:00:00"
     },
     {
       "Id": "30001",
       "DictClassName": "trayType",
       "DictRemark": "托盘类型",
       "CreateBy": "",
-      "CreateTime": "11/5/2020 00:00:00",
+      "CreateTime": "2020/5/11 00:00:00",
       "LastUpdateBy": "",
-      "LastUpdateTime": "11/5/2020 00:00:00"
+      "LastUpdateTime": "2020/5/11 00:00:00"
     },
     {
       "Id": "30401",
       "DictClassName": "pkStatus",
       "DictRemark": "盘库状态",
       "CreateBy": "",
-      "CreateTime": "11/5/2020 00:00:00",
+      "CreateTime": "2020/5/11 00:00:00",
       "LastUpdateBy": "",
-      "LastUpdateTime": "11/5/2020 17:42:50.64"
+      "LastUpdateTime": "2020/5/11 17:42:50.64"
     },
     {
       "Id": "30501",
       "DictClassName": "stockStatus",
       "DictRemark": "库存状态",
       "CreateBy": "",
-      "CreateTime": "11/5/2020 00:00:00",
+      "CreateTime": "2020/5/11 00:00:00",
       "LastUpdateBy": "",
-      "LastUpdateTime": "11/5/2020 17:43:29.27"
+      "LastUpdateTime": "2020/5/11 17:43:29.27"
     },
     {
       "Id": "30601",
       "DictClassName": "businessStatus",
       "DictRemark": "当前业务状态",
       "CreateBy": "",
-      "CreateTime": "11/5/2020 00:00:00",
+      "CreateTime": "2020/5/11 00:00:00",
       "LastUpdateBy": "",
-      "LastUpdateTime": "11/5/2020 17:44:37.673"
+      "LastUpdateTime": "2020/5/11 17:44:37.673"
     },
     {
       "Id": "31901",
       "DictClassName": "taskType",
       "DictRemark": "任务类型",
       "CreateBy": "",
-      "CreateTime": "12/5/2020 00:00:00",
+      "CreateTime": "2020/5/12 00:00:00",
       "LastUpdateBy": "",
-      "LastUpdateTime": "12/5/2020 10:41:25.86"
+      "LastUpdateTime": "2020/5/12 10:41:25.86"
     },
     {
       "Id": "36101",
       "DictClassName": "isLocked",
       "DictRemark": "是否锁定",
       "CreateBy": "",
-      "CreateTime": "15/5/2020 00:00:00",
+      "CreateTime": "2020/5/15 00:00:00",
       "LastUpdateBy": "",
-      "LastUpdateTime": "15/5/2020 15:25:54.627"
+      "LastUpdateTime": "2020/5/15 15:25:54.627"
     },
     {
       "Id": "40201",
       "DictClassName": "batchStatus",
       "DictRemark": "批次检验状态",
       "CreateBy": "",
-      "CreateTime": "18/5/2020 00:00:00",
+      "CreateTime": "2020/5/18 00:00:00",
       "LastUpdateBy": "",
-      "LastUpdateTime": "18/5/2020 11:52:09.363"
+      "LastUpdateTime": "2020/5/18 11:52:09.363"
     },
     {
       "Id": "47401",
       "DictClassName": "pkType",
       "DictRemark": "盘点类型",
       "CreateBy": "admin",
-      "CreateTime": "21/5/2020 00:00:00",
+      "CreateTime": "2020/5/21 00:00:00",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "21/5/2020 10:34:48.413"
+      "LastUpdateTime": "2020/5/21 10:34:48.413"
     },
     {
       "Id": "47801",
       "DictClassName": "whStatus",
       "DictRemark": "仓库状态",
       "CreateBy": "admin",
-      "CreateTime": "21/5/2020 00:00:00",
+      "CreateTime": "2020/5/21 00:00:00",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "21/5/2020 10:50:04.45"
+      "LastUpdateTime": "2020/5/21 10:50:04.45"
     },
     {
       "Id": "63801",
       "DictClassName": "activeStatus",
       "DictRemark": "激活状态",
       "CreateBy": "admin",
-      "CreateTime": "24/8/2020 15:41:41.49",
+      "CreateTime": "2020/8/24 15:41:41.49",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "16/10/2020 10:03:37.98"
+      "LastUpdateTime": "2020/10/16 10:03:37.98"
     },
     {
       "Id": "65501",
       "DictClassName": "inType",
       "DictRemark": "入库类型",
       "CreateBy": "admin",
-      "CreateTime": "26/5/2020 13:05:02.907",
+      "CreateTime": "2020/5/26 13:05:02.907",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "26/5/2020 13:05:02.907"
+      "LastUpdateTime": "2020/5/26 13:05:02.907"
     },
     {
       "Id": "84001",
       "DictClassName": "quartJobType",
       "DictRemark": "任务调度类型",
       "CreateBy": "admin",
-      "CreateTime": "8/12/2020 15:58:04.4",
+      "CreateTime": "2020/12/8 15:58:04.4",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "8/12/2020 15:58:04.4"
+      "LastUpdateTime": "2020/12/8 15:58:04.4"
     },
     {
       "Id": "92601",
       "DictClassName": "orgcode",
       "DictRemark": "公司名称",
       "CreateBy": "admin",
-      "CreateTime": "29/5/2020 16:03:59.05",
+      "CreateTime": "2020/5/29 16:03:59.05",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "29/5/2020 16:03:59.05"
+      "LastUpdateTime": "2020/5/29 16:03:59.05"
     },
     {
       "Id": "105401",
       "DictClassName": "outTypeItem",
       "DictRemark": "物料出库",
       "CreateBy": "admin",
-      "CreateTime": "1/6/2020 18:40:29.903",
+      "CreateTime": "2020/6/1 18:40:29.903",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "1/6/2020 18:40:29.903"
+      "LastUpdateTime": "2020/6/1 18:40:29.903"
     },
     {
       "Id": "115501",
       "DictClassName": "outTypeClass",
       "DictRemark": "出库类型分类",
       "CreateBy": "admin",
-      "CreateTime": "3/6/2020 14:30:16.177",
+      "CreateTime": "2020/6/3 14:30:16.177",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "3/6/2020 14:30:16.177"
+      "LastUpdateTime": "2020/6/3 14:30:16.177"
     },
     {
       "Id": "137501",
       "DictClassName": "Priority",
       "DictRemark": "存放优先级",
       "CreateBy": "admin",
-      "CreateTime": "9/6/2020 10:00:25.273",
+      "CreateTime": "2020/6/9 10:00:25.273",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "9/6/2020 10:00:25.273"
+      "LastUpdateTime": "2020/6/9 10:00:25.273"
     },
     {
       "Id": "138201",
       "DictClassName": "urlPath",
       "DictRemark": "请求路径",
       "CreateBy": "admin",
-      "CreateTime": "9/6/2020 15:47:15",
+      "CreateTime": "2020/6/9 15:47:15",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "9/6/2020 16:25:58.58"
+      "LastUpdateTime": "2020/6/9 16:25:58.58"
     },
     {
       "Id": "139601",
       "DictClassName": "priority",
       "DictRemark": "出库优先级",
       "CreateBy": "admin",
-      "CreateTime": "10/6/2020 14:03:55.207",
+      "CreateTime": "2020/6/10 14:03:55.207",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "10/6/2020 14:03:55.207"
+      "LastUpdateTime": "2020/6/10 14:03:55.207"
     },
     {
       "Id": "140001",
       "DictClassName": "unit",
       "DictRemark": "单位",
       "CreateBy": "admin",
-      "CreateTime": "10/6/2020 16:59:00.293",
+      "CreateTime": "2020/6/10 16:59:00.293",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "10/6/2020 16:59:00.293"
+      "LastUpdateTime": "2020/6/10 16:59:00.293"
     },
     {
       "Id": "140201",
       "DictClassName": "activeStatus",
       "DictRemark": "位操作",
       "CreateBy": "admin",
-      "CreateTime": "11/6/2020 09:42:01",
+      "CreateTime": "2020/6/11 09:42:01",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "15/10/2020 14:44:10.833"
+      "LastUpdateTime": "2020/10/15 14:44:10.833"
     },
     {
       "Id": "141303",
       "DictClassName": "status",
       "DictRemark": "入库单状态",
       "CreateBy": "admin",
-      "CreateTime": "11/6/2020 13:16:14.19",
+      "CreateTime": "2020/6/11 13:16:14.19",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "11/6/2020 13:16:14.19"
+      "LastUpdateTime": "2020/6/11 13:16:14.19"
     },
     {
       "Id": "146652",
       "DictClassName": "editable",
       "DictRemark": "供应商状态",
       "CreateBy": "admin",
-      "CreateTime": "15/6/2020 11:31:55.867",
+      "CreateTime": "2020/6/15 11:31:55.867",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "15/6/2020 11:31:55.867"
+      "LastUpdateTime": "2020/6/15 11:31:55.867"
     },
     {
       "Id": "146901",
       "DictClassName": "itemType",
       "DictRemark": "物料类型",
       "CreateBy": "admin",
-      "CreateTime": "15/6/2020 13:28:39",
+      "CreateTime": "2020/6/15 13:28:39",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "15/6/2020 13:28:51.313"
+      "LastUpdateTime": "2020/6/15 13:28:51.313"
     },
     {
       "Id": "163601",
       "DictClassName": "uploadStatus",
       "DictRemark": "上传状态",
       "CreateBy": "admin",
-      "CreateTime": "23/6/2020 08:58:13.883",
+      "CreateTime": "2020/6/23 08:58:13.883",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "28/7/2020 20:37:24.927"
+      "LastUpdateTime": "2020/7/28 20:37:24.927"
     },
     {
       "Id": "163606",
       "DictClassName": "pickType",
       "DictRemark": "分拣类型",
       "CreateBy": "admin",
-      "CreateTime": "23/6/2020 09:40:47.23",
+      "CreateTime": "2020/6/23 09:40:47.23",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "28/7/2020 20:37:00.583"
+      "LastUpdateTime": "2020/7/28 20:37:00.583"
     },
     {
       "Id": "171201",
       "DictClassName": "coreItemType",
       "DictRemark": "物料类型",
       "CreateBy": "admin",
-      "CreateTime": "1/7/2020 16:06:42.217",
+      "CreateTime": "2020/7/1 16:06:42.217",
       "LastUpdateBy": "admin",
-      "LastUpdateTime": "28/7/2020 20:49:04.337"
+      "LastUpdateTime": "2020/7/28 20:49:04.337"
     }
   ]
 }

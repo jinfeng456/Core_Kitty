@@ -14,7 +14,7 @@ namespace Blog.Core.Model.Seed
 {
     public class DBSeed
     {
-        private static string SeedDataFolder = "BlogCore.Data.json/{0}.tsv";
+        private static string SeedDataFolder = "BlogCore.Data.json/{0}.json";
 
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Blog.Core.Model.Seed
                 // 注意不要把其他命名空间下的也添加进来。
                 Console.WriteLine("Create Tables...");
                 var modelTypes = from t in Assembly.GetExecutingAssembly().GetTypes()
-                        where t.IsClass && t.Namespace == "Blog.Core.Model.Models"
+                        where t.IsClass && t.Namespace == "Blog.Core.Model.Models" 
                         select t;
                 modelTypes.ToList().ForEach(t =>
                 {
@@ -104,7 +104,7 @@ namespace Blog.Core.Model.Seed
                     #region SysCode
                     if (!await myContext.Db.Queryable<SysCode>().AnyAsync())
                     {
-                        myContext.GetEntityDB<SysCode>().InsertRange(JsonHelper.ParseFormByJson<List<SysCode>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysCode"), Encoding.UTF8)));
+                        myContext.GetEntityDB<SysCode>().InsertRange(JsonHelper.DeserializeJsonToObject<List<SysCode>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysCode"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:SysCode created success!");
                     }
                     else
@@ -116,7 +116,7 @@ namespace Blog.Core.Model.Seed
                     #region SysDict
                     if (!await myContext.Db.Queryable<SysDict>().AnyAsync())
                     {
-                        myContext.GetEntityDB<SysDict>().InsertRange(JsonHelper.ParseFormByJson<List<SysDict>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysDict"), Encoding.UTF8)));
+                        myContext.GetEntityDB<SysDict>().InsertRange(JsonHelper.DeserializeJsonToObject<List<SysDict>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysDict"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:SysDict created success!");
                     }
                     else
@@ -128,7 +128,7 @@ namespace Blog.Core.Model.Seed
                     #region SysDictClass
                     if (!await myContext.Db.Queryable<SysDictClass>().AnyAsync())
                     {
-                        myContext.GetEntityDB<SysDictClass>().InsertRange(JsonHelper.ParseFormByJson<List<SysDictClass>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysDictClass"), Encoding.UTF8)));
+                        myContext.GetEntityDB<SysDictClass>().InsertRange(JsonHelper.DeserializeJsonToObject<List<SysDictClass>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysDictClass"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:SysDictClass created success!");
                     }
                     else
@@ -152,7 +152,7 @@ namespace Blog.Core.Model.Seed
                     #region SysRole
                     if (!await myContext.Db.Queryable<SysRole>().AnyAsync())
                     {
-                        myContext.GetEntityDB<SysRole>().InsertRange(JsonHelper.ParseFormByJson<List<SysRole>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysRole"), Encoding.UTF8)));
+                        myContext.GetEntityDB<SysRole>().InsertRange(JsonHelper.DeserializeJsonToObject<List<SysRole>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysRole"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:SysRole created success!");
                     }
                     else
@@ -164,7 +164,7 @@ namespace Blog.Core.Model.Seed
                     #region SysRoleMenu
                     if (!await myContext.Db.Queryable<SysRoleMenu>().AnyAsync())
                     {
-                        myContext.GetEntityDB<SysRoleMenu>().InsertRange(JsonHelper.ParseFormByJson<List<SysRoleMenu>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysRoleMenu"), Encoding.UTF8)));
+                        myContext.GetEntityDB<SysRoleMenu>().InsertRange(JsonHelper.DeserializeJsonToObject<List<SysRoleMenu>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysRoleMenu"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:SysRoleMenu created success!");
                     }
                     else
@@ -176,7 +176,7 @@ namespace Blog.Core.Model.Seed
                     #region SysUser
                     if (!await myContext.Db.Queryable<SysUser>().AnyAsync())
                     {
-                        myContext.GetEntityDB<SysUser>().InsertRange(JsonHelper.ParseFormByJson<List<SysUser>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysUser"), Encoding.UTF8)));
+                        myContext.GetEntityDB<SysUser>().InsertRange(JsonHelper.DeserializeJsonToObject<List<SysUser>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysUser"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:SysUser created success!");
                     }
                     else
@@ -188,7 +188,7 @@ namespace Blog.Core.Model.Seed
                     #region SysUserRole
                     if (!await myContext.Db.Queryable<SysUserRole>().AnyAsync())
                     {
-                        myContext.GetEntityDB<SysUserRole>().InsertRange(JsonHelper.ParseFormByJson<List<SysUserRole>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysUserRole"), Encoding.UTF8)));
+                        myContext.GetEntityDB<SysUserRole>().InsertRange(JsonHelper.DeserializeJsonToObject<List<SysUserRole>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "SysUserRole"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:SysUserRole created success!");
                     }
                     else
@@ -200,7 +200,7 @@ namespace Blog.Core.Model.Seed
                     #region TasksQz
                     if (!await myContext.Db.Queryable<TasksQz>().AnyAsync())
                     {
-                        myContext.GetEntityDB<TasksQz>().InsertRange(JsonHelper.ParseFormByJson<List<TasksQz>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "TasksQz"), Encoding.UTF8)));
+                        myContext.GetEntityDB<TasksQz>().InsertRange(JsonHelper.DeserializeJsonToObject<List<TasksQz>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "TasksQz"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:TasksQz created success!");
                     }
                     else
@@ -212,7 +212,7 @@ namespace Blog.Core.Model.Seed
                     #region CoreItem
                     if (!await myContext.Db.Queryable<CoreItem>().AnyAsync())
                     {
-                        myContext.GetEntityDB<CoreItem>().InsertRange(JsonHelper.ParseFormByJson<List<CoreItem>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "CoreItem"), Encoding.UTF8)));
+                        myContext.GetEntityDB<CoreItem>().InsertRange(JsonHelper.DeserializeJsonToObject<List<CoreItem>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "CoreItem"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:CoreItem created success!");
                     }
                     else
@@ -224,7 +224,7 @@ namespace Blog.Core.Model.Seed
                     #region CoreClassify
                     if (!await myContext.Db.Queryable<CoreClassify>().AnyAsync())
                     {
-                        myContext.GetEntityDB<CoreClassify>().InsertRange(JsonHelper.ParseFormByJson<List<CoreClassify>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "CoreClassify"), Encoding.UTF8)));
+                        myContext.GetEntityDB<CoreClassify>().InsertRange(JsonHelper.DeserializeJsonToObject<List<CoreClassify>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "CoreClassify"), Encoding.UTF8), "RECORDS").ToList());
                         Console.WriteLine("Table:CoreClassify created success!");
                     }
                     else

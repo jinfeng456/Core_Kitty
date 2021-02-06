@@ -7,7 +7,7 @@
       "SerialPrefix": "TH",
       "BusinessType": "202",
       "CodeNumber": "1",
-      "CodeDate": "16/7/2020 00:00:00"
+      "CodeDate": "2020/7/16 00:00:00"
     },
     {
       "Id": "2",
@@ -16,7 +16,7 @@
       "SerialPrefix": "FG",
       "BusinessType": "204",
       "CodeNumber": "6",
-      "CodeDate": "9/7/2020 00:00:00"
+      "CodeDate": "2020/7/9 00:00:00"
     },
     {
       "Id": "3",
@@ -25,7 +25,7 @@
       "SerialPrefix": "ZP",
       "BusinessType": "208",
       "CodeNumber": "5",
-      "CodeDate": "9/7/2020 00:00:00"
+      "CodeDate": "2020/7/9 00:00:00"
     },
     {
       "Id": "4",
@@ -34,7 +34,7 @@
       "SerialPrefix": "SH",
       "BusinessType": "210",
       "CodeNumber": "5",
-      "CodeDate": "28/6/2020 00:00:00"
+      "CodeDate": "2020/6/28 00:00:00"
     },
     {
       "Id": "5",
@@ -43,7 +43,7 @@
       "SerialPrefix": "BF",
       "BusinessType": "211",
       "CodeNumber": "5",
-      "CodeDate": "28/6/2020 00:00:00"
+      "CodeDate": "2020/6/28 00:00:00"
     },
     {
       "Id": "6",
@@ -52,7 +52,7 @@
       "SerialPrefix": "XH",
       "BusinessType": "205",
       "CodeNumber": "5",
-      "CodeDate": "28/6/2020 00:00:00"
+      "CodeDate": "2020/6/28 00:00:00"
     },
     {
       "Id": "7",
@@ -61,7 +61,7 @@
       "SerialPrefix": "PC",
       "BusinessType": "1",
       "CodeNumber": "5",
-      "CodeDate": "28/6/2020 00:00:00"
+      "CodeDate": "2020/6/28 00:00:00"
     },
     {
       "Id": "8",
@@ -70,7 +70,7 @@
       "SerialPrefix": "XS",
       "BusinessType": "201",
       "CodeNumber": "9",
-      "CodeDate": "15/7/2020 00:00:00"
+      "CodeDate": "2020/7/15 00:00:00"
     },
     {
       "Id": "9",
@@ -79,7 +79,7 @@
       "SerialPrefix": "DB",
       "BusinessType": "203",
       "CodeNumber": "2",
-      "CodeDate": "15/7/2020 00:00:00"
+      "CodeDate": "2020/7/15 00:00:00"
     },
     {
       "Id": "10",
@@ -88,7 +88,7 @@
       "SerialPrefix": "ZD",
       "BusinessType": "4",
       "CodeNumber": "1",
-      "CodeDate": "9/7/2020 00:00:00"
+      "CodeDate": "2020/7/9 00:00:00"
     },
     {
       "Id": "11",
@@ -97,7 +97,7 @@
       "SerialPrefix": "SC",
       "BusinessType": "5",
       "CodeNumber": "1",
-      "CodeDate": "14/7/2020 00:00:00"
+      "CodeDate": "2020/7/14 00:00:00"
     },
     {
       "Id": "12",
@@ -106,7 +106,7 @@
       "SerialPrefix": "QT",
       "BusinessType": "299",
       "CodeNumber": "1",
-      "CodeDate": "15/7/2020 00:00:00"
+      "CodeDate": "2020/7/15 00:00:00"
     },
     {
       "Id": "13",
@@ -115,7 +115,7 @@
       "SerialPrefix": "CJ",
       "BusinessType": "206",
       "CodeNumber": "1",
-      "CodeDate": "15/7/2020 00:00:00"
+      "CodeDate": "2020/7/15 00:00:00"
     },
     {
       "Id": "14",
@@ -124,7 +124,7 @@
       "SerialPrefix": "SS",
       "BusinessType": "103",
       "CodeNumber": "2",
-      "CodeDate": "15/7/2020 00:00:00"
+      "CodeDate": "2020/7/15 00:00:00"
     },
     {
       "Id": "15",
@@ -133,7 +133,7 @@
       "SerialPrefix": "CG",
       "BusinessType": "101",
       "CodeNumber": "1",
-      "CodeDate": "16/7/2020 00:00:00"
+      "CodeDate": "2020/7/16 00:00:00"
     },
     {
       "Id": "16",
@@ -142,7 +142,7 @@
       "SerialPrefix": "ZP",
       "BusinessType": "105",
       "CodeNumber": "1",
-      "CodeDate": "15/7/2020 00:00:00"
+      "CodeDate": "2020/7/15 00:00:00"
     },
     {
       "Id": "17",
@@ -151,7 +151,7 @@
       "SerialPrefix": "DB",
       "BusinessType": "104",
       "CodeNumber": "1",
-      "CodeDate": "15/7/2020 00:00:00"
+      "CodeDate": "2020/7/15 00:00:00"
     },
     {
       "Id": "18",
@@ -160,7 +160,7 @@
       "SerialPrefix": "QT",
       "BusinessType": "199",
       "CodeNumber": "1",
-      "CodeDate": "15/7/2020 00:00:00"
+      "CodeDate": "2020/7/15 00:00:00"
     },
     {
       "Id": "19",
@@ -169,7 +169,7 @@
       "SerialPrefix": "ZH",
       "BusinessType": "102",
       "CodeNumber": "2",
-      "CodeDate": "15/7/2020 00:00:00"
+      "CodeDate": "2020/7/15 00:00:00"
     }
   ]
 }
