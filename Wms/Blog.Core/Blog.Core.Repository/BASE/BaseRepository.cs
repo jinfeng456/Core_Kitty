@@ -536,15 +536,19 @@ namespace Blog.Core.Repository.Base
         static int index = 0;
         public async Task<int> GetId()
         {
-            int id = 0;
-            if (SEQUENCES_ID == 0 || index == 99)
-            {
-                SEQUENCES_ID = await _db.Ado.GetIntAsync("SELECT NEXT VALUE FOR sequence_id");
-                index = 0;
-            }
-            index++;
-            id = SEQUENCES_ID * 100 + index;
-            return id;
+            byte[] buffer = Guid.NewGuid().ToByteArray();
+            return BitConverter.ToInt32(buffer, 0);
+
+            //只使用与sqlservel
+            //int id = 0;
+            //if (SEQUENCES_ID == 0 || index == 99)
+            //{
+            //    SEQUENCES_ID = await _db.Ado.GetIntAsync("SELECT NEXT VALUE FOR sequence_id");
+            //    index = 0;
+            //}
+            //index++;
+            //id = SEQUENCES_ID * 100 + index;
+            //return id;
         }
 
     }
