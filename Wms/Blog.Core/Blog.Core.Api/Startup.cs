@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Blog.Core.Common;
+using Blog.Core.Common.Helper;
 using Blog.Core.Common.LogHelper;
 using Blog.Core.Extensions;
 using Blog.Core.Filter;
@@ -81,7 +82,7 @@ namespace Blog.Core
                 o.Conventions.Insert(0, new GlobalRoutePrefixFilter(new RouteAttribute(RoutePrefix.Name)));
             })
             //全局配置Json序列化处理
-            .AddNewtonsoftJson(options =>
+             .AddNewtonsoftJson(options =>
             {
                 //忽略循环引用
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -92,7 +93,6 @@ namespace Blog.Core
                 //空值处理
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
-
             _services = services;
         }
 

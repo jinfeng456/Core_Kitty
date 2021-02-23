@@ -1,28 +1,16 @@
 {
-  "RECORDS": [
-    {
-      "Id": "218101",
-      "IsDeleted": "",
-      "Area": "33",
-      "Controller": "",
-      "Action": "",
-      "IpAddress": "",
-      "Description": "",
-      "LogTime": "2021/2/2 14:57:39.687",
-      "LoginName": "",
-      "UserId": "1"
-    },
-    {
-      "Id": "218102",
-      "IsDeleted": "",
-      "Area": "",
-      "Controller": "",
-      "Action": "",
-      "IpAddress": "",
-      "Description": "",
-      "LogTime": "2021/2/2 14:58:06.233",
-      "LoginName": "",
-      "UserId": "1"
-    }
-  ]
+    "RECORDS": [
+        {
+            "Id": "1",
+            "IsDeleted": 0,
+            "Area": "Model",
+            "Controller": "Model1",
+            "Action": "Model2",
+            "IPAddress": "192.168.29.3",
+            "Description": "Model",
+            "LogTime": "2020/1/12 00:00:00",
+            "LoginName": "管理员",
+            "UserId": "1"
+        }
+    ]
 }
