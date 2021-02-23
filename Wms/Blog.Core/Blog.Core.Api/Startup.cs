@@ -88,7 +88,9 @@ namespace Blog.Core
                 //不使用驼峰样式的key
                 //options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 //设置时间格式
-                //options.SerializerSettings.DateFormatString = "yyyy-MM-dd";
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                //空值处理
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
 
             _services = services;
