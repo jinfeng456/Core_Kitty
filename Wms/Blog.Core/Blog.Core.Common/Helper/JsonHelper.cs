@@ -79,7 +79,27 @@ namespace Blog.Core.Common.Helper
                 return (T)serializer.ReadObject(ms);
             }
         }
+        
 
+        public static T JsonConvertJsonToObject<T>(string json, string key = "") where T : class
+        {
+            try
+            {
+                Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                if (!string.IsNullOrEmpty(key))
+                {
+                    var jobject = JObject.Parse(json);
+                    json = jobject[key].ToString();
+                }
+                object o = JsonConvert.DeserializeObject(json);
+                T t = o as T;
+                return t;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         /// <summary>
         /// 解析JSON字符串生成对象实体
         /// </summary>

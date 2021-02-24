@@ -46,6 +46,7 @@ namespace Blog.Core.Controllers
 	 ///<#=tableName#>
 	 ///</summary>
      [Route("<#=tableName#>")]
+     [ApiController]
      [Authorize]
 	 public class <#=tableName#>Controller : ControllerBase
 	 {

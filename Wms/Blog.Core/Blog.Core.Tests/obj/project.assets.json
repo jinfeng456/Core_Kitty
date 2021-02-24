@@ -4177,7 +4177,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Common.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.Extensions/1.0.0": {
         "type": "project",

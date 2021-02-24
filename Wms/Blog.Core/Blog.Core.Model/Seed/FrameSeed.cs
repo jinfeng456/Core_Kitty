@@ -408,6 +408,7 @@ using System.Linq.Expressions;
 namespace " + strNameSpace + @"
 {
 	[Route(""{ClassName}"")]
+    [ApiController]
     [Authorize]
      public class {ClassName}Controller : ControllerBase
     {

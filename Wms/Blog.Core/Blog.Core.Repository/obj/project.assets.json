@@ -3154,7 +3154,10 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.IRepository.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Blog.Core.Model/1.0.0": {
         "type": "project",

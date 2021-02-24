@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Blog.Core.Common.HttpContextUser;
@@ -8,82 +8,83 @@ using Blog.Core.Model.Models;
 using Blog.Core.Model.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Linq.Expressions;
 
 namespace Blog.Core.Controllers
 {
-    /// <summary>
-    /// 字典分类管理
-    /// </summary>
-    [Route("dictClass")]
-    [ApiController]
-    [Authorize]
-    public class SysDictClassController : ControllerBase
-    {
-        readonly ISysDictClassServices _sysDictClassServices;
+	 ///<summary>
+	 ///TasksQz
+	 ///</summary>
+     [Route("TasksQz")]
+     [ApiController]
+     [Authorize]
+	 public class TasksQzController : ControllerBase
+	 {
+		readonly ITasksQzServices _tasksQzServices;
         readonly IUser _user;
-
-
-        public SysDictClassController(ISysDictClassServices sysDictClassServices, IUser user)
+		public TasksQzController(ITasksQzServices tasksQzServices, IUser user)
         {
-            _sysDictClassServices = sysDictClassServices;
+            _tasksQzServices = tasksQzServices;
             _user = user;
         }
 
-        /// <summary>
-        /// 查询字典分类
+		/// <summary>
+        /// 查询
         /// </summary>
-        /// <param name="dto">字典分类</param>
+        /// <param name="dto"></param>
         /// <returns></returns>
         // GET: api/User
         [HttpPost, Route("FindPage")]
-        public async Task<BaseResult> FindPage([FromBody]SysDictClassDto dto)
+        public async Task<BaseResult> FindPage([FromBody]TasksQzDto dto)
         {
-            if (string.IsNullOrEmpty(dto.dictClassName) || string.IsNullOrWhiteSpace(dto.dictClassName))
+            Expression<Func<TasksQz, bool>> whereExpression = a => true;
+            if (dto.name.IsNotEmptyOrNull())
             {
-                dto.dictClassName = "";
+                whereExpression = ExpressionHelp.And(whereExpression, a => a.name.Contains(dto.name));
             }
-            var data = await _sysDictClassServices.QueryPage(a => (a.DictClassName != null && a.DictClassName.Contains(dto.dictClassName)), dto.pageNum, dto.pageSize, " createTime desc ");
+            var data = await _tasksQzServices.QueryPage(whereExpression, dto.pageNum, dto.pageSize, " createTime desc ");
             return BaseResult.Ok(data);
         }
 
         /// <summary>
-        /// 添加字典分类
+        /// 添加
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         // POST: api/User
         [HttpPost, Route("Save")]
-        public async Task<BaseResult> Save([FromBody]SysDictClass model)
+        public async Task<BaseResult> Save([FromBody]TasksQz model)
         {
-            if (model.id == 0)
+            if (model.Id == 0)
             {
-                model.id = await _sysDictClassServices.GetId();
+                model.Id = await _tasksQzServices.GetId();
                 model.CreateTime = DateTime.Now;
                 model.CreateBy = _user.Name;
                 model.LastUpdateBy = _user.Name;
                 model.LastUpdateTime = DateTime.Now;
-                return BaseResult.Ok(await _sysDictClassServices.Add(model));
+                return BaseResult.Ok(await _tasksQzServices.Add(model));
             }
             else
             {
                 model.LastUpdateBy = _user.Name;
                 model.LastUpdateTime = DateTime.Now;
-                return BaseResult.Ok(await _sysDictClassServices.Update(model));
+                return BaseResult.Ok(await _tasksQzServices.Update(model));
             }
         }
 
 
         /// <summary>
-        /// 删除字典分类
+        /// 删除
         /// </summary>
         /// <param name="modelList"></param>
         /// <returns></returns>
         [HttpPost, Route("Delete")]
-        public async Task<BaseResult> Delete([FromBody]List<SysDictClass> modelList)
+        public async Task<BaseResult> Delete([FromBody]List<TasksQz> modelList)
         {
             foreach (var model in modelList)
             {
-                await _sysDictClassServices.Delete(model);
+                await _tasksQzServices.Delete(model);
             }
             return BaseResult.Ok("ok");
         }
@@ -95,7 +96,7 @@ namespace Blog.Core.Controllers
         [HttpPost, Route("GetAllList")]
         public async Task<BaseResult> GetAllList()
         {
-            return BaseResult.Ok(await _sysDictClassServices.Query());
+            return BaseResult.Ok(await _tasksQzServices.Query());
         }
-    }
-}
+	 }
+}	 

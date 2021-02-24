@@ -16,7 +16,7 @@ namespace Blog.Core.Controllers
     /// 字典管理
     /// </summary>
     [Route("dict")]
-    //[ApiController]
+    [ApiController]
     [Authorize]
     public class SysDictController : ControllerBase
     {

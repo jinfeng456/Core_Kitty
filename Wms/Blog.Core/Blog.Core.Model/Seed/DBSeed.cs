@@ -2,6 +2,7 @@
 using Blog.Core.Common.DB;
 using Blog.Core.Common.Helper;
 using Blog.Core.Model.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -99,7 +100,34 @@ namespace Blog.Core.Model.Seed
 
                 if (Appsettings.app(new string[] { "AppSettings", "SeedDBDataEnabled" }).ObjToBool())
                 {
+                    JsonSerializerSettings setting = new JsonSerializerSettings();
+                    JsonConvert.DefaultSettings = new Func<JsonSerializerSettings>(() =>
+                    {
+                        //日期类型默认格式化处理
+                        setting.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
+                        setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+
+                        //空值处理
+                        setting.NullValueHandling = NullValueHandling.Ignore;
+
+                        //高级用法九中的Bool类型转换 设置
+                        //setting.Converters.Add(new BoolConvert("是,否"));
+
+                        return setting;
+                    });
+
                     Console.WriteLine($"Seeding database data (The Db Id:{MyContext.ConnId})...");
+                    #region OperateLog
+                    //if (!await myContext.Db.Queryable<OperateLog>().AnyAsync())
+                    //{
+                    //    myContext.GetEntityDB<OperateLog>().InsertRange(JsonHelper.JsonConvertJsonToObject<List<OperateLog>>(FileHelper.ReadFile(string.Format(SeedDataFolder, "OperateLog"), Encoding.UTF8), "RECORDS").ToList());
+                    //    Console.WriteLine("Table:OperateLog created success!");
+                    //}
+                    //else
+                    //{
+                    //    Console.WriteLine("Table:OperateLog already exists...");
+                    //}
+                    #endregion
 
                     #region SysCode
                     if (!await myContext.Db.Queryable<SysCode>().AnyAsync())
