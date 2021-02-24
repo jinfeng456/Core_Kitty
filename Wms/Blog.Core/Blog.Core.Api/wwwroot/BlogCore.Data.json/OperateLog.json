@@ -2,13 +2,13 @@
     "RECORDS": [
         {
             "Id": "1",
-            "IsDeleted": 0,
+            "IsDeleted": "1",
             "Area": "Model",
             "Controller": "Model1",
             "Action": "Model2",
             "IPAddress": "192.168.29.3",
             "Description": "Model",
-            "LogTime": "2020/1/12 00:00:00",
+            "LogTime": "2020-1-12 00:00:00",
             "LoginName": "管理员",
             "UserId": "1"
         }

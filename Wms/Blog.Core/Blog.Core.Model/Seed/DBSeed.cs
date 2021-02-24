@@ -111,12 +111,13 @@ namespace Blog.Core.Model.Seed
                         setting.NullValueHandling = NullValueHandling.Ignore;
 
                         //高级用法九中的Bool类型转换 设置
-                        //setting.Converters.Add(new BoolConvert("是,否"));
+                        setting.Converters.Add(new BoolConvert("是,否"));
 
                         return setting;
                     });
 
                     Console.WriteLine($"Seeding database data (The Db Id:{MyContext.ConnId})...");
+                    
                     #region OperateLog
                     //if (!await myContext.Db.Queryable<OperateLog>().AnyAsync())
                     //{
