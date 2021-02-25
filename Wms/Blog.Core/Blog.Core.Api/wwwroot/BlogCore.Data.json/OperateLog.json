@@ -2,13 +2,21 @@
     "RECORDS": [
         {
             "Id": "1",
+<<<<<<< HEAD
             "IsDeleted": "1",
+=======
+            "IsDeleted": 0,
+>>>>>>> 6c738f658b14c373cdfb78718fef30519c59e80f
             "Area": "Model",
             "Controller": "Model1",
             "Action": "Model2",
             "IPAddress": "192.168.29.3",
             "Description": "Model",
+<<<<<<< HEAD
             "LogTime": "2020-1-12 00:00:00",
+=======
+            "LogTime": "2020/1/12 00:00:00",
+>>>>>>> 6c738f658b14c373cdfb78718fef30519c59e80f
             "LoginName": "管理员",
             "UserId": "1"
         }

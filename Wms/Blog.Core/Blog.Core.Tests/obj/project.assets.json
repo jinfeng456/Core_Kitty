@@ -4209,10 +4209,7 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Extensions.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       },
       "Blog.Core.IRepository/1.0.0": {
         "type": "project",
@@ -4294,10 +4291,7 @@
         },
         "runtime": {
           "bin/placeholder/Blog.Core.Services.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        }
       },
       "Blog.Core.Tasks/1.0.0": {
         "type": "project",
