@@ -117,7 +117,7 @@ namespace Blog.Core.Model.Seed
                     });
 
                     Console.WriteLine($"Seeding database data (The Db Id:{MyContext.ConnId})...");
-                   
+                    
                     #region OperateLog
                     //if (!await myContext.Db.Queryable<OperateLog>().AnyAsync())
                     //{
